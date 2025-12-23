@@ -17,19 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>内网：Lin_信息收集 - bug_001</title>
+  <title>bug_001</title>
 
   
     <meta name="description" content="项目（Item） 命令&#x2F;检查项（Command&#x2F;Check） 目的（Purpose） 注意事项（Notes） 风险等级（Low&#x2F;High） 行动建议（概念级）    系统与内核（System &amp; Kernel） &lt;font style&#x3D;&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lin_信息收集">
+<meta property="og:title" content="bug_001">
 <meta property="og:url" content="https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
 <meta property="og:site_name" content="bug_001">
 <meta property="og:description" content="项目（Item） 命令&#x2F;检查项（Command&#x2F;Check） 目的（Purpose） 注意事项（Notes） 风险等级（Low&#x2F;High） 行动建议（概念级）    系统与内核（System &amp; Kernel） &lt;font style&#x3D;&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-23T07:42:12.887Z">
-<meta property="article:modified_time" content="2025-12-23T07:42:12.887Z">
+<meta property="article:published_time" content="2025-12-23T11:43:52.788Z">
+<meta property="article:modified_time" content="2025-12-23T11:43:52.788Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cbbzx12.github.io/images/head.jpg">
@@ -48,7 +48,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"Lin_信息收集","description":"\n\n\n项目（Item）\n命令&#x2F;检查项（Command&#x2F;Check）\n目的（Purpose）\n注意事项（Notes）\n风险等级（Low&#x2F;High）\n行动建议（概念级）\n\n\n\n系统与内核（System &amp; Kernel）\n&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"bug_001","description":"\n\n\n项目（Item）\n命令&#x2F;检查项（Command&#x2F;Check）\n目的（Purpose）\n注意事项（Notes）\n风险等级（Low&#x2F;High）\n行动建议（概念级）\n\n\n\n系统与内核（System &amp; Kernel）\n&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -99,8 +99,12 @@
     border-radius: 16px !important; 
   }
 
+
   /* SIDEBAR EXCEPTION: Remove individual card backgrounds inside the glass sidebar */
-  .l_left .widget-wrapper {
+  .l_left .widget-wrapper,
+  .l_left .header, 
+  .l_left .nav-area, 
+  .l_left .footer {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -127,8 +131,6 @@
 <!-- hexo injector head_end end --></head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
 
-
-
 <div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
@@ -136,13 +138,12 @@
 
 <div class="nav-area">
 
-<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/内网/" placeholder="在 /wiki/内网/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
-
-
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/12/23/%E6%9C%AC%E7%AB%99%E6%8C%87%E5%8D%97%EF%BC%9A%E5%85%B3%E4%BA%8E%E8%BF%99%E9%87%8C%E7%9A%84%E8%AE%B0%E5%BD%95/"><span class="title">本站指南：关于这里的记录</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -156,17 +157,9 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">Lin_信息收集</a>
+  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Lin_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"></a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T07:42:12.887Z">2025-12-23</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>Lin_信息收集</span></h1>
-        
-      </div>
-    </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-23T11:43:52.788Z">2025-12-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-23T11:43:52.788Z">2025-12-23</time></span></div></div></div>
     
   </div>
   </div><article class="md-text content"><table>
@@ -270,12 +263,6 @@
 </tr>
 </tbody></table>
 </article>
-<div class="article-footer">
-
-</div>
-
-
-
 
 
 

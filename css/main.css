@@ -7227,12 +7227,13 @@ details.toc[open] >div.body section .header+.doc_tree {
   background-position: center;
   background-size: cover;
   --inset: 32px;
+  --background-opacity: 0.8;
   background-image: none;
   filter: saturate(var(--saturate)) blur(var(--blur-px)) opacity(var(--background-opacity));
 }
 @media screen and (prefers-color-scheme: dark) {
   .l_left .sidebg {
-    --background-opacity: 0;
+    --background-opacity: 0.6;
   }
 }
 .l_left .leftbar-container {
