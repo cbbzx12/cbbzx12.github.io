@@ -72,17 +72,45 @@
 <!-- hexo injector head_end start -->
 <style>
   :root { 
-    --card: rgba(255, 255, 255, 0.5) !important; 
-    --block: rgba(255, 255, 255, 0.3) !important;
-    --bg-card: rgba(255, 255, 255, 0.5) !important;
+    --card: rgba(255, 255, 255, 0.6) !important; 
+    --block: rgba(255, 255, 255, 0.4) !important;
+    --bg-card: rgba(255, 255, 255, 0.6) !important;
+    --text-p1: #333 !important; /* Ensure text is dark enough */
   }
-  body { 
-    background: url('/images/bg.jpg') no-repeat center center fixed !important; 
-    background-size: cover !important; 
+
+  /* Global Background with Blur */
+  body {
+    background: none !important; /* Disable default body bg */
   }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('/images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(6px); /* 6px blur for the wallpaper */
+    z-index: -1;
+    transform: scale(1.02); /* Slight scale to hide blur edges */
+  }
+
+  /* Transparent Layout Containers */
   .l_main { background: transparent !important; }
-  .widget-wrapper { background: var(--card) !important; backdrop-filter: blur(10px); }
-  .post-list .post-card { background: var(--card) !important; backdrop-filter: blur(10px); }
+  .l_body { background: transparent !important; }
+  
+  /* Premium Glassmorphism for Widgets and Cards */
+  .widget-wrapper, .post-list .post-card, .md-text { 
+    background: var(--card) !important; 
+    backdrop-filter: blur(20px) !important; /* Stronger frosted glass */
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Glass edge */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important; /* Smooth shadow */
+    border-radius: 16px !important; /* Rounded corners */
+  }
+
+  /* Site Info Widget Specific Tweaks */
+  .widget-wrapper.markdown {
+      padding: 1rem;
+  }
 </style>
 <!-- hexo injector head_end end --></head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
