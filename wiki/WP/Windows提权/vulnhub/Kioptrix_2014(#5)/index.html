@@ -119,6 +119,12 @@
     border-radius: 16px !important; /* Rounded corners */
   }
 
+  /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image */
+  .widget-wrapper .widget-header, .layout-author .cover {
+    background: transparent !important;
+    background-image: none !important;
+  }
+
   /* Site Info Widget Specific Tweaks */
   .widget-wrapper.markdown {
       padding: 1rem;
