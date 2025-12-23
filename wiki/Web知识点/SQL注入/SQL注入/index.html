@@ -53,7 +53,22 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQL%E6%B3%A8%E5%85%A5/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"SQL注入","description":"SQL注入一、MySqL\n一 、同站\n判断是否有注入点\nand 1&#x3D;1 页面正常\nand 1&#x3D;2 页面异常\n如果这两个都没有异常，那就试试字符集 ?id&#x3D;1’\n\n\n通过order by判断注入的字段数（猜一下）\n页面错误与正常的临界点就是字段数\n通过union 来测试\n\n\n让id&#x3D;负数或者and1&#x3D;2让网页报错，报错的那几个数字记住，那个数字...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQL%E6%B3%A8%E5%85%A5/"}</script>
   
-</head>
+<!-- hexo injector head_end start -->
+<style>
+  :root { 
+    --card: rgba(255, 255, 255, 0.5) !important; 
+    --block: rgba(255, 255, 255, 0.3) !important;
+    --bg-card: rgba(255, 255, 255, 0.5) !important;
+  }
+  body { 
+    background: url('/images/bg.jpg') no-repeat center center fixed !important; 
+    background-size: cover !important; 
+  }
+  .l_main { background: transparent !important; }
+  .widget-wrapper { background: var(--card) !important; backdrop-filter: blur(10px); }
+  .post-list .post-card { background: var(--card) !important; backdrop-filter: blur(10px); }
+</style>
+<!-- hexo injector head_end end --></head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
 
 

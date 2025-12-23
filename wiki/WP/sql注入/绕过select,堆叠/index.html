@@ -57,7 +57,22 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/sql%E6%B3%A8%E5%85%A5/%E7%BB%95%E8%BF%87select,%E5%A0%86%E5%8F%A0/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"绕过select,堆叠","description":"2019强网杯”随便注”一看就是sql注入首先判断是数字还是字符注入，\n输入 1 ，2，反应正常，\n输入2-1 ，结果回显2 的内容，排除数字注入\n输入1’  报错，那就是 select * from database  ·····id&#x3D;’1’;\n然后就是看列数；\n1’ order by 2 –+  回显正常， order by 3–+异常，那就是两列\n然后正常的注入  1’ un...","url":"https://cbbzx12.github.io/wiki/WP/sql%E6%B3%A8%E5%85%A5/%E7%BB%95%E8%BF%87select,%E5%A0%86%E5%8F%A0/"}</script>
   
-</head>
+<!-- hexo injector head_end start -->
+<style>
+  :root { 
+    --card: rgba(255, 255, 255, 0.5) !important; 
+    --block: rgba(255, 255, 255, 0.3) !important;
+    --bg-card: rgba(255, 255, 255, 0.5) !important;
+  }
+  body { 
+    background: url('/images/bg.jpg') no-repeat center center fixed !important; 
+    background-size: cover !important; 
+  }
+  .l_main { background: transparent !important; }
+  .widget-wrapper { background: var(--card) !important; backdrop-filter: blur(10px); }
+  .post-list .post-card { background: var(--card) !important; backdrop-filter: blur(10px); }
+</style>
+<!-- hexo injector head_end end --></head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
 
 
