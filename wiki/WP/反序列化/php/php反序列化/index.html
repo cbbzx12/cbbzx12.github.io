@@ -53,9 +53,9 @@
 <!-- hexo injector head_end start -->
 <style>
   :root { 
-    --card: rgba(255, 255, 255, 0.5) !important; /* Balanced "Natural" Glass Opacity */
-    --block: rgba(255, 255, 255, 0.3) !important;
-    --bg-card: rgba(255, 255, 255, 0.5) !important;
+    --card: rgba(255, 255, 255, 0.65) !important; /* Restored to 18:00: Higher Opacity */
+    --block: rgba(255, 255, 255, 0.4) !important;
+    --bg-card: rgba(255, 255, 255, 0.65) !important;
     --text-p1: #000 !important; 
     --text-p2: #222 !important;
     --text-p3: #444 !important;
@@ -63,7 +63,7 @@
 
   /* Global Background with Blur */
   body {
-    background: none !important; /* Disable default body bg */
+    background: none !important;
   }
   body::before {
     content: "";
@@ -71,45 +71,24 @@
     top: 0; left: 0; right: 0; bottom: 0;
     background: url('/images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
-    filter: blur(6px); /* 6px blur for the wallpaper */
+    filter: blur(6px);
     z-index: -1;
-    transform: scale(1.02); /* Slight scale to hide blur edges */
+    transform: scale(1.02);
   }
 
-  /* Transparent Layout Containers - Override for Main/Body but CUSTOMIZE Left */
+  /* Transparent Layout Containers */
   .l_main { background: transparent !important; }
-  .l_left { 
-    background: rgba(255, 255, 255, 0.45) !important; /* Unified Sidebar Glass Background */
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 20px !important;
-    padding: 1rem !important; /* Add padding inside the glass box */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important;
-  } 
+  .l_left { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; } 
   .l_body { background: transparent !important; }
   
-  /* Premium Glassmorphism for Widgets (Global) */
+  /* Premium Glassmorphism for Widgets (Global - restores individual card look) */
   .widget-wrapper, .post-list .post-card, .md-text { 
     background: var(--card) !important; 
-    backdrop-filter: blur(20px) !important; /* Strong blur for natural frosted look */
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important; 
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05) !important; 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08) !important; 
     border-radius: 16px !important; 
-  }
-
-
-  /* SIDEBAR EXCEPTION: Remove individual card backgrounds inside the glass sidebar */
-  .l_left .widget-wrapper,
-  .l_left .header, 
-  .l_left .nav-area, 
-  .l_left .footer {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    margin-bottom: 1rem !important; /* Ensure spacing remains */
   }
 
   /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image via CSS */
