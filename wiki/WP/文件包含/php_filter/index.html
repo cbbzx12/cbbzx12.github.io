@@ -89,7 +89,7 @@
     border-radius: 16px !important; /* Rounded corners */
   }
 
-  /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image */
+  /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image via CSS */
   .widget-wrapper .widget-header, 
   .layout-author .cover,
   .widget-wrapper div[style*="background-image"], /* Catch inline styles */
@@ -907,4 +907,25 @@
 
 <!-- inject -->
 
-</div></body></html>
+</div><!-- hexo injector body_end start -->
+<script>
+  // JS Kill Switch: Remove any remaining background images in widgets
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Target obvious cover classes
+    const covers = document.querySelectorAll('.widget-wrapper .cover, .widget-wrapper .widget-header, .layout-author .cover');
+    covers.forEach(el => {
+      el.style.backgroundImage = 'none';
+      el.style.background = 'transparent';
+    });
+    
+    // 2. Target ANY div inside a widget that has a background-image inline style
+    const allDivs = document.querySelectorAll('.widget-wrapper div');
+    allDivs.forEach(el => {
+      if (el.style.backgroundImage && el.style.backgroundImage !== 'none') {
+        el.style.backgroundImage = 'none';
+        el.style.background = 'transparent';
+      }
+    });
+  });
+</script>
+<!-- hexo injector body_end end --></body></html>
