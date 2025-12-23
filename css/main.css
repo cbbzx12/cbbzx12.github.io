@@ -7227,7 +7227,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   background-position: center;
   background-size: cover;
   --inset: 32px;
-  background-image: url("https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg");
+  background-image: none;
   filter: saturate(var(--saturate)) blur(var(--blur-px)) opacity(var(--background-opacity));
 }
 @media screen and (prefers-color-scheme: dark) {
