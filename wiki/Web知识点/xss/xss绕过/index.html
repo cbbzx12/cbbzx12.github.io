@@ -28,8 +28,8 @@
 <meta property="og:description" content="XSS绕过总结一、分类123反射性XSS存储型XSSDOM型XSS  反射型xss 攻击方式  1攻击者通过电子邮件等方式将包含XSS代码的恶意链接发送给目标用户。当目标用户访问该链接时，服务器接受该目标用户的请求并进行处理，然后服务器把带有XSS的代码发送给目标用户的浏览器，浏览器解析这段带有XSS代码的恶意脚本后，就会触发XSS漏洞。   攻击步骤  12341.攻击者构造出特殊的URL，其中">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-23T13:01:43.102Z">
-<meta property="article:modified_time" content="2025-12-23T13:01:43.102Z">
+<meta property="article:published_time" content="2025-12-23T13:10:42.651Z">
+<meta property="article:modified_time" content="2025-12-23T13:10:42.651Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="Web知识点">
 <meta name="twitter:card" content="summary">
@@ -142,7 +142,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/xss%E7%BB%95%E8%BF%87/">xss绕过</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T13:01:43.102Z">2025-12-23</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T13:10:42.651Z">2025-12-23</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -305,17 +305,17 @@
 <p><strong>RCDATA状态中的字符引用</strong>：然后再来看一下什么是RCDATA转态，这里需要我们先了解一下HTML中有五类元素：</p>
 <ul>
 <li>空元素(Void elements)，如<code> &lt;area&gt;</code>、<code>&lt;br&gt;</code>、<code>&lt;base&gt;</code> 等等。空元素不能容纳任何内容，因为它们没有闭合标签，没有内容能够放在开始标签和闭合标签中间。</li>
-<li>原始文本元素(Raw text elements)，有 <code>&lt;script&gt; </code>和 <code>&lt;style&gt;</code>。原始文本元素可以容纳文本。</li>
+<li>原始文本元素(Raw text elements)，有 <code>&amp;lt;script&gt; </code>和 <code>&lt;style&gt;</code>。原始文本元素可以容纳文本。</li>
 <li>RCDATA元素(RCDATA elements)，有 <code>&lt;textarea&gt;</code> 和 <code>&lt;title&gt;</code>。RCDATA元素可以容纳文本和字符引用。</li>
 <li>外部元素(Foreign elements)，例如MathML命名空间或者SVG命名空间的元素。外部元素可以容纳文本、字符引用、CDATA段、其他元素和注释。</li>
 <li>基本元素(Normal elements)，即除了以上4种元素以外的元素。基本元素可以容纳文本、字符引用、其他元素和注释。</li>
 </ul>
 <p> 注意到RCDATA元素中有 <code>&lt;textarea&gt; </code>和 <code>&lt;title&gt; </code>两个属性并且有字符引用，也就是当实体字符出现在这两个标签里面的时候，实体字符会被识别并进行HTML编码解析。这里要再提醒一次，在解析这些字符引用的过程中不会进入“标签开始状态”，所以就不会建立新的标签，所以HTML编码的XSS语句触发不了XSS。</p>
-<p> HTML的五类元素中，像 <code>&lt;script&gt;</code>、<code>&lt;style&gt;</code> 这样的原始文本元素在这个标签内容纳的是文本，所以浏览器在解析到这个标签后，里面内容中的HTML编码并不会被认为是HTML实体引用，所以并不会被解码为相应的字符,不会触发语句原有的结果。<strong>但是当在前面加上 <strong><code>&lt;svg&gt;</code></strong> ，即可成功弹窗</strong>。</p>
+<p> HTML的五类元素中，像 <code>&amp;lt;script&gt;</code>、<code>&lt;style&gt;</code> 这样的原始文本元素在这个标签内容纳的是文本，所以浏览器在解析到这个标签后，里面内容中的HTML编码并不会被认为是HTML实体引用，所以并不会被解码为相应的字符,不会触发语句原有的结果。<strong>但是当在前面加上 <strong><code>&lt;svg&gt;</code></strong> ，即可成功弹窗</strong>。</p>
 <h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>我们可以并将src或href属性中的内容进行URL编码，当HTML解析器对src或href中的字符完成HTML解码后，接下来URL解析器会对src或href中的值进行URL解码。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(</span>&quot;<span class="attr">xss</span>&quot;)&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:%61%6c%65%72%74%28%22%78%73%73%22%29</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">javascript:alert(</span>&quot;<span class="attr">xss</span>&quot;)&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;javascript:%61%6c%65%72%74%28%22%78%73%73%22%29&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--伪协议头 javascript: 是不能进行编码的。这里就有一个URL解析过程中的一个细节了，</span></span><br><span class="line"><span class="comment">即不能对协议类型进行任何的编码操作，否则URL解析器会认为它无类型，</span></span><br><span class="line"><span class="comment">就会导致DOM节点中被编码的“javascript”没有被解码，当然不会被URL解析器识别了。</span></span><br><span class="line"><span class="comment">如：</span></span><br><span class="line"><span class="comment">http://www.baidu.com 可以被URL编码为 http://%77%77%77%2e%62%61%69%64%75%2e%63%6f%6d，</span></span><br><span class="line"><span class="comment">但是不能把协议也进URL编码：%68%74%74%70%3a%2f%2f%77%77%77%2e%62%61%69%64%75%2e%63%6f%6d</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">但是伪协议头 javascript: 可以进行HTML编码。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="Javascript-编码"><a href="#Javascript-编码" class="headerlink" title="Javascript 编码"></a>Javascript 编码</h5><p>我们可以将DOM节点中的内容转化为 Javascript 编码。当HTML解析产生DOM节点后，会根据DOM节点来做接下来的解析工作，比如在处理诸如 <code>&lt;script&gt;</code>、<code>&lt;style&gt;</code> 这样的标签时，解析器会自动切换到JavaScript解析模式，而 src、 href 后边加入的 javascript 伪URL，也会进入 JavaScript 的解析模式。Javascript 中可以识别的编码类型有：</p>
+<h5 id="Javascript-编码"><a href="#Javascript-编码" class="headerlink" title="Javascript 编码"></a>Javascript 编码</h5><p>我们可以将DOM节点中的内容转化为 Javascript 编码。当HTML解析产生DOM节点后，会根据DOM节点来做接下来的解析工作，比如在处理诸如 <code>&amp;lt;script&gt;</code>、<code>&lt;style&gt;</code> 这样的标签时，解析器会自动切换到JavaScript解析模式，而 src、 href 后边加入的 javascript 伪URL，也会进入 JavaScript 的解析模式。Javascript 中可以识别的编码类型有：</p>
 <ul>
 <li>Unicode 编码</li>
 <li>八进制编码</li>
@@ -353,13 +353,13 @@
 <li><font style="color:rgba(0, 0, 0, 0.87);">类似 CSP</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;script-src self&lt;/font&gt;</code></li>
 </ul>
 <p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><font style="color:rgba(0, 0, 0, 0.87);"><object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object></font></p>
+<p><font style="color:rgba(0, 0, 0, 0.87);">&lt;object data&#x3D;”data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg&#x3D;&#x3D;”&gt;&lt;&#x2F;object&gt;</font></p>
 <h3 id="5-绕过-CSP-脚本源数据"><a href="#5-绕过-CSP-脚本源数据" class="headerlink" title="5.绕过 CSP 脚本源数据"></a><font style="color:rgba(0, 0, 0, 0.87);">5.绕过 CSP 脚本源数据</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
 <ul>
 <li><font style="color:rgba(0, 0, 0, 0.87);">CSP 就像</font><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"><font style="color:rgb(64, 81, 181);">Mozilla</font></a><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;script-src &#39;self&#39; data:&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.87);">官方文档中警告的那样</font><font style="color:rgba(0, 0, 0, 0.87);">。</font></li>
 </ul>
 <p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><font style="color:rgba(0, 0, 0, 0.87);"><script src="data:,alert(1)">/</script></font></p>
+<p><font style="color:rgba(0, 0, 0, 0.87);">&lt;script src&#x3D;”data:,alert(1)”&gt;&#x2F;&lt;&#x2F;script&gt;</font></p>
 </article>
 <div class="article-footer">
 
