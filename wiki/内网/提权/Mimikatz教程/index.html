@@ -1030,7 +1030,6 @@
       const posts = document.querySelectorAll('.post-card').length;
       postsEl.textContent = posts + ' 篇';
       
-      // 简单估算：假设平均每篇文章500字
       const words = posts * 500;
       const formatW = (num) => num >= 10000 ? (num / 10000).toFixed(0) + 'W' : num;
       wordsEl.textContent = formatW(words) + ' 字';
