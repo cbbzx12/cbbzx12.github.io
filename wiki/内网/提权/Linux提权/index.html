@@ -104,9 +104,14 @@
   }
 
   /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image */
-  .widget-wrapper .widget-header, .layout-author .cover {
+  .widget-wrapper .widget-header, 
+  .layout-author .cover,
+  .widget-wrapper div[style*="background-image"], /* Catch inline styles */
+  .widget-wrapper .cover {
     background: transparent !important;
     background-image: none !important;
+    height: auto !important; /* Reset height if it was set for the image */
+    min-height: 0 !important;
   }
 
   /* Site Info Widget Specific Tweaks */
