@@ -62,10 +62,12 @@
 <!-- hexo injector head_end start -->
 <style>
   :root { 
-    --card: rgba(255, 255, 255, 0.6) !important; 
-    --block: rgba(255, 255, 255, 0.4) !important;
-    --bg-card: rgba(255, 255, 255, 0.6) !important;
-    --text-p1: #333 !important; /* Ensure text is dark enough */
+    --card: rgba(255, 255, 255, 0.15) !important; /* Very transparent */
+    --block: rgba(255, 255, 255, 0.1) !important;
+    --bg-card: rgba(255, 255, 255, 0.15) !important;
+    --text-p1: #000 !important; /* Ensure text is dark enough for contrast if bg is light */
+    --text-p2: #222 !important;
+    --text-p3: #444 !important;
   }
 
   /* Global Background with Blur */
@@ -85,15 +87,16 @@
 
   /* Transparent Layout Containers */
   .l_main { background: transparent !important; }
+  .l_left { background: transparent !important; } /* Ensure left column container is clear */
   .l_body { background: transparent !important; }
   
   /* Premium Glassmorphism for Widgets and Cards */
   .widget-wrapper, .post-list .post-card, .md-text { 
     background: var(--card) !important; 
-    backdrop-filter: blur(20px) !important; /* Stronger frosted glass */
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Glass edge */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important; /* Smooth shadow */
+    backdrop-filter: blur(10px) !important; /* Match global blur closer, or slightly more */
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Fainter border */
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05) !important; 
     border-radius: 16px !important; /* Rounded corners */
   }
 
