@@ -17,23 +17,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>WP：GeminiIncv1 - Myblog</title>
+  <title>Myblog</title>
 
   
-    <meta name="description" content="GeminiInc v1前提  kali 192.168.129.152  靶机 NAT模式 信息收集ip检测 nmap -sP 192.168.129.0&#x2F;24   ip 为 192.168.129.166 端口检测nmap -sT -sV -Pn 192.168.129.166 -p- -A  只开放了22,80 渗透测试提权 更新: 2025-11-21 21:43:24原文: h">
+    <meta name="description" content="include限制文件后缀123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c &#x3D; $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;&#x2F;flag&#x2F;i&quot;, $c))&#123;        include($c.&quot;.php&quot;);    &#125;        &#125;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GeminiIncv1">
-<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/GeminiIncv1/">
+<meta property="og:title" content="Myblog">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/include(%20%20%20.php)/">
 <meta property="og:site_name" content="Myblog">
-<meta property="og:description" content="GeminiInc v1前提  kali 192.168.129.152  靶机 NAT模式 信息收集ip检测 nmap -sP 192.168.129.0&#x2F;24   ip 为 192.168.129.166 端口检测nmap -sT -sV -Pn 192.168.129.166 -p- -A  只开放了22,80 渗透测试提权 更新: 2025-11-21 21:43:24原文: h">
+<meta property="og:description" content="include限制文件后缀123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c &#x3D; $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;&#x2F;flag&#x2F;i&quot;, $c))&#123;        include($c.&quot;.php&quot;);    &#125;        &#125;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cbbzx12.github.io/img/b9A6oFuitBdhDusu/1763732541990-bbc9cebe-103e-4d60-977a-293a8dfa30c6-174225.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/b9A6oFuitBdhDusu/1763732555921-b8440b56-9a96-4a9d-8349-0bf97d2a8fe2-169288.png">
-<meta property="article:published_time" content="2025-12-23T06:58:16.108Z">
-<meta property="article:modified_time" content="2025-12-23T06:58:16.108Z">
+<meta property="article:published_time" content="2025-12-23T07:22:44.526Z">
+<meta property="article:modified_time" content="2025-12-23T07:21:16.436Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cbbzx12.github.io/img/b9A6oFuitBdhDusu/1763732541990-bbc9cebe-103e-4d60-977a-293a8dfa30c6-174225.png">
   
   
   
@@ -49,12 +46,10 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/GeminiIncv1/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"GeminiIncv1","description":"GeminiInc v1前提  kali 192.168.129.152  靶机 NAT模式\n信息收集ip检测 nmap -sP 192.168.129.0&#x2F;24 \n\nip 为 192.168.129.166\n端口检测nmap -sT -sV -Pn 192.168.129.166 -p- -A\n\n只开放了22,80\n渗透测试提权\n更新: 2025-11-21 21:43:24原文...","url":"https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/GeminiIncv1/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/include(%20%20%20.php)/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"Myblog","description":"include限制文件后缀123456789if(isset($_GET[&#x27;c&#x27;]))&#123;    $c = $_GET[&#x27;c&#x27;];    if(!preg_match(&quot;/flag/i&quot;, $c))&#123;        include($c.&quot;.php&quot;);    &#125;        &#1...","url":"https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/include(%20%20%20.php)/"}</script>
   
 </head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
-
-
 
 <div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
@@ -63,17 +58,12 @@
 
 <div class="nav-area">
 
-<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/WP/" placeholder="在 /wiki/WP/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
-
-
-
-
-
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/wiki/WP/SSRF_%E5%86%85%E7%BD%91%E8%AE%BF%E9%97%AE/"><span class="title"><strong>WP</strong><span class="dot"></span>SSRF_内网访问</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/"><span class="title"><strong>内网</strong><span class="dot"></span>windows提权</span></a><a class="item title" href="/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/Deserialization+__call+SoapClient+CRLF=SSRF/"><span class="title"><strong>WP</strong><span class="dot"></span>Deserialization+__call+SoapClient+CRLF=SSRF</span></a><a class="item title" href="/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Kioptrix_2014(#5)/"><span class="title"><strong>WP</strong><span class="dot"></span>Kioptrix_2014(#5)</span></a><a class="item title" href="/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/GeminiIncv1/"><span class="title"><strong>WP</strong><span class="dot"></span>GeminiIncv1</span></a><a class="item title" href="/wiki/WP/root-me/XSS-Reflected(%E5%8F%8D%E5%B0%84%E5%9E%8B)/"><span class="title"><strong>WP</strong><span class="dot"></span>XSS-Reflected(反射型)</span></a><a class="item title" href="/wiki/WP/root-me/XSS--ServerSide(%E6%9C%8D%E5%8A%A1%E7%AB%AF)/"><span class="title"><strong>WP</strong><span class="dot"></span>XSS--ServerSide(服务端)</span></a><a class="item title" href="/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/include(.php)/"><span class="title"><strong>WP</strong><span class="dot"></span>include(.php)</span></a><a class="item title" href="/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="title"><strong>WP</strong><span class="dot"></span>session反序列化</span></a><a class="item title" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87CSP%E9%BB%98%E8%AE%A4%E6%BA%90/"><span class="title"><strong>Web知识点</strong><span class="dot"></span>绕过CSP默认源</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -87,36 +77,14 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/GeminiIncv1/">GeminiIncv1</a>
+  <a class="cap breadcrumb" href="/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/include(%20%20%20.php)/"></a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T06:58:16.108Z">2025-12-23</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>GeminiIncv1</span></h1>
-        
-      </div>
-    </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-23T07:22:44.526Z">2025-12-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-23T07:21:16.436Z">2025-12-23</time></span></div></div></div>
     
   </div>
-  </div><article class="md-text content"><h1 id="GeminiInc-v1"><a href="#GeminiInc-v1" class="headerlink" title="GeminiInc v1"></a>GeminiInc v1</h1><p>前提  kali 192.168.129.152  靶机 NAT模式</p>
-<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="ip检测"><a href="#ip检测" class="headerlink" title="ip检测"></a>ip检测</h2><p> nmap -sP 192.168.129.0&#x2F;24 </p>
-<p><img src="/../img/b9A6oFuitBdhDusu/1763732541990-bbc9cebe-103e-4d60-977a-293a8dfa30c6-174225.png" alt="1763732541990-bbc9cebe-103e-4d60-977a-293a8dfa30c6.png"></p>
-<p>ip 为 192.168.129.166</p>
-<h2 id="端口检测"><a href="#端口检测" class="headerlink" title="端口检测"></a>端口检测</h2><p>nmap -sT -sV -Pn 192.168.129.166 -p- -A</p>
-<p><img src="/../img/b9A6oFuitBdhDusu/1763732555921-b8440b56-9a96-4a9d-8349-0bf97d2a8fe2-169288.png" alt="1763732555921-b8440b56-9a96-4a9d-8349-0bf97d2a8fe2.png"></p>
-<p>只开放了22,80</p>
-<h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1><h1 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h1><blockquote>
-<p>更新: 2025-11-21 21:43:24<br>原文: <a target="_blank" rel="noopener" href="https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/kr14wpru9rzcti1a">https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/kr14wpru9rzcti1a</a></p>
-</blockquote>
-</article>
-<div class="article-footer">
+  </div><article class="md-text content"><h3 id="include限制文件后缀"><a href="#include限制文件后缀" class="headerlink" title="include限制文件后缀"></a>include限制文件后缀</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$c</span>.<span class="string">&quot;.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</div>
-
-
-
+<h3 id="c-可以用？-来闭合"><a href="#c-可以用？-来闭合" class="headerlink" title="$c 可以用？&gt; 来闭合"></a>$c 可以用？&gt; 来闭合</h3></article>
 
 
 
@@ -125,9 +93,7 @@
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
-
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GeminiInc-v1"><span class="toc-text">GeminiInc v1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E6%A3%80%E6%B5%8B"><span class="toc-text">ip检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%B5%8B"><span class="toc-text">端口检测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-text">渗透测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#include%E9%99%90%E5%88%B6%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80"><span class="toc-text">include限制文件后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E5%8F%AF%E4%BB%A5%E7%94%A8%EF%BC%9F-%E6%9D%A5%E9%97%AD%E5%90%88"><span class="toc-text">$c 可以用？&gt; 来闭合</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>

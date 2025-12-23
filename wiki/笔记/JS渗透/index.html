@@ -17,41 +17,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>笔记：JS渗透 - Myblog</title>
+  <title>Myblog</title>
 
   
-    <meta name="description" content="JS渗透先找到JS文件 熊猫头 Packer-Fuzzer 异步js  JS接口提取 脚本文件 目录FUZZ和接口提取的奇妙搭配 我们假设你通过分析JS找到了很多接口，比如    http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;delete http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;edit http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;t">
+    <meta name="description" content="先找到JS文件 熊猫头 Packer-Fuzzer 异步js  JS接口提取 脚本文件 目录FUZZ和接口提取的奇妙搭配 我们假设你通过分析JS找到了很多接口，比如    http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;delete http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;edit http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="JS渗透">
+<meta property="og:title" content="Myblog">
 <meta property="og:url" content="https://cbbzx12.github.io/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/">
 <meta property="og:site_name" content="Myblog">
-<meta property="og:description" content="JS渗透先找到JS文件 熊猫头 Packer-Fuzzer 异步js  JS接口提取 脚本文件 目录FUZZ和接口提取的奇妙搭配 我们假设你通过分析JS找到了很多接口，比如    http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;delete http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;edit http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;t">
+<meta property="og:description" content="先找到JS文件 熊猫头 Packer-Fuzzer 异步js  JS接口提取 脚本文件 目录FUZZ和接口提取的奇妙搭配 我们假设你通过分析JS找到了很多接口，比如    http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;delete http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;edit http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e-776868.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163-666442.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0-030479.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073347959-01798c06-59e3-4070-9ea2-24e774b3c17d-870896.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073348081-61154d76-caae-4ccb-83d1-7b761b1cbc01-683088.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073348138-f212aaed-984c-4ef9-b064-c159ea1f83db-137076.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420249-6b131587-5be1-4b59-b46c-ad4573d16a41-001514.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420221-01c7b081-108f-42e6-a7ff-0d9aa06a035b-918150.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420166-b3b34a06-8a95-4340-ae49-57dad4dca4df-954745.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420157-4290900a-47ff-4395-9c5a-94f529b7210b-068901.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420179-190da0d7-9a3e-4aa0-ba68-4664516a9f11-280178.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420654-56e32324-9901-4cde-bec0-572d0fb4f331-874732.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420587-3bc91a37-3721-424c-a7d2-c414f7d345db-357223.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420658-b5b4066b-5574-4352-821c-a6fd068f0c06-275912.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073420715-64aa3f16-9eaa-438c-ba49-e817363c7436-152779.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073421034-ed04268e-fc89-48eb-ac7d-e21e5a6456d6-646093.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073421129-61c710ae-3b54-4869-a384-501048ff0073-868833.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073421094-b7c6d73b-5148-403b-b5aa-89204464a0e3-299235.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073421096-bd5d1d1b-3013-48e4-9bd1-2a43b3a57180-818892.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073458529-c18bfefb-0937-4102-b8e5-bee3f1bd622d-677345.png">
-<meta property="article:published_time" content="2025-12-23T06:58:16.147Z">
-<meta property="article:modified_time" content="2025-12-23T06:58:16.147Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073347959-01798c06-59e3-4070-9ea2-24e774b3c17d.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348081-61154d76-caae-4ccb-83d1-7b761b1cbc01.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348138-f212aaed-984c-4ef9-b064-c159ea1f83db.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420249-6b131587-5be1-4b59-b46c-ad4573d16a41.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420221-01c7b081-108f-42e6-a7ff-0d9aa06a035b.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420166-b3b34a06-8a95-4340-ae49-57dad4dca4df.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420157-4290900a-47ff-4395-9c5a-94f529b7210b.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420179-190da0d7-9a3e-4aa0-ba68-4664516a9f11.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420654-56e32324-9901-4cde-bec0-572d0fb4f331.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420587-3bc91a37-3721-424c-a7d2-c414f7d345db.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420658-b5b4066b-5574-4352-821c-a6fd068f0c06.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420715-64aa3f16-9eaa-438c-ba49-e817363c7436.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421034-ed04268e-fc89-48eb-ac7d-e21e5a6456d6.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421129-61c710ae-3b54-4869-a384-501048ff0073.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421094-b7c6d73b-5148-403b-b5aa-89204464a0e3.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421096-bd5d1d1b-3013-48e4-9bd1-2a43b3a57180.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073458529-c18bfefb-0937-4102-b8e5-bee3f1bd622d.png">
+<meta property="article:published_time" content="2025-12-23T07:22:47.574Z">
+<meta property="article:modified_time" content="2025-12-23T07:21:19.960Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cbbzx12.github.io/img/69394372_UIZkBVEfWBpo859z/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e-776868.png">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e.png">
   
   
   
@@ -67,12 +67,10 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"JS渗透","description":"JS渗透先找到JS文件\n熊猫头\nPacker-Fuzzer\n异步js\n\nJS接口提取\n脚本文件\n目录FUZZ和接口提取的奇妙搭配\n我们假设你通过分析JS找到了很多接口，比如\n\n\n\nhttp://test.hack.com/api/test/admin/delete\nhttp://test.hack.com/api/test/admin/edit\nhttp://test.hack.com/ap...","url":"https://cbbzx12.github.io/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"Myblog","description":"先找到JS文件\n熊猫头\nPacker-Fuzzer\n异步js\n\nJS接口提取\n脚本文件\n目录FUZZ和接口提取的奇妙搭配\n我们假设你通过分析JS找到了很多接口，比如\n\n\n\nhttp://test.hack.com/api/test/admin/delete\nhttp://test.hack.com/api/test/admin/edit\nhttp://test.hack.com/api/te...","url":"https://cbbzx12.github.io/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/"}</script>
   
 </head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
-
-
 
 <div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
@@ -81,17 +79,12 @@
 
 <div class="nav-area">
 
-<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/笔记/" placeholder="在 /wiki/笔记/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
-
-
-
-
-
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="title"><strong>笔记</strong><span class="dot"></span>网络安全</span></a><a class="item title" href="/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/"><span class="title"><strong>笔记</strong><span class="dot"></span>JS渗透</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/"><span class="title"><strong>内网</strong><span class="dot"></span>windows提权</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/"><span class="title"><strong>内网</strong><span class="dot"></span>Mimikatz教程</span></a><a class="item title" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Linux%E6%8F%90%E6%9D%83/"><span class="title"><strong>内网</strong><span class="dot"></span>Linux提权</span></a><a class="item title" href="/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="title"><strong>WP</strong><span class="dot"></span>pear文件包含</span></a><a class="item title" href="/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/cat_flask+flask_session%E4%BC%AA%E9%80%A0/"><span class="title"><strong>WP</strong><span class="dot"></span>cat_flask+flask_session伪造</span></a><a class="item title" href="/wiki/WP/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/phar%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/"><span class="title"><strong>WP</strong><span class="dot"></span>phar文件上传绕过</span></a><a class="item title" href="/wiki/WP/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/php/Deserialization+__call+SoapClient+CRLF=SSRF/"><span class="title"><strong>WP</strong><span class="dot"></span>Deserialization+__call+SoapClient+CRLF=SSRF</span></a><a class="item title" href="/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Toppo/"><span class="title"><strong>WP</strong><span class="dot"></span>Toppo</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -105,20 +98,12 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/">JS渗透</a>
+  <a class="cap breadcrumb" href="/wiki/%E7%AC%94%E8%AE%B0/JS%E6%B8%97%E9%80%8F/"></a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T06:58:16.147Z">2025-12-23</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>JS渗透</span></h1>
-        
-      </div>
-    </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-23T07:22:47.574Z">2025-12-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-23T07:21:19.960Z">2025-12-23</time></span></div></div></div>
     
   </div>
-  </div><article class="md-text content"><h1 id="JS渗透"><a href="#JS渗透" class="headerlink" title="JS渗透"></a>JS渗透</h1><h3 id="先找到JS文件"><a href="#先找到JS文件" class="headerlink" title="先找到JS文件"></a>先找到JS文件</h3><ul>
+  </div><article class="md-text content"><h3 id="先找到JS文件"><a href="#先找到JS文件" class="headerlink" title="先找到JS文件"></a>先找到JS文件</h3><ul>
 <li>熊猫头</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/rtcatc/Packer-Fuzzer"><font style="color:rgb(31, 35, 40) !important;">Packer-Fuzzer</font></a></li>
 <li><font style="color:rgb(31, 35, 40) !important;">异步js</font></li>
@@ -156,62 +141,53 @@
 </ul>
 </li>
 </ol>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e-776868.png" alt="1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e.png"></p>
 <pre><code>- &lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;第三种情况就是，我们没法看到想访问的页面，前端要么没反应，要么给你弹出个没有权限，要么直接重定向到&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;/login&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;登录页。这种时候我们又该怎么测试呢？下面的内容就需要一点前端调试和&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;JS&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;分析的基础了，本文不会深入展开，仅作案例介绍。&lt;/font&gt;
 </code></pre>
 <p><font style="color:rgb(0, 0, 0);">假设这么一个网站，我们提取出一个前端</font><font style="color:rgb(0, 0, 0);">uri</font><font style="color:rgb(0, 0, 0);">为</font><font style="color:rgb(0, 0, 0);">&#x2F;home </font><font style="color:rgb(0, 0, 0);">（很常见）</font></p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163-666442.png" alt="1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163.png"></p>
 <p>我们自然要尝试访问，一访问，发现直接给我们重定向到登录口</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0-030479.png" alt="1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0.png"></p>
 <p>我们自然要尝试访问，一访问，发现直接给我们重定向到登录口</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073347959-01798c06-59e3-4070-9ea2-24e774b3c17d-870896.png" alt="1760073347959-01798c06-59e3-4070-9ea2-24e774b3c17d.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073347959-01798c06-59e3-4070-9ea2-24e774b3c17d.png"></p>
 <p>这就说明这个前端至少有两层校验，一层与用户登录状态有关，一层与用户权限有关。怎么办呢？我们在控制台搜索“内测”关键词，定位到用户权限鉴权逻辑。</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073348081-61154d76-caae-4ccb-83d1-7b761b1cbc01-683088.png" alt="1760073348081-61154d76-caae-4ccb-83d1-7b761b1cbc01.png"></p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073348138-f212aaed-984c-4ef9-b064-c159ea1f83db-137076.png" alt="1760073348138-f212aaed-984c-4ef9-b064-c159ea1f83db.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348081-61154d76-caae-4ccb-83d1-7b761b1cbc01.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348138-f212aaed-984c-4ef9-b064-c159ea1f83db.png"></p>
 <p>分析这个局部，我们其实很容易能注意到这里的前端鉴权逻辑。前端获取o.state.account.permission属性，一旦这个属性为false，那么就会提示平台内测这个错误，无法访问到对应的前端uri。</p>
 <p>那么用户登录状态对应什么属性呢？往上翻一下，不难看出对应o.state.baseInfo.isLogin属性</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420249-6b131587-5be1-4b59-b46c-ad4573d16a41-001514.png" alt="1760073420249-6b131587-5be1-4b59-b46c-ad4573d16a41.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420249-6b131587-5be1-4b59-b46c-ad4573d16a41.png"></p>
 <p>因此我们可以推测，state中保存了用户的基本信息，比如登录状态、权限等等。因此这里好办了，我们给上述两个位置打上断点，重新访问&#x2F;home。进入第一个断点</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420221-01c7b081-108f-42e6-a7ff-0d9aa06a035b-918150.png" alt="1760073420221-01c7b081-108f-42e6-a7ff-0d9aa06a035b.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420221-01c7b081-108f-42e6-a7ff-0d9aa06a035b.png"></p>
 <p>在控制台将其强行改为true</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420166-b3b34a06-8a95-4340-ae49-57dad4dca4df-954745.png" alt="1760073420166-b3b34a06-8a95-4340-ae49-57dad4dca4df.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420166-b3b34a06-8a95-4340-ae49-57dad4dca4df.png"></p>
 <p>进入下一断</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420157-4290900a-47ff-4395-9c5a-94f529b7210b-068901.png" alt="1760073420157-4290900a-47ff-4395-9c5a-94f529b7210b.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420157-4290900a-47ff-4395-9c5a-94f529b7210b.png"></p>
 <p>同样地，再控制台对其赋值为1</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420179-190da0d7-9a3e-4aa0-ba68-4664516a9f11-280178.png" alt="1760073420179-190da0d7-9a3e-4aa0-ba68-4664516a9f11.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420179-190da0d7-9a3e-4aa0-ba68-4664516a9f11.png"></p>
 <p>再往下走，此时会跳转到一个contract页面</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420654-56e32324-9901-4cde-bec0-572d0fb4f331-874732.png" alt="1760073420654-56e32324-9901-4cde-bec0-572d0fb4f331.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420654-56e32324-9901-4cde-bec0-572d0fb4f331.png"></p>
 <p>虽然没进入home页面，但是这样，我们就来到了一个原本无法直接访问到的一个前端uri，这样就可以调用它的功能了，看这个页面要填的东西很多，最后的传参肯定巨复杂，就算开发好心告诉你缺了什么参数，你敲都要敲半天，用这种方法测起来就快多了。</p>
 <p>当然，我们的目的是进入home页面，重定向到这个完善账号信息的页面，说明还是有哪里的鉴权没搞好，我们再回到刚刚的鉴权逻辑部分</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420587-3bc91a37-3721-424c-a7d2-c414f7d345db-357223.png" alt="1760073420587-3bc91a37-3721-424c-a7d2-c414f7d345db.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420587-3bc91a37-3721-424c-a7d2-c414f7d345db.png"></p>
 <p>可以发现，后续其实还对o.state.account.permission的值做了一个判断，如果值为1，那么会直接进入contract页面。值只要是大于1的整数，其实都可以访问到home页面</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420658-b5b4066b-5574-4352-821c-a6fd068f0c06-275912.png" alt="1760073420658-b5b4066b-5574-4352-821c-a6fd068f0c06.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420658-b5b4066b-5574-4352-821c-a6fd068f0c06.png"></p>
 <p>因此在控制台将permission改为3</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073420715-64aa3f16-9eaa-438c-ba49-e817363c7436-152779.png" alt="1760073420715-64aa3f16-9eaa-438c-ba49-e817363c7436.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073420715-64aa3f16-9eaa-438c-ba49-e817363c7436.png"></p>
 <p>再访问home，成功：</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073421034-ed04268e-fc89-48eb-ac7d-e21e5a6456d6-646093.png" alt="1760073421034-ed04268e-fc89-48eb-ac7d-e21e5a6456d6.png"></p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073421129-61c710ae-3b54-4869-a384-501048ff0073-868833.png" alt="1760073421129-61c710ae-3b54-4869-a384-501048ff0073.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421034-ed04268e-fc89-48eb-ac7d-e21e5a6456d6.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421129-61c710ae-3b54-4869-a384-501048ff0073.png"></p>
 <p>这样，我们就可以愉快的测试后台的各种功能点了。当然上述操作对不懂JS和前端调试的师傅肯定也不太友好。实际上上述操作和平时测试业务逻辑漏洞中的“修改返回包”操作是有等价关系的。为什么这么说呢？</p>
 <p>我们重新访问一下home页面，然后在burp抓包，拦截一下返回包。</p>
 <p>可以看到一个&#x2F;state_user的后端接口，从这个接口的名字我们其实就知道，它是用来判断一个用户状态的。</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073421094-b7c6d73b-5148-403b-b5aa-89204464a0e3-299235.png" alt="1760073421094-b7c6d73b-5148-403b-b5aa-89204464a0e3.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421094-b7c6d73b-5148-403b-b5aa-89204464a0e3.png"></p>
 <p>然后你再注意这里的account_state，默认是0。以及这个is_login，默认是false。他们是不是就特别像我们刚刚在JS里分析出来的o.state.account.permission和o.state.baseInfo.isLogin？我们推测这个前端实际上就是从返回包里拿到account_state和is_login，并分别给o.state.account.permission、o.state.baseInfo.isLogin赋值的。</p>
 <p>因此我们将其分别改为3和true，然后把另一个code改为200，发包</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073421096-bd5d1d1b-3013-48e4-9bd1-2a43b3a57180-818892.png" alt="1760073421096-bd5d1d1b-3013-48e4-9bd1-2a43b3a57180.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073421096-bd5d1d1b-3013-48e4-9bd1-2a43b3a57180.png"></p>
 <p>还是能看到后台页面。这样虽然操作起来比较简单友好，但是万一目标前端对响应结果的判断设置的比较复杂，那就不是那么好办了，比如我前端判断permission为test123abcdef才为有效，我们常见的改响应包的方法就很难改成这样了，所以还是回到JS去分析调试才能应对大部分奇葩情况，还是比较吃基本功的。</p>
 <p>json传参里常见的类型其实也就是下图这些</p>
-<p><img src="/../img/69394372_UIZkBVEfWBpo859z/1760073458529-c18bfefb-0937-4102-b8e5-bee3f1bd622d-677345.png" alt="1760073458529-c18bfefb-0937-4102-b8e5-bee3f1bd622d.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073458529-c18bfefb-0937-4102-b8e5-bee3f1bd622d.png"></p>
 <p>a为整型，b为字符串类型，c为布尔类型，d为数组类型，e为对象类型。这几种类型都试一下准没错，而且大多数情况下类型错了后端是要直接抛出异常信息的，从异常信息里就很容易能看出来这个地方要传入什么类型，比如异常里看到xxxxx Object xxxxxx，就可以猜测某个参数可能要传入对象类型的传参。</p>
-<blockquote>
-<p>更新: 2025-10-10 13:18:01<br>原文: <a target="_blank" rel="noopener" href="https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/srez18cb84d0c7gs">https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/srez18cb84d0c7gs</a></p>
-</blockquote>
 </article>
-<div class="article-footer">
-
-</div>
-
-
-
 
 
 
@@ -220,9 +196,7 @@
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
-
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E6%B8%97%E9%80%8F"><span class="toc-text">JS渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E6%89%BE%E5%88%B0JS%E6%96%87%E4%BB%B6"><span class="toc-text">先找到JS文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E6%8E%A5%E5%8F%A3%E6%8F%90%E5%8F%96"><span class="toc-text">JS接口提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E6%B5%8B%E8%AF%95"><span class="toc-text">API测试</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E6%89%BE%E5%88%B0JS%E6%96%87%E4%BB%B6"><span class="toc-text">先找到JS文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E6%8E%A5%E5%8F%A3%E6%8F%90%E5%8F%96"><span class="toc-text">JS接口提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E6%B5%8B%E8%AF%95"><span class="toc-text">API测试</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
