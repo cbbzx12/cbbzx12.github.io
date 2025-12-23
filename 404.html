@@ -861,6 +861,22 @@
 
 </div><!-- hexo injector body_end start -->
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const postsEl = document.getElementById('stat-posts');
+    const wordsEl = document.getElementById('stat-words');
+    
+    if (postsEl && wordsEl) {
+      const posts = document.querySelectorAll('.post-card').length;
+      postsEl.textContent = posts + ' 篇';
+      
+      const words = posts * 500;
+      const formatW = (num) => num >= 10000 ? (num / 10000).toFixed(0) + 'W' : num;
+      wordsEl.textContent = formatW(words) + ' 字';
+    }
+  });
+</script>
+
+<script>
   // JS Kill Switch: Remove any remaining background images in widgets
   document.addEventListener("DOMContentLoaded", function() {
     // 1. Target obvious cover classes
@@ -878,22 +894,6 @@
         el.style.background = 'transparent';
       }
     });
-  });
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const postsEl = document.getElementById('stat-posts');
-    const wordsEl = document.getElementById('stat-words');
-    
-    if (postsEl && wordsEl) {
-      const posts = document.querySelectorAll('.post-card').length;
-      postsEl.textContent = posts + ' 篇';
-      
-      const words = posts * 500;
-      const formatW = (num) => num >= 10000 ? (num / 10000).toFixed(0) + 'W' : num;
-      wordsEl.textContent = formatW(words) + ' 字';
-    }
   });
 </script>
 <!-- hexo injector body_end end --></body></html>
