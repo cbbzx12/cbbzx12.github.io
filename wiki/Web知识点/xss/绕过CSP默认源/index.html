@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="bug_001">
 <meta property="og:description" content="绕过 CSP 默认源🔍 攻击原理详解✅ CSP 设置分析default-src &#39;self&#39; &#39;unsafe-inline&#39;;  &#39;self&#39;：只允许加载同源资源。 &#39;unsafe-inline&#39;：允许内联脚本（如 alert(1)）。 ❌ 不允许从外部域名加载脚本（如 &#x2F;&#x2F;remoteattacker.lab&#x2F;csp.js）。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg">
 <meta property="article:published_time" content="2025-12-23T06:06:32.547Z">
 <meta property="article:modified_time" content="2025-12-23T06:06:32.547Z">
 <meta property="article:author" content="bug_001">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg">
   
   
   
@@ -46,7 +48,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87CSP%E9%BB%98%E8%AE%A4%E6%BA%90/","author":{"@type":"Person","name":"bug_001","sameAs":[]},"name":"绕过CSP默认源","description":"绕过 CSP 默认源🔍 攻击原理详解✅ CSP 设置分析default-src &#39;self&#39; &#39;unsafe-inline&#39;;\n\n&#39;self&#39;：只允许加载同源资源。\n&#39;unsafe-inline&#39;：允许内联脚本（如 alert(1)）。\n❌ 不允许从外部域名加载脚本（如 //remoteattacker.lab/csp.js）...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87CSP%E9%BB%98%E8%AE%A4%E6%BA%90/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87CSP%E9%BB%98%E8%AE%A4%E6%BA%90/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg"},"name":"绕过CSP默认源","description":"绕过 CSP 默认源🔍 攻击原理详解✅ CSP 设置分析default-src &#39;self&#39; &#39;unsafe-inline&#39;;\n\n&#39;self&#39;：只允许加载同源资源。\n&#39;unsafe-inline&#39;：允许内联脚本（如 alert(1)）。\n❌ 不允许从外部域名加载脚本（如 //remoteattacker.lab/csp.js）...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/%E7%BB%95%E8%BF%87CSP%E9%BB%98%E8%AE%A4%E6%BA%90/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -113,7 +115,7 @@
 <div class="l_body content" id="start" layout="page" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">记录一些学习过程</div></a></div></header>
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="https://img.api.aa1.cn/2025/01/01/a02099351de5a.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">记录一些学习过程</div></a></div></header>
 
 <div class="nav-area">
 
