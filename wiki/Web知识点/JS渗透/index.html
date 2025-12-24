@@ -28,8 +28,8 @@
 <meta property="og:description" content="来源：公众号：HW专项小组先找到JS文件  熊猫头 Packer-Fuzzer 异步js  JS接口提取 脚本文件 目录FUZZ和接口提取的奇妙搭配 我们假设你通过分析JS找到了很多接口，比如    http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;delete http:&#x2F;&#x2F;test.hack.com&#x2F;api&#x2F;test&#x2F;admin&#x2F;edit http:&#x2F;&#x2F;test.hack">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:54:38.308Z">
-<meta property="article:modified_time" content="2025-12-24T11:54:38.308Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.444Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.444Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="Web知识点">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/JS%E6%B8%97%E9%80%8F/">JS渗透</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:54:38.308Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.444Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -154,8 +154,8 @@
   </div><article class="md-text content"><h3 id="来源：公众号：HW专项小组"><a href="#来源：公众号：HW专项小组" class="headerlink" title="来源：公众号：HW专项小组"></a>来源：公众号：HW专项小组</h3><p>先找到JS文件</p>
 <ul>
 <li>熊猫头</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rtcatc/Packer-Fuzzer"><font style="color:rgb(31, 35, 40) !important;">Packer-Fuzzer</font></a></li>
-<li><font style="color:rgb(31, 35, 40) !important;">异步js</font></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rtcatc/Packer-Fuzzer">Packer-Fuzzer</a></li>
+<li>异步js</li>
 </ul>
 <h3 id="JS接口提取"><a href="#JS接口提取" class="headerlink" title="JS接口提取"></a>JS接口提取</h3><ul>
 <li>脚本文件</li>
@@ -186,14 +186,14 @@
 </li>
 <li>路径三种情况<ul>
 <li>第一种是目标站点没有任何对前端uri的鉴权。我们这么去访问，能直接看到页面，也不会给你跳转啥的，这时候就可以调用页面上的功能去抓包，分析这些功能点对应的接口的问题了。</li>
-<li><font style="color:rgb(0,0,0);">第二种情况稍微好点，就是你这么去访问，有概率看到要访问的页面闪一下，然后给你重定向回登录页面，这种时候有种拼手速的玩法，在重定向回登录页面之前，浏览器上的刷新按钮会变成这个状态：在他重定向回去之前，快速点一下这个X，那么后续动作就会终止执行，你的页面就会卡住。这时候我们也是开启burp愉快抓包就行。其实就是阻止重定向的思路。</font></li>
+<li>第二种情况稍微好点，就是你这么去访问，有概率看到要访问的页面闪一下，然后给你重定向回登录页面，这种时候有种拼手速的玩法，在重定向回登录页面之前，浏览器上的刷新按钮会变成这个状态：在他重定向回去之前，快速点一下这个X，那么后续动作就会终止执行，你的页面就会卡住。这时候我们也是开启burp愉快抓包就行。其实就是阻止重定向的思路。</li>
 </ul>
 </li>
 </ol>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073154017-6f9c72b9-8719-4c57-9a9f-f53719dc240e.png"></p>
-<pre><code>- &lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;第三种情况就是，我们没法看到想访问的页面，前端要么没反应，要么给你弹出个没有权限，要么直接重定向到&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;/login&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;登录页。这种时候我们又该怎么测试呢？下面的内容就需要一点前端调试和&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;JS&lt;/font&gt;&lt;font style=&quot;color:rgb(0,0,0);&quot;&gt;分析的基础了，本文不会深入展开，仅作案例介绍。&lt;/font&gt;
+<pre><code>- 第三种情况就是，我们没法看到想访问的页面，前端要么没反应，要么给你弹出个没有权限，要么直接重定向到/login登录页。这种时候我们又该怎么测试呢？下面的内容就需要一点前端调试和JS分析的基础了，本文不会深入展开，仅作案例介绍。
 </code></pre>
-<p><font style="color:rgb(0, 0, 0);">假设这么一个网站，我们提取出一个前端</font><font style="color:rgb(0, 0, 0);">uri</font><font style="color:rgb(0, 0, 0);">为</font><font style="color:rgb(0, 0, 0);">&#x2F;home </font><font style="color:rgb(0, 0, 0);">（很常见）</font></p>
+<p>假设这么一个网站，我们提取出一个前端uri为&#x2F;home （很常见）</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073347943-43e2c67f-7b75-47ab-b9f8-f5bd85dd9163.png"></p>
 <p>我们自然要尝试访问，一访问，发现直接给我们重定向到登录口</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1760073348007-ad95d97d-aba9-4bf1-ba7d-9e91f54e78a0.png"></p>

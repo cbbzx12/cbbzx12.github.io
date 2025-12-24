@@ -20,16 +20,16 @@
   <title>Web知识点：SQLMAP - bug_001</title>
 
   
-    <meta name="description" content="常用参数 &lt;font style&#x3D;&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-u&lt;&#x2F;font&gt; &lt;font style&#x3D;&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&amp;gt">
+    <meta name="description" content="常用参数 -u --url 指定目标url -m 从文本中获取多个目标扫描 -r 从文件中加载HTTP请求 --data 以POST方式提交数据 -random-agent 随机ua --user-agent 指定ua --delay 设置请求间的延迟 --timeout 指定超时时间 --dbms 指定db，sqlmap支持的db有MySQL、Oracle、PostgreSQL、Microsof">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SQLMAP">
 <meta property="og:url" content="https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/">
 <meta property="og:site_name" content="bug_001">
-<meta property="og:description" content="常用参数 &lt;font style&#x3D;&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-u&lt;&#x2F;font&gt; &lt;font style&#x3D;&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&amp;gt">
+<meta property="og:description" content="常用参数 -u --url 指定目标url -m 从文本中获取多个目标扫描 -r 从文件中加载HTTP请求 --data 以POST方式提交数据 -random-agent 随机ua --user-agent 指定ua --delay 设置请求间的延迟 --timeout 指定超时时间 --dbms 指定db，sqlmap支持的db有MySQL、Oracle、PostgreSQL、Microsof">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:54:38.313Z">
-<meta property="article:modified_time" content="2025-12-24T11:54:38.313Z">
+<meta property="article:published_time" content="2025-12-24T12:00:03.447Z">
+<meta property="article:modified_time" content="2025-12-24T12:00:03.447Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="Web知识点">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"SQLMAP","description":"常用参数\n&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-u&lt;/font&gt; &lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"SQLMAP","description":"常用参数\n-u --url 指定目标url\n-m 从文本中获取多个目标扫描\n-r 从文件中加载HTTP请求\n--data 以POST方式提交数据\n-random-agent 随机ua\n--user-agent 指定ua\n--delay 设置请求间的延迟\n--timeout 指定超时时间\n--dbms 指定db，sqlmap支持的db有MySQL、Oracle、PostgreSQL、Micro...","url":"https://cbbzx12.github.io/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -140,7 +140,7 @@
   <span class="sep"></span>
   <a class="cap breadcrumb" href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/SQL%E6%B3%A8%E5%85%A5/SQLMAP/">SQLMAP</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:54:38.313Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T12:00:03.447Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -151,167 +151,167 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">常用参数</font></h2><ul>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-u&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--url&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定目标url</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-m&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">从文本中获取多个目标扫描</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-r&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">从文件中加载HTTP请求</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--data&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">以POST方式提交数据</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;-random-agent&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">随机ua</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--user-agent&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定ua</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--delay&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">设置请求间的延迟</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--timeout&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定超时时间</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--dbms&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定db，sqlmap支持的db有MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、SQLite等</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--os&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定数据库服务器操作系统</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--tamper&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定tamper</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--level&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定探测等级</font></li>
-<li><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--risk&lt;/font&gt;</code><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">指定风险等级</font></li>
-<li><code>**&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;--technique&lt;/font&gt;**</code><strong><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font>****<font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">注入技术</font></strong><ul>
-<li><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">B: Boolean-based blind SQL injection</font></li>
-<li><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">E: Error-based SQL injection</font></li>
-<li><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">U: UNION query SQL injection</font></li>
-<li><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">S: Stacked queries SQL injection</font></li>
-<li><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">T: Time-based blind SQL injection</font></li>
+  </div><article class="md-text content"><h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h2><ul>
+<li><code>-u</code> <code>--url</code> 指定目标url</li>
+<li><code>-m</code> 从文本中获取多个目标扫描</li>
+<li><code>-r</code> 从文件中加载HTTP请求</li>
+<li><code>--data</code> 以POST方式提交数据</li>
+<li><code>-random-agent</code> 随机ua</li>
+<li><code>--user-agent</code> 指定ua</li>
+<li><code>--delay</code> 设置请求间的延迟</li>
+<li><code>--timeout</code> 指定超时时间</li>
+<li><code>--dbms</code> 指定db，sqlmap支持的db有MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、SQLite等</li>
+<li><code>--os</code> 指定数据库服务器操作系统</li>
+<li><code>--tamper</code> 指定tamper</li>
+<li><code>--level</code> 指定探测等级</li>
+<li><code>--risk</code> 指定风险等级</li>
+<li><code>**--technique**</code>** **<strong>注入技术</strong><ul>
+<li>B: Boolean-based blind SQL injection</li>
+<li>E: Error-based SQL injection</li>
+<li>U: UNION query SQL injection</li>
+<li>S: Stacked queries SQL injection</li>
+<li>T: Time-based blind SQL injection</li>
 </ul>
 </li>
 </ul>
-<h2 id="11-5-2-Tamper-速查"><a href="#11-5-2-Tamper-速查" class="headerlink" title="11.5.2. Tamper 速查"></a><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">11.5.2. Tamper 速查</font></h2><table>
+<h2 id="11-5-2-Tamper-速查"><a href="#11-5-2-Tamper-速查" class="headerlink" title="11.5.2. Tamper 速查"></a>11.5.2. Tamper 速查</h2><table>
 <thead>
 <tr>
-<th><strong><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">脚本名称</font></strong></th>
-<th><strong><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">作用</font></strong></th>
+<th><strong>脚本名称</strong></th>
+<th><strong>作用</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">apostrophemask.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">用utf8代替引号</font></td>
+<td>apostrophemask.py</td>
+<td>用utf8代替引号</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">equaltolike.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">like 代替等号</font></td>
+<td>equaltolike.py</td>
+<td>like 代替等号</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2dash.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">绕过过滤’&#x3D;’ 替换空格字符(“)，(‘’ - ‘)后跟一个破折号注释，一个随机字符串和一个新行(‘n’)</font></td>
+<td>space2dash.py</td>
+<td>绕过过滤’&#x3D;’ 替换空格字符(“)，(‘’ - ‘)后跟一个破折号注释，一个随机字符串和一个新行(‘n’)</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">greatest.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">绕过过滤’&gt;’ ,用GREATEST替换大于号。</font></td>
+<td>greatest.py</td>
+<td>绕过过滤’&gt;’ ,用GREATEST替换大于号。</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2hash.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">空格替换为#号 随机字符串 以及换行符</font></td>
+<td>space2hash.py</td>
+<td>空格替换为#号 随机字符串 以及换行符</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">apostrophenullencode.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">绕过过滤双引号，替换字符和双引号。</font></td>
+<td>apostrophenullencode.py</td>
+<td>绕过过滤双引号，替换字符和双引号。</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">halfversionedmorekeywords.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论</font></td>
+<td>halfversionedmorekeywords.py</td>
+<td>当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2morehash.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">空格替换为 #号 以及更多随机字符串 换行符</font></td>
+<td>space2morehash.py</td>
+<td>空格替换为 #号 以及更多随机字符串 换行符</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">appendnullbyte.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">在有效负荷结束位置加载零字节字符编码</font></td>
+<td>appendnullbyte.py</td>
+<td>在有效负荷结束位置加载零字节字符编码</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">ifnull2ifisnull.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">绕过对 IFNULL 过滤。 替换类似’IFNULL(A, B)’为’IF(ISNULL(A), B, A)’</font></td>
+<td>ifnull2ifisnull.py</td>
+<td>绕过对 IFNULL 过滤。 替换类似’IFNULL(A, B)’为’IF(ISNULL(A), B, A)’</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2mssqlblank.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">空格替换为其它空符号</font></td>
+<td>space2mssqlblank.py</td>
+<td>空格替换为其它空符号</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">base64encode.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">用base64编码替换</font></td>
+<td>base64encode.py</td>
+<td>用base64编码替换</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2mssqlhash.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">替换空格</font></td>
+<td>space2mssqlhash.py</td>
+<td>替换空格</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">modsecurityversioned.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">过滤空格，包含完整的查询版本注释</font></td>
+<td>modsecurityversioned.py</td>
+<td>过滤空格，包含完整的查询版本注释</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2mysqlblank.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">空格替换其它空白符号(mysql)</font></td>
+<td>space2mysqlblank.py</td>
+<td>空格替换其它空白符号(mysql)</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">between.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">用between替换大于号(&gt;)</font></td>
+<td>between.py</td>
+<td>用between替换大于号(&gt;)</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2mysqldash.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">替换空格字符(“)(‘ - ‘)后跟一个破折号注释一个新行(‘ n’)</font></td>
+<td>space2mysqldash.py</td>
+<td>替换空格字符(“)(‘ - ‘)后跟一个破折号注释一个新行(‘ n’)</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">multiplespaces.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">围绕SQL关键字添加多个空格</font></td>
+<td>multiplespaces.py</td>
+<td>围绕SQL关键字添加多个空格</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2plus.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">用+替换空格</font></td>
+<td>space2plus.py</td>
+<td>用+替换空格</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">bluecoat.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">代替空格字符后与一个有效的随机空白字符的SQL语句。 然后替换&#x3D;为like</font></td>
+<td>bluecoat.py</td>
+<td>代替空格字符后与一个有效的随机空白字符的SQL语句。 然后替换&#x3D;为like</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">nonrecursivereplacement.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">取代predefined SQL关键字with表示 suitable for替代(例如 .replace(“SELECT”、””)) filters</font></td>
+<td>nonrecursivereplacement.py</td>
+<td>取代predefined SQL关键字with表示 suitable for替代(例如 .replace(“SELECT”、””)) filters</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2randomblank.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">代替空格字符(“”)从一个随机的空白字符可选字符的有效集</font></td>
+<td>space2randomblank.py</td>
+<td>代替空格字符(“”)从一个随机的空白字符可选字符的有效集</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">sp_password.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾</font></td>
+<td>sp_password.py</td>
+<td>追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">chardoubleencode.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">双url编码(不处理以编码的)</font></td>
+<td>chardoubleencode.py</td>
+<td>双url编码(不处理以编码的)</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">unionalltounion.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">替换UNION ALL SELECT UNION SELECT</font></td>
+<td>unionalltounion.py</td>
+<td>替换UNION ALL SELECT UNION SELECT</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">charencode.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">url编码</font></td>
+<td>charencode.py</td>
+<td>url编码</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">randomcase.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">随机大小写</font></td>
+<td>randomcase.py</td>
+<td>随机大小写</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">unmagicquotes.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">宽字符绕过 GPC addslashes</font></td>
+<td>unmagicquotes.py</td>
+<td>宽字符绕过 GPC addslashes</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">randomcomments.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">用</font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;/**/&lt;/font&gt;</code><br/><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">分割sql关键字</font></td>
+<td>randomcomments.py</td>
+<td>用 <code>/**/</code><br/> 分割sql关键字</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">charunicodeencode.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">字符串unicode编码</font></td>
+<td>charunicodeencode.py</td>
+<td>字符串unicode编码</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">securesphere.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">追加特制的字符串</font></td>
+<td>securesphere.py</td>
+<td>追加特制的字符串</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">versionedmorekeywords.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">注释绕过</font></td>
+<td>versionedmorekeywords.py</td>
+<td>注释绕过</td>
 </tr>
 <tr>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">space2comment.py</font></td>
-<td><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">Replaces space character</font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;&#39;&lt;/font&gt;&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt; &lt;/font&gt;&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;&#39;&lt;/font&gt;</code><br/><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);">with comments</font><font style="color:rgb(64, 64, 64);background-color:rgb(252, 252, 252);"> </font><code>&lt;font style=&quot;color:rgb(231, 76, 60);background-color:rgb(252, 252, 252);&quot;&gt;/**/&lt;/font&gt;</code></td>
+<td>space2comment.py</td>
+<td>Replaces space character <code>&#39; &#39;</code><br/> with comments <code>/**/</code></td>
 </tr>
 </tbody></table>
 </article>
