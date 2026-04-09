@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
 <meta property="article:published_time" content="2026-01-31T09:15:00.000Z">
-<meta property="article:modified_time" content="2026-04-09T02:40:10.307Z">
+<meta property="article:modified_time" content="2026-04-09T03:06:54.750Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="工具">
@@ -51,7 +51,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"dateCreated":"2026-01-31T17:15:00+08:00","dateModified":"2026-04-09T10:40:10+08:00","datePublished":"2026-01-31T17:15:00+08:00","description":"一款专为红队渗透测试人员和安全研究员设计的自动化信息泄露侦察工具。","headline":"我自己写的一款工具: LeakDetector","mainEntityOfPage":{"@type":"WebPage","@id":"https://cbbzx12.github.io/2026/01/31/LeakDetector/"},"publisher":{"@type":"Organization","name":"bug_001","sameAs":[],"image":"/images/head.jpg","logo":{"@type":"ImageObject","url":"/images/head.jpg"}},"url":"https://cbbzx12.github.io/2026/01/31/LeakDetector/","keywords":"工具, 渗透测试, Python","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"dateCreated":"2026-01-31T17:15:00+08:00","dateModified":"2026-04-09T11:06:54+08:00","datePublished":"2026-01-31T17:15:00+08:00","description":"一款专为红队渗透测试人员和安全研究员设计的自动化信息泄露侦察工具。","headline":"我自己写的一款工具: LeakDetector","mainEntityOfPage":{"@type":"WebPage","@id":"https://cbbzx12.github.io/2026/01/31/LeakDetector/"},"publisher":{"@type":"Organization","name":"bug_001","sameAs":[],"image":"/images/head.jpg","logo":{"@type":"ImageObject","url":"/images/head.jpg"}},"url":"https://cbbzx12.github.io/2026/01/31/LeakDetector/","keywords":"工具, 渗透测试, Python","image":[]}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -134,7 +134,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E4%BD%9C%E5%93%81/">作品</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-01-31T09:15:00.000Z">2026-01-31</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-09T02:40:10.307Z">2026-04-09</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-01-31T09:15:00.000Z">2026-01-31</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-09T03:06:54.750Z">2026-04-09</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -153,42 +153,30 @@
 <p>本工具仅供授权的安全测试、漏洞挖掘和企业内部安全审计使用。严禁用于非法入侵、数据窃取或任何未经授权的恶意攻击活动。使用者应自行承担因使用本工具而产生的一切法律责任。</p>
 </blockquote>
 <hr>
-<h2 id="✨-核心特性-Key-Features"><a href="#✨-核心特性-Key-Features" class="headerlink" title="✨ 核心特性 (Key Features)"></a>✨ 核心特性 (Key Features)</h2><h3 id="1-🛡️-多维度-Dork-侦察策略"><a href="#1-🛡️-多维度-Dork-侦察策略" class="headerlink" title="1. 🛡️ 多维度 Dork 侦察策略"></a>1. 🛡️ 多维度 Dork 侦察策略</h3><p>内置经过实战验证的六层侦察策略 (P1-P6)，覆盖从基础设施到敏感数据的全方位检测：</p>
+<h2 id="核心特性-Key-Features"><a href="#核心特性-Key-Features" class="headerlink" title="核心特性 (Key Features)"></a>核心特性 (Key Features)</h2><h3 id="1-多维度-Dork-侦察策略"><a href="#1-多维度-Dork-侦察策略" class="headerlink" title="1. 多维度 Dork 侦察策略"></a>1. 多维度 Dork 侦察策略</h3><p>内置经过实战验证的六层侦察策略 (P1-P6)，覆盖从基础设施到敏感数据的全方位检测：</p>
 <ul>
 <li><strong>API &amp; 配置泄露</strong>: 自动发现 Swagger UI, Spring Boot Actuator, <code>.env</code>, <code>application.yml</code> 等关键配置。</li>
 <li><strong>精准文件挖掘</strong>: 专注于 <code>xlsx</code>, <code>docx</code>, <code>pdf</code> 等文档，智能识别包含“身份证”、“手机号”、“工资表”等敏感词的文件。</li>
 <li><strong>后台与组件识别</strong>: 快速定位 OA 系统 (泛微&#x2F;致远)、后台管理入口、Jenkins&#x2F;GitLab 等运维平台。</li>
 <li><strong>漏洞特征探测</strong>: 识别 SQL 注入报错页面、文件上传入口、Webshell 残留等高危特征。</li>
 </ul>
-<h3 id="2-🧠-智能浏览器引擎-Smart-Browser-Engine"><a href="#2-🧠-智能浏览器引擎-Smart-Browser-Engine" class="headerlink" title="2. 🧠 智能浏览器引擎 (Smart Browser Engine)"></a>2. 🧠 智能浏览器引擎 (Smart Browser Engine)</h3><p>集成 <strong>Playwright</strong> 浏览器内核，彻底解决传统爬虫面临的难题：</p>
+<h3 id="2-智能浏览器引擎-Smart-Browser-Engine"><a href="#2-智能浏览器引擎-Smart-Browser-Engine" class="headerlink" title="2. 智能浏览器引擎 (Smart Browser Engine)"></a>2. 智能浏览器引擎 (Smart Browser Engine)</h3><p>集成 <strong>Playwright</strong> 浏览器内核，彻底解决传统爬虫面临的难题：</p>
 <ul>
 <li><strong>自动&#x2F;手动绕过验证码</strong>: 支持检测 Bing 的 Turnstile&#x2F;ReCAPTCHA 验证，支持在 GUI 中自动暂停并引导用户手动过验证，<strong>彻底解决 IP 封禁导致的无结果问题</strong>。</li>
 <li><strong>动态渲染抓取</strong>: 能够处理依赖 JavaScript 加载的搜索结果，获取比纯 HTTP 请求更完整的数据。</li>
 </ul>
-<h3 id="3-🔍-深度内容分析与提取-Deep-Analysis"><a href="#3-🔍-深度内容分析与提取-Deep-Analysis" class="headerlink" title="3. 🔍 深度内容分析与提取 (Deep Analysis)"></a>3. 🔍 深度内容分析与提取 (Deep Analysis)</h3><p>不仅是简单的链接收集，工具会对下载的文件进行深度解析：</p>
+<h3 id="3-深度内容分析与提取-Deep-Analysis"><a href="#3-深度内容分析与提取-Deep-Analysis" class="headerlink" title="3. 深度内容分析与提取 (Deep Analysis)"></a>3. 深度内容分析与提取 (Deep Analysis)</h3><p>不仅是简单的链接收集，工具会对下载的文件进行深度解析：</p>
 <ul>
 <li><strong>Excel&#x2F;CSV&#x2F;PDF 解析</strong>: 自动下载并读取文档内容（支持多 Sheet 识别）。</li>
 <li><strong>敏感信息正则提取</strong>: 内置中国大陆身份证、手机号、邮箱、学号等精准正则，自动从海量文本中提取 PII (个人隐私信息)。</li>
 <li><strong>风险评分系统</strong>: 根据泄露信息的类型和数量，自动计算并在报告中通过颜色标记高危条目。</li>
 </ul>
-<h3 id="4-⚡-高性能并发架构"><a href="#4-⚡-高性能并发架构" class="headerlink" title="4. ⚡ 高性能并发架构"></a>4. ⚡ 高性能并发架构</h3><ul>
+<h3 id="4-高性能并发架构"><a href="#4-高性能并发架构" class="headerlink" title="4. 高性能并发架构"></a>4. 高性能并发架构</h3><ul>
 <li>采用 <code>ThreadPoolExecutor</code> 线程池架构，支持 10-50 线程并发扫描。</li>
 <li><strong>Pipeline 流水线设计</strong>: 搜索线程与分析线程分离，实现“边搜边解”，大幅缩短任务总耗时。</li>
 </ul>
-<h3 id="5-⚙️-可视化关键词管理"><a href="#5-⚙️-可视化关键词管理" class="headerlink" title="5. ⚙️ 可视化关键词管理"></a>5. ⚙️ 可视化关键词管理</h3><ul>
-<li><strong>GUI 关键词编辑器</strong>: 通过图形化界面轻松管理敏感信息检测关键词。</li>
-<li><strong>分类管理</strong>: 内置6大预设分类(敏感入口、教育数据、商业机密、个人隐私、调试信息、凭证Token)。</li>
-<li><strong>自定义扩展</strong>: 支持新建分类、添加&#x2F;编辑&#x2F;删除关键词,配置自动保存至 <code>keywords.json</code>。</li>
-<li><strong>一键恢复</strong>: 提供”恢复默认”功能,方便重置配置。</li>
-</ul>
-<h3 id="6-📊-智能数据整理"><a href="#6-📊-智能数据整理" class="headerlink" title="6. 📊 智能数据整理"></a>6. 📊 智能数据整理</h3><ul>
-<li><strong>自动补全下载</strong>: 扫描结束后自动检测报告中未下载的文件链接并补全。</li>
-<li><strong>多格式解析</strong>: 支持 Excel、CSV、PDF、HTML 等多种文件格式的并行解析。</li>
-<li><strong>数据去重与分类</strong>: 自动合并、去重,按敏感信息类型分类汇总。</li>
-<li><strong>垃圾过滤</strong>: 智能过滤超长文本列,保留高价值数据。</li>
-</ul>
 <hr>
-<h2 id="🛠️-侦察策略详解-Dork-Strategies"><a href="#🛠️-侦察策略详解-Dork-Strategies" class="headerlink" title="🛠️ 侦察策略详解 (Dork Strategies)"></a>🛠️ 侦察策略详解 (Dork Strategies)</h2><p>LeakDetector 将搜索语法分为 6 个优先级，用户可根据场景选择：</p>
+<h2 id="侦察策略详解-Dork-Strategies"><a href="#侦察策略详解-Dork-Strategies" class="headerlink" title="侦察策略详解 (Dork Strategies)"></a>侦察策略详解 (Dork Strategies)</h2><p>LeakDetector 将搜索语法分为 6 个优先级，用户可根据场景选择：</p>
 <table>
 <thead>
 <tr>
@@ -236,20 +224,23 @@
 </tr>
 </tbody></table>
 <hr>
-<h2 id="🚀-快速开始-Guide-EXE-版本"><a href="#🚀-快速开始-Guide-EXE-版本" class="headerlink" title="🚀 快速开始 Guide (EXE 版本)"></a>🚀 快速开始 Guide (EXE 版本)</h2><p>本工具已打包为独立的 <code>LeakDetector.exe</code>，无需安装 Python 或依赖库。</p>
+<h2 id="快速开始-Guide-EXE-版本"><a href="#快速开始-Guide-EXE-版本" class="headerlink" title="快速开始 Guide (EXE 版本)"></a>快速开始 Guide (EXE 版本)</h2><p>本工具已打包为独立的 <code>LeakDetector.exe</code>，无需安装 Python 或依赖库。</p>
 <h3 id="1-启动"><a href="#1-启动" class="headerlink" title="1. 启动"></a>1. 启动</h3><p>直接双击 <code>LeakDetector.exe</code> 即可启动图形化界面。</p>
 <h3 id="2-基础配置"><a href="#2-基础配置" class="headerlink" title="2. 基础配置"></a>2. 基础配置</h3><ol>
-<li><strong>输入目标</strong>: 在主界面的文本框中输入<strong>根域名</strong>，支持批量导入。<blockquote>
+<li><p><strong>输入目标</strong>: 在主界面的文本框中输入<strong>根域名</strong>，支持批量导入。</p>
+<blockquote>
 <p><em>示例</em>:<br><code>example.com</code><br><code>university.edu.cn</code></p>
 </blockquote>
 </li>
-<li><strong>选择模式</strong>:<ul>
+<li><p><strong>选择模式</strong>:</p>
+<ul>
 <li><strong>Standard (EDU&#x2F;Gov)</strong>: 适合教育、政府目标，侧重文档泄露和 PII 提取。</li>
 <li><strong>Enterprise</strong>: 适合企业目标，侧重后台、OA、DevOps 暴露。</li>
 <li><strong>All</strong>: 执行所有 P1-P6 策略（耗时较长）。</li>
 </ul>
 </li>
-<li><strong>开始运行</strong>: 点击 <code>▶ 开始扫描</code> 按钮。</li>
+<li><p><strong>开始运行</strong>: 点击 <code>▶ 开始扫描</code> 按钮。</p>
+</li>
 </ol>
 <h3 id="3-进阶功能：浏览器模式-强烈推荐"><a href="#3-进阶功能：浏览器模式-强烈推荐" class="headerlink" title="3. 进阶功能：浏览器模式 (强烈推荐)"></a>3. 进阶功能：浏览器模式 (强烈推荐)</h3><p>默认情况下工具使用 HTTP 请求模式（速度快但易被封）。建议开启 <strong>“显示浏览器 (手动绕过验证)”</strong>:</p>
 <ol>
@@ -259,14 +250,43 @@
 <li>您只需在浏览器中手动完成滑块验证，然后点击工具弹窗的 <code>确定</code>，扫描将自动继续。</li>
 </ol>
 <hr>
-<h2 id="📸-运行截图-Screenshots"><a href="#📸-运行截图-Screenshots" class="headerlink" title="📸 运行截图 (Screenshots)"></a>📸 运行截图 (Screenshots)</h2><h3 id="1-主界面与配置"><a href="#1-主界面与配置" class="headerlink" title="1. 主界面与配置"></a>1. 主界面与配置</h3><p><img src="https://raw.githubusercontent.com/cbbzx12/LeakDetector/main/image/1.png" alt="Main Interface"><br><em>简洁直观的操作界面，支持批量导入与策略选择</em></p>
-<h3 id="2-自动化扫描"><a href="#2-自动化扫描" class="headerlink" title="2. 自动化扫描"></a>2. 自动化扫描</h3><p><img src="https://raw.githubusercontent.com/cbbzx12/LeakDetector/main/image/2.png" alt="Scanning"><br><em>实时显示扫描进度与发现的高危目标</em></p>
-<h3 id="3-结果分析"><a href="#3-结果分析" class="headerlink" title="3. 结果分析"></a>3. 结果分析</h3><p><img src="https://raw.githubusercontent.com/cbbzx12/LeakDetector/main/image/3.png" alt="Results"><br><em>自动提取 Excel&#x2F;PDF 中的敏感信息，并进行风险分级</em></p>
-<h3 id="4-浏览器模式-Bypass-CAPTCHA"><a href="#4-浏览器模式-Bypass-CAPTCHA" class="headerlink" title="4. 浏览器模式 (Bypass CAPTCHA)"></a>4. 浏览器模式 (Bypass CAPTCHA)</h3><p><img src="https://raw.githubusercontent.com/cbbzx12/LeakDetector/main/image/4.png" alt="Browser Mode"><br><em>直观的浏览器视图,辅助通过复杂的人机验证</em></p>
-<h3 id="5-关键词管理"><a href="#5-关键词管理" class="headerlink" title="5. 关键词管理"></a>5. 关键词管理</h3><p><img src="https://raw.githubusercontent.com/cbbzx12/LeakDetector/main/image/5.png" alt="Keyword Manager"><br><em>可视化关键词管理界面,支持自定义敏感信息检测规则</em></p>
+<h2 id="配置文件说明-config-json"><a href="#配置文件说明-config-json" class="headerlink" title="配置文件说明 (config.json)"></a>配置文件说明 (<code>config.json</code>)</h2><p>工具首次运行后会在同级目录生成 <code>config.json</code>，可修改高级选项：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;proxy_enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span>            <span class="comment">// 是否默认启用代理</span></span><br><span class="line">    <span class="attr">&quot;proxy_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1:7890&quot;</span><span class="punctuation">,</span>    <span class="comment">// 代理地址 (HTTP/Socks5)</span></span><br><span class="line">    <span class="attr">&quot;use_browser&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span>             <span class="comment">// 默认是否开启浏览器模式</span></span><br><span class="line">    <span class="attr">&quot;max_threads&quot;</span><span class="punctuation">:</span> <span class="number">10</span><span class="punctuation">,</span>                <span class="comment">// 扫描并发线程数 (建议 5-20)</span></span><br><span class="line">    <span class="attr">&quot;time_range&quot;</span><span class="punctuation">:</span> <span class="string">&quot;不限时间&quot;</span><span class="punctuation">,</span>          <span class="comment">// 默认时间过滤 (过去24h/1周/1月等)</span></span><br><span class="line">    <span class="attr">&quot;auto_organize&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span>            <span class="comment">// 扫描结束后是否自动整理结果文件夹</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <hr>
-<h2 id="🔗-关于"><a href="#🔗-关于" class="headerlink" title="🔗 关于"></a>🔗 关于</h2><p><strong>作者</strong>: bug_001</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/cbbzx12/LeakDetector">查看 GitHub 项目</a></p>
+<h2 id="运行截图-Screenshots"><a href="#运行截图-Screenshots" class="headerlink" title="运行截图 (Screenshots)"></a>运行截图 (Screenshots)</h2><h3 id="1-主界面与配置"><a href="#1-主界面与配置" class="headerlink" title="1. 主界面与配置"></a>1. 主界面与配置</h3><p><img src="https://gitee.com/cbb-123/image/raw/master/1.png" alt="Main Interface"><br><em>简洁直观的操作界面，支持批量目标导入与策略选择</em></p>
+<h3 id="2-自动化扫描"><a href="#2-自动化扫描" class="headerlink" title="2. 自动化扫描"></a>2. 自动化扫描</h3><p><img src="https://gitee.com/cbb-123/image/raw/master/2.png" alt="Scanning"><br><em>实时显示扫描进度与发现的高危目标</em></p>
+<h3 id="3-结果分析"><a href="#3-结果分析" class="headerlink" title="3. 结果分析"></a>3. 结果分析</h3><p><img src="https://gitee.com/cbb-123/image/raw/master/3.png" alt="Results"><br><em>自动提取 Excel&#x2F;PDF 中的敏感信息，并进行风险分级</em></p>
+<h3 id="4-浏览器模式-Bypass-CAPTCHA"><a href="#4-浏览器模式-Bypass-CAPTCHA" class="headerlink" title="4. 浏览器模式 (Bypass CAPTCHA)"></a>4. 浏览器模式 (Bypass CAPTCHA)</h3><p><img src="https://gitee.com/cbb-123/image/raw/master/4.png" alt="Browser Mode"><br><em>直观的浏览器视图，辅助通过复杂的人机验证</em></p>
+<h2 id="📊-输出报告解读"><a href="#📊-输出报告解读" class="headerlink" title="📊 输出报告解读"></a>📊 输出报告解读</h2><p>扫描结果保存在 <code>results/Scan_YYYYMMDD_HHMMSS/</code> 目录下：</p>
+<ul>
+<li><strong><code>信息泄露扫描报告_xxx.xlsx</code></strong>: 核心产出物。<ul>
+<li><strong>汇总详情页</strong>: 包含所有发现的高危条目，按风险评分排序。</li>
+<li><strong>扫描概览页</strong>: 各类风险的数量统计、高危域名 Top20 分布。</li>
+<li><strong>风险评分</strong>: 红色背景为极高危（身份证&#x2F;密码），黄色为中危（邮箱&#x2F;手机）。</li>
+</ul>
+</li>
+<li><strong>下载的文件</strong>: 扫描过程中自动下载的 <code>.xlsx</code>, <code>.pdf</code> 等原始文件会保存在对应文件夹中，供人工取证。</li>
+</ul>
+<hr>
+<h2 id="常见问题-FAQ"><a href="#常见问题-FAQ" class="headerlink" title="常见问题 (FAQ)"></a>常见问题 (FAQ)</h2><p><strong>Q1: 为什么扫描结果很少或为 0？</strong></p>
+<ul>
+<li><strong>原因 A</strong>: 目标本身安全性较好，无外网暴露信息。</li>
+<li><strong>原因 B (最常见)</strong>: Bing 对 IP 进行了风控，导致 API 请求返回空或 403。</li>
+<li><strong>解决方案</strong>: <strong>务必开启 “显示浏览器” 模式</strong>，并配合代理池或稳定的梯子使用。浏览器模式能模拟真实用户指纹，极大提高成功率。</li>
+</ul>
+<p><strong>Q2: 浏览器模式启动报错？</strong></p>
+<ul>
+<li>工具依赖 Playwright，需要系统安装有 Chrome 或 Edge 浏览器。</li>
+<li>如果报错 <code>Executable doesn&#39;t exist</code>，请检查浏览器是否安装在默认路径。</li>
+</ul>
+<p><strong>Q3: 代理连接失败？</strong></p>
+<ul>
+<li>请确保代理地址格式正确 (如 <code>127.0.0.1:7890</code>) 且代理软件允许局域网&#x2F;本机连接。</li>
+<li>支持 HTTP 和 Socks5 协议。</li>
+</ul>
+<hr>
+<h2 id="🔗-关于"><a href="#🔗-关于" class="headerlink" title="🔗 关于"></a>🔗 关于</h2><p>版本: v1.0.0 作者：bug_001</p>
 </article>
 <div class="article-footer">
     <section id="license">
@@ -292,7 +312,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeakDetector-Bing-Dork-Automation-Tool"><span class="toc-text">LeakDetector (Bing Dork Automation Tool)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%A8-%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7-Key-Features"><span class="toc-text">✨ 核心特性 (Key Features)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%F0%9F%9B%A1%EF%B8%8F-%E5%A4%9A%E7%BB%B4%E5%BA%A6-Dork-%E4%BE%A6%E5%AF%9F%E7%AD%96%E7%95%A5"><span class="toc-text">1. 🛡️ 多维度 Dork 侦察策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%F0%9F%A7%A0-%E6%99%BA%E8%83%BD%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E-Smart-Browser-Engine"><span class="toc-text">2. 🧠 智能浏览器引擎 (Smart Browser Engine)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%F0%9F%94%8D-%E6%B7%B1%E5%BA%A6%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96-Deep-Analysis"><span class="toc-text">3. 🔍 深度内容分析与提取 (Deep Analysis)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E2%9A%A1-%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E5%8F%91%E6%9E%B6%E6%9E%84"><span class="toc-text">4. ⚡ 高性能并发架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E2%9A%99%EF%B8%8F-%E5%8F%AF%E8%A7%86%E5%8C%96%E5%85%B3%E9%94%AE%E8%AF%8D%E7%AE%A1%E7%90%86"><span class="toc-text">5. ⚙️ 可视化关键词管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%F0%9F%93%8A-%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86"><span class="toc-text">6. 📊 智能数据整理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E4%BE%A6%E5%AF%9F%E7%AD%96%E7%95%A5%E8%AF%A6%E8%A7%A3-Dork-Strategies"><span class="toc-text">🛠️ 侦察策略详解 (Dork Strategies)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B-Guide-EXE-%E7%89%88%E6%9C%AC"><span class="toc-text">🚀 快速开始 Guide (EXE 版本)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8"><span class="toc-text">1. 启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">2. 基础配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90"><span class="toc-text">3. 进阶功能：浏览器模式 (强烈推荐)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%B8-%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE-Screenshots"><span class="toc-text">📸 运行截图 (Screenshots)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BB%E7%95%8C%E9%9D%A2%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">1. 主界面与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F"><span class="toc-text">2. 自动化扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-text">3. 结果分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F-Bypass-CAPTCHA"><span class="toc-text">4. 浏览器模式 (Bypass CAPTCHA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%AE%A1%E7%90%86"><span class="toc-text">5. 关键词管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E5%85%B3%E4%BA%8E"><span class="toc-text">🔗 关于</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeakDetector-Bing-Dork-Automation-Tool"><span class="toc-text">LeakDetector (Bing Dork Automation Tool)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7-Key-Features"><span class="toc-text">核心特性 (Key Features)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A4%9A%E7%BB%B4%E5%BA%A6-Dork-%E4%BE%A6%E5%AF%9F%E7%AD%96%E7%95%A5"><span class="toc-text">1. 多维度 Dork 侦察策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%99%BA%E8%83%BD%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E-Smart-Browser-Engine"><span class="toc-text">2. 智能浏览器引擎 (Smart Browser Engine)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B7%B1%E5%BA%A6%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96-Deep-Analysis"><span class="toc-text">3. 深度内容分析与提取 (Deep Analysis)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E5%8F%91%E6%9E%B6%E6%9E%84"><span class="toc-text">4. 高性能并发架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F%E7%AD%96%E7%95%A5%E8%AF%A6%E8%A7%A3-Dork-Strategies"><span class="toc-text">侦察策略详解 (Dork Strategies)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B-Guide-EXE-%E7%89%88%E6%9C%AC"><span class="toc-text">快速开始 Guide (EXE 版本)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8"><span class="toc-text">1. 启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">2. 基础配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90"><span class="toc-text">3. 进阶功能：浏览器模式 (强烈推荐)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E-config-json"><span class="toc-text">配置文件说明 (config.json)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE-Screenshots"><span class="toc-text">运行截图 (Screenshots)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BB%E7%95%8C%E9%9D%A2%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">1. 主界面与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F"><span class="toc-text">2. 自动化扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-text">3. 结果分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F-Bypass-CAPTCHA"><span class="toc-text">4. 浏览器模式 (Bypass CAPTCHA)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E8%BE%93%E5%87%BA%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB"><span class="toc-text">📊 输出报告解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-FAQ"><span class="toc-text">常见问题 (FAQ)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E5%85%B3%E4%BA%8E"><span class="toc-text">🔗 关于</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
