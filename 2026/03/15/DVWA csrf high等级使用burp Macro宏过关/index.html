@@ -8,7 +8,7 @@
   
   <meta name="generator" content="Hexo 8.1.1">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -20,22 +20,22 @@
   <title>DVWA CSRF High 等级使用 Burp Macro 宏过关 - bug_001</title>
 
   
-    <meta name="description" content="在测试 DVWA High 级别 CSRF 漏洞时，常规思路多利用存储型 XSS 或借助 Burp Suite 插件（如 CSRF Token Tracker）获取 Token。本文记录另一种通过配置 Burp Suite 自带的 Macro 功能实现 Token 自动提取替换的方法。 配置 Macro1. 抓包分析抓取修改密码的数据包进行分析：  说明修改密码前token已经到本地了，检查一下，">
+    <meta name="description" content="通过配置 Burp Suite 自带的 Macro 宏功能，实现 CSRF Token 的自动提取与替换，突破 DVWA High 级别 CSRF 防护。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA CSRF High 等级使用 Burp Macro 宏过关">
 <meta property="og:url" content="https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/">
 <meta property="og:site_name" content="bug_001">
-<meta property="og:description" content="在测试 DVWA High 级别 CSRF 漏洞时，常规思路多利用存储型 XSS 或借助 Burp Suite 插件（如 CSRF Token Tracker）获取 Token。本文记录另一种通过配置 Burp Suite 自带的 Macro 功能实现 Token 自动提取替换的方法。 配置 Macro1. 抓包分析抓取修改密码的数据包进行分析：  说明修改密码前token已经到本地了，检查一下，">
+<meta property="og:description" content="通过配置 Burp Suite 自带的 Macro 宏功能，实现 CSRF Token 的自动提取与替换，突破 DVWA High 级别 CSRF 防护。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cbbzx12.github.io/images/head.jpg">
 <meta property="article:published_time" content="2026-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-09T02:39:32.857Z">
+<meta property="article:modified_time" content="2026-04-17T11:25:01.302Z">
 <meta property="article:author" content="bug_001">
 <meta property="article:tag" content="BurpSuite">
 <meta property="article:tag" content="CSRF">
 <meta property="article:tag" content="DVWA">
 <meta property="article:tag" content="Web安全">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cbbzx12.github.io/images/head.jpg">
   
   
@@ -52,7 +52,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"dateCreated":"2026-03-15T00:00:00+08:00","dateModified":"2026-04-09T10:39:32+08:00","datePublished":"2026-03-15T00:00:00+08:00","description":"","headline":"DVWA CSRF High 等级使用 Burp Macro 宏过关","mainEntityOfPage":{"@type":"WebPage","@id":"https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/"},"publisher":{"@type":"Organization","name":"bug_001","sameAs":[],"image":"/images/head.jpg","logo":{"@type":"ImageObject","url":"/images/head.jpg"}},"url":"https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/","keywords":"DVWA, CSRF, BurpSuite, Web安全","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bug_001","sameAs":[],"image":"/images/head.jpg"},"dateCreated":"2026-03-15T00:00:00+08:00","dateModified":"2026-04-17T19:25:01+08:00","datePublished":"2026-03-15T00:00:00+08:00","description":"通过配置 Burp Suite Macro 宏，实现 CSRF Token 自动提取替换，突破 DVWA High 级别防护。","headline":"DVWA CSRF High 等级使用 Burp Macro 宏过关","mainEntityOfPage":{"@type":"WebPage","@id":"https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/"},"publisher":{"@type":"Organization","name":"bug_001","sameAs":[],"image":"/images/head.jpg","logo":{"@type":"ImageObject","url":"/images/head.jpg"}},"url":"https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/","keywords":"DVWA, CSRF, BurpSuite, Web安全","thumbnailUrl":"https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461039384-a8a1baf6-fadb-4765-ba85-22245d0ed8d7.png","image":1}</script>
   
 <!-- hexo injector head_end start -->
 <style>
@@ -115,27 +115,27 @@
 <div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="/images/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">记录一些学习过程</div></a></div></header>
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(url(/images/bg.jpg));"></div><img no-lazy class="avatar" src="/images/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">bug_001</div><div class="sub cap">网络安全学习记录</div></a></div></header>
 
 <div class="nav-area">
 
-<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="导航" href="/sites/" style="color:#FA6400"><img no-lazy src="https://api.iconify.design/solar/planet-bold-duotone.svg?color=%23FA6400" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="https://api.iconify.design/solar/home-2-bold-duotone.svg?color=%231BCDFC" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><img no-lazy src="https://api.iconify.design/solar/notebook-bookmark-bold-duotone.svg?color=%233DC550" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="关于" href="/about/" style="color:#A855F7"><img no-lazy src="https://api.iconify.design/solar/user-circle-bold-duotone.svg?color=%23A855F7" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="友链" href="/friends/" style="color:#F44336"><img no-lazy src="https://api.iconify.design/solar/users-group-two-rounded-bold-duotone.svg?color=%23F44336" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 </div>
-
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/cbbzx12" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://api.iconify.design/mdi/github.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
 
 
 
 
-<div class="article banner top">
+<div class="article banner slide-up top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E9%9D%B6%E5%9C%BAWP/">靶场WP</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-03-14T16:00:00.000Z">2026-03-15</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-09T02:39:32.857Z">2026-04-09</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-03-14T16:00:00.000Z">2026-03-15</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-04-17T11:25:01.302Z">2026-04-17</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -146,39 +146,53 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><p>在测试 DVWA High 级别 CSRF 漏洞时，常规思路多利用存储型 XSS 或借助 Burp Suite 插件（如 CSRF Token Tracker）获取 Token。本文记录另一种通过配置 Burp Suite 自带的 Macro 功能实现 Token 自动提取替换的方法。</p>
+  </div><article class="md-text content slide-up"><p>在测试 DVWA High 级别 CSRF 漏洞时，常规思路多利用存储型 XSS 或借助 Burp Suite 插件（如 CSRF Token Tracker）获取 Token。本文记录另一种方法：通过配置 Burp Suite 自带的 <strong>Macro 宏</strong>功能，实现 Token 自动提取与替换。</p>
 <h2 id="配置-Macro"><a href="#配置-Macro" class="headerlink" title="配置 Macro"></a>配置 Macro</h2><h3 id="1-抓包分析"><a href="#1-抓包分析" class="headerlink" title="1. 抓包分析"></a>1. 抓包分析</h3><p>抓取修改密码的数据包进行分析：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461039384-a8a1baf6-fadb-4765-ba85-22245d0ed8d7.png"></p>
-<p>说明修改密码前token已经到本地了，检查一下，发现是隐藏在页面了</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773415547259-809ac186-a8fe-44ca-b286-1f8129566915.png"></p>
-<p>这个token 是怎么来的呢？就是刷新这个页面获取的</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773460903129-daa69bb3-c40d-4df4-b186-85437af6862f.png"></p>
-<p>发送到repeater，验证每次是否刷新token</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461105150-be83cca0-c711-409b-bb37-a4f8a7232d54.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461130948-c9e69819-cf03-41e2-a9cd-af52000255ca.png"></p>
-<h3 id="2-配置环节"><a href="#2-配置环节" class="headerlink" title="2. 配置环节"></a>2. 配置环节</h3><h4 id="Proxy-Proxy-settings-sessions-找到Macro-add"><a href="#Proxy-Proxy-settings-sessions-找到Macro-add" class="headerlink" title="Proxy-&gt;Proxy settings-&gt;sessions,找到Macro -&gt;add"></a>Proxy-&gt;Proxy settings-&gt;sessions,找到Macro -&gt;add</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416100108-0b34a883-c02f-4816-b479-64600b779f29.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416168096-7e7a7720-1a39-4ace-9949-8c09858586cf.png"></p>
-<h4 id="找到刷新Token的那个包，然后点击ok"><a href="#找到刷新Token的那个包，然后点击ok" class="headerlink" title="找到刷新Token的那个包，然后点击ok"></a>找到刷新Token的那个包，然后点击ok</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461212069-5fad0fb0-8b9e-447e-9ff7-1042fb100cfc.png"></p>
-<h4 id="然后点击Configure-item"><a href="#然后点击Configure-item" class="headerlink" title="然后点击Configure item"></a>然后点击Configure item</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461276713-ea4a0fc0-3263-48a0-af1e-f8f5ec1a9052.png"></p>
-<h4 id="然后进到这个页面，点击add"><a href="#然后进到这个页面，点击add" class="headerlink" title="然后进到这个页面，点击add"></a>然后进到这个页面，点击add</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416576753-be91bd8e-5fb7-4d70-bdcf-0dc04cf2c51f.png"></p>
-<h4 id="然后按照图里面配置，一定要先选择Refetch-response"><a href="#然后按照图里面配置，一定要先选择Refetch-response" class="headerlink" title="然后按照图里面配置，一定要先选择Refetch response"></a>然后按照图里面配置，<font style="color:#DF2A3F;">一定要先选择Refetch response</font></h4><p>对于start after expression和end at delimiter 一般来说双击token值就可以自动填写，但值很少，很难匹配上，可以手动复制token前后  </p>
-<p>start after expression：&lt;input type&#x3D;’hidden’ name&#x3D;’user_token’ value&#x3D;’   </p>
-<p>end at delimiter： &#x2F;&gt;</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773421286913-c9d2f012-820e-4f98-a36b-3dee77e0632d.png"></p>
-<h4 id="然后点击ok-ok回到sessions界面，配置好的话会有显示"><a href="#然后点击ok-ok回到sessions界面，配置好的话会有显示" class="headerlink" title="然后点击ok -&gt;ok回到sessions界面，配置好的话会有显示"></a>然后点击ok -&gt;ok回到sessions界面，配置好的话会有显示</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416947589-9b1826ac-ac59-4221-a265-58ccc336af58.png"></p>
-<h4 id="找到Session-handling-rules-add"><a href="#找到Session-handling-rules-add" class="headerlink" title="找到Session handling rules-&gt;add"></a>找到Session handling rules-&gt;add</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417009663-a55fdd0e-0cee-4728-98c4-e11d457efcef.png"></p>
-<h4 id="点击add-点击Run-a-macro"><a href="#点击add-点击Run-a-macro" class="headerlink" title="点击add,点击Run a macro"></a>点击add,点击Run a macro</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417133734-9b01c97c-1617-4fbf-9b1b-4df8a8646425.png"></p>
-<h4 id="按照图中的配置，然后ok"><a href="#按照图中的配置，然后ok" class="headerlink" title="按照图中的配置，然后ok"></a>按照图中的配置，然后ok</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773421522181-fd625df8-5362-4af6-bb77-35ef7da026fd.png"></p>
-<h4 id="配置好之后，然后选择-Scope"><a href="#配置好之后，然后选择-Scope" class="headerlink" title="配置好之后，然后选择 Scope"></a>配置好之后，然后选择 Scope</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417461554-247edd3f-2256-4815-bdb6-a04a28d90d78.png"></p>
-<h4 id="选择好范围，然后点ok"><a href="#选择好范围，然后点ok" class="headerlink" title="选择好范围，然后点ok"></a>选择好范围，然后点ok</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417556401-c4176cf1-9094-488e-b560-7f66da88f1b3.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417614318-4d5b67c9-59f2-40a3-95c0-6fe467cf7c34.png"></p>
-<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><h4 id="抓一个修改密码的包发送到repeater验证"><a href="#抓一个修改密码的包发送到repeater验证" class="headerlink" title="抓一个修改密码的包发送到repeater验证"></a>抓一个修改密码的包发送到repeater验证</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461623143-b1bb2319-6d71-4ac9-90c8-602bc404b59e.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461669646-c81f62a5-d23f-4298-92d9-e837fad8bb3f.png"></p>
-<h4 id="验证一下，密码333，登陆成功"><a href="#验证一下，密码333，登陆成功" class="headerlink" title="验证一下，密码333，登陆成功"></a>验证一下，密码333，登陆成功</h4><p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461756191-a5e84a09-8b9d-4165-b3b6-26c825796b01.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461781902-c138a11d-3864-4891-b5de-ed3c6640409b.png"></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p> Burp 在后台默默帮你发了一次 GET 请求，提取了新的 Token，替换了你发送包里的旧 Token，然后才发往服务器。  </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461039384-a8a1baf6-fadb-4765-ba85-22245d0ed8d7.png" alt="抓包分析"></p>
+<p>可以看到，修改密码前 Token 已经到本地了。检查一下，发现 Token 被隐藏在页面中：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773415547259-809ac186-a8fe-44ca-b286-1f8129566915.png" alt="Token 位置"></p>
+<p>这个 Token 是怎么来的？就是刷新这个页面时获取的：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773460903129-daa69bb3-c40d-4df4-b186-85437af6862f.png" alt="Token 刷新机制"></p>
+<p>发送到 Repeater，验证每次是否刷新 Token：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461105150-be83cca0-c711-409b-bb37-a4f8a7232d54.png" alt="Repeater 验证 1"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461130948-c9e69819-cf03-41e2-a9cd-af52000255ca.png" alt="Repeater 验证 2"></p>
+<h3 id="2-配置步骤"><a href="#2-配置步骤" class="headerlink" title="2. 配置步骤"></a>2. 配置步骤</h3><h4 id="步骤一：添加-Macro"><a href="#步骤一：添加-Macro" class="headerlink" title="步骤一：添加 Macro"></a>步骤一：添加 Macro</h4><p>进入 <code>Proxy → Proxy settings → Sessions</code>，找到 <code>Macro</code> → 点击 <code>Add</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416100108-0b34a883-c02f-4816-b479-64600b779f29.png" alt="Macro 入口"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416168096-7e7a7720-1a39-4ace-9949-8c09858586cf.png" alt="Add Macro"></p>
+<h4 id="步骤二：选择刷新-Token-的数据包"><a href="#步骤二：选择刷新-Token-的数据包" class="headerlink" title="步骤二：选择刷新 Token 的数据包"></a>步骤二：选择刷新 Token 的数据包</h4><p>找到刷新 Token 的那个包，然后点击 <code>OK</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461212069-5fad0fb0-8b9e-447e-9ff7-1042fb100cfc.png" alt="选择请求包"></p>
+<h4 id="步骤三：Configure-item"><a href="#步骤三：Configure-item" class="headerlink" title="步骤三：Configure item"></a>步骤三：Configure item</h4><p>点击 <code>Configure item</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461276713-ea4a0fc0-3263-48a0-af1e-f8f5ec1a9052.png" alt="Configure item"></p>
+<p>在弹出页面中点击 <code>Add</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416576753-be91bd8e-5fb7-4d70-bdcf-0dc04cf2c51f.png" alt="Add 参数提取规则"></p>
+<h4 id="步骤四：配置提取规则"><a href="#步骤四：配置提取规则" class="headerlink" title="步骤四：配置提取规则"></a>步骤四：配置提取规则</h4><blockquote>
+<p><strong>注意：一定要先勾选 <code>Refetch response</code></strong></p>
+</blockquote>
+<p>对于 <code>Start after expression</code> 和 <code>End at delimiter</code>，一般来说双击 Token 值可以自动填写，但由于 Token 值较短，难以精确匹配，建议手动填写 Token 前后的定界符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Start after expression：&lt;input type=&#x27;hidden&#x27; name=&#x27;user_token&#x27; value=&#x27;</span><br><span class="line">End at delimiter：/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773421286913-c9d2f012-820e-4f98-a36b-3dee77e0632d.png" alt="配置提取规则"></p>
+<h4 id="步骤五：配置-Session-Handling-Rule"><a href="#步骤五：配置-Session-Handling-Rule" class="headerlink" title="步骤五：配置 Session Handling Rule"></a>步骤五：配置 Session Handling Rule</h4><p>点击 <code>OK</code> → <code>OK</code> 回到 sessions 界面，配置好后会有显示：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773416947589-9b1826ac-ac59-4221-a265-58ccc336af58.png" alt="Macro 配置完成"></p>
+<p>找到 <code>Session handling rules</code> → 点击 <code>Add</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417009663-a55fdd0e-0cee-4728-98c4-e11d457efcef.png" alt="Session handling rules"></p>
+<p>点击 <code>Add</code>，选择 <code>Run a macro</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417133734-9b01c97c-1617-4fbf-9b1b-4df8a8646425.png" alt="Run a macro"></p>
+<p>按图中配置，然后点击 <code>OK</code>：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773421522181-fd625df8-5362-4af6-bb77-35ef7da026fd.png" alt="Run a macro 配置"></p>
+<h4 id="步骤六：设置作用范围"><a href="#步骤六：设置作用范围" class="headerlink" title="步骤六：设置作用范围"></a>步骤六：设置作用范围</h4><p>切换到 <code>Scope</code> 标签页，设置 Rule 的作用范围：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417461554-247edd3f-2256-4815-bdb6-a04a28d90d78.png" alt="Scope 配置"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417556401-c4176cf1-9094-488e-b560-7f66da88f1b3.png" alt="Scope 范围选择 1"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773417614318-4d5b67c9-59f2-40a3-95c0-6fe467cf7c34.png" alt="Scope 范围选择 2"></p>
+<h2 id="验证效果"><a href="#验证效果" class="headerlink" title="验证效果"></a>验证效果</h2><p>抓一个修改密码的包，发送到 Repeater 验证：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461623143-b1bb2319-6d71-4ac9-90c8-602bc404b59e.png" alt="发包验证 1"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461669646-c81f62a5-d23f-4298-92d9-e837fad8bb3f.png" alt="发包验证 2"></p>
+<p>验证一下，使用新密码 <code>333</code> 登录成功：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461756191-a5e84a09-8b9d-4165-b3b6-26c825796b01.png" alt="登录验证 1"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/png/53530601/1773461781902-c138a11d-3864-4891-b5de-ed3c6640409b.png" alt="登录验证 2"></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Burp 在后台自动发起一次 GET 请求，从响应中提取新的 Token，替换掉你发送包里的旧 Token，然后再把替换后的请求转发给服务器。整个过程对用户透明。</p>
 </article>
-<div class="article-footer">
+<div class="article-footer slide-up">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -186,23 +200,32 @@
     </section>
     
 
-</div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/01/31/LeakDetector/">我自己写的一款工具: LeakDetector</a></div></section></div>
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://cbbzx12.github.io/2026/03/15/DVWA%20csrf%20high%E7%AD%89%E7%BA%A7%E4%BD%BF%E7%94%A8burp%20Macro%E5%AE%8F%E8%BF%87%E5%85%B3/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/01/31/LeakDetector/">我自己写的一款工具: LeakDetector</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">bug_001</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="sitemap" style="column-count:3;"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期发布</a><a href="/blog/categories/">分类</a><a href="/blog/tags/">标签</a><a href="/blog/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">文档</span><a href="/wiki/WP/">靶场 WP</a><a href="/wiki/Web%E7%9F%A5%E8%AF%86%E7%82%B9/">Web 知识点</a><a href="/wiki/%E5%86%85%E7%BD%91/">内网渗透</a><a href="/wiki/linux%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/">Linux 文档</a></div><div class="sitemap-group"><span class="fs15">本站</span><a href="/about/">关于</a><a href="/friends/">友链</a></div></div><div class="text"><p>本站由 <a href="/">bug_001</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Macro"><span class="toc-text">配置 Macro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-text">1. 抓包分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E8%8A%82"><span class="toc-text">2. 配置环节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Proxy-Proxy-settings-sessions-%E6%89%BE%E5%88%B0Macro-add"><span class="toc-text">Proxy-&gt;Proxy settings-&gt;sessions,找到Macro -&gt;add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E5%88%B7%E6%96%B0Token%E7%9A%84%E9%82%A3%E4%B8%AA%E5%8C%85%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BBok"><span class="toc-text">找到刷新Token的那个包，然后点击ok</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BBConfigure-item"><span class="toc-text">然后点击Configure item</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E8%BF%9B%E5%88%B0%E8%BF%99%E4%B8%AA%E9%A1%B5%E9%9D%A2%EF%BC%8C%E7%82%B9%E5%87%BBadd"><span class="toc-text">然后进到这个页面，点击add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E6%8C%89%E7%85%A7%E5%9B%BE%E9%87%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%B8%80%E5%AE%9A%E8%A6%81%E5%85%88%E9%80%89%E6%8B%A9Refetch-response"><span class="toc-text">然后按照图里面配置，一定要先选择Refetch response</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BBok-ok%E5%9B%9E%E5%88%B0sessions%E7%95%8C%E9%9D%A2%EF%BC%8C%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84%E8%AF%9D%E4%BC%9A%E6%9C%89%E6%98%BE%E7%A4%BA"><span class="toc-text">然后点击ok -&gt;ok回到sessions界面，配置好的话会有显示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%BE%E5%88%B0Session-handling-rules-add"><span class="toc-text">找到Session handling rules-&gt;add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%B9%E5%87%BBadd-%E7%82%B9%E5%87%BBRun-a-macro"><span class="toc-text">点击add,点击Run a macro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%9B%BE%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%8C%E7%84%B6%E5%90%8Eok"><span class="toc-text">按照图中的配置，然后ok</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%A5%BD%E4%B9%8B%E5%90%8E%EF%BC%8C%E7%84%B6%E5%90%8E%E9%80%89%E6%8B%A9-Scope"><span class="toc-text">配置好之后，然后选择 Scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%A5%BD%E8%8C%83%E5%9B%B4%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9ok"><span class="toc-text">选择好范围，然后点ok</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%93%E4%B8%80%E4%B8%AA%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E7%9A%84%E5%8C%85%E5%8F%91%E9%80%81%E5%88%B0repeater%E9%AA%8C%E8%AF%81"><span class="toc-text">抓一个修改密码的包发送到repeater验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%8B%EF%BC%8C%E5%AF%86%E7%A0%81333%EF%BC%8C%E7%99%BB%E9%99%86%E6%88%90%E5%8A%9F"><span class="toc-text">验证一下，密码333，登陆成功</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper slide-up toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Macro"><span class="toc-text">配置 Macro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-text">1. 抓包分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="toc-text">2. 配置步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E6%B7%BB%E5%8A%A0-Macro"><span class="toc-text">步骤一：添加 Macro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E9%80%89%E6%8B%A9%E5%88%B7%E6%96%B0-Token-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-text">步骤二：选择刷新 Token 的数据包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9AConfigure-item"><span class="toc-text">步骤三：Configure item</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E9%85%8D%E7%BD%AE%E6%8F%90%E5%8F%96%E8%A7%84%E5%88%99"><span class="toc-text">步骤四：配置提取规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%94%EF%BC%9A%E9%85%8D%E7%BD%AE-Session-Handling-Rule"><span class="toc-text">步骤五：配置 Session Handling Rule</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%85%AD%EF%BC%9A%E8%AE%BE%E7%BD%AE%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">步骤六：设置作用范围</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%95%88%E6%9E%9C"><span class="toc-text">验证效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
@@ -896,6 +919,22 @@
         });
       })
     }
+  });
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/scrollreveal@4.0/dist/scrollreveal.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const slideUp = {
+      distance: `12px`,
+      duration: `400`,
+      interval: `60`,
+      scale: `1`,
+      opacity: 0,
+      easing: "ease-out"
+    };
+    ScrollReveal({ container: '.widgets' }).reveal('.slide-up', { ...slideUp });
+    ScrollReveal({ container: '.l_main' }).reveal('.slide-up', { ...slideUp });
+    ScrollReveal({ container: '.l_right' }).reveal('.slide-up', { ...slideUp });
   });
 </script>
 <script>
